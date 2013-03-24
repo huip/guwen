@@ -1,0 +1,122 @@
+#main {
+	margin:50px 15% 0 15%;
+}
+
+.user-img {
+	float: left;
+}
+.ques-list{
+	
+	margin:10px 0 0 0;
+}
+
+.feed-content {
+	float: right;
+	background: #F2F2F2;
+	padding: 20px;
+}
+
+.sns-bar span {
+	margin: 0 0 0 0px;
+}
+.sns-time-list {
+	margin:0 10px 0 0px;
+	color:gray;
+	font-family:Georgia,Tahoma,Helvetica,arial;
+}
+
+.list_info {
+	padding: 20px;
+
+}
+.addcomment {
+	padding: 20px;
+}
+.comment-input {
+	width:550px;
+}
+.comment-btn {
+	margin:0 35px 0 0px;
+}
+.comment-list-info {
+	min-height: 100px;
+	margin:0px !important;
+}
+.comment-list-info img {
+	float: left;
+}
+
+.comment-list-info .comment-intro {
+	
+}
+.index-content-list {
+	word-wrap:break-word;
+	word-break:break-all;
+	text-overflow: ellipsis;
+	height: 60px;
+	overflow: hidden;
+
+}
+.display-anwser {
+	display: none;
+}
+.slide-up {
+	display: none;
+	margin:0 40px 0 0 ;
+}
+
+.comment-reply{
+	display:none;
+	min-height: 20px;
+	width: 500px;
+}
+
+.reply-input{
+	width: 470px;
+	margin: 0 0 0 -20px;
+}
+.reply-btn {
+	margin:5px -8px 0 0;
+}
+.addreply {
+	margin:5px 0 0 20px !important;
+}
+.help-block {
+	visibility:hidden;
+}
+
+/***********************js crop ***************/
+/* Apply these styles only when #preview-pane has
+   been placed within the Jcrop widget */
+.jcrop-holder #preview-pane {
+  display: block;
+  position: absolute;
+  z-index: 2000;
+  top: 0px;
+  right: -220px;
+  padding: 6px;
+  background-color: white;
+
+}
+
+/* The Javascript code will set the aspect ratio of the crop
+   area based on the size of the thumbnail preview,
+   specified here */
+#preview-pane .preview-container {
+  width: 200px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.right-bar{
+
+	margin:30px 0 0 0;
+}
+
+.user-center .user-img {
+	height:20px;
+	width: 20px;
+}
+.comment-btn{
+	margin:0 65px 0 0;
+}
