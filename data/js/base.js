@@ -149,7 +149,7 @@ $(".get-index-anwser").click(function() {
 
 			for( var i = 0 ; i < result.length ; i++)
 			{
-				$list_anwser= $("<div class='comment-list-info span10'><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><span class=' span10 pull-right'>"+result[i].comment_content+"</span><hr /></div>");
+				$list_anwser= $("<div class='comment-list-info span10'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><span class=' span10 pull-right'>"+result[i].comment_content+"</span><hr /></div>");
 				$display_anwser.append($list_anwser);
 			}
 
@@ -179,7 +179,7 @@ $(".cmt-reply").click(function() {
 				result = $.parseJSON(result);			
 				for(var i = 0; i < result.length; i++)
 				{
-					$reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class=' span9 pull-right'>"+result[i].reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result[i].time+"<p></div>");
+					$reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class=' span9 pull-right'>"+result[i].reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result[i].time+"<p></div>");
 					$reply_list.append($reply);
 					$reply_list.attr("is-cmt-reply","true");
 				}
@@ -215,7 +215,7 @@ $(".reply-btn").click(function() {
 
 					result = $.parseJSON(result);
 
-					$reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/usercenter/person_question/"+result.user_id+"' class='span1'>"+result.user_name+"</a><div class=' span9 pull-right'>"+$reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result.time+"<p></div>");
+					$reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"' class='span1'>"+result.user_name+"</a><div class=' span9 pull-right'>"+$reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result.time+"<p></div>");
 					$reply_list.append($reply);
 					$reply_num.html(parseInt($reply_num.html())+1);
 					$(".reply-input").val(" ");

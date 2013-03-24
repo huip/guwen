@@ -11,10 +11,10 @@
 	<input class="btn pull-left search-btn-poi" type="button" value="搜索" />
 	<input class="btn pull-left search-btn-poi create-question" type="button" value="提问" />
     	<ul class="nav nav-poi">
-		<li>
+		<li class="active">
 		<a href="<?=base_url();?>index.php/index">首页</a>
 		</li>
-		<li class="active"><a href="<?=base_url();?>index.php/topic">话题</a></li>
+		<li ><a href="<?=base_url();?>index.php/topic">话题</a></li>
 		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
 		<li><a href="#">消息</a></li>
 		<li class="user-center" uid="<?=$user_id?>">
@@ -82,10 +82,10 @@
   <input class="btn pull-left search-btn-poi" type="button" value="搜索" />
   <input class="btn pull-left search-btn-poi no-login-ques" type="button" value="提问" />
       <ul class="nav nav-poi">
-              <li>
+              <li class="active" >
                 <a href="<?=base_url();?>index.php/index">首页</a>
             </li>
-            <li class="active"><a href="<?=base_url();?>index.php/topic">话题</a></li>
+            <li><a href="<?=base_url();?>index.php/topic">话题</a></li>
           <li><a href="<?=base_url();?>index.php/explore">发现</a></li>
           <li class="user-center">
               <input class="btn login-btn-trans" type="button"  value="登陆" />

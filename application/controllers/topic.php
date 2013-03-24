@@ -8,7 +8,6 @@ class Topic extends CI_Controller {
 	   	date_default_timezone_set('PRC');
 	   	$this->load->helper('url');
 	   	$this->load->library('session');
-	   	$this->load->model("sns_model");
 	             $this->load->model("topic/index_model");
 	             $this->load->model("topic/info_model");
 	}

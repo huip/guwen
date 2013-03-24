@@ -23,6 +23,7 @@ class Index extends CI_Controller {
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$message = $this->index_model->get_message_list();
 		$this->load->view('conn/header');
+		$this->load->view("index/nav",$data);
 		if(count( $message ) != 0){
 
 			foreach ($message as $key=>$value) {

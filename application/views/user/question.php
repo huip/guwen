@@ -3,19 +3,19 @@
   <div class="row-fluid">
   	<div class="span12">
   		<ul class="nav nav-tabs">
-			<li class="">
-			    <a href="<?=base_url();?>index.php/usercenter/person_question/<?=$uid?>">TA的提问</a>
+			<li class="active">
+			    <a href="<?=base_url();?>index.php/user/index">我的提问</a>
 			</li>
-			<li class="active"><a href="<?=base_url();?>index.php/usercenter/person_answer/<?=$uid?>">TA的回答</a></li>
+			<li><a href="<?=base_url();?>index.php/user/answer">我的回答</a></li>
+			<li><a href="<?=base_url();?>index.php/user/message">我的消息</a></li>
 		</ul>
 		<div class="usercnt-list span7 pull-left">
-                    <?php foreach ($person_answer as $key => $value):{?>
+                <?php foreach ($question_info as $key => $value):{?>
                       <div class="usercnt">
-                          <p><a href="<?=base_url();?>/index.php/index/question/<?=$value['msgid'];?>"><?=$value['ques_title']?></a><p>
-                          <p><?=$value['myanswer']?></p>
+                          <p><a href="<?=base_url();?>index.php/question/index/<?=$value['msgid'];?>"><?=$value['ques_title']?></a><p>
                           <p><span><?=$value['answer']?>个答案<span>&nbsp&nbsp<span>浏览<?=$value['browser']?></span>&nbsp&nbsp<span class="sns-time-list"><?=$value['post_time']?></span></p>
                       </div>
-                    <?php } endforeach;?>             
+               <?php } endforeach;?>
              </div>
               <div class="usercnt-list span4 pull-right">
                    <?foreach ($person_info as $value) :{?>
@@ -28,6 +28,6 @@
                    <?}endforeach?>           
              </div>
   	</div>
-</div>
+  </div>
 </div>
 </div>
