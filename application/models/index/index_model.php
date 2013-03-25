@@ -27,39 +27,5 @@ class Index_model extends CI_Model
                     return $value['anwser'];
                 }
 
-            }
-
-         
-            public function get_index_anwser($ques_id)
-            {
-                $sql = "SELECT  cmt.comment_content,us.user_img,us.user_name,us.user_id FROM guwen_comment AS cmt ,guwen_user AS us WHERE cmt.comment_uid = us.user_id AND cmt.comment_quesid = ?";
-                $query = $this->db->query($sql,array($ques_id));
-                $res = $query->result_array();
-                return json_encode($res);
-            }
-
-            public function add_reply($data)
-            {
-                $this->db->insert("guwen_comment_reply",$data);
-                return TRUE;
-                
-            }
-
-            public function get_reply_num($comment_id)
-            {
-                $sql = "SELECT count(id) FROM guwen_comment_reply WHERE comment_id = ?";
-                $query = $this->db->query($sql,array($comment_id));
-                $res = $query->result_array();
-                return json_encode($res);
-            }
-
-            public function get_reply_list($comment_id)
-            {
-                $sql = "SELECT reply.reply_content ,reply.time,us.user_name,us.user_img,us.user_id FROM guwen_comment_reply as reply ,guwen_user as us WHERE reply.comment_id  = ? AND reply.reply_uid = us.user_id ";
-                $query = $this->db->query($sql,array($comment_id));
-                $res = $query->result_array();
-                return json_encode($res);
-
-            }
-
+            }   
 }

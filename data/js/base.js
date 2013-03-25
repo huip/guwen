@@ -38,7 +38,7 @@ $("#userfiles").change(function () {
 
             $("body").append(iframe);
             var form = $('#theuploadforms');
-            form.attr("action", get_root_path()+"/wen/index.php/user/auto_upload_file");
+            form.attr("action", get_root_path()+"/wen/index.php/ajax/auto_upload_file");
             form.attr("method", "post");
             form.attr("enctype", "multipart/form-data");
             form.attr("encoding", "multipart/form-data");
@@ -47,7 +47,7 @@ $("#userfiles").change(function () {
             form.submit();
             $("#postiframe").load(function () {
                 iframeContents = $("#postiframe")[0].contentWindow.document.body.innerHTML;
-                $.post(get_root_path()+"/wen/index.php/usercenter/upimage",
+                $.post(get_root_path()+"/wen/index.php/user/upimage",
 		{imgpath:iframeContents},
 		function(result){
 			$(".jc-demo-box").html(result);
@@ -67,7 +67,7 @@ $("#formsubmit").click(function() {
 	var $cate = $(".question-cate option:selected").val();
 	var $question_socore = $(".question-socore").val();
 	var $question_anoy = $(".question-anoy").attr("checked")?1:0;
-	var url = get_root_path()+"/wen/index.php/user/post_message";
+	var url = get_root_path()+"/wen/index.php/ajax/post_message";
 	var  urls = get_root_path()+"/wen/index.php/index/scwc_api";
 	$.post(url,
 		{question_title:$question_title,question_content:$question_content,cate:$cate,question_socore:$question_socore,question_anoy:$question_anoy},
@@ -93,7 +93,7 @@ $("#formsubmit").click(function() {
 $(".comment-btn").click(function() {
 	var $comment = $(".comment-input").val();
 	var $qid = $(".question_info").attr("qid");
-	var url = get_root_path()+"/wen/index.php/index/add_comment";
+	var url = get_root_path()+"/wen/index.php/ajax/add_comment";
 	$.post(url,
 		{comment_content:$comment,ques_id:$qid},
 		function(result){
@@ -116,12 +116,12 @@ $(".sns-favour").click(function() {
 	var $qid = $(".question_info").attr("qid");
 	var $comment_uid = $(this).parent().parent().parent().attr("uid");
 
-	var url = get_root_path()+"/wen/index.php/message/add_favour";
+	var url = get_root_path()+"/wen/index.php/ajax/add_favour";
 	$.post(url,
 		{comment_id:$comment_id,quesid:$qid,comment_uid:$comment_uid},
 		function(result){
 			
-			if( result.length == "7")
+			if( result.length == "5")
 			{
 				alert($.trim(result));
 				window.location.href = get_root_path()+"/wen/index.php/index/login";
@@ -139,7 +139,7 @@ $(".get-index-anwser").click(function() {
 	var $qid = $(this).attr("qid");
 	var $display_anwser = $(this).parent().parent().next().next();
 	var $slide_up = $(this).parent().parent().next().next().next();
-	var url = get_root_path()+"/wen/index.php/message/get_index_anwser";
+	var url = get_root_path()+"/wen/index.php/ajax/get_index_anwser";
 	$.post(url,
 		{quesid:$qid},
 		function(result){
@@ -170,7 +170,7 @@ $(".slide-up").click(function(){
 $(".cmt-reply").click(function() {
 	var $comment_id = $(this).parent().parent().parent().parent().attr("cid");
 	var $reply_list = $(this).parent().parent().next().children(".reply-list");
-	var url = get_root_path()+"/wen/index.php/message/get_reply_list";
+	var url = get_root_path()+"/wen/index.php/ajax/get_reply_list";
 	if ( $reply_list.attr("is-cmt-reply") == "false" ) {
 
 		$.post(url,
@@ -202,11 +202,12 @@ $(".reply-btn").click(function() {
 	if( $reply_content != ""){
 		$reply_list = $(this).parent().prev();
 		$comment_id = $(this).parent().parent().parent().parent().attr("cid");
-		var url = get_root_path()+"/wen/index.php/message/add_reply";
+		var url = get_root_path()+"/wen/index.php/ajax/add_reply";
 		$.post(url,
 			{reply_content:$reply_content,comment_id:$comment_id},
 			function(result){
-				if(result.length == "7")
+				
+				if(result.length == "5")
 				{
 					alert($.trim(result));
 					window.location.href=get_root_path()+"/wen/index.php/index/login";
@@ -238,7 +239,7 @@ $(".profile-alter").click(function(){
 	var $nickname = $("#nickname").val();
 	var $profile = $("#profile").val();
 	var $help_block = $(".help-blocks");
-	var url = get_root_path()+"/wen/index.php/user/profile_alter";
+	var url = get_root_path()+"/wen/index.php/ajax/profile_alter";
 	$.post(url,
 		{nickname:$nickname,profile:$profile},
 		function(result){
@@ -252,7 +253,7 @@ $(".profile-alter").click(function(){
 $("#oldpassword").change(function() {
 	var $oldpassword = $(this).val();
 	var $help_block = $(this).next();
-	var url = get_root_path()+"/wen/index.php/user/is_true_password";
+	var url = get_root_path()+"/wen/index.php/ajax/is_true_password";
 	$.post(url,
 		{oldpassword:$oldpassword},
 		function(result){
@@ -265,7 +266,7 @@ $("#oldpassword").change(function() {
 });
 $(".acount-alter").click(function(){
 	var $email = $("#email").val();
-	var url = get_root_path()+"/wen/index.php/user/acount_alter";
+	var url = get_root_path()+"/wen/index.php/ajax/acount_alter";
 	var $newpassword = $("#newpassword").val();
 	var $confirmpassword = $("#confirmpassword").val();
 	var $help_block = $(".success-callback");
@@ -289,14 +290,14 @@ $(".crop-image").live("click",function() {
 	var w = $("#w").val();
 	var h = $("#h").val();
 	var img_path = $(".upload-img").attr("src");
-	var url = get_root_path()+"/wen/index.php/user/crop_image";
+	var url = get_root_path()+"/wen/index.php/ajax/crop_image";
 	$.post(url,
 		{x:x,y:y,w:w,h:h,imgpath:img_path},
 		function(result){
 
 			if( $.trim(result) == "true" )
 			{
-				window.location.href = get_root_path()+"/wen/index.php/usercenter/profile";
+				window.location.href = get_root_path()+"/wen/index.php/user/profile";
 			}
 		}
 	);
@@ -306,7 +307,7 @@ $(".best-answer").click(function() {
 	var $comment_uid = $(this).parent().parent().attr("uid");
 	var $score = $(".ques-score").html();
 	var $msgid = $(".question_info").attr("qid");
-	var url = get_root_path()+"/wen/index.php/user/set_best_answer";
+	var url = get_root_path()+"/wen/index.php/ajax/set_best_answer";
 	$.post(url,
 		{comment_uid:$comment_uid,score:$score,msgid:$msgid},
 		function(result){
@@ -322,7 +323,7 @@ $(".question-socore").change(function(){
 
 	var $score = $(this).val();
 	var $uid = $(".user-center").attr("uid");
-	var url = get_root_path()+"/wen/index.php/user/check_score";
+	var url = get_root_path()+"/wen/index.php/ajax/check_score";
 	$.post(url,
 		{uid:$uid,score:$score},
 		function(result){

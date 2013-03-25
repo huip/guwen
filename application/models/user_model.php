@@ -6,62 +6,14 @@ class User_model extends CI_Model
 			$this->load->database();
 		}
 
-		public function user_register($data)
-		{
-			$this->db->insert('guwen_user',$data);
-		}
+		
 
-		public function user_login($data)
-		{
-			$user_email = $data['user_email'];
-			$user_password = $data['user_password'];
-			$sql = "SELECT * FROM guwen_user WHERE user_email = ? AND user_password = ? ";
-			$query = $this->db->query($sql,array($user_email,$user_password));
-
-			return count($query->result_array());
-
-		}
-
-		public function get_user_info($useremail)
-		{
-			$sql = "SELECT user_id ,user_name,user_email,user_img FROM guwen_user WHERE user_email = ? ";
-
-			$query = $this->db->query($sql,array($useremail));
-			return $query->result_array();
-		}
-
-		public function user_login_log($data)
-		{
-			$this->db->insert('guwen_log',$data);
-		}
-
+		
 		/** judge user is register
 		*author huip
 		*return bool
 		*/
-		public function is_register($data)
-		{	
-			$user_email = $data['user_email'];
-			$user_password = $data['user_password'];
-			$sql = "SELECT * FROM guwen_user WHERE user_email = ? ";
-			$query = $this->db->query($sql,array($user_email,$user_password));
-			return count($query->result_array());
-		}
-
-		public function post_message($data)
-		{
-			$res = $this->db->insert('guwen_message',$data);
-			$this->db->where('user_id',$data['user_id']);
-			$this->db->update('guwen_user',$this->add_score('-'.$data['ques_socore']));
-			if($res) {
-				
-				$sql = "SELECT msgid FROM guwen_message WHERE user_id = ? ORDER BY msgid DESC LIMIT 1";
-				$query = $this->db->query($sql,array(get_user_info("user_id")));
-				$re = $query->result_array();
-				return $re;
-			}
-		}
-
+		
 		// public function get_my_question($uid)
 		// {
 		// 	$sql = "SELECT DISTINCT ms.ques_title,ms.browser,ms.msgid,ms.post_time,
@@ -120,25 +72,8 @@ class User_model extends CI_Model
 		// 	return $res;
 		// }
 
-		// public function profile_alter($data)
-		// {
-		// 	$alter_info = array(
+		
 
-		// 		'user_name'   => $data['user_name'],
-		// 		'user_motto'  => $data['profile']
-
-		// 	);
-		// 	$this->db->where('user_id',$data['user_id']);
-		// 	$this->db->update('guwen_user',$alter_info);
-		// 	return TRUE;
-		// }
-
-		// public function acount_alter($data)
-		// {
-		// 	$this->db->where('user_id',$data['user_id']);
-		// 	$this->db->update('guwen_user',$data);
-		// 	return TRUE;
-		// }
 
 		// public function image_alter($data)
 		// {
@@ -162,58 +97,7 @@ class User_model extends CI_Model
 		// 	$res = $query->result_array();
 		// 	return $res;
 		// }
-
-		public function set_best_answer($data)
-		{
-			$mes_best = array(
-
-				'is_best' => '1'
-			);
-			$bestlog = array(
-
-				'id' => '',
-				'ques_id' => $data['msgid'],
-				'uid'         => $data['user_id'],
-				'time'       => get_local_time()
-			);
-			$this->db->where('user_id',$data['user_id']);
-			$this->db->update('guwen_user',$this->add_score($data['user_score']));
-			$this->db->where('msgid',$data['msgid']);
-			$this->db->update('guwen_message',$mes_best);
-			$this->db->insert('guwen_bestanwserlog',$bestlog);
-			return TRUE;
-		}
-
-		public function check_score($data)
-		{
-			$sql = "SELECT (user_score - '$data[user_score]') AS score  FROM guwen_user WHERE user_id = ?";
-			$query = $this->db->query($sql,array($data['user_id']));
-			$res = $query->result_array();
-			foreach ($res as $value) {
-				
-				return $value['score'];
-			}
-			
-		}
-
-		public function login_score($data)
-		{
-			$this->db->where('user_id',$data);
-			$this->db->update('guwen_user',$this->add_score("1"));
-		}
-
-		private function add_score($score)
-		{
-
-			$sql = "SELECT user_score FROM guwen_user WHERE user_id = ?";
-			$query = $this->db->query($sql,array(get_user_info("user_id")));
-			$res = $query->result_array();
-			foreach ($res as $value) {
-				$current_score = $value['user_score'];
-			}
-			return array("user_score" => $current_score + $score);
-		}
-
+		
 }
 ?>
 

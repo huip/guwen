@@ -22,6 +22,7 @@ class Index extends CI_Controller {
 		$data['user_name'] = $this->session->userdata("user_name");
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$message = $this->index_model->get_message_list();
+		
 		$this->load->view('conn/header');
 		$this->load->view("index/nav",$data);
 		if(count( $message ) != 0){
@@ -68,29 +69,7 @@ class Index extends CI_Controller {
 	
 	
 
-	public function add_comment()
-	{
-		if( get_user_info("user_id") !=NULL )
-		{
-
-
-			$data = array(
-
-				'id' =>'',
-				'comment_uid' => get_user_info("user_id"),
-				'comment_content' => $_POST['comment_content'],
-				'comment_time' => get_local_time(),
-				'comment_quesid' => $_POST['ques_id']
-			);
-
-			$res = $this->sns_model->add_comment($data);
-		}
-		else
-		{
-			echo "请先登录!";
-		}
-	}
-
+	
 	public function scwc_api()
 	{
 		$url = "http://www.xunsearch.com/scws/api.php";

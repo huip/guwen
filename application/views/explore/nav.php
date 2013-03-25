@@ -45,8 +45,9 @@
     <input class="upload-img" type="hidden" /> -->
     <p>问题分类
       <select class="question-cate">
-          <option  value="学习">学习</option>
-           <option value="生活">生活</option>
+          <?foreach ($tag_list as $key => $value) :{?>
+            <option  value="<?=$value['id']?>"><?=$value['tag_name']?></option>
+        <?}endforeach?>
     </select>
   </p>
     <!-- <ul class="question-cate">

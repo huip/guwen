@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$(".login-btn").click(function() {
 		user_email = $(".user-email").val();
 		user_password = $(".user-password").val();
-		login(get_root_path()+"/wen/index.php/user/login",user_email,user_password);
+		login(get_root_path()+"/wen/index.php/ajax/login",user_email,user_password);
 
 	});
 

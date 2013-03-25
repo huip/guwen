@@ -6,47 +6,7 @@ class Sns_model extends CI_Model
       $this->load->database();
     }
 
-    public function add_comment($data)
-    {
-        $sql = "SELECT count(id) as num FROM guwen_comment WHERE comment_quesid = ?";
-        $query = $this->db->query($sql,$data['comment_quesid']);
-        $res  = $query->result_array();
-        foreach ($res as $value) {
-             $num = $value['num'];
-        }
     
-        if( $num == "0" )
-        {
-            $this->db->where('user_id',get_user_info("user_id"));
-            $this->db->update("guwen_user",$this->add_score("5"));
-            $this->db->insert('guwen_comment',$data);
-        } 
-        else if( $num == "1" )
-        {
-    
-            $this->db->where('user_id',get_user_info("user_id"));
-            $this->db->update("guwen_user",$this->add_score("3"));
-            $this->db->insert('guwen_comment',$data);
-
-        } 
-        else if( $num == "2" )
-        {
-
-            $this->db->where('user_id',get_user_info("user_id"));
-            $this->db->update("guwen_user",$this->add_score("2"));
-            $this->db->insert('guwen_comment',$data);
-
-        }
-        else
-        {
-
-            $this->db->where('user_id',get_user_info("user_id"));
-            $this->db->update("guwen_user",$this->add_score("1"));
-            $this->db->insert('guwen_comment',$data);
-
-        }
-        
-    }
 
     public function set_ques_browser($comment_id)
     {

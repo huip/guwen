@@ -2,7 +2,9 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
+        <h5 class="modal-header"><i class="icon-list"></i>&nbsp&nbsp问题详情</h5>
       <div class="list_info span10">
+        
         <?php foreach ($question as $key => $value): {?>
         <h5 class="ques-title" ques-uid ="<?=$value['user_id']?>"><?=$value['ques_title'];?></h5>
         <p><?=$value['ques_content'];?></p>
@@ -15,11 +17,10 @@
         <?php } endforeach;?>
       </div>
       <div class="comment-list span10">
-
                         <?php 
                             if($value['user_id'] == $user_id && $value['is_best'] != "1"){
                             foreach ($comment as $key => $value): {?>
-
+                            
                         <div class="comment-list-info span12" cid ="<?=$value['id']?>">
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro span10" uid="<?=$value['comment_uid']?>">
@@ -42,7 +43,6 @@
                     <?} endforeach;} else{?>
 
                     <? foreach ($comment as $key => $value): {?>
-
                         <div class="comment-list-info span12" cid ="<?=$value['id']?>">
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro span11" uid="<?=$value['comment_uid']?>">

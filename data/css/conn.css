@@ -9,7 +9,10 @@
 	
 	margin:10px 0 0 0;
 }
+.feed-list{
 
+	margin:0;
+}
 .feed-content {
 	float: right;
 	background: #F2F2F2;
@@ -26,7 +29,7 @@
 }
 
 .list_info {
-	padding: 20px;
+	padding: 10px;
 
 }
 .addcomment {

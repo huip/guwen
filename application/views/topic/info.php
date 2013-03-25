@@ -11,9 +11,9 @@
       <?php foreach ($mess_info as $value): {?>
         <div class="ques-list span12">
           <div class="feed-list span11">
-            <a href="<?=base_url();?>index.php/usercenter/person_question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
+            <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
             <div class="feed-content span11">
-              <p class="feed-content-name"><span><a href="<?=base_url()?>index.php/usercenter/person_question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
+              <p class="feed-content-name"><span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
               <p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>"><?=$value['ques_title'];?></a></p>
                           <div class='index-content-list'><?=$value['ques_content']?></div>
               <p class="sns-bar"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a class="get-index-anwser" qid ="<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>

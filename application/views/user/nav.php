@@ -22,7 +22,7 @@
 				<a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
 				<a href=""><li><i class="icon-envelope"></i><span>私信</span></li></a>
 				<a href="<?=base_url();?>index.php/user/profile"><li><i class="icon-cog"></i><span>设置</span></li></a>
-				<a href="<?=base_url();?>index.php/user/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
+				<a href="<?=base_url();?>index.php/ajax/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
 	    		</ul>
 	    	</li>
       </ul>
@@ -45,8 +45,9 @@
     <input class="upload-img" type="hidden" /> -->
     <p>问题分类
       <select class="question-cate">
-          <option  value="学习">学习</option>
-           <option value="生活">生活</option>
+         <?foreach ($tag_list as $key => $value) :{?>
+            <option  value="<?=$value['id']?>"><?=$value['tag_name']?></option>
+        <?}endforeach?>
     </select>
   </p>
     <!-- <ul class="question-cate">
