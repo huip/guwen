@@ -27,25 +27,25 @@ class Index_model extends CI_Model
             return $query->result_array();
         }
 
-        public function get_my_message($uid)
-        {
-            $sql = "SELECT DISTINCT ms.ques_title,ms.msgid
-             FROM guwen_comment AS cmt ,guwen_message AS ms 
-             WHERE (SELECT count(id)  FROM guwen_comment WHERE comment_quesid = ms.msgid ) > 0   AND ms.user_id = ? ORDER BY cmt.comment_time ";
-            $query = $this->db->query($sql,array($uid));
-            $res = $query->result_array();
+        // public function get_my_message($uid)
+        // {
+        //     $sql = "SELECT DISTINCT ms.ques_title,ms.msgid
+        //      FROM guwen_comment AS cmt ,guwen_message AS ms 
+        //      WHERE (SELECT count(id)  FROM guwen_comment WHERE comment_quesid = ms.msgid ) > 0   AND ms.user_id = ? ORDER BY cmt.comment_time ";
+        //     $query = $this->db->query($sql,array($uid));
+        //     $res = $query->result_array();
             
-            foreach ($res as $key => $value) {
-                $sql = "SELECT DISTINCT us.user_name,us.user_id,LEFT(cmt.comment_time,10) AS time 
-                FROM guwen_user AS us , guwen_comment AS cmt 
-                WHERE cmt.comment_uid = us.user_id AND cmt.comment_quesid = ?";
-                $query = $this->db->query($sql,array($value['msgid']));
-                $res[$key]['user_name'] =  $query->result_array() ;
+        //     foreach ($res as $key => $value) {
+        //         $sql = "SELECT DISTINCT us.user_name,us.user_id,LEFT(cmt.comment_time,10) AS time 
+        //         FROM guwen_user AS us , guwen_comment AS cmt 
+        //         WHERE cmt.comment_uid = us.user_id AND cmt.comment_quesid = ?";
+        //         $query = $this->db->query($sql,array($value['msgid']));
+        //         $res[$key]['user_name'] =  $query->result_array() ;
                 
-            }
+        //     }
 
-            return $res;
-        }
+        //     return $res;
+        // }
 
 
 

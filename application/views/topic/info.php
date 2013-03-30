@@ -1,11 +1,10 @@
-
-<div id="main" class="span14">
+<div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
-
+      <div class="index-ques-list">
       <h5 class="modal-header"><?foreach ($topic_info as $key => $value): {?>
-        <img src="<?=$value['tag_img']?>" alt= "<?=$value['tag_name']?>" class="span1" /></i>&nbsp&nbsp<?=$value['tag_name']?>
+        <i class="icon-th-list" /></i>&nbsp&nbsp<?=$value['tag_name']?>
         <?}endforeach?>
       </h5>
       <?php foreach ($mess_info as $value): {?>
@@ -16,21 +15,19 @@
               <p class="feed-content-name"><span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
               <p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>"><?=$value['ques_title'];?></a></p>
                           <div class='index-content-list'><?=$value['ques_content']?></div>
-              <p class="sns-bar"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a class="get-index-anwser" qid ="<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>
-                          <div class="display-anwser span12">
-                                    
-                          </div>
-                          <div class="slide-up pull-right">收起</div>
+              <p class="sns-bar"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a  href="<?=base_url();?>index.php/question/index/<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>
             </div>
-
           </div>
-          
         </div>
         <?php
        }
        endforeach
        ;?>
+       <div class="span11 btn show-more" page="info" current-page="1">
+          更多
       </div>
+    </div>
+  </div>
     <div class="span3">
       <div class="right-bar">
             <div class="">

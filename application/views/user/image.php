@@ -1,5 +1,5 @@
 
-<div id="main" class="span14">
+<div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
   	<div class="span12">
@@ -22,16 +22,6 @@
 			</div>
 		</div>
 	</div>
-	 <!-- <div class="usercnt-list span4 pull-right">
-                   <?foreach ($person_info as $value) :{?>
-                   <pre>
-                        <img src='<?=$value['user_img']?>' />
-                        <p><?=$value['user_name']?></p>
-                        <p>积分：<?=$value['user_score']?></p>
-                         <p><?=$value['user_motto']?></p>
-                    </pre>
-                   <?}endforeach?>           
-             </div> -->
 </div>
 </div>
 </div>

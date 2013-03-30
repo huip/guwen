@@ -7,9 +7,16 @@ class Index_model extends CI_Model
     }
 
 
-    public function get_topic_list()
+    public function get_topic_list($pages)
     {
-        $sql = "SELECT tg.id,tg.tag_img,tg.tag_name FROM guwen_tag AS tg ";
+        $pagesize = 10;
+        $sqls = "SELECT COUNT(id) AS num FROM guwen_tag";
+        $querys = $this->db->query($sqls);
+        $re = $querys->result_array();
+        $offset = ($pages-1)*$pagesize;
+        $count = $re[0]['num'];
+        $numpage = $count/$pagesize;
+        $sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img FROM guwen_tag AS tg,guwen_message  AS ms  ORDER BY ms.post_time DESC LIMIT $offset,$pagesize  ";
         $query = $this->db->query($sql);
         $res = $query->result_array();
         foreach ($res as $key => $value) {
@@ -19,8 +26,22 @@ class Index_model extends CI_Model
                     $res[$key]['ques'] = $query->result_array();
 
         }
-
-        return $res;
+        if($offset == 0 )
+        {
+            return $res;
+        }
+        else
+        {
+            if($pages > $numpage)
+            {
+                 return json_encode(array('data' => 'null'));
+            }
+            else
+            {
+                return json_encode($res);
+            }
+        }
     }
+
 }
 ?>

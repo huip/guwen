@@ -1,4 +1,4 @@
-<div id="main" class="span14">
+<div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
   	<div class="span12">
@@ -16,17 +16,19 @@
                       </div>
                     <?php } endforeach;?>             
              </div>
-              <div class="usercnt-list span4 pull-right">
+            
+        <div class="usercnt-list span4 pull-right">
                    <?foreach ($person_info as $value) :{?>
                    <pre>
                         <img src='<?=$value['user_img']?>' />
-                        <p><?=$value['user_name']?></p>
+                        <p uid="<?=$value['user_id']?>" class="person-info-bar"><?=$value['user_name']?></p>
                         <p>积分：<?=$value['user_score']?></p>
                          <p><?=$value['user_motto']?></p>
+                         <span class="btn pull-left btn-primary post-inbox">发送私信</span>
                     </pre>
-                   <?}endforeach?>           
-             </div>
-  	</div>
+                   <?}endforeach?>          
+      </div>
+         </div>
 </div>
 </div>
 </div>

@@ -123,3 +123,32 @@
 .comment-btn{
 	margin:0 65px 0 0;
 }
+.message-menu{
+	z-index: 100;
+	position: absolute;
+}
+
+#footer{
+
+	height: 60px;
+	line-height: 20px;
+	text-align: center;
+	margin:0 0 0 17%;
+	padding-bottom: 30px;
+	
+}
+.bit-link a,.guwen-help a{
+	color:#999!important;
+}
+.show-more {
+  height:30px;
+  margin:5px 0 0 40px !important;
+  text-align:center;
+}
+.to-top{
+	height: 30px;
+	line-height: 30px;
+	position:fixed;
+	left:80%;
+	top:80%;
+}

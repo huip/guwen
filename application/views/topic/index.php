@@ -1,11 +1,11 @@
-<div id="main" class="span14">
+<div id="main" class="span12">
+<a name="go_to_top"></a>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
+      <div class="index-ques-list span12">
       <h5 class="modal-header"><i class="icon-list"></i>&nbsp&nbsp话题动态</h5>
-        <div class="ques-list span12">
-
-          <div class="feed-list span11">
+       
               <?foreach ($topic_list as $key => $value):{?>
               <div class="ques-list span12">
               <div class="feed-list span11">
@@ -13,7 +13,7 @@
                   <div class="feed-content span11">
                     <p class="feed-content-name"><span><a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><?=$value['tag_name']?></a></span></p>
                     <?foreach ($value['ques'] as $key => $values): {?>
-                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>"><?=$values['ques_title']?></a><span class='sns-time'><?=$values['post_time']?></span></p>
+                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>"><?=$values['ques_title']?></a><p class='sns-time-list'><?=$values['post_time']?></p></p>
                    <? } endforeach;?>
                   </div>
               </div>
@@ -22,9 +22,8 @@
              <? }endforeach?>
            
           </div>
-        </div>
-      </div>
-
+          <div class="span11 btn show-more" page="topic" current-page="1">更多</div>
+    </div>
     <div class="span3">
       <div class="right-bar">
             <div class="">
@@ -43,5 +42,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="">
+ <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

@@ -7,102 +7,63 @@ class Message extends CI_Controller {
 		parent::__construct();
 	   	date_default_timezone_set('PRC');
 	   	$this->load->helper('url');
-	   	$this->load->model('user_model');
 	   	$this->load->library('session');
-             	$this->load->model('index/index_model');
-             	$this->load->model('sns_model');
+             	$this->load->model('conn_model');
+                          $this->load->model('message/index_model');
 	}
 
-    public function add_favour()
-    {
-    	$comment_id = $_POST['comment_id'];
-             $quesid = $_POST['quesid'];
-             $comment_uid = $_POST['comment_uid'];
-    	$data = array(
-
-    			'id'                             => $comment_id,
-    			'comment_favour'    => '0',
-                                       'comment_quesid'   =>$quesid,
-                                       'comment_uid'         => $comment_uid
-
-    		);
-            $this->sns_model->set_favour_log($data);
-            $res = $this->sns_model->add_favour($data);
-            if( $res != NULL )
+            public function index()
             {
-
-
-                        if( count( $res ) != "0")
-                        {
-
-                                    foreach ($res as $value) {
-
-                                        echo $value['comment_favour'];
-                                     } 
-
-                        } 
-            }
-            else
-            {
-                    echo "请先登录!";
+                        $data['user_id'] = $this->session->userdata("user_id");
+                        $data['user_img'] = $this->session->userdata("user_img");
+                        $data['user_name'] = $this->session->userdata("user_name");
+                        $data['tag_list']      = $this->conn_model->get_tag_list();
+                        $data['answer'] = $this->index_model->get_answer($data['user_id']);
+                        $this->load->view('conn/header');
+                        $this->load->view("message/nav",$data);
+                        $this->load->view("message/index");
+                        $this->load->view('conn/footer');
             }
 
-    }
-
-    public function get_index_anwser()
-    {
-        $ques_id = $_POST['quesid'];
-        $res = $this->index_model->get_index_anwser($ques_id);
-        echo $res;
-    }
-
-    public function add_reply()
-    {
-        if( get_user_info("user_id") != NULL )
-        {
-            $reply_content = $_POST['reply_content'];
-            $comment_id = $_POST['comment_id'];
-            $data = array(
-                    'reply_content' => $reply_content,
-                    'reply_uid'         => get_user_info("user_id"),
-                    'comment_id'    => $comment_id,
-                    'time'                 => get_local_time()
-                );
-
-            $res   = $this->index_model->add_reply($data);
-            if( $res )
+            public function reply()
             {
-                $user_info =  array(
-
-                                            'user_img' => get_user_info("user_img"),
-                                            'user_name' => get_user_info("user_name"),
-                                            'time'            => get_local_time(),
-                                            'user_id'       => get_user_info("user_id")
-                                  );
-
-                echo  json_encode($user_info);
+                        $data['user_id'] = $this->session->userdata("user_id");
+                        $data['user_img'] = $this->session->userdata("user_img");
+                        $data['user_name'] = $this->session->userdata("user_name");
+                        $data['tag_list']      = $this->conn_model->get_tag_list();
+                        $data['reply'] = $this->index_model->get_reply($data['user_id']);
+                        $this->load->view('conn/header');
+                        $this->load->view("message/nav",$data);
+                        $this->load->view("message/reply");
+                        $this->load->view('conn/footer');
             }
-        } 
-        else
-        {
-            echo "请先登录!";
-        }
-    }
 
-    public function get_reply_num()
-    {
-            $comment_id = $_POST['comment_id'];
-            $res = $this->index_model->get_reply_num($comment_id);
-            echo $res;
+            public function favour()
+            {
+                        $data['user_id'] = $this->session->userdata("user_id");
+                        $data['user_img'] = $this->session->userdata("user_img");
+                        $data['user_name'] = $this->session->userdata("user_name");
+                        $data['tag_list']      = $this->conn_model->get_tag_list();
+                        $data['favour'] = $this->index_model->get_favour($data['user_id']);
+                        $this->load->view('conn/header');
+                        $this->load->view("message/nav",$data);
+                        $this->load->view("message/favour");
+                        $this->load->view('conn/footer');
+            }
 
-    }
+            public function best()
+            {
+                        $data['user_id'] = $this->session->userdata("user_id");
+                        $data['user_img'] = $this->session->userdata("user_img");
+                        $data['user_name'] = $this->session->userdata("user_name");
+                        $data['tag_list']      = $this->conn_model->get_tag_list();
+                        $data['best'] = $this->index_model->get_best($data['user_id']);
+                        $this->load->view('conn/header');
+                        $this->load->view("message/nav",$data);
+                        $this->load->view("message/best");
+                        $this->load->view('conn/footer');   
+            }
 
-    public function get_reply_list()
-    {
-        $comment_id = $_POST['comment_id'];
-        $res = $this->index_model->get_reply_list($comment_id);
-        echo $res;
-     }
 }
 ?>
 

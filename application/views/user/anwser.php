@@ -1,4 +1,4 @@
-<div id="main" class="span14">
+<div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
   	<div class="span12">
@@ -7,7 +7,6 @@
 			    <a href="<?=base_url();?>index.php/user/index">我的提问</a>
 			</li>
 			<li class="active"><a href="<?=base_url();?>index.php/user/answer">我的回答</a></li>
-			<li><a href="<?=base_url();?>index.php/user/message">我的消息</a></li>
 		</ul>
 		<div class="usercnt-list span7 pull-left">
                 <div class="usercnt-list span12 pull-left">

@@ -8,40 +8,7 @@ class Sns_model extends CI_Model
 
     
 
-    public function set_ques_browser($comment_id)
-    {
-        $user_id = get_user_info('user_id');
-
-        if( $user_id != NULL)
-        {
-            $data = array(
-                    'id'  => '',
-                    'user_id' => get_user_info('user_id'),
-                    'time'      => get_local_time()
-                );
-        }
-        else
-        {
-            $data = array(
-                    'id' => '',
-                    'user_id' => '',
-                    'time'      => get_local_time()
-                );
-        }
-        $sql = "SELECT browser FROM  guwen_message WHERE msgid = ?";
-        $query = $this->db->query($sql,array($comment_id));
-        $res = $query->result_array();
-        foreach ($res as $value) {
-            $current_browser = $value['browser'];
-        }
-        $datas = array(
-                'browser' => $current_browser + 1,
-            );
-        $this->db->insert("guwen_browserlog",$data);
-        $this->db->where("msgid",$comment_id);
-        $this->db->update("guwen_message",$datas);
-    }
-
+    
     public function add_favour($data)
     {
              $user_id = get_user_info('user_id');
@@ -86,7 +53,6 @@ class Sns_model extends CI_Model
                                       $datas = array(
                                                 'user_score' =>$user_score + 1,
                                        );
-                                      //var_dump($datas);
                             	$this->db->where('id',$comment_id);
                             	$this->db->update('guwen_comment',$data);
                                       $this->db->where('user_id',$comment_uid);
@@ -94,7 +60,6 @@ class Sns_model extends CI_Model
                             	$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
                             	$query = $this->db->query($sql,array($comment_id));
                             	$res = $query->result_array();
-                                        //var_dump($res);
                             	return $res;
                         }
                         else
@@ -200,10 +165,7 @@ class Sns_model extends CI_Model
 
     }
 
-    public function save_keywords($data)
-    {
-        $this->db->insert("guwen_keywords",$data);
-    }
+   
 
     private function add_score($score)
     {

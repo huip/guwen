@@ -6,9 +6,8 @@
     	<a class="brand" href="#">故问</a>
     	<form class="navbar-search pull-left">
   		<input type="text" class="search-query" placeholder="搜索问题...">
-
-	</form>
-	<input class="btn pull-left search-btn-poi" type="button" value="搜索" />
+        </form>
+      <input class="btn pull-left search-btn-poi search-btn" type="button" value="搜索" />
 	<input class="btn pull-left search-btn-poi create-question" type="button" value="提问" />
     	<ul class="nav nav-poi">
 		<li class="active">
@@ -16,13 +15,16 @@
 		</li>
 		<li ><a href="<?=base_url();?>index.php/topic">话题</a></li>
 		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
-		<li><a href="#">消息</a></li>
+		<li class="message">
+                <a href="#" id="message-menu">消息</a>
+            </li>
 		<li class="user-center" uid="<?=$user_id?>">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
-			<img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" />&nbsp&nbsp<span><?=$user_name;?></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
+                    <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
+                   </a>
 			 <ul class=" pull-right user-menu">
 				<a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
-				<a href=""><li><i class="icon-envelope"></i><span>私信</span></li></a>
+				<a href="<?=base_url();?>index.php/inbox"><li><i class="icon-envelope"></i><span>私信</span><span class="bubble"></span></li></a>
 				<a href="<?=base_url();?>index.php/user/profile"><li><i class="icon-cog"></i><span>设置</span></li></a>
 				<a href="<?=base_url();?>index.php/ajax/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
 	    		</ul>
@@ -80,7 +82,7 @@
       <input type="text" class="search-query" placeholder="搜索问题...">
 
   </form>
-  <input class="btn pull-left search-btn-poi" type="button" value="搜索" />
+  <input class="btn pull-left search-btn-poi search-btn" type="button" value="搜索" />
   <input class="btn pull-left search-btn-poi no-login-ques" type="button" value="提问" />
       <ul class="nav nav-poi">
               <li class="active" >

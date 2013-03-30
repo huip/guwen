@@ -1,5 +1,5 @@
 .search-btn-poi {
-	margin:0 0 0 5px;
+	margin:-10px 0 0 5px;
 }
 
 .nav-poi {
@@ -80,5 +80,23 @@
 	margin:0px 0 0 0px !important;
 }
 
+.bubble {
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 16px;
+	line-height: 16px;
+	border-radius: 16px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	visibility: hidden;
+}
 
 

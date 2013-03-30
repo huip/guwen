@@ -26,5 +26,44 @@ class Index_model extends CI_Model
 		return $res;
 	}
 
+	public function set_ques_browser($comment_id)
+	{
+
+		$user_id = get_user_info('user_id');
+
+		if( $user_id != NULL)
+		{
+			$data = array(
+			'id'  => '',
+			'user_id' => get_user_info('user_id'),
+			'time'      => get_local_time()
+			);
+		}
+		else
+		{
+			$data = array(
+
+				'id' => '',
+				'user_id' => '',
+				'time'      => get_local_time()
+			);
+
+		}
+		
+		$sql = "SELECT browser FROM  guwen_message WHERE msgid = ?";
+		$query = $this->db->query($sql,array($comment_id));
+		$res = $query->result_array();
+		foreach ($res as $value) {
+		$current_browser = $value['browser'];
+		}
+		$datas = array(
+			'browser' => $current_browser + 1,
+		);
+		$this->db->insert("guwen_browserlog",$data);
+		$this->db->where("msgid",$comment_id);
+		$this->db->update("guwen_message",$datas);
+	}
+
+
 }
 ?>

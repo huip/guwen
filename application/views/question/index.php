@@ -1,4 +1,4 @@
-<div id="main" class="span14">
+<div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
@@ -25,8 +25,8 @@
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro span10" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
-                                                <span class="pull-right btn best-answer">最佳答案<span>
-                                        <p>
+                                                <span class="pull-right btn best-answer">最佳答案</span>
+                                        </p>
                                         <p class=""><?= $value['comment_content'];?></p>
                                         
                                         <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour">赞(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply"  clicked="false" >回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>

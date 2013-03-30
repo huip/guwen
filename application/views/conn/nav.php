@@ -22,7 +22,7 @@
 			<img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" />&nbsp&nbsp<span><?=$user_name;?></span></a>
 			 <ul class=" pull-right user-menu">
 				<a href="<?=base_url();?>index.php/usercenter/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
-				<a href=""><li><i class="icon-envelope"></i><span>私信</span></li></a>
+                          <a href="<?=base_url();?>index.php/user/inbox"><li><i class="icon-envelope"></i><span>私信</span><span class="bubble"></span></li></a>
 				<a href="<?=base_url();?>index.php/usercenter/profile"><li><i class="icon-cog"></i><span>设置</span></li></a>
 				<a href="<?=base_url();?>index.php/user/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
 	    		</ul>

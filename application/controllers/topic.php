@@ -10,6 +10,7 @@ class Topic extends CI_Controller {
 	   	$this->load->library('session');
 	             $this->load->model("topic/index_model");
 	             $this->load->model("topic/info_model");
+	             $this->load->model("conn_model");
 	}
 
 	public function index()
@@ -17,7 +18,8 @@ class Topic extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['topic_list'] = $this->index_model->get_topic_list();
+		$data['topic_list'] = $this->index_model->get_topic_list(1);
+		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$this->load->view("conn/header");
 		$this->load->view("topic/nav",$data);
 		$this->load->view("topic/index",$data);
@@ -35,6 +37,36 @@ class Topic extends CI_Controller {
 		$this->load->view("topic/nav",$data);
 		$this->load->view("topic/info",$data);
 		$this->load->view('conn/footer');	
+	}
+
+	public function get_new_pages()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+
+			$pages = $_POST['current_page'];
+			$res = $this->index_model->get_topic_list($pages);
+			echo $res;
+		}
+		else
+		{
+			echo "404 not found";
+		}
+	}
+
+	public function get_info_pages()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+
+			$pages = $_POST['current_page'];
+			$res = $this->index_model->get_topic_list($pages);
+			echo $res;
+		}
+		else
+		{
+			echo "404 not found";
+		}
 	}
 
 }

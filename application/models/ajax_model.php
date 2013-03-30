@@ -355,7 +355,8 @@ class Ajax_model extends CI_Model
 			'id' => '',
 			'ques_id' => $data['msgid'],
 			'uid'         => $data['user_id'],
-			'time'       => get_local_time()
+			'time'       => get_local_time(),
+			'comment_id' => $data['comment_id']
 		);
 		$this->db->where('user_id',$data['user_id']);
 		$this->db->update('guwen_user',$this->add_score($data['user_score']));
@@ -376,5 +377,67 @@ class Ajax_model extends CI_Model
 		}
 		
 	}
+
+	public function save_keywords($data)
+	{
+		$this->db->insert("guwen_keywords",$data);
+	}
+
+	public function post_inbox($data)
+	{
+		$sql = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]'";
+		$query = $this->db->query($sql);
+		$res = $query->result_array();
+		$uid = $res[0]['user_id'];
+		$data['to_id'] = $uid;
+		$res = $this->db->insert("guwen_inbox",$data);
+		return TRUE;
+
+	}
+
+	public function get_new_inbox($data)
+	{
+		$sql = "SELECT count(id) AS inboxnum FROM guwen_inbox WHERE is_check = 0 AND to_id = ? ORDER BY id DESC ";
+		$query = $this->db->query($sql,array($data['my_id']));
+		$res = $query->result_array();
+		return $res;
+	}
+
+	public function update_inbox_link($data)
+	{
+		$sqls = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]' ";
+		$query = $this->db->query($sqls);
+		$re = $query->result_array();
+		$uid = $re[0]['user_id'];
+		$data['to_id'] = $uid;
+
+		$sql = "SELECT count(id) AS num FROM guwen_inbox_link WHERE  my_id = ?";
+		$query = $this->db->query($sql,array($data['my_id']));
+		$res = $query->result_array();
+
+		if( $res[0]['num'] > 0)
+		{
+			$this->db->where('my_id',$data['my_id']);
+			$up_time = array(
+				'time' => $data['time'],
+			);
+			$this->db->update('guwen_inbox_link',$up_time);
+		}
+		else
+		{
+			$this->db->insert("guwen_inbox_link",$data);
+		}
+
+	}
+
+	public function get_user_infos($user_name)
+	{
+		$sql = "SELECT user_name,user_id FROM guwen_user WHERE user_name LIKE '%$user_name%' "  ;
+		$query = $this->db->query($sql);
+		$res = $query->result_array();
+		return $res;
+
+	}
+
 
 }?>

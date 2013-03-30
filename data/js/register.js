@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
 	var user_name,user_email,user_password;
 	$(".register-btn").click(function() {
 		user_name = $(".user-name").val();
@@ -19,4 +19,8 @@ $(document).ready(function() {
 			}
 		);
 	}
-});
+	function get_root_path() {  
+		var root = location.protocol + '//' + location.host;
+		return root;
+	}
+})();
