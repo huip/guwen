@@ -49,7 +49,7 @@ class Inbox extends CI_Controller {
     $data['user_img'] = $this->session->userdata("user_img");
     $data['user_name'] = $this->session->userdata("user_name");
     $data['tag_list']      = $this->conn_model->get_tag_list();
-    $data['info'] = $this->index_model->info($id);
+    $data['info'] = $this->index_model->info($id,1);
     $this->load->view("inbox/nav",$data);
     $this->load->view("inbox/info",$data);
     $this->load->view('conn/footer'); 
@@ -57,12 +57,20 @@ class Inbox extends CI_Controller {
 
   public function get_new_pages()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-      $pages = $_POST['pages'];
-      $res =  $this->indel_model->get_new_pages($pages);
-      echo $res;
-    }
+          if ($_SERVER['REQUEST_METHOD'] == 'POST')
+          {
 
+              $pages = $_POST['current_page'];
+              $id = $_POST['page_id'];
+              $res = $this->index_model->info($id,$pages);
+              echo $res;
+
+          }
+          else
+          {
+              show_404();
+          }
   }
+}
+?>
   

@@ -13,7 +13,7 @@
                   <div class="feed-content span11">
                     <p class="feed-content-name"><span><a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><?=$value['tag_name']?></a></span></p>
                     <?foreach ($value['ques'] as $key => $values): {?>
-                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>"><?=$values['ques_title']?></a><p class='sns-time-list'><?=$values['post_time']?></p></p>
+                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>" class="title-a"><?=$values['ques_title']?></a><p class='sns-time-list'><?=$values['post_time']?></p></p>
                    <? } endforeach;?>
                   </div>
               </div>
@@ -22,7 +22,9 @@
              <? }endforeach?>
            
           </div>
-          <div class="span11 btn show-more" page="topic" current-page="1">更多</div>
+          <?if($topic_list[0]['num'] > 1){?>
+              <div class="span11 btn show-more" page="topic" current-page="1">更多</div>
+            <?}?>
     </div>
     <div class="span3">
       <div class="right-bar">

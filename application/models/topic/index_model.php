@@ -15,8 +15,8 @@ class Index_model extends CI_Model
         $re = $querys->result_array();
         $offset = ($pages-1)*$pagesize;
         $count = $re[0]['num'];
-        $numpage = $count/$pagesize;
-        $sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img FROM guwen_tag AS tg,guwen_message  AS ms  ORDER BY ms.post_time DESC LIMIT $offset,$pagesize  ";
+        $numpage = ceil($count/$pagesize);
+        $sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img,'$numpage' AS num FROM guwen_tag AS tg,guwen_message  AS ms  ORDER BY ms.post_time DESC LIMIT $offset,$pagesize  ";
         $query = $this->db->query($sql);
         $res = $query->result_array();
         foreach ($res as $key => $value) {

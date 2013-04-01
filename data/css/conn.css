@@ -32,26 +32,6 @@
 	padding: 10px;
 
 }
-.addcomment {
-	padding: 20px;
-}
-.comment-input {
-	width:550px;
-}
-.comment-btn {
-	margin:0 35px 0 0px;
-}
-.comment-list-info {
-	min-height: 100px;
-	margin:0px !important;
-}
-.comment-list-info img {
-	float: left;
-}
-
-.comment-list-info .comment-intro {
-	
-}
 .index-content-list {
 	word-wrap:break-word;
 	word-break:break-all;
@@ -151,4 +131,65 @@
 	position:fixed;
 	left:80%;
 	top:80%;
+}
+
+.title-a{
+	color:#259;
+	font-size: 15px;
+}
+.reply-color{
+	color: #999;
+}
+
+/*********************question page *****************************/
+
+.relative-ques{
+
+	margin:10px 0 0 0;
+
+}
+.addcomment {
+	padding: 20px;
+}
+.comment-input {
+	width:550px;
+}
+.comment-btn {
+	margin:0 35px 0 0px;
+}
+.comment-list-info {
+	min-height: 30px;
+	margin:5px 0 0 0 !important;
+	padding:10px;
+	border-bottom: 1px dotted #E6E6E6;
+}
+.comment-list-info img {
+	float: left;
+}
+
+.comment-list-info .comment-intro {
+	
+}
+.reply-time-list{
+	margin:5px 0 0 40px!important;
+}
+
+/**************************person page *********************/
+
+.person-list{
+	border:1px solid #ddd;
+	margin:0 0 0 0!important;
+	padding:10px;
+	border-radius: 4px;
+	border-shadow:0 1px 0 #f2f4f5;
+}
+
+.person-show-more{
+	margin:6px 0 0 0!important;
+}
+
+/************************inbox page ***********************/
+
+.inbox-show-more{
+	margin:5px 0 0 0!important;
 }

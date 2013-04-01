@@ -11,9 +11,9 @@
             		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
             		<div class="feed-content span11">
             			<p class="feed-content-name"><span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
-            			<p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>"><?=$value['ques_title'];?></a></p>
+            			<p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a></p>
                               <div class='index-content-list'><?=$value['ques_content']?></div>
-            			<p class="sns-bar"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a  href = "<?=base_url().'index.php/question/index/'.$value['msgid'];?>" qid ="<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>
+            			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a  class="reply-color" href = "<?=base_url().'index.php/question/index/'.$value['msgid'];?>" qid ="<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>
                               <div class="display-anwser span12">
                                         
                               </div>
@@ -27,9 +27,11 @@
            endforeach
              ;?>
       </div>
-       <div class="span11 btn show-more" page="index" current-page="1">
-          更多
-      </div>
+      <?if($list_info[0]['num'] > 1){?>
+         <div class="span11 btn show-more" page="index" current-page="1">
+            更多
+        </div>
+        <?}?>
       </div>
     <div class="span3">
     	<div class="right-bar">

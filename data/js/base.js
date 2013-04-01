@@ -44,11 +44,11 @@ $("#userfiles").change(function () {
             $("#postiframe").load(function () {
                 iframeContents = $("#postiframe")[0].contentWindow.document.body.innerHTML;
                 $.post(get_root_path()+"/wen/index.php/user/upimage",
-    {imgpath:iframeContents},
-    function(result){
-      $(".jc-demo-box").html(result);
+                  {imgpath:iframeContents},
+                  function(result){
+                    $(".jc-demo-box").html(result);
 
-    });
+                  });
 
             });
 
@@ -145,7 +145,7 @@ $(".get-index-anwser").live("click",function() {
 
       for( var i = 0 ; i < result.length ; i++)
       {
-        $list_anwser= $("<div class='comment-list-info span10'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><span class=' span10 pull-right'>"+result[i].comment_content+"</span><hr /></div>");
+        $list_anwser= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class='span12 pulll-right'>"+result[i].comment_content+"</div><hr /></div>");
         $display_anwser.append($list_anwser);
       }
 
@@ -175,7 +175,7 @@ $(".cmt-reply").click(function() {
         result = $.parseJSON(result);     
         for(var i = 0; i < result.length; i++)
         {
-          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class=' span9 pull-right'>"+result[i].reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result[i].time+"<p></div>");
+          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class='span11 pull-right'>"+result[i].reply_content+"</div><p class='span10  reply-time-list sns-time-list'>"+result[i].time+"</p></div>");
           $reply_list.append($reply);
           $reply_list.attr("is-cmt-reply","true");
         }
@@ -212,7 +212,7 @@ $(".reply-btn").click(function() {
 
           result = $.parseJSON(result);
 
-          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"' class='span1'>"+result.user_name+"</a><div class=' span9 pull-right'>"+$reply_content+"</div><p class='span10 pull-left sns-time-list'>"+result.time+"<p></div>");
+          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/wen/index.php/person/question/"+result.user_id+"' class='span1'>"+result.user_name+"</a><div class=' span10'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
           $reply_list.append($reply);
           $reply_num.html(parseInt($reply_num.html())+1);
           $(".reply-input").val(" ");
@@ -255,8 +255,6 @@ $("#oldpassword").change(function() {
     function(result){
       $help_block.css({"visibility":"block","color":"red"});
       $help_block.html(result);
-      //console.log(result);
-      
     }
   );
 });
@@ -310,7 +308,7 @@ $(".best-answer").click(function() {
     function(result){
       if( $.trim(result) == "true" )
       {
-        $(".best-answer").css("display","none");
+        $(".best-answer").addClass("disabled");
       }
     }
   );
@@ -332,7 +330,7 @@ $(".question-socore").change(function(){
   );
 });
 
-$(".post-inbox").click(function(){
+$(".post-inbox").live("click",function(){
 
   $('#inbox').modal('toggle');
   var $user_name = $(".person-info-bar").html();
@@ -413,6 +411,8 @@ $('#typeahead').typeahead({source:subjects});
   }
 
  });
+
+
 $(".show-more").click(function() {
 
   var current_page = parseInt($(this).attr("current-page"));
@@ -443,16 +443,24 @@ $(".show-more").click(function() {
 function show_more(url,current_page,page){
    var url = get_root_path()+"/wen/index.php/"+url;
    var pages = current_page+1;
-   var nulls = true;
-  $.post(url,
-    {current_page:pages},
+   var tag_id = $(".tag-id").attr("tid");
+    if(tag_id != undefined)
+    {
+      tag_id =tag_id;
+    }
+    else
+    {
+      tag_id = "null";
+    }
+   $.post(url,
+    {current_page:pages,tag_id:tag_id},
     function(result){
       $result = $.parseJSON(result);
       if($result.data != 'null') {
             switch(page){
                 case "index":
                     for(var i = 0; i < $result.length; i++) {
-                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p><a href='question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='question/index/"+$result[i].msgid+"' class='get-index-anwser'>回答(<span>"+$result[i].anwser+"</span>)</a></span><p><div class='display-anwser span1'></div> <div class='slide-up pull-right'>收起</div></div></div></div>");
+                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p><a href=' "+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+" '  class='title-a'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href=' "+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
                       $(".index-ques-list").append($new_ques);
                       $(".show-more").attr("current-page",pages);
                     }
@@ -460,9 +468,9 @@ function show_more(url,current_page,page){
 
                 case "topic":
                     for(var i = 0; i < $result.length; i++) {
-                      $new_topic = $("<div class='ques-list span12'><div class='feed-list span11'><a href='topic/info/"+result[i].id+" '><img src=' "+$result[i].tag_img+" ' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='topic/info/"+$result[i].id+" '>"+$result[i].tag_name+"</a></span></p></div></div></div>");
+                      $new_topic = $("<div class='ques-list span12'><div class='feed-list span11'><a href='"+get_root_path()+"/wen/index.php/topic/info/"+result[i].id+" '><img src=' "+$result[i].tag_img+" ' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/wen/index.php/topic/info/"+$result[i].id+" '>"+$result[i].tag_name+"</a></span></p></div></div></div>");
                       for(var j = 0; j < $result[i].ques.length; j++){
-                          $new_ques = $("<p><a href='question/index/"+$result[i].ques[j].msgid+"'>"+$result[i].ques[j].ques_title+"</a><span class='sns-time-list'>"+$result[i].ques[j].post_time+"</span></p>");
+                          $new_ques = $("<p><a href='index.php/question/index/"+$result[i].ques[j].msgid+"'>"+$result[i].ques[j].ques_title+"</a><span class='sns-time-list'>"+$result[i].ques[j].post_time+"</span></p>");
                          $new_topic.children().find(".feed-content").append($new_ques);
                         }
                       $(".index-ques-list").append($new_topic);
@@ -472,7 +480,7 @@ function show_more(url,current_page,page){
 
                 case "explore":
                      for(var i = 0; i < $result.length; i++) {
-                          $new_message =$("<div class='ques-list span'><div class='feed-list span11'><a href='person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><p class='sns-time-list pull-right'>"+$result[i].post_time+"</p></p><p><a href='question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='question/index/"+$result[i].msgid+"' class='get-index-anwser'>回答(<span>"+$result[i].anwser+"</span>)</a></span><p><div class='display-anwser span1'></div> <div class='slide-up pull-right'>收起</div></div></div></div>");
+                          $new_message =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><p class='sns-time-list pull-right'>"+$result[i].post_time+"</p></p><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='get-index-anwser reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
                           $(".index-ques-list").append($new_message);
                           $(".show-more").attr("current-page",pages);
                      }
@@ -480,7 +488,7 @@ function show_more(url,current_page,page){
 
                  case "info":
                     for(var i = 0; i < $result.length; i++) {
-                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p><a href='question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='question/index/"+$result[i].msgid+"' class='get-index-anwser'>回答(<span>"+$result[i].anwser+"</span>)</a></span><p><div class='display-anwser span1'></div> <div class='slide-up pull-right'>收起</div></div></div></div>");
+                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></p><div class='index-content-list'>"+$result[i].ques_content+"</div><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='get-index-anwser reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
                       $(".index-ques-list").append($new_ques);
                       $(".show-more").attr("current-page",pages);
                     }
@@ -491,11 +499,127 @@ function show_more(url,current_page,page){
       }
     }); 
 }
+
+$(".person-show-more").click(function(){
+          var current_page = parseInt($(this).attr("current-page"));
+          var page = $(this).attr("page");
+          switch(page)
+          {
+            case "other-question":
+               var url = "person/get_new_pages";
+               var index = page;
+               person_show_more(current_page,url,page,index);
+            break;
+             case "other-answer":
+               var url = "person/get_new_pages";
+               var index = page;
+               person_show_more(current_page,url,page,index);
+            break;
+
+            case "my-question":
+                var url = "user/get_new_pages";
+                var index = page;
+                person_show_more(current_page,url,page,index);
+            break;
+
+            case "my-answer":
+                var url = "user/get_new_pages";
+                var index = page;
+                person_show_more(current_page,url,page,index);
+            break;
+         }
+
+});
+function person_show_more(current_page,url,page,index) {
+      var url = get_root_path()+"/wen/index.php/"+url;
+      var pages = current_page+1;
+      var uid = $(".person-info-bar").attr("uid");
+      $.post(url,
+      {current_page:pages,uid:uid,index:index},
+          function(result){
+          $result = $.parseJSON(result);
+          if($result.data != 'null') {
+            switch(page){
+              case "other-question":
+              for(var i = 0 ; i < $result.length; i++){
+                $new_ques = $("<div class='comment-list-info'><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a><p><p class='reply-color'><span>"+$result[i].answer+"个答案</span>&nbsp&nbsp<span>浏览"+$result[i].browser+"</span>&nbsp&nbsp<span class='sns-time-list'>"+$result[i].post_time+"</span></p></div>");
+                $(".person-info-list").append($new_ques);
+                $(".person-show-more").attr("current-page",pages);
+              }
+              break;
+
+              case "other-answer":
+              for(var i = 0 ; i < $result.length; i++){
+                $new_ques = $("<div class='comment-list-info'><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a><p><p class='reply-color'><span>"+$result[i].answer+"个答案</span>&nbsp&nbsp<span>浏览"+$result[i].browser+"</span>&nbsp&nbsp<span class='sns-time-list'>"+$result[i].post_time+"</span></p></div>");
+                $(".person-info-list").append($new_ques);
+                $(".person-show-more").attr("current-page",pages);
+              }
+              break;
+
+              case "my-question":
+              for(var i = 0 ; i < $result.length; i++){
+                $new_ques = $("<div class='comment-list-info'><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a><p><p class='reply-color'><span>"+$result[i].answer+"个答案</span>&nbsp&nbsp<span>浏览"+$result[i].browser+"</span>&nbsp&nbsp<span class='sns-time-list'>"+$result[i].post_time+"</span></p></div>");
+                $(".person-info-list").append($new_ques);
+                $(".person-show-more").attr("current-page",pages);
+              }
+              break;
+
+              case "my-answer":
+              for(var i = 0 ; i < $result.length; i++){
+                $new_ques = $("<div class='comment-list-info'><p><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a><p><p class='reply-color'><span>"+$result[i].answer+"个答案</span>&nbsp&nbsp<span>浏览"+$result[i].browser+"</span>&nbsp&nbsp<span class='sns-time-list'>"+$result[i].post_time+"</span></p></div>");
+                $(".person-info-list").append($new_ques);
+                $(".person-show-more").attr("current-page",pages);
+              }
+              break;
+
+            }
+          }
+            else
+            {
+              $(".person-show-more").css("display","none");
+            }
+    });
+}
+
+$(".inbox-show-more").click(function(){
+      var current_page = parseInt($(this).attr("current-page"));
+      var page = $(this).attr("page");
+      switch(page)
+      {
+            case "inbox-info":
+                    var url = "inbox/get_new_pages";
+                    inbox_show_more(current_page,url,page)
+            break;
+      }
+});
+
+function inbox_show_more(current_page,url,index) {
+      var url = get_root_path()+"/wen/index.php/"+url;
+      var pages = current_page+1;
+      var page_id = $(".comment-list-info").attr("page-id");
+      $.post(url,
+      {current_page:pages,page_id:page_id},
+          function(result){
+          $result = $.parseJSON(result);
+          $user_info = $result.user_info;
+          console.log($user_info);
+          if($user_info != '') {
+                for(var i = 0; i < $user_info.length; i++) {
+
+                  var $new_inbox = $("<div class='span10 comment-list-info' page-id='"+$user_info[i].page_id+"'><p><a href='"+get_root_path()+"/wen/index.php/person/question/"+$user_info[i].my_id+"' class='pull-left inbox-to-name'>"+$user_info[i].name+"</a>:"+$user_info[i].inbox+"</p><span class='sns-time-list'>"+$user_info[i].time+"</span><span class='pull-right'><input type='button' class='btn post-inbox btn-small' value='回复' /></span></div>");
+                  $(".inbox-info-list").append($new_inbox);
+                  $(".inbox-show-more").attr("current-page",pages);
+              }
+          }else{
+
+                $(".inbox-show-more").css("display","none");
+            }
+      });
+}
+
 function get_root_path() {  
   var root = location.protocol + '//' + location.host;
   return root;
 }
 
 })();
-
-

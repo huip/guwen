@@ -6,7 +6,7 @@
       <div class="list_info span10">
         
         <?php foreach ($question as $key => $value): {?>
-        <h5 class="ques-title" ques-uid ="<?=$value['user_id']?>"><?=$value['ques_title'];?></h5>
+        <h4 class="ques-title" ques-uid ="<?=$value['user_id']?>"><?=$value['ques_title'];?></h4>
         <p><?=$value['ques_content'];?></p>
         <p class="sns-bar question_info" qid="<?=$value['msgid'];?>" >
           <span>提问者:<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span>
@@ -25,11 +25,11 @@
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro span10" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
-                                                <span class="pull-right btn best-answer">最佳答案</span>
+                                                <span class="pull-right btn btn-small btn-danger best-answer">最佳答案</span>
                                         </p>
                                         <p class=""><?= $value['comment_content'];?></p>
                                         
-                                        <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour">赞(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply"  clicked="false" >回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>
+                                       <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour btn-small"><i class="icon-thumbs-up"></i>赞同(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply btn-small"  clicked="false" ><i class="icon-comment"></i>回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>
                                         <div class="comment-reply">
                                             <div class="reply-list span10" is-cmt-reply = "false">
                                             </div>
@@ -50,9 +50,9 @@
                                         <p>
                                         <p class=""><?= $value['comment_content'];?></p>
                                         
-                                        <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour">赞(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply"  clicked="false" >回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>
+                                        <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour btn-small"><i class="icon-thumbs-up"></i>赞同(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply btn-small"  clicked="false" ><i class="icon-comment"></i>回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>
                                         <div class="comment-reply">
-                                            <div class="reply-list span10" is-cmt-reply = "false">
+                                            <div class="reply-list span12" is-cmt-reply = "false">
                                             </div>
                                             <div class="addreply span11">
                                                 <textarea class="reply-input"></textarea><br />
@@ -70,7 +70,7 @@
       </div>
       </div>
     <div class="span3">
-        <p class="modal-header">相关问题</p>
+        <p class="modal-header relative-ques">相关问题</p>
         <?
                 foreach ($relative_question as $key => $value):{
                     foreach ($value as $key => $values): {?>

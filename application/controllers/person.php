@@ -17,7 +17,7 @@ class Person extends CI_Controller {
             $data['user_id'] = $this->session->userdata("user_id");
             $data['user_img'] = $this->session->userdata("user_img");
             $data['user_name'] = $this->session->userdata("user_name");
-            $data['person_question'] = $this->index_model->get_my_question($uid);
+            $data['person_question'] = $this->index_model->get_my_question($uid,1);
             $data['person_info'] = $this->index_model->get_person_info($uid);
             $data['tag_list']      = $this->conn_model->get_tag_list();
             $data['uid'] = $uid;
@@ -32,7 +32,7 @@ class Person extends CI_Controller {
             $data['user_id'] = $this->session->userdata("user_id");
             $data['user_img'] = $this->session->userdata("user_img");
             $data['user_name'] = $this->session->userdata("user_name");
-            $data['person_answer'] = $this->index_model->get_my_answer($uid);
+            $data['person_answer'] = $this->index_model->get_my_answer($uid,1);
             $data['person_info'] = $this->index_model->get_person_info($uid);
             $data['tag_list']      = $this->conn_model->get_tag_list();
             $data['uid'] = $uid;
@@ -40,6 +40,26 @@ class Person extends CI_Controller {
             $this->load->view("person/answer",$data);
             $this->load->view('conn/footer');
       }
+
+      public function get_new_pages()
+      {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                  $pages = $_POST['current_page'];
+                  $uid = $_POST['uid'];
+                  $page = $_POST['index'];
+                  if($page == "other-answer"){
+                        $res = $this->index_model->get_my_answer($uid,$pages);
+                  }
+                  else
+                  {
+                        $res = $this->index_model->get_my_question($uid,$pages);
+                  }
+                  echo $res;
+            }
+      }
+
+
 
 }
 ?>

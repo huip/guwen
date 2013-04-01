@@ -31,7 +31,7 @@ class Topic extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['mess_info'] = $this->info_model->get_mess_info($id);
+		$data['mess_info'] = $this->info_model->get_mess_info($id,1);
 		$data['topic_info'] = $this->info_model->get_topic_info($id);
 		$this->load->view("conn/header");
 		$this->load->view("topic/nav",$data);
@@ -60,7 +60,8 @@ class Topic extends CI_Controller {
 		{
 
 			$pages = $_POST['current_page'];
-			$res = $this->index_model->get_topic_list($pages);
+			$id = $_POST['tag_id'];
+			$res = $this->info_model->get_mess_info($id,$pages);
 			echo $res;
 		}
 		else
