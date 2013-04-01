@@ -35,11 +35,24 @@
                   <p>周末! 去哪里玩儿呢？</p>
                </div>
             </div>
-            <div class="">
-              <h5>精选问题</h5>
+            <div class="hot-ques">
+              <h5>热门问题</h5>
+              <?foreach ($hot_ques as $key => $value): {?>
+                <div class="hot-ques-list">
+                    <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>"><?=$value['ques_title']?></a></p>
+                    <p class="reply-color"><span>浏览:<?=$value['browser']?></span><span> 分类:<?=$value['ques_cate']?></span>
+                            <span>回答:<?=$value['anwser']?></span>
+                  </p>
+                </div>
+              <?}endforeach?>
             </div>
-            <div class="">
-              <h5>问题分类</h5>
+            <div class="hot-cate">
+              <h5>热门分类</h5>
+                <?foreach ($hot_cate as $key => $value): {?>
+                    <div class="hot-cate-list">
+                        <p><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /><?=$value['tag_name']?></a></p>
+                    </div>
+                <?}endforeach?>
             </div>
       </div>
     </div>

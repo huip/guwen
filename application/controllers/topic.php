@@ -18,6 +18,8 @@ class Topic extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
+		$data['hot_ques'] = $this->conn_model->get_hot_ques();
+		$data['hot_cate'] = $this->conn_model->get_hot_cate();
 		$data['topic_list'] = $this->index_model->get_topic_list(1);
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$this->load->view("conn/header");
@@ -33,6 +35,8 @@ class Topic extends CI_Controller {
 		$data['user_name'] = $this->session->userdata("user_name");
 		$data['mess_info'] = $this->info_model->get_mess_info($id,1);
 		$data['topic_info'] = $this->info_model->get_topic_info($id);
+		$data['hot_ques'] = $this->conn_model->get_hot_ques();
+		$data['hot_cate'] = $this->conn_model->get_hot_cate();
 		$this->load->view("conn/header");
 		$this->load->view("topic/nav",$data);
 		$this->load->view("topic/info",$data);
@@ -50,7 +54,7 @@ class Topic extends CI_Controller {
 		}
 		else
 		{
-			echo "404 not found";
+			show_404();
 		}
 	}
 
@@ -66,7 +70,7 @@ class Topic extends CI_Controller {
 		}
 		else
 		{
-			echo "404 not found";
+			show_404();
 		}
 	}
 

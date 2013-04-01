@@ -18,8 +18,7 @@ class User extends CI_Controller {
 		foreach ($result as $key => $value) {
 			if( ! array_key_exists('user_email',$result) )
 			{
-				echo "<script>alert('您无权进入该页面，请先登录！');window.location.href='".base_url()."index.php/index/login'</script>";
-				return FALSE;
+				show_404();
 			}
 		}
 		$data['user_id'] = $this->session->userdata("user_id");
@@ -41,8 +40,7 @@ class User extends CI_Controller {
 		foreach ($result as $key => $value) {
 			if( ! array_key_exists('user_email',$result) )
 			{
-				echo "<script>alert('您无权进入该页面，请先登录！');window.location.href='".base_url()."index.php/index/login'</script>";
-				return FALSE;
+				show_404();
 			}
 		}
 		$data['user_id'] = $this->session->userdata("user_id");
@@ -63,8 +61,7 @@ class User extends CI_Controller {
 		foreach ($result as $key => $value) {
 			if( ! array_key_exists('user_email',$result) )
 			{
-				echo "<script>alert('您无权进入该页面，请先登录！');window.location.href='".base_url()."index.php/index/login'</script>";
-				return FALSE;
+				show_404();
 			}
 		}
 		$data['user_id'] = $this->session->userdata("user_id");
@@ -85,8 +82,7 @@ class User extends CI_Controller {
 		foreach ($result as $key => $value) {
 			if( ! array_key_exists('user_email',$result) )
 			{
-				echo "<script>alert('您无权进入该页面，请先登录！');window.location.href='".base_url()."index.php/index/login'</script>";
-				return FALSE;
+				show_404();
 			}
 		}
 		$data['user_id'] = $this->session->userdata("user_id");
@@ -108,8 +104,7 @@ class User extends CI_Controller {
 		foreach ($result as $key => $value) {
 			if( ! array_key_exists('user_email',$result) )
 			{
-				echo "<script>alert('您无权进入该页面，请先登录！');window.location.href='".base_url()."index.php/index/login'</script>";
-				return FALSE;
+				show_404();
 			}
 		}
 		$data['user_id'] = $this->session->userdata("user_id");
@@ -146,6 +141,10 @@ class User extends CI_Controller {
 				$res = $this->index_model->get_my_question($uid,$pages);
 			}
 			echo $res;
+		}
+		else
+		{
+			show_404();
 		}
 	}
 

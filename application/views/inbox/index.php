@@ -1,3 +1,4 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">

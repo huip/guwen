@@ -396,7 +396,7 @@ $('#typeahead').typeahead({source:subjects});
       placement : 'bottom',
       title : '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;">消息</div>', 
       html: 'true', //needed to show html of course
-      content : '<div id="popOverBox"></div>' 
+      content : '<div id="popOverBox span12"></div>' 
 });
 
  $(".search-btn").click(function(){
@@ -616,6 +616,75 @@ function inbox_show_more(current_page,url,index) {
             }
       });
 }
+
+$(".message-show-more").click(function() {
+      var current_page = parseInt($(this).attr("current-page"));
+      var page = $(this).attr("page");
+      var url = "message/get_new_pages";
+      message_show_more(current_page,url,page)
+});
+
+function message_show_more(current_page,url,page) {
+      var url = get_root_path()+"/wen/index.php/"+url;
+      var pages = current_page+1;
+      var uid = $(".user-center").attr("uid");
+      $.post(url,
+      {current_page:pages,index:page,uid:uid},
+          function(result){
+          $result = $.parseJSON(result);
+           console.log($result);
+          if($result.data != 'null') {
+
+                switch(page) {
+
+                    case "answer":
+                          for(var i = 0; i < $result.length; i++) {
+                              $new_answer = $("<div class='comment-list-info span12'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>回答了你的问题:</span><span><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></span><p class='sns-time-list'>"+$result[i].comment_time+"</p><p><a href='"+get_root_path+"index.php/question/index/"+$result[i].msgid+"'>快去看看吧</a></p></div>");
+                              $(".my-reply").append($new_answer);
+                              $(".message-show-more").attr("current-page",pages);
+                          }
+                    break;
+
+                    case "reply":
+                          for(var i = 0; i < $result.length; i++) {
+                              $new_reply = $("<div class='comment-list-info span12'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回复了你的回答:"+$result[i].comment_content+"</span><p class='sns-time-list'>"+$result[i].time+"</p><p><a href='"+get_root_path+"index.php/question/index/"+$result[i].msgid+"'>快去看看吧</a></p></div>");
+                              $(".my-reply").append($new_reply);
+                              $(".message-show-more").attr("current-page",pages);
+                          }
+                    break;
+
+                    case "favour":
+                          for(var i = 0; i < $result.length; i++) {
+                              $new_favour = $("<div class='comment-list-info span12'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回赞了你的回答:"+$result[i].comment_content+"</span><p class='sns-time-list'>"+$result[i].favour_time+"</p><p><a href='"+get_root_path+"index.php/question/index/"+$result[i].msgid+"'>快去看看吧</a></p></div>");
+                              $(".my-reply").append($new_favour);
+                              $(".message-show-more").attr("current-page",pages);
+                          }
+                    break;
+
+                    case "best":
+                          for(var i = 0; i < $result.length; i++) {
+                              $new_best = $("<div class='comment-list-info span12'><span><a href='"+get_root_path()+"/wen/index.php/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/wen/index.php/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></p>中把你的回答:"+$result[i].comment_content+"设为最佳答案</span><p class='sns-time-list'>"+$result[i].time+"</p><p><a href='"+get_root_path+"index.php/question/index/"+$result[i].msgid+"'>快去看看吧</a></p></div>");
+                              $(".my-reply").append($new_best);
+                              $(".message-show-more").attr("current-page",pages);
+                          }
+                    break;
+                }
+
+          }else{
+
+                $(".message-show-more").css("display","none");
+            }
+      });
+}
+$(document).scroll(function() {
+      if($(document).scrollTop() > $(window).height()){
+
+            $(".to-top").css("display","block");
+      }else {
+            $(".to-top").css("display","none");
+      }
+});
+
 
 function get_root_path() {  
   var root = location.protocol + '//' + location.host;

@@ -131,6 +131,7 @@
 	position:fixed;
 	left:80%;
 	top:80%;
+	display:none;
 }
 
 .title-a{

@@ -14,7 +14,7 @@
 		<li class="active">
 		<a href="<?=base_url();?>index.php/index">首页</a>
 		</li>
-		<li ><a href="<?=base_url();?>index.php/topic">话题</a></li>
+		<li ><a href="<?=base_url();?>index.php/topic">分类</a></li>
 		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
 		<li class="message">
                 <a href="#" id="message-menu">消息</a>

@@ -1,3 +1,4 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
@@ -18,9 +19,12 @@
                       </div>
                <?php } endforeach;?>              
              </div>
-              <?if( $answer_info[0]['num'] > 1 ){?>
+              <?
+                  if( count($answer_info) > 0){
+                    if( $answer_info[0]['num'] > 1 ){?>
                         <div class="span12 btn person-show-more" page="my-answer" current-page="1">更多</div> 
-              <?}?>                     
+                    <?}
+                }?>                     
              </div>
               <div class="usercnt-list span4 pull-right">
                    <?foreach ($person_info as $value) :{?>
@@ -28,11 +32,16 @@
                         <img src='<?=$value['user_img']?>' />
                         <p  uid="<?=$value['user_id']?>" class="person-info-bar"><?=$value['user_name']?></p>
                         <p>积分：<?=$value['user_score']?></p>
+                        <p>等级:<?=$value['rank']?></p>
+                        <p>升级还差:<?=$value['gap']?>积分</p>
                          <p><?=$value['user_motto']?></p>
                     </pre>
                    <?}endforeach?>           
              </div>
   	</div>
     </div>
+</div>
+<div class="to-top">
+  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

@@ -70,41 +70,44 @@ class Ajax_model extends CI_Model
 
 	public function add_comment($data)
 	{
+		$uid = get_user_info("user_id");
 		$sql = "SELECT count(id) as num FROM guwen_comment WHERE comment_quesid = ?";
 		$query = $this->db->query($sql,$data['comment_quesid']);
 		$res  = $query->result_array();
-		foreach ($res as $value) {
-		$num = $value['num'];
-		}
-
-		if( $num == "0" )
-		{
-			$this->db->where('user_id',get_user_info("user_id"));
-			$this->db->update("guwen_user",$this->add_score("5"));
-			$this->db->insert('guwen_comment',$data);
-		} 
-		else if( $num == "1" )
+		$num = $res[0]['num'];
+		$sqls = "SELECT user_id FROM guwen_message WHERE msgid = ?";
+		$querys = $this->db->query($sql,$data['comment_quesid']);
+		$re = $query->result_array();
+		$msg_uid = $re[0]['user_id'];
+		if( $uid == $msg_uid )
 		{
 
-			$this->db->where('user_id',get_user_info("user_id"));
-			$this->db->update("guwen_user",$this->add_score("3"));
-			$this->db->insert('guwen_comment',$data);
-
-		} 
-		else if( $num == "2" )
-		{
-
-			$this->db->where('user_id',get_user_info("user_id"));
-			$this->db->update("guwen_user",$this->add_score("2"));
-			$this->db->insert('guwen_comment',$data);
-
+			$this->db->insert('guwen_comment',$data);	
 		}
 		else
 		{
+			if( $num == "0" )
+			{
+				$this->db->where('user_id',$uid);
+				$this->db->update("guwen_user",$uid);
+				$this->db->insert('guwen_comment',$data);
+			} 
+			else if( $num == "1" )
+			{
 
-			$this->db->where('user_id',get_user_info("user_id"));
-			$this->db->update("guwen_user",$this->add_score("1"));
-			$this->db->insert('guwen_comment',$data);
+				$this->db->where('user_id',$uid);
+				$this->db->update("guwen_user",$this->add_score("2"));
+				$this->db->insert('guwen_comment',$data);
+
+			} 
+			else
+			{
+
+				$this->db->where('user_id',$uid);
+				$this->db->update("guwen_user",$this->add_score("1"));
+				$this->db->insert('guwen_comment',$data);
+
+			}
 
 		}
 
@@ -115,6 +118,7 @@ class Ajax_model extends CI_Model
 		$user_id = get_user_info('user_id');
 		if( $user_id != NULL )
 		{
+			
 			$comment_id = $data["id"];
 			$comment_uid = $data['comment_uid'];
 			$sql = "SELECT * FROM guwen_comment WHERE id = ?";
@@ -137,58 +141,68 @@ class Ajax_model extends CI_Model
 
 				$user_score = $value["user_score"];
 			}
-
-			if( $is_favour == 0 )
+			if( $user_id != $data['comment_uid'] )
 			{
+				if( $is_favour == 0 )
+				{
 
-				foreach ($res as $value) {
+					foreach ($res as $value) {
 
-					$current_favour = $value['comment_favour']+1;
+						$current_favour = $value['comment_favour']+1;
+					}
+
+					$data = array(
+
+						'comment_favour' => $current_favour,
+
+					);
+					$datas = array(
+						'user_score' =>$user_score + 1,
+					);
+
+					$this->db->where('id',$comment_id);
+					$this->db->update('guwen_comment',$data);
+					$this->db->where('user_id',$comment_uid);
+					$this->db->update("guwen_user",$datas);
+					$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
+					$query = $this->db->query($sql,array($comment_id));
+					$res = $query->result_array();
+					return $res;
+
 				}
+				else
+				{
+					foreach ($res as $value) {
 
-				$data = array(
+						$current_favour = $value['comment_favour'] - 1;
+					}
+					$data = array(
 
-					'comment_favour' => $current_favour,
+						'comment_favour' => $current_favour,
 
-				);
-				$datas = array(
-					'user_score' =>$user_score + 1,
-				);
+					);
 
-				$this->db->where('id',$comment_id);
-				$this->db->update('guwen_comment',$data);
-				$this->db->where('user_id',$comment_uid);
-				$this->db->update("guwen_user",$datas);
-				$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
-				$query = $this->db->query($sql,array($comment_id));
-				$res = $query->result_array();
-				return $res;
+					$datas = array(
+					        'user_score' =>$user_score -1,
+					);
 
+					$this->db->where('id',$comment_id);
+					$this->db->update('guwen_comment',$data);
+					$this->db->where('user_id',get_user_info("user_id"));
+					$this->db->update("guwen_user",$datas);
+					$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
+					$query = $this->db->query($sql,array($comment_id));
+					$res = $query->result_array();
+					return $res; 
+				}
 			}
 			else
 			{
-				foreach ($res as $value) {
 
-					$current_favour = $value['comment_favour'] - 1;
-				}
-				$data = array(
-
-					'comment_favour' => $current_favour,
-
-				);
-
-				$datas = array(
-				        'user_score' =>$user_score -1,
-				);
-
-				$this->db->where('id',$comment_id);
-				$this->db->update('guwen_comment',$data);
-				$this->db->where('user_id',get_user_info("user_id"));
-				$this->db->update("guwen_user",$datas);
 				$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
 				$query = $this->db->query($sql,array($comment_id));
 				$res = $query->result_array();
-				return $res; 
+				return $res; 	
 			}
 		}
 		else

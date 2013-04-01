@@ -1,3 +1,4 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
@@ -21,10 +22,16 @@
             <?}endforeach?>
      	<?}endforeach?>
      </div>
-     <?if( $info['user_info'][0]['num'] > 1) { ?>
+     <?
+          if( count($info) > 0 ) {
+            if( $info['user_info'][0]['num'] > 1) { ?>
           <div class="span11 btn inbox-show-more" page="inbox-info"  current-page="1">更多</div>
-      <?}?>
+        <?}
+      }?>
 </div>
 </div>
+</div>
+<div class="">
+ <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

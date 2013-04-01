@@ -14,10 +14,6 @@
             			<p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a></p>
                               <div class='index-content-list'><?=$value['ques_content']?></div>
             			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>&nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp<span>分类:<?=$value['ques_cate']?></span><span class="pull-right"><a  class="reply-color" href = "<?=base_url().'index.php/question/index/'.$value['msgid'];?>" qid ="<?=$value['msgid']?>">回答(<span><?=$value['anwser']?></span>)</a></span><p>
-                              <div class="display-anwser span12">
-                                        
-                              </div>
-                              <div class="slide-up pull-right">收起</div>
             		</div>
             	</div>
             	
@@ -27,11 +23,12 @@
            endforeach
              ;?>
       </div>
-      <?if($list_info[0]['num'] > 1){?>
-         <div class="span11 btn show-more" page="index" current-page="1">
-            更多
-        </div>
-        <?}?>
+      <?
+        if(count($list_info) >0) {
+                if($list_info[0]['num'] > 1){?>
+                <div class="span11 btn show-more" page="index" current-page="1">更多</div>
+            <?}
+          }?>
       </div>
     <div class="span3">
     	<div class="right-bar">
@@ -42,17 +39,30 @@
                   <p>周末! 去哪里玩儿呢？</p>
                </div>
             </div>
-            <div class="">
+            <div class="hot-ques">
               <h5>热门问题</h5>
+              <?foreach ($hot_ques as $key => $value): {?>
+                <div class="hot-ques-list">
+                    <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>"><?=$value['ques_title']?></a></p>
+                    <p class="reply-color"><span>浏览:<?=$value['browser']?></span><span> 分类:<?=$value['ques_cate']?></span>
+                            <span>回答:<?=$value['anwser']?></span>
+                  </p>
+                </div>
+              <?}endforeach?>
             </div>
-            <div class="">
+            <div class="hot-cate">
               <h5>热门分类</h5>
+                <?foreach ($hot_cate as $key => $value): {?>
+                    <div class="hot-cate-list">
+                        <p><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /><?=$value['tag_name']?></a></p>
+                    </div>
+                <?}endforeach?>
             </div>
       </div>
     </div>
   </div>
 </div>
-<div class="">
- <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
+<div class="to-top">
+  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>
