@@ -80,10 +80,10 @@
                     foreach ($value as $key => $values): {?>
                         
                         <div class="">
-                            <p class="span12">
-                                <a  class="pull-left" href="<?=$values['msgid']?>"><?=$values['ques_title']?></a>
-                                <span class="pull-right reply-color"><span><?=$values['ques_cate']?></span>&nbsp&nbsp<span>回答:<?=$values['anwser']?></span></span>
-                            </p>
+                            <div class="span12 relative-ques-list">
+                                <p><a href="<?=$values['msgid']?>"><?=$values['ques_title']?></a></p>
+                                <p class=" ques-sns-list reply-color"><span><?=$values['ques_cate']?></span>&nbsp&nbsp<span>回答:<?=$values['anwser']?></span></p>
+                            </div>
                         </div>
                     <?}endforeach;
               } endforeach?>

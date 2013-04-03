@@ -419,6 +419,7 @@ class Ajax_model extends CI_Model
 		$uid = $res[0]['user_id'];
 		$data['to_id'] = $uid;
 		$res = $this->db->insert("guwen_inbox",$data);
+		return TRUE;
 
 	}
 

@@ -120,8 +120,23 @@ class User extends CI_Controller {
 
 	public function upimage()
 	{	
-		$data['imgpath'] = $_POST['imgpath'];
-		$this->load->view("user/upimage",$data);
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			$data['imgpath'] = $_POST['imgpath'];
+			if($data['imgpath'] != "null")
+			{
+				$this->load->view("user/upimage",$data);
+			}
+			else
+			{
+				echo "您上传的不是图片！";
+			}
+
+		}
+		else
+		{
+			show_404();
+		}
 
 	}
 

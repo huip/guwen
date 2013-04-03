@@ -22,6 +22,7 @@ class Index extends CI_Controller {
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$data['hot_ques'] = $this->conn_model->get_hot_ques();
 		$data['hot_cate'] = $this->conn_model->get_hot_cate();
+		$data['hot_person'] = $this->conn_model->get_hot_person();
 		$message = $this->index_model->get_message_list(1);
 		$this->load->view('conn/header');
 		$this->load->view("index/nav",$data);

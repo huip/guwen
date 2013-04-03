@@ -22,6 +22,7 @@ class Message extends CI_Controller {
 			$data['tag_list']      = $this->conn_model->get_tag_list();
 			$data['hot_ques'] = $this->conn_model->get_hot_ques();
 			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['hot_person'] = $this->conn_model->get_hot_person();
 			$data['answer'] = $this->index_model->get_answer($data['user_id'],1);
 			$this->load->view('conn/header');
 			$this->load->view("message/nav",$data);
@@ -44,6 +45,7 @@ class Message extends CI_Controller {
 			$data['tag_list']      = $this->conn_model->get_tag_list();
 			$data['hot_ques'] = $this->conn_model->get_hot_ques();
 			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['hot_person'] = $this->conn_model->get_hot_person();
 			$data['reply'] = $this->index_model->get_reply($data['user_id'],1);
 			$this->load->view('conn/header');
 			$this->load->view("message/nav",$data);
@@ -66,6 +68,7 @@ class Message extends CI_Controller {
 			$data['tag_list']      = $this->conn_model->get_tag_list();
 			$data['hot_ques'] = $this->conn_model->get_hot_ques();
 			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['hot_person'] = $this->conn_model->get_hot_person();
 			$data['favour'] = $this->index_model->get_favour($data['user_id'],1);
 			$this->load->view('conn/header');
 			$this->load->view("message/nav",$data);
@@ -88,6 +91,7 @@ class Message extends CI_Controller {
 			$data['tag_list']      = $this->conn_model->get_tag_list();
 			$data['hot_ques'] = $this->conn_model->get_hot_ques();
 			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['hot_person'] = $this->conn_model->get_hot_person();
 			$data['best'] = $this->index_model->get_best($data['user_id'],1);
 			$this->load->view('conn/header');
 			$this->load->view("message/nav",$data);

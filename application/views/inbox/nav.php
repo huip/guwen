@@ -109,7 +109,7 @@
   <input class="btn pull-left search-btn-poi no-login-ques" type="button" value="提问" />
       <ul class="nav nav-poi">
           <li><a href="<?=base_url();?>index.php/index">首页</a></li>
-          <li><a href="<?=base_url();?>index.php/topic">话题</a></li>
+          <li><a href="<?=base_url();?>index.php/topic">分类</a></li>
           <li><a href="<?=base_url();?>index.php/explore">发现</a></li>
           <li class="user-center">
               <input class="btn login-btn-trans" type="button"  value="登陆" />

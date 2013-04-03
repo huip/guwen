@@ -189,6 +189,14 @@
 	width:40px;
 	height: 40px;
 }
+.hot-cate-list .hot-ques-num {
+	margin:-10px 0 0 0;
+	color:#999;
+	text-indent: 5px;
+}
+.hot-cate-list .hot-ques-title {
+	padding-left:5px;
+}
 /************************inbox page ***********************/
 
 .inbox-show-more{
@@ -360,4 +368,10 @@
 
 .acount-alter {
 	margin:10px 0 0 0;
+}
+
+/********************question ****************/
+.relative-ques-list {
+
+	padding: 5px;
 }

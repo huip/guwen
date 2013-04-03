@@ -364,6 +364,7 @@ class Ajax extends CI_Controller {
 		$upload_dir = "";
 		$file_name = "";
 		$file_type ="";
+		$img_file = array('jpg','png','gif');
 		if ($_FILES["userfile"]["error"] > 0)
 		{
 			echo "Error: " . $_FILES["userfile"]["error"] . "<br>";
@@ -372,20 +373,27 @@ class Ajax extends CI_Controller {
 		{
 			$file_name = explode(".", $_FILES['userfile']['name']);
 			$file_type = $file_name['1'];
-			$uiq = $this->get_uid();
-
-			$user_temp = $file_name['0'].$uiq.".".$file_type;
-
-			if (file_exists("data/uploadimg/" . $_FILES["userfile"]["name"]))
+			if(in_array($file_type, $img_file))
 			{
-				echo $_FILES["userfile"]["name"] . " already exists. ";
+				$uiq = $this->get_uid();
+
+				$user_temp = $file_name['0'].$uiq.".".$file_type;
+
+				if (file_exists("data/uploadimg/" . $_FILES["userfile"]["name"]))
+				{
+					echo $_FILES["userfile"]["name"] . " already exists. ";
+				}
+				else
+				{
+					move_uploaded_file($_FILES["userfile"]["tmp_name"],"data/uploadimg/" . $user_temp);
+					echo base_url()."data/uploadimg/".$user_temp;
+				}
 			}
 			else
 			{
-				move_uploaded_file($_FILES["userfile"]["tmp_name"],"data/uploadimg/" . $user_temp);
-				echo base_url()."data/uploadimg/".$user_temp;
-			}
+				echo "null";
 
+			}
 		}
 	}
 
@@ -632,11 +640,11 @@ class Ajax extends CI_Controller {
 				$res = $this->ajax_model->update_inbox_link($inbox_link);
 				if( $res )
 				{
-				$status['status'] = 'ok'; 
+					$status['status'] = 'ok'; 
 				}
 				else
 				{
-				$status['status'] = 'fail';
+					$status['status'] = 'fail';
 				}
 
 			}

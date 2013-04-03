@@ -21,6 +21,7 @@ class Topic extends CI_Controller {
 		$data['hot_ques'] = $this->conn_model->get_hot_ques();
 		$data['hot_cate'] = $this->conn_model->get_hot_cate();
 		$data['topic_list'] = $this->index_model->get_topic_list(1);
+		$data['hot_person'] = $this->conn_model->get_hot_person();
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$this->load->view("conn/header");
 		$this->load->view("topic/nav",$data);
@@ -37,6 +38,7 @@ class Topic extends CI_Controller {
 		$data['topic_info'] = $this->info_model->get_topic_info($id);
 		$data['hot_ques'] = $this->conn_model->get_hot_ques();
 		$data['hot_cate'] = $this->conn_model->get_hot_cate();
+		$data['hot_person'] = $this->conn_model->get_hot_person();
 		$this->load->view("conn/header");
 		$this->load->view("topic/nav",$data);
 		$this->load->view("topic/info",$data);

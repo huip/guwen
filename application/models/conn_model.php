@@ -29,7 +29,20 @@ class Conn_model extends CI_Model
 
 	public function get_hot_cate()
 	{
-		$sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img FROM guwen_tag AS tg,guwen_message  AS ms  ORDER BY ms.post_time DESC LIMIT 5 ";
+		$sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img,(SELECT COUNT(msgid) FROM guwen_message WHERE ques_cate = tg.id ) AS num 
+			FROM guwen_tag AS tg,guwen_message  AS ms ORDER BY num DESC , ms.post_time DESC LIMIT 5 ";
+		$query = $this->db->query($sql);
+		$res = $query->result_array();
+		return $res;
+	}
+
+	public function get_hot_person()
+	{
+		$sql = "SELECT  us.user_id,us.user_name,us.user_img ,(SELECT rank FROM guwen_rank
+			 WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) AS rank
+			FROM guwen_user AS us, guwen_comment AS cmt ,
+			guwen_message AS  ms WHERE us.user_id = cmt.comment_uid
+			GROUP BY cmt.comment_uid ORDER BY COUNT(cmt.id) DESC  LIMIT 5";
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;

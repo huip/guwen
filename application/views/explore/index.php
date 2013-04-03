@@ -5,7 +5,7 @@
     <div class="span9">
       <div class="index-ques-list span12">
       <h5 class="modal-header"><i class="icon-list"></i>&nbsp&nbsp最热动态</h5>
-      <?php foreach ($list_info as $value): {?>
+      <?foreach ($list_info as $value): {?>
         <div class="ques-list span12">
         	<div class="feed-list span11">
         		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
@@ -24,14 +24,13 @@
         	</div>
         	
         </div>
-        <?php}endforeach;?>
+        <?}endforeach;?>
      </div>
       <?
             if(count($list_info) > 0){
             if($list_info[0]['num'] >1){?>
                 <div class="span11 btn show-more" page="explore" current-page="1">更多</div>
-        <?}
-      }?>
+        <?}}?>
     </div>
     <div class="span3">
     	<div class="right-bar">
@@ -57,7 +56,27 @@
               <h5>热门分类</h5>
                 <?foreach ($hot_cate as $key => $value): {?>
                     <div class="hot-cate-list">
-                        <p><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /><?=$value['tag_name']?></a></p>
+                        <p>
+                            <span class="pull-left"><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /></a></span>
+                            <p>
+                                <a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>" class="hot-ques-title"><?=$value['tag_name']?></a>
+                                <p class="hot-ques-num">共<?=$value['num']?>个回答</p>
+                            </p>
+                        </p>
+                    </div>
+                <?}endforeach?>
+            </div>
+            <div class="hot-person">
+                <h5>活跃用户</h5>
+                <?foreach ($hot_person as $key => $value): {?>
+                    <div class="hot-cate-list">
+                        <p>
+                            <span class="pull-left"><a href="<?=base_url()?>/index.php/person/question/<?=$value['user_id']?>"><img height="40" width="40" src="<?=$value['user_img']?>" /></a></span>
+                            <p>
+                                <a href="<?=base_url()?>/index.php/person/question/<?=$value['user_id']?>" class="hot-ques-title"><?=$value['user_name']?></a>
+                                <p class="hot-ques-num"><?=$value['rank']?></p>
+                            </p>
+                        </p>
                     </div>
                 <?}endforeach?>
             </div>
