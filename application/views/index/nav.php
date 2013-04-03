@@ -53,23 +53,26 @@
             <option  value="<?=$value['id']?>"><?=$value['tag_name']?></option>
         <?}endforeach?>
     </select>
+    <span class="btn create">创建</span>
+      <span class="create-cate pull-right"><input type="text" value=""  name="cate" /><span class="btn">创建</span></span>
   </p>
     <!-- <ul class="question-cate">
       <li><input type="radio" class="cate" name="cate" value="1">&nbsp&nbsp<span>学习</span></li>
       <li><input type="radio" class="cate" name="cate" value="2">&nbsp&nbsp<span>生活</span></li>
     </ul> -->
     <div class="question-confirm">
-    	<p class="pull-left">悬赏积分<input type="text"  class="question-socore"/></p>
+    	<p class="pull-left">悬赏积分<input type="text" value="0" class="question-socore"/></p>
     	<!-- <p class="pull-right question-anoy-full"><input type="checkbox" class="question-anoy">&nbsp&nbsp匿名发布</p> -->
     </div>
-    
+   
   </div>
+   <div class="ques-error-tip"></div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">关闭</a>
     <a href="#" class="btn btn-primary " data-dismiss ="" id="formsubmit" >提交</a>
   </div>
-</div>
 </form>
+</div>
 <?php
 } else {
 ?>

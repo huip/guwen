@@ -17,15 +17,15 @@
                       <?foreach ($value['inbox_info'] as $key => $inbox) :{?>
                           <?=$inbox['inbox'];?>
                            </p>
-                          <p class="span9"><span class="sns-time-list"><?=$inbox['time']?></span><span class="pull-right"><span><a href="<?=base_url();?>index.php/inbox/info/<?=$value['id']?>">共<?=$inbox['inboxnum']?>对话</a></span></p>
+                          <p class="span9"><span class=" inbox-time-list sns-time-list"><?=$inbox['time']?></span><span class="pull-right "><a href="<?=base_url();?>index.php/inbox/info/<?=$value['id']?>" class="reply-color">共<?=$inbox['inboxnum']?>条对话</a></span></p>
                         <?}endforeach?>
                  </div>
           <?}endforeach?>
       </div>
     </div>
-    <div class="usercnt-list span3 pull-right">
-    </div>
     </div>
 </div>
+<div class="to-top">
+  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

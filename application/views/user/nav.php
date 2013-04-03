@@ -3,28 +3,32 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-    	<a class="brand" href="#">故问</a>
-    	<form class="navbar-search pull-left">
-  		<input type="text" class="search-query" placeholder="搜索问题...">
-
-	</form>
-	<input class="btn pull-left search-btn-poi search-btn" type="button" value="搜索" />
-	<input class="btn pull-left search-btn-poi create-question" type="button" value="提问" />
-    	<ul class="nav nav-poi">
-		<li><a href="<?=base_url();?>index.php/index">首页</a></li>
-		<li><a href="<?=base_url();?>index.php/topic">分类</a></li>
-		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
-		<li><a href="<?=base_url();?>index.php/message">消息</a></li>
-		<li class="user-center" uid="<?=$user_id?>">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
-			<img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
-			 <ul class=" pull-right user-menu">
-				<a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
-				<a href="<?=base_url();?>index.php/inbox"><li><i class="icon-envelope"></i><span>私信</span><span class="bubble"></span></li></a>
-				<a href="<?=base_url();?>index.php/user/profile"><li><i class="icon-cog"></i><span>设置</span></li></a>
-				<a href="<?=base_url();?>index.php/ajax/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
-	    		</ul>
-	    	</li>
+      <a class="brand" href="#">故问</a>
+      <form class="navbar-search pull-left">
+      <input type="text" class="search-query" placeholder="搜索问题...">
+        </form>
+      <input class="btn pull-left search-btn-poi search-btn" type="button" value="搜索" />
+  <input class="btn pull-left search-btn-poi create-question" type="button" value="提问" />
+      <ul class="nav nav-poi">
+    <li>
+    <a href="<?=base_url();?>index.php/index">首页</a>
+    </li>
+    <li><a href="<?=base_url();?>index.php/topic">分类</a></li>
+    <li><a href="<?=base_url();?>index.php/explore">发现</a></li>
+    <li class="message">
+                <a href="<?=base_url();?>index.php/message" id="message-menu">消息</a>
+            </li>
+    <li class="user-center" uid="<?=$user_id?>">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
+                    <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
+                   </a>
+       <ul class=" pull-right user-menu">
+        <a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
+        <a href="<?=base_url();?>index.php/inbox"><li><i class="icon-envelope"></i><span>私信</span><span class="bubble"></span></li></a>
+        <a href="<?=base_url();?>index.php/user/profile"><li><i class="icon-cog"></i><span>设置</span></li></a>
+        <a href="<?=base_url();?>index.php/ajax/login_off" class="login_off"><li><i class="icon-off"></i><span>退出</span></li></a>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -45,27 +49,30 @@
     <input class="upload-img" type="hidden" /> -->
     <p>问题分类
       <select class="question-cate">
-         <?foreach ($tag_list as $key => $value) :{?>
+        <?foreach ($tag_list as $key => $value) :{?>
             <option  value="<?=$value['id']?>"><?=$value['tag_name']?></option>
         <?}endforeach?>
     </select>
+    <span class="btn create">创建</span>
+      <span class="create-cate pull-right"><input type="text" value=""  name="cate" /><span class="btn">创建</span></span>
   </p>
     <!-- <ul class="question-cate">
       <li><input type="radio" class="cate" name="cate" value="1">&nbsp&nbsp<span>学习</span></li>
       <li><input type="radio" class="cate" name="cate" value="2">&nbsp&nbsp<span>生活</span></li>
     </ul> -->
     <div class="question-confirm">
-    	<p class="pull-left">悬赏积分<input type="text"  class="question-socore"/></p>
-    	<!-- <p class="pull-right question-anoy-full"><input type="checkbox" class="question-anoy">&nbsp&nbsp匿名发布</p> -->
+      <p class="pull-left">悬赏积分<input type="text" value="0" class="question-socore"/></p>
+      <!-- <p class="pull-right question-anoy-full"><input type="checkbox" class="question-anoy">&nbsp&nbsp匿名发布</p> -->
     </div>
-    
+   
   </div>
+   <div class="ques-error-tip"></div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">关闭</a>
     <a href="#" class="btn btn-primary " data-dismiss ="" id="formsubmit" >提交</a>
   </div>
-</div>
 </form>
+</div>
 <?php
 } else {
 ?>
@@ -78,11 +85,13 @@
       <input type="text" class="search-query" placeholder="搜索问题...">
 
   </form>
-  <input class="btn pull-left search-btn-poi" type="button" value="搜索" />
+  <input class="btn pull-left search-btn-poi search-btn" type="button" value="搜索" />
   <input class="btn pull-left search-btn-poi no-login-ques" type="button" value="提问" />
       <ul class="nav nav-poi">
-          <li><a href="<?=base_url();?>index.php/index">首页</a></li>
-          <li><a href="<?=base_url();?>index.php/topic">话题</a></li>
+              <li class="active" >
+                <a href="<?=base_url();?>index.php/index">首页</a>
+            </li>
+            <li><a href="<?=base_url();?>index.php/topic">话题</a></li>
           <li><a href="<?=base_url();?>index.php/explore">发现</a></li>
           <li class="user-center">
               <input class="btn login-btn-trans" type="button"  value="登陆" />

@@ -1,6 +1,34 @@
-
-<div class="register">
-	<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp邮箱&nbsp&nbsp<input type="text" value="" class="user-email" /></label>
-	<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码&nbsp&nbsp<input type="password" value=""  class="user-password" /></label>
-	<input type="button" value="登陆"  class="login-btn btn-small" />
+<div id="main" class="span12">
+<div class="container-fluid">
+  <div class="row-fluid">
+    	<div class="span7">
+		<div class="login">
+			<div class="form-horizontal login-form">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">邮箱</label>
+					<div class="controls">
+						<input type="text" id="inputEmail" placeholder="邮箱">
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputPassword">密码</label>
+					<div class="controls">
+						<input type="password" id="inputPassword" placeholder="密码">
+						<span class="help-inline"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<div class="error-tip"></div>
+						<button type="button" class="btn login-btn btn-primary">登录</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="span5">
+	</div>
+</div>
+</div>
 </div>

@@ -1,7 +1,7 @@
-(function(){
+$(function(){
 var user_id = $(".user-center").attr('uid');
 function get_new_inbox() {
-  var url = get_root_path()+"/wen/index.php/ajax/get_new_inbox";
+  var url = get_root_path()+"/index.php/ajax/get_new_inbox";
   $.post(url,
     {user_id:user_id},
     function(result){
@@ -20,7 +20,7 @@ if ( user_id != undefined ) {
   setInterval(get_new_inbox,12000);
 }
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host;
+  var root = location.protocol + '//' + location.host+'/wen';
   return root;
 }
-})();
+});

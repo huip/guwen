@@ -17,12 +17,21 @@ class Message extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['tag_list']      = $this->conn_model->get_tag_list();
-		$data['answer'] = $this->index_model->get_answer($data['user_id'],1);
-		$this->load->view('conn/header');
-		$this->load->view("message/nav",$data);
-		$this->load->view("message/index");
-		$this->load->view('conn/footer');
+		if( $data['user_id'] != NULL )
+		{
+			$data['tag_list']      = $this->conn_model->get_tag_list();
+			$data['hot_ques'] = $this->conn_model->get_hot_ques();
+			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['answer'] = $this->index_model->get_answer($data['user_id'],1);
+			$this->load->view('conn/header');
+			$this->load->view("message/nav",$data);
+			$this->load->view("message/index");
+			$this->load->view('conn/footer');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function reply()
@@ -30,12 +39,21 @@ class Message extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['tag_list']      = $this->conn_model->get_tag_list();
-		$data['reply'] = $this->index_model->get_reply($data['user_id'],1);
-		$this->load->view('conn/header');
-		$this->load->view("message/nav",$data);
-		$this->load->view("message/reply");
-		$this->load->view('conn/footer');
+		if( $data['user_id'] != NULL )
+		{
+			$data['tag_list']      = $this->conn_model->get_tag_list();
+			$data['hot_ques'] = $this->conn_model->get_hot_ques();
+			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['reply'] = $this->index_model->get_reply($data['user_id'],1);
+			$this->load->view('conn/header');
+			$this->load->view("message/nav",$data);
+			$this->load->view("message/reply");
+			$this->load->view('conn/footer');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function favour()
@@ -43,12 +61,21 @@ class Message extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['tag_list']      = $this->conn_model->get_tag_list();
-		$data['favour'] = $this->index_model->get_favour($data['user_id'],1);
-		$this->load->view('conn/header');
-		$this->load->view("message/nav",$data);
-		$this->load->view("message/favour");
-		$this->load->view('conn/footer');
+		if( $data['user_id'] != NULL )
+		{
+			$data['tag_list']      = $this->conn_model->get_tag_list();
+			$data['hot_ques'] = $this->conn_model->get_hot_ques();
+			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['favour'] = $this->index_model->get_favour($data['user_id'],1);
+			$this->load->view('conn/header');
+			$this->load->view("message/nav",$data);
+			$this->load->view("message/favour");
+			$this->load->view('conn/footer');
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 	public function best()
@@ -56,12 +83,20 @@ class Message extends CI_Controller {
 		$data['user_id'] = $this->session->userdata("user_id");
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
-		$data['tag_list']      = $this->conn_model->get_tag_list();
-		$data['best'] = $this->index_model->get_best($data['user_id'],1);
-		$this->load->view('conn/header');
-		$this->load->view("message/nav",$data);
-		$this->load->view("message/best");
-		$this->load->view('conn/footer');   
+		if( $data['user_id'] != NULL )
+		{
+			$data['tag_list']      = $this->conn_model->get_tag_list();
+			$data['hot_ques'] = $this->conn_model->get_hot_ques();
+			$data['hot_cate'] = $this->conn_model->get_hot_cate();
+			$data['best'] = $this->index_model->get_best($data['user_id'],1);
+			$this->load->view('conn/header');
+			$this->load->view("message/nav",$data);
+			$this->load->view("message/best");
+			$this->load->view('conn/footer'); 
+		}
+		else{
+			show_404();
+		}  
 	}
 
 	public function get_new_pages()

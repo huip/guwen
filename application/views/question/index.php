@@ -1,3 +1,4 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
@@ -8,8 +9,8 @@
         <?php foreach ($question as $key => $value): {?>
         <h4 class="ques-title" ques-uid ="<?=$value['user_id']?>"><?=$value['ques_title'];?></h4>
         <p><?=$value['ques_content'];?></p>
-        <p class="sns-bar question_info" qid="<?=$value['msgid'];?>" >
-          <span>提问者:<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span>
+        <p class="sns-bar question_info reply-color" qid="<?=$value['msgid'];?>" >
+          <span>提问者:<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>" class="reply-color"><?=$value['user_name'];?></a></span>
           <span>悬赏积分：<span class="ques-score"><?=$value['ques_socore'];?></span></span>
           <span>分类：<?=$value['ques_cate'];?></span>
           <span class="sns-time-list"><?=$value['post_time'];?></span>
@@ -45,9 +46,12 @@
                     <? foreach ($comment as $key => $value): {?>
                         <div class="comment-list-info span12" cid ="<?=$value['id']?>">
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
-                                    <div class="comment-intro span11" uid="<?=$value['comment_uid']?>">
+                                    <div class="comment-intro  span11" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
-                                        <p>
+                                            <?if($value['best_uid'] == $value['user_id'] ){?>
+                                            <span class="pull-right btn disabled btn-danger">最佳答案</span>
+                                            <?}?>
+                                        </p>
                                         <p class=""><?= $value['comment_content'];?></p>
                                         
                                         <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span><span class="pull-right"><span class="btn sns-favour btn-small"><i class="icon-thumbs-up"></i>赞同(<span><?=$value['comment_favour']?></span>)</span>&nbsp&nbsp<span class="btn cmt-reply btn-small"  clicked="false" ><i class="icon-comment"></i>回复(<span class="cmt-num"><?=$value['reply_num']?></span>)</span></span></p>
@@ -78,14 +82,15 @@
                         <div class="">
                             <p class="span12">
                                 <a  class="pull-left" href="<?=$values['msgid']?>"><?=$values['ques_title']?></a>
-                                <span class="pull-right"><span><?=$values['ques_cate']?></span>&nbsp&nbsp<span>回答:<?=$values['anwser']?></span></span>
+                                <span class="pull-right reply-color"><span><?=$values['ques_cate']?></span>&nbsp&nbsp<span>回答:<?=$values['anwser']?></span></span>
                             </p>
                         </div>
                     <?}endforeach;
               } endforeach?>
-
-    
 </div>
   </div>
+</div>
+<div class="to-top">
+ <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

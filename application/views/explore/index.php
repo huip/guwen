@@ -1,5 +1,5 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
-  <a name="go_to_top"></a>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
@@ -9,7 +9,8 @@
         <div class="ques-list span12">
         	<div class="feed-list span11">
         		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
-        		<div class="feed-content span11">
+        		
+                    <div class="feed-content span11">
         			<p class="feed-content-name"><span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
         			<p><a href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a></p>
                           <div class='index-content-list'><?=$value['ques_content']?></div>
@@ -23,10 +24,7 @@
         	</div>
         	
         </div>
-        <?php
-       }
-       endforeach
-       ;?>
+        <?php}endforeach;?>
      </div>
       <?
             if(count($list_info) > 0){
@@ -67,7 +65,7 @@
     </div>
   </div>
 </div>
-<div class="">
+<div class="to-top">
  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

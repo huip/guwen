@@ -55,11 +55,11 @@
 }
 
 .reply-input{
-	width: 470px;
+	width: 440px;
 	margin: 0 0 0 -20px;
 }
 .reply-btn {
-	margin:5px -8px 0 0;
+	margin:5px 20px 0 0;
 }
 .addreply {
 	margin:5px 0 0 20px !important;
@@ -97,11 +97,8 @@
 }
 
 .user-center .user-img {
-	height:20px;
-	width: 20px;
-}
-.comment-btn{
-	margin:0 65px 0 0;
+	height:25px;
+	width: 25px;
 }
 .message-menu{
 	z-index: 100;
@@ -131,7 +128,7 @@
 	position:fixed;
 	left:80%;
 	top:80%;
-	display:none;
+	display: none;
 }
 
 .title-a{
@@ -139,7 +136,7 @@
 	font-size: 15px;
 }
 .reply-color{
-	color: #999;
+	color: #999 !important;
 }
 
 /*********************question page *****************************/
@@ -156,7 +153,7 @@
 	width:550px;
 }
 .comment-btn {
-	margin:0 35px 0 0px;
+	margin:0 50px 0 0px;
 }
 .comment-list-info {
 	min-height: 30px;
@@ -172,7 +169,7 @@
 	
 }
 .reply-time-list{
-	margin:5px 0 0 40px!important;
+	margin:5px 0 0 30px!important;
 }
 
 /**************************person page *********************/
@@ -188,9 +185,179 @@
 .person-show-more{
 	margin:6px 0 0 0!important;
 }
-
+.hot-cate-list img {
+	width:40px;
+	height: 40px;
+}
 /************************inbox page ***********************/
 
 .inbox-show-more{
 	margin:5px 0 0 0!important;
+}
+.inbox-time-list {
+	margin:0 0 0 20px;
+}
+/**************************** create question *****************/
+.create-cate {
+	margin:0 205px 0 0;
+	display: none;
+}
+.create-cate input {
+	width: 88px;
+}
+.create-cate span {
+	margin:-10px 0 0 5px;
+}
+.ques-error-tip {
+
+	margin:-28px 0 0 18px;
+	height: 30px;
+}
+
+.search-btn-poi {
+	margin:-10px 0 0 5px;
+}
+
+.nav-poi {
+	margin: 0 0 0 15px ! important;
+}
+.user-center {
+	margin:0 0 0 100px !important;
+}
+.user-menu {
+	width:90px;
+	height: 120px;
+	border:1px solid #ccc;
+	background:#ffffff;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	z-index: 20;
+	list-style: none;
+	margin:0;
+	border-radius:4px;
+	display: none;
+}
+.user-menu li {
+	padding:  5px;
+}
+.user-menu li span{
+	margin:0 0 0 5px;
+	color: #333;
+}
+.user-menu a:hover{
+	text-decoration: none;
+}
+.user-menu li:hover {
+	padding:  5px;
+	background: #0088cc;
+}
+
+.create-question-modal {
+	display: none;
+}
+
+.question-content {
+	width: 515px;
+	height: 60px;
+}
+.question-title {
+	width: 515px;
+}
+.question-socore{
+	width:40px;
+	height: 15px !important;
+	margin:5px 0 0 5px;
+}
+.question-anoy {
+	margin:-5px 0 0 0 !important;
+}
+.question-anoy-full {
+	margin:10px 0 0 0;
+}
+
+.question-cate {
+	list-style: none;
+	height:30px;
+	width:100px;
+	margin:0px;
+
+}
+.question-cate li {
+	float: left;
+	margin:0 0 0 5px;
+	width:60px;
+}
+.question-cate li input {
+	margin:-3px 0 0 0 !important;
+}
+
+/************ user center ************/
+.usercnt-list {
+	margin:0px 0 0 0px !important;
+}
+
+.bubble {
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 16px;
+	line-height: 16px;
+	border-radius: 16px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	visibility: hidden;
+}
+
+/********************* register  login *********************/
+
+.login {
+
+	margin:30px auto;
+	width:550px;
+	height: 150px;
+	padding-top:50px;
+	padding-bottom:50px;
+	border-radius: 5px;
+	border-shadow:0 1px 0 #f2f4f5;
+	border:1px solid #ddd;
+}
+.register {
+	margin:30px auto;
+	width:550px;
+	height: 230px;
+	padding-top:50px;
+	padding-bottom:50px;
+	border-radius: 5px;
+	border-shadow:0 1px 0 #f2f4f5;
+	border:1px solid #ddd;
+}
+
+.ad-bar{
+	margin:50px auto;
+}
+
+.error-tip {
+	margin:-15px 0 0 0 !important;
+	line-height: 25px;
+	height:25px;
+}
+
+/*********************** user page *********************/
+
+.success-callback {
+
+	margin:-15px 0 0 0 !important;
+	line-height: 25px;
+	height:25px;
+}
+
+.acount-alter {
+	margin:10px 0 0 0;
 }

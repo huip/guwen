@@ -5,12 +5,13 @@
     <a href="http://www.stuzone.com/" target = "_blank">学生地带</a>
     <a href="http://market.stuzone.com/" target = "_blank">学生市场</a>
   </div>
+  
   <div class="guwen-help pull-right">
-    <a href="#">故问指南</a>
+    <a href="<?=base_url()?>index.php/question/index/236">故问指南</a>
     <span>|</span>
-    <a href="#">建议反馈</a>
+    <a href="<?=base_url()?>index.php/question/index/237">建议反馈</a>
     <span>|</span>
-    <a href="#">故问协议</a>
+    <a href="<?=base_url()?>index.php/question/index/238">故问协议</a>
     <span>|</span>
     <span>&copy<a href="http://www.huip.org/" target = "_blank">huip</a></span>
   </div>
@@ -20,9 +21,5 @@
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.Jcrop.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/js/base.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/js/register.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/js/login.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/js/get_message.js"></script>
-</html>
+<script type="text/javascript" src="<?php echo base_url();?>data/js/main.js"></script>
 </html>

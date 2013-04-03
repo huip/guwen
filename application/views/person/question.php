@@ -1,3 +1,4 @@
+<a name="go_to_top"></a>
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
@@ -41,5 +42,8 @@
       </div>
     </div>
 </div>
+</div>
+<div class="to-top">
+  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
 </div>
 </div>

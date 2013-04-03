@@ -12,12 +12,26 @@ class Ajax extends CI_Controller {
 		$this->load->library('image_lib');
 	}
 
+	public function check_is_register()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			$data['data'] = $_POST['data'];
+			$data['cate'] = $_POST['cate'];
+			$res = $this->ajax_model->check_is_register($data);
+			echo json_encode(array('status' => $res));
+		}
+		else
+		{
+			show_404();
+		}
+	}
 
 	public function register()
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-
+			echo json_encode(array('status' => 'ok'));
 			$data = array(
 
 				'id'                    => '',
@@ -27,17 +41,39 @@ class Ajax extends CI_Controller {
 				'user_password' => md5($_POST['userpassword'].'guwen'),
 				'reg_time'    => get_local_time(),
 				'user_img'    => base_url()."/data/uploadimg/thumbnail/defaultperson.png",
-				'user_score'    => '250',
+				'user_score'    => '5',
 
 			);
-			$res = $this->ajax_model->is_register($data);
-			if( $res > 0 )
+			
+			$res = $this->ajax_model->user_register($data); 
+			if($res)
 			{
-				echo 1;
+				
+				$data = $this->ajax_model->get_user_info($data['user_email']);
+
+				foreach ($data as $key => $value) {
+
+					$this->session->set_userdata($value);
+
+				}
+
+				$log_info = array(
+
+					'id'                    => '',
+					'user_name'     => get_user_info('user_name'),
+					'login_time'      => get_local_time(),
+					'login_ip'          => get_remote_ip(),
+					'login_client'    =>get_user_info('user_agent'),
+
+				);
+
+				$login = $this->ajax_model->user_login_log($log_info);
+				$this->ajax_model->login_score(get_user_info('user_id'));
+				
 			}
 			else
 			{
-				$this->ajax_model->user_register($data);  
+				echo  json_encode(array('status' => 'fail'));
 			}
 		}
 		else
@@ -61,12 +97,12 @@ class Ajax extends CI_Controller {
 			$res = $this->ajax_model->user_login($data);
 			if($res == "0")
 			{
-				echo 0;
+				echo json_encode( array('status' =>0));
 			}
 			else
 			{
 
-				echo 1;
+				echo json_encode( array('status' =>1));
 				$data = $this->ajax_model->get_user_info($data['user_email']);
 
 				foreach ($data as $key => $value) {
@@ -101,7 +137,7 @@ class Ajax extends CI_Controller {
 		$array_items = array('user_name' => '', 'user_email' => '','user_id' => '');
 		$this->session->unset_userdata($array_items);
 		echo "<script>window.location.href='".base_url()."index.php/index'</script>";
-
+		
 	}
 
 	public function get_index_anwser()
@@ -129,9 +165,10 @@ class Ajax extends CI_Controller {
 				$data = array(
 
 					'id' =>'',
-					'comment_content' => $_POST['comment_content'],
+					'comment_content' => strip_tags($_POST['comment_content']),
 					'comment_time' => get_local_time(),
-					'comment_quesid' => $_POST['ques_id']
+					'comment_quesid' => $_POST['ques_id'],
+					'comment_uid'   => get_user_info("user_id")
 
 				);
 
@@ -198,7 +235,7 @@ class Ajax extends CI_Controller {
 
 			if( get_user_info("user_id") != NULL )
 			{
-				$reply_content = $_POST['reply_content'];
+				$reply_content = strip_tags($_POST['reply_content']);
 				$comment_id = $_POST['comment_id'];
 				$data = array(
 					'reply_content' => $reply_content,
@@ -266,10 +303,10 @@ class Ajax extends CI_Controller {
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$question_title = $_POST['question_title'];
-			$question_content = $_POST['question_content'];
+			$question_title = strip_tags($_POST['question_title']);
+			$question_content = strip_tags($_POST['question_content']);
 			$cate = $_POST['cate'];
-			$question_socore = $_POST['question_socore'];
+			$question_socore = strip_tags($_POST['question_socore']);
 			$question_anoy = $_POST['question_anoy'];
 			$data = array(
 
@@ -301,8 +338,8 @@ class Ajax extends CI_Controller {
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$nickname = $_POST['nickname'];
-			$profile = $_POST['profile'];
+			$nickname = strip_tags($_POST['nickname']);
+			$profile = strip_tags($_POST['profile']);
 			$data = array(
 				'user_name' => $nickname, 
 				'profile'         => $profile,
@@ -368,11 +405,12 @@ class Ajax extends CI_Controller {
 			$res = $this->ajax_model->acount_alter($data);
 			if( $res )
 			{
-				echo "修改成功！";
+				echo json_encode(array('status' => 'ok'));
+
 			}
 			else
 			{
-				echo "修改失败！";
+				echo json_encode(array('status' => 'false'));
 			}
 		}
 		else
@@ -395,11 +433,11 @@ class Ajax extends CI_Controller {
 
 			if( $old_password == $password )
 			{
-				echo "";
+				echo json_encode(array('status' => 'ok'));
 			}
 			else
 			{
-				echo "旧密码错误！";
+				echo json_encode(array('status' => 'fail'));
 			}
 		}
 		else
@@ -501,9 +539,9 @@ class Ajax extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			$url = "http://www.xunsearch.com/scws/api.php";
-			$ques_title = $_POST['question_title'];
-			$ques_content = $_POST['question_content'];
-			$cate = $_POST['cate'];
+			$ques_title = strip_tags($_POST['question_title']);
+			$ques_content = strip_tags($_POST['question_content']);
+			$cate = strip_tags($_POST['cate']);
 			$ques_id = $_POST['ques_id'];
 			$data = array();
 			$data['ques_id'] = $ques_id;
@@ -566,8 +604,8 @@ class Ajax extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			$status = array();
-			$inbox = $_POST['inbox'];
-			$to_id = $_POST['user_name'];
+			$inbox = strip_tags($_POST['inbox']);
+			$to_id = strip_tags($_POST['user_name']);
 			$data = array(
 
 			'id'            => '',
@@ -580,10 +618,11 @@ class Ajax extends CI_Controller {
 
 			$inbox_link = array(
 
-			'id' => '',
-			'to_id' => $to_id,
-			'my_id' => get_user_info('user_id'),
-			'time' => get_local_time()
+				'id' => '',
+				'to_id' => $to_id,
+				'my_id' => get_user_info('user_id'),
+				'time' => get_local_time()
+
 			);
 
 
@@ -640,7 +679,7 @@ class Ajax extends CI_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$user_name= $_POST['user_name'];
+			$user_name= strip_tags($_POST['user_name']);
 			$res = $this->ajax_model->get_user_infos($user_name);
 			echo json_encode($res);
 		} 
@@ -650,6 +689,26 @@ class Ajax extends CI_Controller {
 		}
 	}
 
+	public function create_cate()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			$cate_name= strip_tags($_POST['cate_name']);
+			$data = array(
+
+					'id' => '',
+					'tag_name' =>$cate_name,
+					'create_time' => get_local_time(),
+					'tag_img'      => base_url()."/data/uploadimg/thumbnail/defaultlogo.png"
+				);
+			$res = $this->ajax_model->create_cate($data);
+			echo json_encode($res);
+		} 
+		else
+		{
+			show_404();
+		}	
+	}
 	private function get_uid()
 	{
 		return uniqid();

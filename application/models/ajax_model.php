@@ -24,18 +24,25 @@ class Ajax_model extends CI_Model
 		return json_encode($res);
 	}
 
-	public function is_register($data)
+	public function check_is_register($data)
 	{	
-		$user_email = $data['user_email'];
-		$user_password = $data['user_password'];
-		$sql = "SELECT * FROM guwen_user WHERE user_email = ? ";
-		$query = $this->db->query($sql,array($user_email,$user_password));
+		$info = $data['data'];
+		if( $data['cate'] == "user_email")
+		{
+			$sql = "SELECT id FROM guwen_user WHERE user_email = ? ";
+		}
+		else
+		{
+			$sql = "SELECT id FROM guwen_user WHERE user_name = ? ";
+		}
+		$query = $this->db->query($sql,array($info));
 		return count($query->result_array());
 	}
 
 	public function user_register($data)
 	{
 		$this->db->insert('guwen_user',$data);
+		return TRUE;
 	}
 
 	public function get_user_info($useremail)
@@ -48,12 +55,14 @@ class Ajax_model extends CI_Model
 	public function user_login_log($data)
 	{
 		$this->db->insert('guwen_log',$data);
+		return TRUE;
 	}
 
 	public function login_score($data)
 	{
 		$this->db->where('user_id',$data);
 		$this->db->update('guwen_user',$this->add_score("1"));
+		return TRUE;
 	}
 
 	private function add_score($score)
@@ -76,8 +85,8 @@ class Ajax_model extends CI_Model
 		$res  = $query->result_array();
 		$num = $res[0]['num'];
 		$sqls = "SELECT user_id FROM guwen_message WHERE msgid = ?";
-		$querys = $this->db->query($sql,$data['comment_quesid']);
-		$re = $query->result_array();
+		$querys = $this->db->query($sqls,$data['comment_quesid']);
+		$re = $querys->result_array();
 		$msg_uid = $re[0]['user_id'];
 		if( $uid == $msg_uid )
 		{
@@ -218,66 +227,71 @@ class Ajax_model extends CI_Model
 		$ques_id = $data['comment_quesid'];
 		$user_id = get_user_info("user_id");
 
-		$sql  = "SELECT * FROM guwen_snslog WHERE comment_id = ? AND uid = ? AND quesid = ?";
-		$query = $this->db->query($sql,array($comment_id,$user_id,$ques_id));
-		$res = $query->result_array();
-
-		$is_null = count($res);
-
-		if( $is_null <= 0 )
+		if( $user_id != $data['comment_uid'] )
 		{
-			$data = array(
-
-			"id"         => "",
-			"comment_id"          => $comment_id,
-			"quesid"                    => $ques_id,
-			"uid"                          => $user_id,
-			"favour_time"           => "0",
-			"is_favour"                => "0"
-			);
-			$this->db->insert("guwen_snslog",$data);
-		}
-		else
-		{
-			foreach ($res as $value) {
-
-				$is_favour = $value['is_favour'];
-
-			}
-
-			if( $is_favour == "0") {
-
+			$sql  = "SELECT * FROM guwen_snslog WHERE comment_id = ? AND uid = ? AND quesid = ?";
+			$query = $this->db->query($sql,array($comment_id,$user_id,$ques_id));
+			$res = $query->result_array();
+			$is_null = count($res);
+			if( $is_null <= 0 )
+			{
 				$data = array(
 
-					'favour_time'    => get_local_time(),
-					'is_favour'         => "1"
-
+				"id"         => "",
+				"comment_id"          => $comment_id,
+				"quesid"                    => $ques_id,
+				"uid"                          => $user_id,
+				"favour_time"           => "0",
+				"is_favour"                => "0"
 				);
-
+				$this->db->insert("guwen_snslog",$data);
+			}
+			else
+			{
 				foreach ($res as $value) {
+
+					$is_favour = $value['is_favour'];
+
+				}
+
+				if( $is_favour == "0") {
+
+					$data = array(
+
+						'favour_time'    => get_local_time(),
+						'is_favour'         => "1"
+
+					);
+
+					foreach ($res as $value) {
+
+						$this->db->where('id',$value['id']);
+						$this->db->update('guwen_snslog',$data);
+
+					}
+				}
+				else
+				{
+					$data = array(
+
+						'favour_time'    => get_local_time(),
+						'is_favour'         => "0"
+
+					);
+
+					foreach ($res as $value) {
+
 
 					$this->db->where('id',$value['id']);
 					$this->db->update('guwen_snslog',$data);
 
+					}
 				}
 			}
-			else
-			{
-				$data = array(
-
-					'favour_time'    => get_local_time(),
-					'is_favour'         => "0"
-
-				);
-
-				foreach ($res as $value) {
-
-
-				$this->db->where('id',$value['id']);
-				$this->db->update('guwen_snslog',$data);
-
-				}
-			}
+		}
+		else
+		{
+			return NULL;
 		}
 
 	}
@@ -405,7 +419,6 @@ class Ajax_model extends CI_Model
 		$uid = $res[0]['user_id'];
 		$data['to_id'] = $uid;
 		$res = $this->db->insert("guwen_inbox",$data);
-		return TRUE;
 
 	}
 
@@ -453,5 +466,12 @@ class Ajax_model extends CI_Model
 
 	}
 
-
+	public function create_cate($data)
+	{
+		$this->db->insert("guwen_tag",$data);
+		$sql = "SELECT id, tag_name FROM guwen_tag";
+		$query = $this->db->query($sql);
+		$res = $query->result_array();
+		return $res;
+	}
 }?>
