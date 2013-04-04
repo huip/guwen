@@ -146,7 +146,7 @@ $(".cmt-reply").click(function() {
         result = $.parseJSON(result);     
         for(var i = 0; i < result.length; i++)
         {
-          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"' class='span1'>"+result[i].user_name+"</a><div class='span11 pull-right'>"+result[i].reply_content+"</div><p class='span10  reply-time-list sns-time-list'>"+result[i].time+"</p></div>");
+          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"' class='span2'>"+result[i].user_name+"</a><div class='span11 pull-right'>"+result[i].reply_content+"</div><p class='span10  reply-time-list sns-time-list'>"+result[i].time+"</p></div>");
           $reply_list.append($reply);
           $reply_list.attr("is-cmt-reply","true");
         }
@@ -183,7 +183,7 @@ $(".reply-btn").click(function() {
 
           result = $.parseJSON(result);
 
-          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span1'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
+          $reply= $("<div class='comment-list-info span12'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span2'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
           $reply_list.append($reply);
           $reply_num.html(parseInt($reply_num.html())+1);
           $(".reply-input").val(" ");
@@ -853,9 +853,9 @@ $(".question-title").blur(function() {
             msg = "请填写标题!";
             create_questitle_bok = ques_error_tip(msg,"error");
         }
-        else if($(this).val().length < 6) {
+        else if($(this).val().length < 4) {
 
-            msg = "标题不得小于6个字符!";
+            msg = "标题不得小于4个字符!";
             create_questitle_bok = ques_error_tip(msg,"short");
         } else {
 
@@ -871,7 +871,7 @@ $('.question-content').blur(function() {
         }
         else if($(this).val().length < 10) {
 
-            msg = "正文不小于10个字符!";
+            msg = "正文不小于6个字符!";
            create_quescontent_bok = ques_error_tip(msg,"short");
         } else {
 
@@ -1256,7 +1256,7 @@ function ques_error_tip(msg,type) {
 
 
 function get_new_inbox() {
-  var url = get_root_path()+"/ajax/get_new_inbox";
+  var url = get_root_path()+"ajax/get_new_inbox";
   $.post(url,
     {user_id:user_id},
     function(result){
@@ -1270,10 +1270,59 @@ function get_new_inbox() {
     });
 }
 
+function get_new_message() {
+    var url = get_root_path()+"message/get_message_num";
+    $.post(url,
+    {user_id:user_id},
+    function(result){
+        result = $.parseJSON(result);
+        console.log(result);
+        var answer = parseInt(result.answer);
+        var reply = parseInt(result.reply);
+        var favour = parseInt(result.favour);
+        var best = parseInt(result.best);
+        var num  = answer + reply+favour+best;
+        if( num > 0 ) {
+          $(".message-bubble").css("visibility","visible").html(num);
+      }else{
+         $(".message-bubble").css("visibility","hidden");
+      }
+
+      if( answer > 0 ) {
+          $(".answer-bubble").css("visibility","visible").html(answer);
+      }else{
+         $(".answer-bubble").css("visibility","hidden");
+      }
+
+      if( reply > 0) {
+
+          $(".reply-bubble").css("visibility","visible").html(reply);
+      }else{
+          $(".reply-bubble").css("visibility","hidden");
+      }
+
+      if( favour> 0) {
+
+          $(".favour-bubble").css("visibility","visible").html(favour);
+      }else{
+          $(".favour-bubble").css("visibility","hidden");
+      }
+
+      if( best > 0) {
+
+          $(".best-bubble").css("visibility","visible").html(best);
+      }else{
+          $(".best-bubble").css("visibility","hidden");
+      }
+    });
+}
+
 // to judge user is login and  push the inbox 
 if ( user_id != undefined ) {
       get_new_inbox();
+      get_new_message();
       setInterval(get_new_inbox,12000);
+      setInterval(get_new_message,12000);
 }
 
 // return current web app's full dir

@@ -44,12 +44,14 @@
                     <?} endforeach;} else{?>
 
                     <? foreach ($comment as $key => $value): {?>
+
                         <div class="comment-list-info span12" cid ="<?=$value['id']?>">
+
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro  span11" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
                                             <?if($value['best_uid'] == $value['user_id'] ){?>
-                                            <span class="pull-right btn disabled btn-danger">最佳答案</span>
+                                                <span class="is_best-answer pull-right">最佳答案</span>
                                             <?}?>
                                         </p>
                                         <p class=""><?= $value['comment_content'];?></p>

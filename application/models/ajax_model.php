@@ -88,17 +88,12 @@ class Ajax_model extends CI_Model
 		$querys = $this->db->query($sqls,$data['comment_quesid']);
 		$re = $querys->result_array();
 		$msg_uid = $re[0]['user_id'];
-		if( $uid == $msg_uid )
-		{
-
-			$this->db->insert('guwen_comment',$data);	
-		}
-		else
+		if( $uid != $msg_uid )
 		{
 			if( $num == "0" )
 			{
 				$this->db->where('user_id',$uid);
-				$this->db->update("guwen_user",$uid);
+				$this->db->update("guwen_user",$this->add_score("3"));
 				$this->db->insert('guwen_comment',$data);
 			} 
 			else if( $num == "1" )
@@ -118,6 +113,11 @@ class Ajax_model extends CI_Model
 
 			}
 
+		}
+		else
+		{
+			
+			$this->db->insert('guwen_comment',$data);	
 		}
 
 	}
@@ -152,7 +152,7 @@ class Ajax_model extends CI_Model
 			}
 			if( $user_id != $data['comment_uid'] )
 			{
-				if( $is_favour == 0 )
+				if( $is_favour == "0" )
 				{
 
 					foreach ($res as $value) {
@@ -183,21 +183,23 @@ class Ajax_model extends CI_Model
 				{
 					foreach ($res as $value) {
 
-						$current_favour = $value['comment_favour'] - 1;
+						$current_favour = $value['comment_favour'];
 					}
+
+
 					$data = array(
 
-						'comment_favour' => $current_favour,
+						'comment_favour' => $current_favour - 1,
 
 					);
 
 					$datas = array(
-					        'user_score' =>$user_score -1,
+					        'user_score' =>$user_score - 1,
 					);
 
 					$this->db->where('id',$comment_id);
 					$this->db->update('guwen_comment',$data);
-					$this->db->where('user_id',get_user_info("user_id"));
+					$this->db->where('user_id',$comment_uid);
 					$this->db->update("guwen_user",$datas);
 					$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
 					$query = $this->db->query($sql,array($comment_id));
@@ -241,7 +243,7 @@ class Ajax_model extends CI_Model
 				"comment_id"          => $comment_id,
 				"quesid"                    => $ques_id,
 				"uid"                          => $user_id,
-				"favour_time"           => "0",
+				"favour_time"           => get_local_time(),
 				"is_favour"                => "0"
 				);
 				$this->db->insert("guwen_snslog",$data);
@@ -475,4 +477,5 @@ class Ajax_model extends CI_Model
 		$res = $query->result_array();
 		return $res;
 	}
+
 }?>

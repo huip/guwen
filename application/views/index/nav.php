@@ -16,7 +16,18 @@
 		<li ><a href="<?=base_url();?>index.php/topic">分类</a></li>
 		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
 		<li class="message">
-                <a href="<?=base_url();?>index.php/message" id="message-menu">消息</a>
+                <span class="message-bubble"></span>
+                <a href="<?=base_url();?>index.php/message">消息</a>
+<!--                 <ul class="message-menu">
+                        <div class="icon-nav-bar">
+                          <li  class="btn" href="#"><i class="icon-comment"></i></li>
+                          <li  class="btn" href="#"><i class="icon-retweet"></i></li>
+                          <li  class="btn" href="#"><i class="icon-thumbs-up"></i></li>
+                          <li  class="btn" href="#"><i class=" icon-heart"></i></li>
+                        </div>
+                      <div>
+                      </div>
+                </ul> -->
             </li>
 		<li class="user-center" uid="<?=$user_id?>">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="＃">

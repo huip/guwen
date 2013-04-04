@@ -54,7 +54,7 @@
                             <span class="pull-left"><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /></a></span>
                             <p>
                                 <a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>" class="hot-ques-title"><?=$value['tag_name']?></a>
-                                <p class="hot-ques-num">共<?=$value['num']?>个回答</p>
+                                <p class="hot-ques-num">共<?=$value['num']?>个问题</p>
                             </p>
                         </p>
                     </div>

@@ -103,6 +103,23 @@
 .message-menu{
 	z-index: 100;
 	position: absolute;
+	width:300px;
+	height: 300px;
+	border:1px solid gray;
+	margin:0px 0 0 -125px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.icon-nav-bar {
+
+	width:320px;
+}
+.icon-nav-bar li {
+
+	height:20px;
+	width: 50px;
+	list-style: none;
+	float: left;
 }
 
 #footer{
@@ -323,6 +340,48 @@
 	visibility: hidden;
 }
 
+.message-bubble {
+
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 18px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	margin:5px 0 0 5px;
+	visibility: hidden;
+
+}
+.anwser-bubble,.reply-bubble,.favour-bubble,.best-bubble{
+
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 18px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	visibility: hidden;
+
+}
+
 /********************* register  login *********************/
 
 .login {
@@ -374,4 +433,9 @@
 .relative-ques-list {
 
 	padding: 5px;
+}
+.is_best-answer {
+	color:#f9761e;
+	font-size: 14px;
+	font-weight: bold;
 }

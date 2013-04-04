@@ -205,7 +205,6 @@ class Ajax extends CI_Controller {
 			if( $res != NULL )
 			{
 
-
 				if( count( $res ) != "0")
 				{
 
@@ -717,6 +716,8 @@ class Ajax extends CI_Controller {
 			show_404();
 		}	
 	}
+
+	
 	private function get_uid()
 	{
 		return uniqid();

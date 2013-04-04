@@ -3,14 +3,24 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
-      	<ul class="nav nav-tabs">
-		<li class="">
-		    <a href="<?=base_url()?>index.php/message/index">回答</a>
-		</li>
-		<li class="active"><a href="<?=base_url()?>index.php/message/reply">回复</a></li>
-		<li class=""><a href="<?=base_url()?>index.php/message/favour">赞同</a></li>
-		<li class=""><a href="<?=base_url()?>index.php/message/best">最佳回答</a></li>
-	</ul>
+    	<ul class="nav nav-tabs">
+	<li class="">
+		<span class="answer-bubble"></span>
+		<a href="<?=base_url()?>index.php/message/index">回答</a>
+	</li>
+	<li class="active">
+		<span class="reply-bubble"></span>
+		<a href="<?=base_url()?>index.php/message/reply">回复</a>
+	</li>
+	<li class="">
+		<span class="favour-bubble"></span>
+		<a href="<?=base_url()?>index.php/message/favour">赞同</a>
+	</li>
+	<li class="">
+		<span class="best-bubble"></span>
+		<a href="<?=base_url()?>index.php/message/best">最佳回答</a>
+	</li>
+          </ul>
 	<div class="my-answer">
 		<div class="my-reply">
 			<?foreach ($reply as $key => $value): {?>
@@ -51,15 +61,34 @@
 	    </div>
 	  <?}endforeach?>
 	</div>
-	<div class="hot-cate">
-	  <h5>热门分类</h5>
-	    <?foreach ($hot_cate as $key => $value): {?>
-	        <div class="hot-cate-list">
-	            <p><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /><?=$value['tag_name']?></a></p>
-	        </div>
-	    <?}endforeach?>
-	</div>
-	</div>
+	 <div class="hot-cate">
+              <h5>热门分类</h5>
+                <?foreach ($hot_cate as $key => $value): {?>
+                    <div class="hot-cate-list">
+                        <p>
+                            <span class="pull-left"><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /></a></span>
+                            <p>
+                                <a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>" class="hot-ques-title"><?=$value['tag_name']?></a>
+                                <p class="hot-ques-num">共<?=$value['num']?>个问题</p>
+                            </p>
+                        </p>
+                    </div>
+                <?}endforeach?>
+            </div>
+            <div class="hot-person">
+                <h5>活跃用户</h5>
+                <?foreach ($hot_person as $key => $value): {?>
+                    <div class="hot-cate-list">
+                        <p>
+                            <span class="pull-left"><a href="<?=base_url()?>/index.php/person/question/<?=$value['user_id']?>"><img height="40" width="40" src="<?=$value['user_img']?>" /></a></span>
+                            <p>
+                                <a href="<?=base_url()?>/index.php/person/question/<?=$value['user_id']?>" class="hot-ques-title"><?=$value['user_name']?></a>
+                                <p class="hot-ques-num"><?=$value['rank']?></p>
+                            </p>
+                        </p>
+                    </div>
+                <?}endforeach?>
+            </div>
     </div>
 </div>
 </div>

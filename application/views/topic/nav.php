@@ -16,7 +16,10 @@
 		</li>
 		<li class="active"><a href="<?=base_url();?>index.php/topic">分类</a></li>
 		<li><a href="<?=base_url();?>index.php/explore">发现</a></li>
-		<li><a href="<?=base_url();?>index.php/message">消息</a></li>
+		<li>
+                    <span class="message-bubble"></span>
+                  <a href="<?=base_url();?>index.php/message">消息</a>
+                </li>
 		<li class="user-center" uid="<?=$user_id?>">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
                         <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>

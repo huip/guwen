@@ -4,10 +4,22 @@
   <div class="row-fluid">
     <div class="span9">
       	<ul class="nav nav-tabs">
-		<li><a href="<?=base_url()?>index.php/message/index">回答</a></li>
-		<li class=""><a href="<?=base_url()?>index.php/message/reply">回复</a></li>
-		<li class=""><a href="<?=base_url()?>index.php/message/favour">赞同</a></li>
-		<li class="active"><a href="<?=base_url()?>index.php/message/best">最佳回答</a></li>
+		<li class="">
+                  <span class="answer-bubble"></span>
+                <a href="<?=base_url()?>index.php/message/index">回答</a>
+            </li>
+            <li class="">
+                  <span class="reply-bubble"></span>
+                  <a href="<?=base_url()?>index.php/message/reply">回复</a>
+              </li>
+            <li class="">
+                  <span class="favour-bubble"></span>
+                  <a href="<?=base_url()?>index.php/message/favour">赞同</a>
+              </li>
+            <li class="active">
+                    <span class="best-bubble"></span>
+                    <a href="<?=base_url()?>index.php/message/best">最佳回答</a>
+            </li>
 	</ul>
 	<div class="my-best">
 		<div class="my-reply">
@@ -47,7 +59,7 @@
                 </div>
               <?}endforeach?>
             </div>
-           <div class="hot-cate">
+            <div class="hot-cate">
               <h5>热门分类</h5>
                 <?foreach ($hot_cate as $key => $value): {?>
                     <div class="hot-cate-list">
@@ -55,7 +67,7 @@
                             <span class="pull-left"><a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /></a></span>
                             <p>
                                 <a href="<?=base_url()?>/index.php/topic/info/<?=$value['id']?>" class="hot-ques-title"><?=$value['tag_name']?></a>
-                                <p class="hot-ques-num">共<?=$value['num']?>个回答</p>
+                                <p class="hot-ques-num">共<?=$value['num']?>个问题</p>
                             </p>
                         </p>
                     </div>
