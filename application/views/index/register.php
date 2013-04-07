@@ -43,6 +43,7 @@
 	</div>
 	<div class="span5">
 		<div class="ad-bar">
+
 		</div>
 	</div>
 </div>
