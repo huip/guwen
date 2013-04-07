@@ -17,7 +17,6 @@ class Search extends CI_Controller {
 		$data['user_img'] = $this->session->userdata("user_img");
 		$data['user_name'] = $this->session->userdata("user_name");
 		$data['tag_list']      = $this->conn_model->get_tag_list();
-		$w = urldecode($w);
 		$res = $this->index_model->search($w);
 		$data['search'] = $res; 
 		$this->load->view('conn/header');
