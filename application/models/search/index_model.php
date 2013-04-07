@@ -8,7 +8,7 @@ class Index_model extends CI_Model
 
         public function search($w)
         {
-          
+
           $sql = "SELECT DISTINCT ms.ques_title,ms.msgid,ms.browser,ms.post_time,
                       (SELECT count(id) FROM guwen_comment WHERE comment_quesid =ms.msgid) AS answer 
                       FROM guwen_message AS ms,guwen_comment AS cmt WHERE ms.msgid = cmt.comment_quesid 
