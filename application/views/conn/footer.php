@@ -22,7 +22,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.Jcrop.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/main.js"></script>
 <script type="text/javascript">
-// var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-// document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa1c66ab0e7588cc78e97991ec1fee09d' type='text/javascript'%3E%3C/script%3E"));
-// </script>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1217de0125a7884269c4c038ecd73b03' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </html>
