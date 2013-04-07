@@ -206,21 +206,13 @@ class Ajax_model extends CI_Model
 					return $res; 
 				}
 			}
-			else
-			{
-
-				$sql = "SELECT comment_favour FROM guwen_comment where id = ?";
-				$query = $this->db->query($sql,array($comment_id));
-				$res = $query->result_array();
-				return $res; 	
-			}
-		}
-		else
-		{
+			
+		} else {
+				
 			return NULL;
 		}
-
 	}
+
 
 	public function set_favour_log($data)
 	{

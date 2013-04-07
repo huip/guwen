@@ -217,36 +217,39 @@ class Ajax extends CI_Controller {
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$comment_id = $_POST['comment_id'];
-			$quesid = $_POST['quesid'];
-			$comment_uid = $_POST['comment_uid'];
-			$data = array(
+			$uid  = get_user_info("user_id");
+			if( $uid != NULL) {
+				$comment_id = $_POST['comment_id'];
+				$quesid = $_POST['quesid'];
+				$comment_uid = $_POST['comment_uid'];
+				$data = array(
 
-				'id'                             => $comment_id,
-				'comment_favour'    => '0',
-				'comment_quesid'   =>$quesid,
-				'comment_uid'         => $comment_uid
+					'id'                             => $comment_id,
+					'comment_favour'    => '0',
+					'comment_quesid'   =>$quesid,
+					'comment_uid'         => $comment_uid
 
-			);
-			$this->ajax_model->set_favour_log($data);
-			$res = $this->ajax_model->add_favour($data);
-			if( $res != NULL )
-			{
-
-				if( count( $res ) != "0")
+				);
+				$this->ajax_model->set_favour_log($data);
+				$res = $this->ajax_model->add_favour($data);
+				if( $res != NULL )
 				{
 
-					foreach ($res as $value) {
+					if( count( $res ) != "0")
+					{
 
-						echo $value['comment_favour'];
+						foreach ($res as $value) {
+
+							echo json_encode( array("status" =>$value['comment_favour']));
+						} 
+
 					} 
+				}
+			} else {
 
-				} 
+				echo json_encode(array("status"=>"fail"));
 			}
-			else
-			{
-				echo "请先登录!";
-			}
+
 		}
 		else
 		{
