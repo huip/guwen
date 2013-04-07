@@ -40,9 +40,9 @@ class Conn_model extends CI_Model
 	{
 		$sql = "SELECT  us.user_id,us.user_name,us.user_img ,(SELECT rank FROM guwen_rank
 			 WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) AS rank
-			FROM guwen_user AS us, guwen_comment AS cmt ,
-			guwen_message AS  ms WHERE us.user_id = cmt.comment_uid
-			GROUP BY cmt.comment_uid ORDER BY COUNT(cmt.id) DESC  LIMIT 5";
+			FROM guwen_user AS us, guwen_comment AS cmt ,guwen_bestanwserlog AS blg,guwen_comment_reply AS rpl,
+			guwen_message AS  ms WHERE us.user_id = cmt.comment_uid AND cmt.comment_uid = blg.uid AND rpl.comment_id = cmt.id
+			GROUP BY cmt.comment_uid ORDER BY (SUM(cmt.comment_favour)*0.3+SUM(rpl.id)*0.1+(us.user_score*0.1) +sum(blg.id)*0.5/sum(cmt.id))  DESC  LIMIT 10";
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;
