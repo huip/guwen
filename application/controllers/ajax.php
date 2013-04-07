@@ -71,7 +71,7 @@ class Ajax extends CI_Controller {
 
 					'id'            => '',
 					'to_id'       => $data['user_name'],
-					'my_id'     => "515c6754b4c1a",
+					'my_id'     => "51614ae439b6d",
 					'inbox'     => $this->get_reg_inbox(),
 					'is_check' => 0,
 					'time'        => get_local_time()
@@ -81,7 +81,7 @@ class Ajax extends CI_Controller {
 
 					'id' => '',
 					'to_id' => $data['user_name'],
-					'my_id' => '515c6754b4c1a',
+					'my_id' => '51614ae439b6d',
 					'time' => get_local_time()
 
 				);
