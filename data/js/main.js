@@ -20,7 +20,7 @@ $(function(){
       var emaibok = false;
       var nickbok = false;
       var user_id = $(".user-center").attr('uid');
-     
+      var is_favour = 1;
 // upload img to server
 $("#userfiles").change(function () {
 
@@ -66,8 +66,9 @@ $(".comment-btn").click(function() {
           function(result){
             
             if( result.length == "5"){
-              alert(result);
-              window.location.href=get_root_path()+"/index/login";
+              
+             var url = get_root_path()+"/index/login";
+              alert_msg(result,url);
             } else {
               window.location.href =  get_root_path()+"/question/index/"+$qid; 
             } 
@@ -75,7 +76,8 @@ $(".comment-btn").click(function() {
         );
 } else {
 
-    alert("回答不能为空！");
+    var url = window.location.href;
+    alert_msg("请填写回答内容！","");
     return false;
 }
 
@@ -84,26 +86,41 @@ $(".comment-btn").click(function() {
 // add favour
 
 $(".sns-favour").click(function() {
-  var $current_favour = $(this).find("span");
-  var $comment_id = $(this).parent().parent().parent().parent().attr("cid");
-  var $qid = $(".question_info").attr("qid");
-  var $comment_uid = $(this).parent().parent().parent().attr("uid");
+  
+      var $current_favour = $(this).find("span");
+      var $comment_id = $(this).parent().parent().parent().parent().attr("cid");
+      var $qid = $(".question_info").attr("qid");
+      var $comment_uid = $(this).parent().parent().parent().attr("uid");
+       if($(this).hasClass("is_favour")) {
 
-  var url = get_root_path()+"/ajax/add_favour";
-  $.post(url,
-    {comment_id:$comment_id,quesid:$qid,comment_uid:$comment_uid},
-    function(result){
-      
-      if( result.length == "5")
-      {
-        alert($.trim(result));
-        window.location.href = get_root_path()+"/index/login";
-      } else {
-        $current_favour.html($.trim(result));
-      } 
+          return false;
+        }
+        if(is_favour > 2) {
+            alert_msg("你已经操作过了！","");
+            $(this).addClass("is_favour");
+            is_favour = 1;
+            return false ;
+         }
+        
+      var url = get_root_path()+"/ajax/add_favour";
+      $.ajax({
+          async: false, 
+          type: "POST",
+          url: url,
+          data: {comment_id:$comment_id,quesid:$qid,comment_uid:$comment_uid}
+          }).done(function(result) {
+              $result = $.parseJSON(result);
+                if( $result.status == "fail")
+                {
+                  
+                    var url  = get_root_path()+"/index/login";
+                    alert_msg("登陆后才能赞，",url);
+                } else {
+                  $current_favour.html($.trim($result.status));
+                  is_favour++
+                } 
+        });
 
-    }
-  );
 
 
 });
@@ -190,8 +207,9 @@ $(".reply-btn").click(function() {
         
         if(result.length == "5")
         {
-          alert($.trim(result));
-          window.location.href=get_root_path()+"/index/login";
+           
+           var url =get_root_path()+"/index/login";
+           alert_msg($.trim(result),url);
 
         } else {
 
@@ -207,7 +225,7 @@ $(".reply-btn").click(function() {
     );
   } else {
 
-    alert("内容不能为空！");
+    alert_msg("请填写评论！","");
     return false;
   }
 
@@ -1281,8 +1299,20 @@ function ques_error_tip(msg,type) {
       });
 
       $(".no-login-ques").click(function(){
+              
+           var url = get_root_path()+"/index/login";
+            alert_msg("亲，只有登录后才能发布问题",url);
 
-            window.location.href = get_root_path()+"/index/login";
+      });
+      $(".erro-confirm").click(function(){
+
+
+          if( $(this).attr("data-target") != "") {
+              window.location.href= $(this).attr("data-target");
+            }else {
+
+                $(".erro-confirm").attr("data-dismiss","modal");
+            }
 
       });
       $(".login-btn-trans").click(function(){
@@ -1293,6 +1323,13 @@ function ques_error_tip(msg,type) {
       });
 
 
+function alert_msg(msg,url){
+      $("#erro_tip").modal('toggle');
+      $(".ero-msg-body").html(msg);
+      $(".erro-confirm").attr("data-target",url);
+    
+
+}
 function input_auto(element,arg,speed) {
       var func,sprite;
       if( arg == "height") {

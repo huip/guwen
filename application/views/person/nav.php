@@ -75,7 +75,6 @@
 </div>
 
 <div class="modal create-question-modal" id="inbox">
-    <form name="form" id="theuploadform" >
     <div class="modal-header ">
         <a class="close" data-dismiss="modal">×</a>
         <h4>发送私信</h4>
@@ -91,7 +90,7 @@
           <a href="#" class="btn btn-primary add-inbox " data-dismiss ="" >提交</a>
       </div>
     </div>
-    </form>
+    
 </div>
 <?php
 } else {
