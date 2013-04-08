@@ -1352,13 +1352,28 @@ function get_new_inbox() {
     function(result){
       result = $.parseJSON(result);
       if( result[0].inboxnum > "0") {
+        show_message("","您有"+result[0].inboxnum+"条新的私信息请注意查收");
         $(".bubble").css("visibility","visible").html(result[0].inboxnum);
+        
       }else{
         $(".bubble").css("visibility","hidden");
       }
-
     });
 }
+
+
+function show_message(title,body) {
+    if(window.webkitNotifications) {
+
+          if (window.webkitNotifications.checkPermission() > 0) {  
+             window.webkitNotifications.requestPermission(show_message);
+          } else {  
+            window.webkitNotifications.createNotification(get_root_path()+"/data/upimage/thumbnail/defualtlogo.png",title,body).show();  
+      }
+
+    }
+}
+
 
 function get_new_message() {
     var url = get_root_path()+"/message/get_message_num";
@@ -1372,6 +1387,7 @@ function get_new_message() {
         var best = parseInt(result.best);
         var num  = answer + reply+favour+best;
         if( num > 0 ) {
+          show_message("","您有"+num+"条新的消息请注意查收");
           $(".message-bubble").css("visibility","visible").html(num);
       }else{
          $(".message-bubble").css("visibility","hidden");
@@ -1408,6 +1424,7 @@ function get_new_message() {
 
 // to judge user is login and  push the inbox 
 if ( user_id != undefined ) {
+    
       get_new_inbox();
       get_new_message();
       setInterval(get_new_inbox,15000);
@@ -1416,7 +1433,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/ndex.php';
   return root;
 }
 
