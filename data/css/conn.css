@@ -356,6 +356,9 @@ body{
 .usercnt-list {
 	margin:0px 0 0 0px !important;
 }
+.usercnt-list pre{
+	background: #fff;
+}
 
 .bubble {
 	background: #c3412f;
