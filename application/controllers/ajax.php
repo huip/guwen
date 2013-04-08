@@ -740,6 +740,7 @@ class Ajax extends CI_Controller {
 					'id' => '',
 					'tag_name' =>$cate_name,
 					'create_time' => get_local_time(),
+					'create_uid' => get_user_info("user_id"),
 					'tag_img'      => base_url()."/data/uploadimg/thumbnail/defaultlogo.png"
 				);
 			$res = $this->ajax_model->create_cate($data);
