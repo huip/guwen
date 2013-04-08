@@ -1361,7 +1361,11 @@ function get_new_inbox() {
     });
 }
 
+function get_permission() {
 
+      window.webkitNotifications.requestPermission();  
+
+}
 function show_message(title,body) {
     if(window.webkitNotifications) {
 
@@ -1424,7 +1428,7 @@ function get_new_message() {
 
 // to judge user is login and  push the inbox 
 if ( user_id != undefined ) {
-    
+    get_permission();
       get_new_inbox();
       get_new_message();
       setInterval(get_new_inbox,15000);
@@ -1433,7 +1437,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/ndex.php';
+  var root = location.protocol + '//' + location.host+'/index.php';
   return root;
 }
 
