@@ -36,6 +36,9 @@ body{
 
 .list_info {
 	padding: 10px;
+	background: #fff;
+	border-radius: 5px;
+	border:1px solid #ddd;
 
 }
 .index-content-list {
