@@ -21,6 +21,7 @@ $(function(){
       var nickbok = false;
       var user_id = $(".user-center").attr('uid');
       var is_favour = 1;
+
 // upload img to server
 $("#userfiles").change(function () {
 
@@ -1360,14 +1361,22 @@ function get_new_inbox() {
       }
     });
 }
+
+function init() {  
+            if (window.webkitNotifications) {  
+                window.webkitNotifications.requestPermission();  
+      }  
+}  
 function show_message(title,body) {
     if(window.webkitNotifications) {
 
-          if (window.webkitNotifications.checkPermission() > 0) {  
-                window.webkitNotifications.requestPermission(show_message);
-          } else {  
-            window.webkitNotifications.createNotification(get_root_path()+"/data/upimage/thumbnail/defualtlogo.png",title,body).show();  
-        }
+      if (window.webkitNotifications.checkPermission() >= 0) {  
+           window.webkitNotifications.requestPermission(show_message);
+      } else {
+
+             
+             window.webkitNotifications.createNotification(get_root_path()+"/data/upimage/thumbnail/defualtlogo.png",title,body); 
+      }
 
     }
 }
@@ -1423,7 +1432,6 @@ function get_new_message() {
 
 // to judge user is login and  push the inbox 
 if ( user_id != undefined ) {
-      
       get_new_inbox();
       get_new_message();
       setInterval(get_new_inbox,15000);
@@ -1432,7 +1440,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/guwen/index.php';
   return root;
 }
 
