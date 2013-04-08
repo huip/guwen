@@ -99,7 +99,7 @@ body{
 
 .right-bar{
 
-	margin:30px 0 0 0;
+	margin:48px 0 0 0;
 }
 
 .user-center .user-img {
@@ -115,6 +115,7 @@ body{
 	margin:0px 0 0 -125px;
 	padding-left:10px;
 	padding-right:10px;
+
 }
 .icon-nav-bar {
 
@@ -242,7 +243,12 @@ body{
 
 .hot-ques,.hot-cate,.hot-person,.tips {
 
-	border-bottom:1px solid #ddd;
+	border:1px solid #ddd;
+	background: #fff;
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin:5px 0 0 0;
 }
 /************************inbox page ***********************/
 
