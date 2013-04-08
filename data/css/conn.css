@@ -187,7 +187,7 @@ body{
 	margin:5px 0 0 0 !important;
 	padding:10px;
 	border-shadow:0 1px 0 #f2f4f5;
-	background: #F2F2F2;
+	background: #fff;
 	padding: 20px;
 	border-radius: 5px;
 	border:1px solid #ddd;
@@ -200,8 +200,10 @@ body{
 	min-height: 30px;
 	margin:5px 0 0 0 !important;
 	padding:10px;
-	border-bottom: 1px dotted #E6E6E6;
+	border: 1px solid #ddd;
 	border-shadow:0 1px 0 #f2f4f5;
+	background: #fff;
+	border-radius: 5px;
 
 }
 
