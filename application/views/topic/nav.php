@@ -104,6 +104,20 @@
     </div>
   </div>
 </div>
+
+<div class="modal create-question-modal" id="erro_tip">
+    <div class="modal-header ">
+        <a class="close" data-dismiss="modal">×</a>
+        <h4>信息</h4>
+      </div>
+      <div class="modal-body ero-msg-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">关闭</a>
+          <a href="#" class="btn btn-primary erro-confirm " data-dismiss ="" >确定</a>
+      </div>
+    </div>
 <?php
 }
 ?>
