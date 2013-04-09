@@ -165,36 +165,6 @@ $(".reply-input").keyup(function(event) {
       }
 })
 
-$(".cmt-reply").click(function() {
-  var $comment_id = $(this).parent().parent().parent().parent().attr("cid");
-  var $reply_list = $(this).parent().parent().next().children(".reply-list");
-  var url = get_root_path()+"/ajax/get_reply_list";
-  if ( $reply_list.attr("is-cmt-reply") == "false" ) {
-
-    $.post(url,
-      {comment_id:$comment_id},
-      function(result){
-        result = $.parseJSON(result); 
-        $reply_list.html(" ");    
-        for(var i = 0; i < result.length; i++)
-        {
-          $reply= $("<div class='comment-lists span12'><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"'><img src='"+result[i].user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result[i].user_id+"' class='span2'>"+result[i].user_name+"</a><div class='span11 pull-right'>"+result[i].reply_content+"</div><p class='span10  reply-time-list sns-time-list'>"+result[i].time+"</p></div>");
-          $reply_list.append($reply);
-          $reply_list.attr("is-cmt-reply","true");
-        }
-      }
-    );
-  }
-  $reply = $(this).parent().parent().next();
-  if( $(this).attr("clicked") == "false" ){
-    $reply.slideDown("slow");
-    $(this).attr("clicked","true");
-  }else{
-    $reply.slideUp("slow");
-    $(this).attr("clicked","false");
-  }
-});
-
 $(".reply-btn").click(function() {
   var $reply_content = $(this).prev().prev().val();
   var $reply_num = $(this).parent().parent().prev().find("span .cmt-num");
@@ -216,7 +186,7 @@ $(".reply-btn").click(function() {
 
           result = $.parseJSON(result);
 
-          $reply= $("<div class='comment-lists span12'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span2'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
+          $reply= $("<div class='comment-lists span11'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span2'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
           $reply_list.append($reply);
           $reply_num.html(parseInt($reply_num.html())+1);
           $(".reply-input").val(" ");
@@ -1440,7 +1410,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/guwen/index.php';
   return root;
 }
 

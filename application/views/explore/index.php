@@ -12,12 +12,12 @@
         		
                     <div class="feed-content span11">
         			<p class="feed-content-name"><span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" target="_blank"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
-        			<p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>" target="_blank" class="title-a"><?=$value['ques_title'];?></a></p>
+        			<p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a></p>
                           <!-- <div class='index-content-list'><?=$value['ques_content']?></div> -->
         			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>
                                 &nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp
                                 <span>分类:<?=$value['ques_cate']?></span><span class="pull-right">
-                                <a class="reply-color" href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" target="_blank" >回答(<span><?=$value['anwser']?></span>)</a></span>
+                                <a class="reply-color" href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" >回答(<span><?=$value['anwser']?></span>)</a></span>
                             </p>
         		</div>
 
@@ -72,7 +72,7 @@
                           <p>
                               <span class="pull-left"><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" target="_blank"><img height="40" width="40" src="<?=$value['user_img']?>" /></a></span>
                               <p>
-                                  <a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" target="_blank" class="hot-ques-title"><?=$value['user_name']?></a>
+                                  <a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" class="hot-ques-title"><?=$value['user_name']?></a>
                                   <p class="hot-ques-num"><?=$value['rank']?></p>
                               </p>
                           </p>

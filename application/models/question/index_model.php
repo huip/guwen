@@ -30,8 +30,24 @@ class Index_model extends CI_Model
 			ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id DESC";
 		$query = $this->db->query($sql,array($ques_id));
 		$res = $query->result_array($query);
+		
+		foreach ($res as $key => $value) 
+		{
+			$sql = "SELECT DISTINCT  reply.reply_content ,reply.time,us.user_name,us.user_img,us.user_id 
+			FROM guwen_comment_reply as reply ,guwen_user as us ,guwen_comment AS cmt
+			WHERE reply.comment_id  = ? AND reply.reply_uid = us.user_id 
+			AND cmt.comment_quesid = ? ";
+
+			$query = $this->db->query($sql,array($value['id'],$value['comment_quesid']));
+			$re = $query->result_array();
+			
+			$res[$key]['reply'] = $re;
+
+		}
+
 		return $res;
 	}
+
 
 	public function set_ques_browser($ques_id)
 	{
