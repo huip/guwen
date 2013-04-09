@@ -57,6 +57,10 @@
                                                     </div>
                                                 <?}endforeach?>
                                         </div>
+                                        <div id="addreply"> 
+                                                <textarea class="reply-input"></textarea><br />
+                                                <input type="button" class="btn pull-right  reply-btn  btn-primary" value="发布" />
+                                            </div>
                                     </div>
                                 </div>
                         </div>
@@ -96,7 +100,7 @@
                                                     </div>
                                                 <?}endforeach?>
                                             </div>
-                                            <div class="addreply span11">
+                                            <div id="addreply"> 
                                                 <textarea class="reply-input"></textarea><br />
                                                 <input type="button" class="btn pull-right  reply-btn  btn-primary" value="发布" />
                                             </div>

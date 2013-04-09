@@ -72,9 +72,10 @@ body{
 .reply-btn {
 	margin:5px 20px 0 0;
 }
-.addreply {
+
+ .comment-reply #addreply {
 	margin:5px 0 0 20px !important;
-	visibility: hidden;
+	display: none;
 }
 .help-block {
 	visibility:hidden;
