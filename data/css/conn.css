@@ -519,3 +519,8 @@ body{
 
 	margin:5px 0 0 0 !important;
 }
+
+.help .well {
+
+	background: #fff;
+}
