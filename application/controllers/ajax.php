@@ -400,29 +400,41 @@ class Ajax extends CI_Controller {
 		}
 		else
 		{
-			$file_name = explode(".", $_FILES['userfile']['name']);
-			$file_type = $file_name['1'];
-			if(in_array($file_type, $img_file))
+
+			if($_FILES['userfile']['size']/1024 > 300)
 			{
-				$uiq = $this->get_uid();
-
-				$user_temp = $file_name['0'].$uiq.".".$file_type;
-
-				if (file_exists("data/uploadimg/" . $_FILES["userfile"]["name"]))
-				{
-					echo $_FILES["userfile"]["name"] . " already exists. ";
-				}
-				else
-				{
-					move_uploaded_file($_FILES["userfile"]["tmp_name"],"data/uploadimg/" . $user_temp);
-					echo base_url()."data/uploadimg/".$user_temp;
-				}
+				echo "toobig";
+				return false;
 			}
 			else
 			{
-				echo "null";
 
+				$file_name = explode(".", $_FILES['userfile']['name']);
+				$file_type = $file_name['1'];
+				if(in_array($file_type, $img_file))
+				{
+
+					$uiq = $this->get_uid();
+
+					$user_temp = $file_name['0'].$uiq.".".$file_type;
+
+					if (file_exists("data/uploadimg/" . $_FILES["userfile"]["name"]))
+					{
+						echo $_FILES["userfile"]["name"] . " already exists. ";
+					}
+					else
+					{
+						move_uploaded_file($_FILES["userfile"]["tmp_name"],"data/uploadimg/" . $user_temp);
+						echo base_url()."data/uploadimg/".$user_temp;
+					}
+				}
+				else
+				{
+					echo "notimg";
+
+				}
 			}
+
 		}
 	}
 
@@ -557,7 +569,7 @@ class Ajax extends CI_Controller {
 		{
 			$data = array(
 
-				'user_score' => $_POST['score'],
+				'user_score' => intval($_POST['score']),
 				'user_id' => $_POST['uid']
 
 			);
@@ -737,12 +749,12 @@ class Ajax extends CI_Controller {
 			$cate_name= htmlspecialchars($_POST['cate_name']);
 			$data = array(
 
-					'id' => '',
-					'tag_name' =>$cate_name,
-					'create_time' => get_local_time(),
-					'create_uid' => get_user_info("user_id"),
-					'tag_img'      => base_url()."/data/uploadimg/thumbnail/defaultlogo.png"
-				);
+				'id' => '',
+				'tag_name' =>$cate_name,
+				'create_time' => get_local_time(),
+				'create_uid' => get_user_info("user_id"),
+				'tag_img'      => base_url()."/data/uploadimg/thumbnail/defaultlogo.png"
+			);
 			$res = $this->ajax_model->create_cate($data);
 			echo json_encode($res);
 		} 

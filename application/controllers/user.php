@@ -123,13 +123,18 @@ class User extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			$data['imgpath'] = $_POST['imgpath'];
-			if($data['imgpath'] != "null")
+			if($data['imgpath'] == "notimg")
 			{
-				$this->load->view("user/upimage",$data);
+				echo "您上传的不是图片！";
+			}
+			else if($data['imgpath'] == 'toobig')
+			{
+				echo "图片大小不能超过300K";
 			}
 			else
 			{
-				echo "您上传的不是图片！";
+				
+				$this->load->view("user/upimage",$data);
 			}
 
 		}
