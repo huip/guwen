@@ -17,7 +17,13 @@
         <p>
         <?php } endforeach;?>
       </div>
+      <div class="addcoment span11">
+        <h5>回答问题</h5>
+        <textarea class="comment-input"></textarea><br />
+        <input type="button" class="btn pull-right comment-btn btn-primary" value="提交" />
+      </div>
       <div class="comment-list span10">
+
                         <?php 
                             if($value['user_id'] == $user_id && $value['is_best'] != "1"){
                             foreach ($comment as $key => $value): {?>
@@ -30,8 +36,9 @@
                                         </p>
                                         <p class=""><?= nl2br($value['comment_content']);?></p>
                                         
-                                       <p><span class="sns-time-list pull-left"><?=$value['comment_time'];?></span>
-                                                <span class="pull-right"><span class="btn sns-favour btn-small">
+                                       <p>
+                                                <span class="sns-time-list pull-left"><?=$value['comment_time'];?></span>
+                                                <span class="pull-right sns-ques-bar"><span class="btn sns-favour btn-small">
                                                 <i class="icon-thumbs-up"></i>赞同(<span><?=$value['comment_favour']?></span>)</span>
                                                 &nbsp&nbsp<span class="btn cmt-reply btn-small"  clicked="false" >
                                                 <i class="icon-comment"></i>回复(<span class="cmt-num"><?=$value['reply_num']?></span>)
@@ -82,11 +89,7 @@
                         </div>
                     <?} endforeach;}?>
       </div>
-      <div class="addcoment span11">
-        <h5>回答问题</h5>
-        <textarea class="comment-input"></textarea><br />
-        <input type="button" class="btn pull-right comment-btn btn-primary" value="提交" />
-      </div>
+      
       </div>
     <div class="span3">
         <p class="modal-header relative-ques">相关问题</p>

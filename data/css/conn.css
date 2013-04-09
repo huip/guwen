@@ -33,12 +33,15 @@ body{
 	color:gray;
 	font-family:Georgia,Tahoma,Helvetica,arial;
 }
+.sns-ques-bar {
+	margin:0 -51px 0 0;
+}
 
 .list_info {
 	padding: 10px;
 	background: #fff;
 	border-radius: 5px;
-	border:1px solid #ddd;
+	border:1px solid #ddd ;
 
 }
 .index-content-list {
@@ -103,6 +106,7 @@ body{
 .right-bar{
 
 	margin:48px 0 0 0;
+	
 }
 
 .user-center .user-img {
@@ -181,10 +185,10 @@ body{
 	padding: 20px;
 }
 .comment-input {
-	width:550px;
+	width:540px;
 }
 .comment-btn {
-	margin:0 50px 0 0px;
+	margin:-5px 60px 0 0px;
 }
 .comment-list-info {
 	min-height: 30px;
@@ -484,6 +488,10 @@ body{
 	color:#f9761e;
 	font-size: 14px;
 	font-weight: bold;
+}
+
+.best-answer {
+	margin:0 -51px 0 0;
 }
 
 /*************************** help *****************/
