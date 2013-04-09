@@ -96,7 +96,7 @@
                                                     </div>
                                                 <?}endforeach?>
                                             </div>
-                                            <div id="addreply"> 
+                                            <div class="addreply span11">
                                                 <textarea class="reply-input"></textarea><br />
                                                 <input type="button" class="btn pull-right  reply-btn  btn-primary" value="发布" />
                                             </div>
