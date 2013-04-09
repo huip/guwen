@@ -24,7 +24,7 @@
 	<div class="my-answer">
 		<div class="my-reply">
 			<?foreach ($answer as $key => $value):{?>
-				<div class="comment-list-info  span12">
+				<div class="comment-list-info  span11">
                                 <p>
     					   <span><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name']?>:</a>回答了你的问题:</span>
     					   <span><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>"><?=$value['ques_title']?></a></span>

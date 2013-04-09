@@ -24,7 +24,7 @@
 	<div class="my-favour">
 		<div class="my-reply">
 			<?foreach ($favour as $key => $value): {?>
-				<div class="comment-list-info span12">
+				<div class="comment-list-info span11">
 					<p><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name']?>:</a>在问题<a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>"><?=$value['ques_title']?></a></p>
 					<p class="ft15">中赞了你的回答:<?=$value['comment_content']?></p>
 					<p class="sns-time-list"><?=$value["favour_time"]?></p>

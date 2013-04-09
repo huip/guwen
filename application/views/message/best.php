@@ -24,7 +24,7 @@
 	<div class="my-best">
 		<div class="my-reply">
 			<?foreach ($best as $key => $value): {?>
-				<div class="comment-list-info span12">
+				<div class="comment-list-info span11">
 					<p><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><?=$value['user_name']?>:</a>在问题<a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>"><?=$value['ques_title']?></a></p>
 					<p class="ft15">中把你的回答:<?=$value['comment_content']?>设为最佳答案</p>
 					<p class="sns-time-list"><?=$value["time"]?></p>
