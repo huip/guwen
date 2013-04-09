@@ -32,7 +32,7 @@
                                     <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
                                     <div class="comment-intro span10" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
-                                                <span class="pull-right btn btn-small btn-danger best-answer">最佳答案</span>
+                                                <span class="pull-right btn btn-small btn-danger best-answer">设为最佳答案</span>
                                         </p>
                                         <p class=""><?= nl2br($value['comment_content']);?></p>
                                         
