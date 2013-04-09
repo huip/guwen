@@ -1410,7 +1410,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/guwen/index.php';
+  var root = location.protocol + '//' + location.host+'/index.php';
   return root;
 }
 
