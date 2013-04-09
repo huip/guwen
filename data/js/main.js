@@ -764,7 +764,7 @@ function message_show_more(current_page,url,page) {
 
                     case "answer":
                           for(var i = 0; i < $result.length; i++) {
-                              $new_answer = $("<div class='comment-list-info span12'><p><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>回答了你的问题:</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></span></p><p>"+$result[i].comment_content+"</p><p class='sns-time-list'>"+$result[i].comment_time+"</p></div>");
+                              $new_answer = $("<div class='comment-list-info span11'><p><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>回答了你的问题:</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a></span></p><p>"+$result[i].comment_content+"</p><p class='sns-time-list'>"+$result[i].comment_time+"</p></div>");
                               $(".my-reply").append($new_answer);
                               $(".message-show-more").attr("current-page",pages);
                           }
@@ -772,7 +772,7 @@ function message_show_more(current_page,url,page) {
 
                     case "reply":
                           for(var i = 0; i < $result.length; i++) {
-                              $new_reply = $("<div class='comment-list-info span12'><p><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回复了你的回答:"+$result[i].comment_content+"</span></p><p>"+$result[i].reply_content+"</p><p class='sns-time-list'>"+$result[i].time+"</p></div>");
+                              $new_reply = $("<div class='comment-list-info span11'><p><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回复了你的回答:"+$result[i].comment_content+"</span></p><p>"+$result[i].reply_content+"</p><p class='sns-time-list'>"+$result[i].time+"</p></div>");
                               $(".my-reply").append($new_reply);
                               $(".message-show-more").attr("current-page",pages);
                           }
@@ -780,7 +780,7 @@ function message_show_more(current_page,url,page) {
 
                     case "favour":
                           for(var i = 0; i < $result.length; i++) {
-                              $new_favour = $("<div class='comment-list-info span12'><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回赞了你的回答:"+$result[i].comment_content+"</span><p class='sns-time-list'>"+$result[i].favour_time+"</p></div>");
+                              $new_favour = $("<div class='comment-list-info span11'><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a>在问题&nbsp</span><span><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"'>"+$result[i].ques_title+"</a>中回赞了你的回答:"+$result[i].comment_content+"</span><p class='sns-time-list'>"+$result[i].favour_time+"</p></div>");
                               $(".my-reply").append($new_favour);
                               $(".message-show-more").attr("current-page",pages);
                           }
