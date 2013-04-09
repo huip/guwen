@@ -13,7 +13,7 @@
                   <div class="feed-content span11">
                     <p class="feed-content-name"><span><a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><?=$value['tag_name']?></a></span></p>
                     <?foreach ($value['ques'] as $key => $values): {?>
-                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>" target = "_blank" class="title-a"><?=$values['ques_title']?></a><p class='sns-time-list'><?=$values['post_time']?></p></p>
+                          <p><a href="<?=base_url();?>index.php/question/index/<?=$values['msgid']?>"  class="title-a"><?=$values['ques_title']?></a><p class='sns-time-list'><?=$values['post_time']?></p></p>
                    <? } endforeach;?>
                   </div>
               </div>
