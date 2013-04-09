@@ -27,13 +27,13 @@ class Index_model extends CI_Model
 			(SELECT uid FROM guwen_bestanwserlog WHERE comment_id = cmt.id) AS best_uid 
 			FROM  guwen_comment AS cmt ,guwen_user AS us 
 			WHERE  us.user_id = cmt.comment_uid  AND cmt.comment_quesid = ? 
-			ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id";
+			ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id DESC";
 		$query = $this->db->query($sql,array($ques_id));
 		$res = $query->result_array($query);
 		return $res;
 	}
 
-	public function set_ques_browser($comment_id)
+	public function set_ques_browser($ques_id)
 	{
 
 		$user_id = get_user_info('user_id');
@@ -43,6 +43,7 @@ class Index_model extends CI_Model
 			$data = array(
 			'id'  => '',
 			'user_id' => get_user_info('user_id'),
+			'ques_id' => $ques_id,
 			'time'      => get_local_time()
 			);
 		}
@@ -52,13 +53,14 @@ class Index_model extends CI_Model
 
 				'id' => '',
 				'user_id' => '',
+				'ques_id' => $ques_id,
 				'time'      => get_local_time()
 			);
 
 		}
 		
 		$sql = "SELECT browser FROM  guwen_message WHERE msgid = ?";
-		$query = $this->db->query($sql,array($comment_id));
+		$query = $this->db->query($sql,array($ques_id));
 		$res = $query->result_array();
 		foreach ($res as $value) {
 		$current_browser = $value['browser'];
@@ -67,7 +69,7 @@ class Index_model extends CI_Model
 			'browser' => $current_browser + 1,
 		);
 		$this->db->insert("guwen_browserlog",$data);
-		$this->db->where("msgid",$comment_id);
+		$this->db->where("msgid",$ques_id);
 		$this->db->update("guwen_message",$datas);
 	}
 
