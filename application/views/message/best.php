@@ -34,7 +34,7 @@
 		<?if(count($best) > 0){
 			if( $best[0]['num'] > 1){
 		?>
-		<div class="span12 btn message-show-more" page="best" current-page="1">更多</div> 
+		<div class="span11 btn message-show-more" page="best" current-page="1">更多</div> 
 		<?}}?>
 	</div>
   </div>

@@ -38,7 +38,7 @@
 		<?if(count($reply) > 0){
 			if( $reply[0]['num'] > 1){
 		?>
-		<div class="span12 btn message-show-more" page="reply" current-page="1">更多</div> 
+		<div class="span11 btn message-show-more" page="reply" current-page="1">更多</div> 
 		<?}}?>	
 	</div>
 

@@ -37,7 +37,7 @@
 		<?if(count($answer) > 0){
 			if( $answer[0]['num'] > 1){
 		?>
-	       <div class="span12 btn message-show-more" page="answer" current-page="1">更多</div> 
+	       <div class="span11 btn message-show-more" page="answer" current-page="1">更多</div> 
 		<?}}?>
 	</div>
   </div>
