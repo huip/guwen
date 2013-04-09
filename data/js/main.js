@@ -60,6 +60,7 @@ $(".comment-input").keyup(function(event) {
 $(".comment-btn").click(function() {
   var $comment = $(".comment-input").val();
   var $qid = $(".question_info").attr("qid");
+  var callback = window.location.href;
   var url = get_root_path()+"/ajax/add_comment";
   if($comment != ""){
         $.post(url,
@@ -69,7 +70,7 @@ $(".comment-btn").click(function() {
             if( result.length == "5"){
               
              var url = get_root_path()+"/index/login";
-              alert_msg(result,url);
+              alert_msg(result,url,callback);
             } else {
               window.location.href =  get_root_path()+"/question/index/"+$qid; 
             } 
@@ -92,6 +93,7 @@ $(".sns-favour").click(function() {
       var $comment_id = $(this).parent().parent().parent().parent().attr("cid");
       var $qid = $(".question_info").attr("qid");
       var $comment_uid = $(this).parent().parent().parent().attr("uid");
+      var callback = window.location.href;
        if($(this).hasClass("is_favour")) {
 
           return false;
@@ -115,7 +117,7 @@ $(".sns-favour").click(function() {
                 {
                   
                     var url  = get_root_path()+"/index/login";
-                    alert_msg("登陆后才能赞，",url);
+                    alert_msg("登陆后才能赞，",url,callback);
                 } else {
                   $current_favour.html($.trim($result.status));
                   is_favour++
@@ -171,6 +173,7 @@ $(".reply-btn").click(function() {
   if( $reply_content != ""){
     $reply_list = $(this).parent().prev();
     $comment_id = $(this).parent().parent().parent().parent().attr("cid");
+    var callback = window.location.href;
     var url = get_root_path()+"/ajax/add_reply";
     $.post(url,
       {reply_content:$reply_content,comment_id:$comment_id},
@@ -180,7 +183,7 @@ $(".reply-btn").click(function() {
         {
            
            var url =get_root_path()+"/index/login";
-           alert_msg($.trim(result),url);
+           alert_msg($.trim(result),url,callback);
 
         } else {
 
@@ -1194,8 +1197,10 @@ email.keyup(function() {
       function(result){
         $result = $.parseJSON(result);
       if($result.status == "1"){
+         // save_user_pass(useremail,userpassword);
+         
+        window.location.href = call_back_url();
 
-        window.location.href = get_root_path()+"/index/index";
 
       } else {
 
@@ -1301,12 +1306,25 @@ $(".cmt-reply").click(function(){
               reply.css("display","none");
         }
 });
-function alert_msg(msg,url){
+function alert_msg(msg,url,callback){
       $("#erro_tip").modal('toggle');
       $(".ero-msg-body").html(msg);
-      $(".erro-confirm").attr("data-target",url);
-    
+      $(".erro-confirm").attr("data-target",url+"?"+callback);
+  
+}
 
+function call_back_url() {
+        var callback;
+         var full_url = window.location.href;
+         if(full_url != get_root_path()+"/index/login"){
+             var start = full_url.indexOf("?");
+             callback = full_url.substr(start+1,full_url.length);
+          }else{
+            
+            callback = get_root_path()+"/index";
+      }
+
+      return callback;
 }
 function input_auto(element,arg,speed) {
       var func,sprite;
@@ -1421,6 +1439,12 @@ function get_root_path() {
   return root;
 }
 
+function save_user_pass(username,password) {
+        
+        $.cookie("save_pass", "true", { expires: 7 }); // 存储一个带7天期限的 cookie
+        $.cookie("username", username, { expires: 7 }); // 存储一个带7天期限的 cookie
+        $.cookie("password", password, { expires: 7 }); // 存储一个带7天期限的 cookie
+}
 // add indexOf array function to compatible ie8 and ie9
 if (!Array.prototype.indexOf)
 {

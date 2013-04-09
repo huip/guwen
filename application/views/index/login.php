@@ -7,21 +7,21 @@
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">邮箱</label>
 					<div class="controls">
-						<input type="text" id="inputEmail" placeholder="邮箱">
+						<input type="text" id="inputEmail" placeholder="邮箱" value="">
 						<span class="help-inline"></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputPassword">密码</label>
 					<div class="controls">
-						<input type="password" id="inputPassword" placeholder="密码">
+						<input type="password" id="inputPassword" placeholder="密码" >
 						<span class="help-inline"></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">
 						<div class="error-tip"></div>
-						<button type="button" class="btn login-btn btn-primary">登录</button>
+						<button type="button" id="save_pass" class="btn login-btn btn-primary">登录</button>
 					</div>
 				</div>
 			</div>
