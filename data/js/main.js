@@ -1286,7 +1286,7 @@ function ques_error_tip(msg,type) {
           if( $(this).attr("data-target") != "") {
               window.location.href= $(this).attr("data-target");
             }else {
-
+                $(this).attr("data-target") = " ";
                 $(".erro-confirm").attr("data-dismiss","modal");
             }
 
