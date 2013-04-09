@@ -20,7 +20,7 @@
       <div class="addcoment span11">
         <h5>回答问题</h5>
         <textarea class="comment-input"></textarea><br />
-        <input type="button" class="btn pull-right comment-btn btn-primary" value="提交" />
+        <input type="button" class="btn pull-right comment-btn btn-primary" value="发布" />
       </div>
       <div class="comment-list span10">
 
@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="addreply span10">
                                                 <textarea class="reply-input"></textarea><br />
-                                                <input type="button" class="btn pull-right  reply-btn btn-primary" value="提交" />
+                                                <input type="button" class="btn pull-right  reply-btn btn-primary" value="发布" />
                                             </div>
                                         </div>
                             </div>
@@ -71,18 +71,28 @@
                                         
                                         <p><span class="sns-time-list pull-left">
                                                 <?=$value['comment_time'];?></span>
-                                                <span class="pull-right"><span class="btn sns-favour btn-small">
+                                                <span class="pull-right"><span class=" sns-favour btn-small">
                                                 <i class="icon-thumbs-up"></i>赞同(<span><?=$value['comment_favour']?></span>)</span>
-                                                &nbsp&nbsp<span class="btn cmt-reply btn-small"  clicked="false" >
+                                                &nbsp&nbsp<span class=" cmt-reply btn-small"  clicked="false" >
                                                 <i class="icon-comment"></i>回复(<span class="cmt-num"><?=$value['reply_num']?></span>)
                                                 </span></span>
                                         </p>
                                         <div class="comment-reply">
                                             <div class="reply-list span12" is-cmt-reply = "false">
+                                                <? foreach ( $value['reply'] as $key => $value):{?>
+                                                    <div class='comment-lists span11'>
+                                                        <a href=''>
+                                                            <img src='<?=$value['user_img']?>' class='span1'>
+                                                        </a>
+                                                        <a href='' class='span2'><?=$value['user_name']?></a>
+                                                        <div class='span11 pull-right'><?=$value['reply_content'];?></div>
+                                                        <p class='span10  reply-time-list sns-time-list'><?=$value['time']?></p>
+                                                    </div>
+                                                <?}endforeach?>
                                             </div>
                                             <div class="addreply span11">
                                                 <textarea class="reply-input"></textarea><br />
-                                                <input type="button" class="btn pull-right  reply-btn  btn-primary" value="提交" />
+                                                <input type="button" class="btn pull-right  reply-btn  btn-primary" value="发布" />
                                             </div>
                                         </div>
                             </div>

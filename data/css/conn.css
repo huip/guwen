@@ -61,17 +61,16 @@ body{
 }
 
 .comment-reply{
-	display:none;
 	min-height: 20px;
 	width: 500px;
 }
 
 .reply-input{
-	width: 440px;
+	width: 445px;
 	margin: 0 0 0 -20px;
 }
 .reply-btn {
-	margin:5px -20px 0 0;
+	margin:5px 20px 0 0;
 }
 .addreply {
 	margin:5px 0 0 20px !important;
@@ -528,4 +527,13 @@ body{
 .jc-demo-box {
 
 	color:red;
+}
+.cmt-reply {
+	margin:0 20px 0 0px;
+	cursor: pointer;
+	color:#5f9bcd;
+}
+.sns-favour {
+	cursor: pointer;
+	color: #5f9bcd;
 }
