@@ -34,7 +34,7 @@
 		<?if(count($favour) > 0){
 			if( $favour[0]['num'] > 1){
 		?>
-		<div class="span12 btn message-show-more" page="favour" current-page="1">更多</div> 
+		<div class="span11 btn message-show-more" page="favour" current-page="1">更多</div> 
 		<?}}?>
 	</div>
   </div>
