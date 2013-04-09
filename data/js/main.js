@@ -1293,7 +1293,10 @@ function ques_error_tip(msg,type) {
             window.location.href = get_root_path() + "/index/register";
       });
 
-
+$(".cmt-reply").click(function(){
+        var reply = $(this).parent().parent().next().children().next();
+        reply.css("visibility","visible");
+});
 function alert_msg(msg,url){
       $("#erro_tip").modal('toggle');
       $(".ero-msg-body").html(msg);
