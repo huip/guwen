@@ -91,7 +91,7 @@
       </div>
       
       </div>
-    <div class="span3">
+    <div class="span3 relative-ques-bar">
         <p class="modal-header relative-ques">相关问题</p>
         <?
                 foreach ($relative_question as $key => $value):{
