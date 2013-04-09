@@ -60,7 +60,7 @@ class Ajax_model extends CI_Model
 	public function login_score($data)
 	{
 		$this->db->where('user_id',$data);
-		$this->db->update('guwen_user',$this->add_score("1"));
+		$this->db->update('guwen_user',$this->add_score("2"));
 		return TRUE;
 	}
 
@@ -71,9 +71,9 @@ class Ajax_model extends CI_Model
 		$query = $this->db->query($sql,array(get_user_info("user_id")));
 		$res = $query->result_array();
 		foreach ($res as $value) {
-			$current_score = $value['user_score'];
+			$current_score = intval($value['user_score']);
 		}
-		return array("user_score" => $current_score + $score);
+		return array("user_score" => $current_score + intval($score));
 	}
 
 	public function add_comment($data)
@@ -147,7 +147,7 @@ class Ajax_model extends CI_Model
 
 			foreach ($score as $value) {
 
-				$user_score = $value["user_score"];
+				$user_score = intval($value["user_score"]);
 			}
 			if( $user_id != $data['comment_uid'] )
 			{
@@ -156,7 +156,7 @@ class Ajax_model extends CI_Model
 
 					foreach ($res as $value) {
 
-						$current_favour = $value['comment_favour']+1;
+						$current_favour = intval($value['comment_favour'])+1;
 					}
 
 					$data = array(
@@ -182,7 +182,7 @@ class Ajax_model extends CI_Model
 				{
 					foreach ($res as $value) {
 
-						$current_favour = $value['comment_favour'];
+						$current_favour = intval($value['comment_favour']);
 					}
 
 
