@@ -1300,6 +1300,7 @@ function ques_error_tip(msg,type) {
 
 $(".cmt-reply").click(function(){
         var reply = $(this).parent().parent().next().children().next();
+        $(window).scrollTop($(this).parent().parent().parent().height() + $(document).scrollTop() -150);
         if(reply.css("display") == "none") {
               reply.css("display","block");
         } else {
