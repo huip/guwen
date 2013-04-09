@@ -1295,7 +1295,7 @@ function ques_error_tip(msg,type) {
 
 $(".cmt-reply").click(function(){
         var reply = $(this).parent().parent().next().children().next();
-        reply.css("visibility","visible");
+        reply.css("display","block");
 });
 function alert_msg(msg,url){
       $("#erro_tip").modal('toggle');
