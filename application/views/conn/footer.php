@@ -8,15 +8,15 @@
   </div>
   
   <div class="guwen-help pull-right">
-    <a href="<?=base_url()?>index.php/index/help">故问指南</a>
+    <a href="<?=base_url()?>index.php/index/help" target = "_blank">故问指南</a>
     <span>|</span>
-    <a href="<?=base_url()?>index.php/question/index/274">意见反馈</a>
+    <a href="<?=base_url()?>index.php/question/index/274" target = "_blank">意见反馈</a>
     <span>|</span>
     <span>&copy<a href="http://www.huip.org/wp" target = "_blank">huip</a></span>
- <script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+  <script type="text/javascript">
+ var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1217de0125a7884269c4c038ecd73b03' type='text/javascript'%3E%3C/script%3E"));
- </script>
+</script>
   </div>
 </div>
 </div>

@@ -480,6 +480,12 @@ body{
 }
 
 /********************question ****************/
+.relative-ques-bar {
+	border:1px solid #ddd;
+	background: #fff;
+	margin:50px 0 0 0;
+	border-radius: 5px;
+}
 .relative-ques-list {
 
 	padding: 5px;
