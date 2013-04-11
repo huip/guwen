@@ -14,6 +14,20 @@
           <span>悬赏积分：<span class="ques-score"><?=$value['ques_socore'];?></span></span>
           <span>分类：<?=$value['ques_cate'];?></span>
           <span class="sns-time-list"><?=$value['post_time'];?></span>
+          <span>
+            <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style">
+                    <a class="jiathis_button_qzone"></a>
+                    <a class="jiathis_button_tsina"></a>
+                    <a class="jiathis_button_tqq"></a>
+                    <a class="jiathis_button_renren"></a>
+                    <a class="jiathis_button_kaixin001"></a>
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                    <a class="jiathis_counter_style"></a>
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1359460938612327" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+            </span>
         <p>
         <?php } endforeach;?>
       </div>
