@@ -169,7 +169,7 @@ body{
 
 .title-a{
 	color:#259;
-	font-size: 15px;
+	font-size: 16px;
 }
 .reply-color{
 	color: #999 !important;
@@ -538,4 +538,8 @@ body{
 .sns-favour {
 	cursor: pointer;
 	color: #5f9bcd;
+}
+
+.user-name-title {
+	color:#999;
 }
