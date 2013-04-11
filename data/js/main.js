@@ -418,7 +418,7 @@ $(".crop-image").live("click",function() {
 
 $(".best-answer").click(function() {
   var $comment_uid = $(this).parent().parent().attr("uid");
-  var $score = $(".ques-score").html();
+  var $score = parseInt($(".ques-score").html());
   var $msgid = $(".question_info").attr("qid");
   var $comment_id = $(this).parent().parent().parent().attr("cid");
   var url = get_root_path()+"/ajax/set_best_answer";
