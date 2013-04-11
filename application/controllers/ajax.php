@@ -540,7 +540,7 @@ class Ajax extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			$comment_uid = $_POST['comment_uid'];
-			$score = $_POST['score'];
+			$score = intval(trim($_POST['score']));
 			$msgid = $_POST['msgid'];
 			$cid = $_POST['cid'];
 			$data = array(
