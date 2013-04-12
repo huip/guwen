@@ -15,9 +15,8 @@ $(function(){
       var register_nick = $("#registerNick");
       var email = $("#inputEmail");
       var password = $("#inputPassword");
-      var emailbok = false;
-      var passbok = false;
-      var emaibok = false;
+      var emailbok = true;
+      var passbok = true;
       var nickbok = false;
       var user_id = $(".user-center").attr('uid');
       var is_favour = 1;
@@ -1256,6 +1255,10 @@ function ques_error_tip(msg,type) {
 
 }
 
+// login remenber pass
+$("#inputEmail").val($.cookie("username"));
+$("#inputPassword").val($.cookie("password"));
+
 // nav effect 
  $(".user-center").hover(function() {
           $(".user-menu").css("display","block");
@@ -1437,7 +1440,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/guwen/index.php';
   return root;
 }
 
