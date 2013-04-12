@@ -553,7 +553,7 @@ class Ajax extends CI_Controller {
 			$res = $this->ajax_model->set_best_answer($data);
 			if( $res )
 			{
-				echo "true";
+				echo "true".$this->ajax_model->get_message_score($msgid);
 			}
 		}
 		else
