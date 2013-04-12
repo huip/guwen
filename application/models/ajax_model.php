@@ -388,7 +388,7 @@ class Ajax_model extends CI_Model
 			'comment_id' => $data['comment_id']
 		);
 		$this->db->where('user_id',$data['user_id']);
-		$this->db->update('guwen_user',$this->add_score($data['user_score']));
+		$this->db->update('guwen_user',$this->add_score($data['ques_score']));
 		$this->db->where('msgid',$data['msgid']);
 		$this->db->update('guwen_message',$mes_best);
 		$this->db->insert('guwen_bestanwserlog',$bestlog);
