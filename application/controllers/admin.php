@@ -19,4 +19,11 @@ class Admin extends CI_Controller {
 		$data['user_info'] = $this->index_model->get_user_info();
 		$this->load->view("admin/index",$data);
 	}
+
+
+	public function clear_keywords()
+	{
+		$res = $this->index_model->clear_keywords();
+		var_dump($res);
+	}
 }
