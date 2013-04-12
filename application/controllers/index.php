@@ -92,5 +92,6 @@ class Index extends CI_Controller {
 		$this->load->view('index/help');
 		$this->load->view('conn/footer');
 	}
+
 }
 ?>
