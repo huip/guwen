@@ -199,7 +199,10 @@ body{
 	padding:10px;
 	border-shadow:0 1px 0 #f2f4f5;
 	background: #fff;
-	padding: 20px;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom: 0px;
 	border-radius: 5px;
 	border:1px solid #ddd;
 }
