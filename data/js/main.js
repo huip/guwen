@@ -1097,27 +1097,28 @@ register_email.keyup(function() {
   });
   $(".register-btn").click(function() {
 
-    if( emailbok&&passbok&&nickbok) {
-
-      user_name =register_nick.val();
-      user_email = register_email.val();
-      user_password = register_password.val();
-      register(get_root_path()+"/ajax/register",user_name,user_email,user_password);
-    }
+        register();
   });
 
   function register(url,username,useremail,userpassword) {
-    $.post(url,
-      {username:username,useremail:useremail,userpassword:userpassword},
-      function(result){
-        $result = $.parseJSON(result);
-        if($result.status == "ok") {
-          window.location.href = get_root_path()+"/index";
-        } else {
-          $(".error-tip").html("注册失败！").css("color","#b94a48");
-        }
+      var username =register_nick.val();
+      var useremail = register_email.val();
+      var userpassword = register_password.val();
+      var url =  get_root_path()+"/ajax/register";
+      if( emailbok&&passbok&&nickbok) {
+            $.post(url,
+              {username:username,useremail:useremail,userpassword:userpassword},
+              function(result){
+                $result = $.parseJSON(result);
+                if($result.status == "ok") {
+                  window.location.href = get_root_path()+"/index";
+                } else {
+                  $(".error-tip").html("注册失败！").css("color","#b94a48");
+                }
+              });
+      } else {
+          return false;
       }
-    );
   }
 
 email.keyup(function() {
@@ -1177,44 +1178,49 @@ email.keyup(function() {
       passbok = true;
     }
   });
-  $(".login-btn").click(function() {
-    if( emailbok == true && passbok == true ){
-      user_email = email.val();
-      user_password = password.val();
-      login(get_root_path()+"/ajax/login",user_email,user_password);
-    }
-    else{
 
-      return false;
-    }
+$(window).keydown(function(e){
+     if(e.keyCode == 13) {
+
+           if(window.location.href == get_root_path()+"/index/login" ) {
+                 login();
+            } else if ( window.location.href == get_root_path()+"/index/register") {
+
+               register();
+            }
+     }
+});
+  $(".login-btn").click(function() {
+        login();
   });
 
-  function login(url,useremail,userpassword) {
+  function login() {
+      var url = get_root_path()+"/ajax/login";
+      var useremail = email.val();
+      var userpassword = password.val();
+      if( emailbok == true && passbok == true ){
+           
+            $.post(url,
+              {useremail:useremail,userpassword:userpassword},
+              function(result){
+              $result = $.parseJSON(result);
+              if($result.status == "1"){
+                 
+                 save_user_pass(useremail,userpassword);
+                 
+                window.location.href = call_back_url();
 
-    $.post(url,
-      {useremail:useremail,userpassword:userpassword},
-      function(result){
-        $result = $.parseJSON(result);
-      if($result.status == "1"){
-         
-         save_user_pass(useremail,userpassword);
-         
-        window.location.href = call_back_url();
 
+              } else {
 
+                $(".error-tip").html("用户名或密码错误！").css("color","#b94a48");
+
+              }
+
+            });
       } else {
-
-        $(".error-tip").html("用户名或密码错误！").css("color","#b94a48");
+          return false;
       }
-    });
-  }
-
-
-$(".question-alter").click(function() {
-      
-})
-  function alter_quesition() {
-
   }
   function check_is_register(data,cate) {
     var url = get_root_path()+"/ajax/check_is_register";
@@ -1440,7 +1446,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/guwen/index.php';
   return root;
 }
 
