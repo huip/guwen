@@ -443,6 +443,7 @@ body{
 	border-radius: 5px;
 	border-shadow:0 1px 0 #f2f4f5;
 	border:1px solid #ddd;
+	background: #fff;
 }
 .register {
 	margin:30px auto;
@@ -453,6 +454,7 @@ body{
 	border-radius: 5px;
 	border-shadow:0 1px 0 #f2f4f5;
 	border:1px solid #ddd;
+	background: #fff;
 	
 }
 
