@@ -545,7 +545,7 @@ class Ajax extends CI_Controller {
 			$data = array(
 
 				'user_id' => $comment_uid,
-				'ques_score' => intval($this->ajax_model->get_message_score($msgid)),
+				'ques_score' => $this->ajax_model->get_message_score($msgid),
 				'msgid'         => $msgid,
 				'comment_id' => $cid
 			);
