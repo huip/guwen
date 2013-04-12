@@ -24,6 +24,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/main.js"></script>
 
 </html>
