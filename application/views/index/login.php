@@ -21,7 +21,7 @@
 				<div class="control-group">
 					<div class="controls">
 						<div class="error-tip"></div>
-						<button type="button" id="save_pass" class="btn login-btn btn-primary">登录</button>
+						<button type="button" class="btn login-btn btn-primary">登录</button>
 					</div>
 				</div>
 			</div>
