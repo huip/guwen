@@ -64,6 +64,14 @@ class Ajax_model extends CI_Model
 		return TRUE;
 	}
 
+	public function get_message_score($msgid)
+	{
+		$sql = "SELECT ques_socore FROM guwen_message WHERE msgid = ?";
+		$query = $this->db->query($sql,array($msgid));
+		$res = $query->result_array();
+		return $res[0]['ques_socore'];
+	}
+
 	private function add_score($score)
 	{
 
