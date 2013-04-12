@@ -4,10 +4,10 @@
   <div class="navbar-inner">
     <div class="container">
     	<a class="brand" href="<?=base_url()?>index.php/index">故问</a>
-    	<form class="navbar-search pull-left">
+    	<p class="navbar-search pull-left">
   		<input type="text" class="search-query" placeholder="搜索问题...">
 
-	</form>
+	</p>
 	<input class="btn pull-left search-btn-poi" type="button" value="搜索" />
 	<input class="btn pull-left search-btn-poi create-question" type="button" value="提问" />
     	<ul class="nav nav-poi">

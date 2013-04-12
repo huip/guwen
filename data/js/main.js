@@ -497,6 +497,12 @@ $('#typeahead').typeahead({source:subjects});
 });
 
  $(".search-btn").click(function(){
+  
+        search();
+ });
+
+ function search() {
+
   var $keywords = $(".search-query").val();
   var url = get_root_path()+"/search/index/"+$keywords;
   if($keywords != ""){
@@ -506,8 +512,7 @@ $('#typeahead').typeahead({source:subjects});
 
     return false;
   }
-
- });
+ }
 
 
 $(".show-more").click(function() {
@@ -1187,6 +1192,9 @@ $(window).keydown(function(e){
             } else if ( window.location.href == get_root_path()+"/index/register") {
 
                register();
+            } else {
+
+                search();
             }
      }
 });
