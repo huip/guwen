@@ -61,12 +61,12 @@
                                        <div class="comment-reply">
                                             <div class="reply-list span12" is-cmt-reply = "false">
                                                 <? foreach ( $value['reply'] as $key => $value):{?>
-                                                    <div class='comment-lists span11'>
-                                                        <a href=''>
+                                                    <div class='reply-lists span11'>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>'>
                                                             <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
-                                                        <a href='' class='span2'><?=$value['user_name']?></a>
-                                                        <div class='span11 pull-right'><?=$value['reply_content'];?></div>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span2'><?=$value['user_name']?></a>
+                                                        <p class='span11 pull-right'><?=$value['reply_content'];?></p>
                                                         <p class='span10  reply-time-list sns-time-list'><?=$value['time']?></p>
                                                     </div>
                                                 <?}endforeach?>
@@ -104,13 +104,13 @@
                                         <div class="comment-reply">
                                             <div class="reply-list span12" is-cmt-reply = "false">
                                                 <? foreach ( $value['reply'] as $key => $value):{?>
-                                                    <div class='comment-lists span11'>
-                                                        <a href=''>
+                                                    <div class='reply-lists span11'>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>'>
                                                             <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
-                                                        <a href='' class='span2'><?=$value['user_name']?></a>
-                                                        <div class='span11 pull-right'><?=$value['reply_content'];?></div>
-                                                        <p class='span10  reply-time-list sns-time-list'><?=$value['time']?></p>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span2'><?=$value['user_name']?></a>
+                                                        <p class='span11 pull-right'><?=$value['reply_content'];?></p>
+                                                        <p class='span10 reply-time-list sns-time-list'><?=$value['time']?></p>
                                                     </div>
                                                 <?}endforeach?>
                                             </div>

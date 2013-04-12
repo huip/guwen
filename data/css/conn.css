@@ -63,7 +63,7 @@ body{
 }
 
 .comment-reply{
-	min-height: 20px;
+	min-height: 0px;
 	width: 500px;
 }
 
@@ -208,7 +208,7 @@ body{
 }
 
 .comment-lists {
-	min-height: 30px;
+	min-height: 20px;
 	margin:5px 0 0 0 !important;
 	padding:10px;
 	border: 1px solid #ddd;
@@ -217,12 +217,35 @@ body{
 	border-radius: 5px;
 
 }
-
-.comment-list-info .comment-intro {
-	
+.comment-lists p {
+	margin:0 0 0 0px;
 }
-.reply-time-list{
-	margin:5px 0 0 30px!important;
+.reply-list .reply-lists {
+	min-height: 20px !important;
+	margin:5px 0 0 0 !important;
+	padding-top:6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	border: 1px solid #ddd;
+	border-shadow:0 1px 0 #f2f4f5;
+	background: #fff;
+	border-radius: 5px;
+}
+.reply-list .reply-lists p{
+	margin:-5px !important;
+}
+.comment-intro {
+	min-height: 0;
+
+}
+
+.question_info{
+	font-size: 13px;
+}
+
+.reply-list .reply-lists .reply-time-list{
+	margin:-5px 0 0 40px!important;
 }
 
 /**************************person page *********************/
@@ -546,6 +569,9 @@ body{
 
 .user-name-title {
 	color:#999;
+}
+.reply-list {
+	min-height: 0px !important;
 }
 
 
