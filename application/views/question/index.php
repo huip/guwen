@@ -43,7 +43,7 @@
                             foreach ($comment as $key => $value): {?>
                             
                         <div class=" comment-lists span12" cid ="<?=$value['id']?>">
-                                    <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
+                                    <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" alt="user_logo" class="span1" /></a>
                                     <div class="comment-intro span10" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
                                                 <span class="pull-right btn btn-small btn-danger best-answer">设为最佳答案</span>
@@ -63,7 +63,7 @@
                                                 <? foreach ( $value['reply'] as $key => $value):{?>
                                                     <div class='comment-lists span11'>
                                                         <a href=''>
-                                                            <img src='<?=$value['user_img']?>' class='span1'>
+                                                            <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
                                                         <a href='' class='span2'><?=$value['user_name']?></a>
                                                         <div class='span11 pull-right'><?=$value['reply_content'];?></div>
@@ -84,7 +84,7 @@
 
                         <div class="comment-lists span12" cid ="<?=$value['id']?>">
 
-                                    <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" class="span1" /></a>
+                                    <a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><img src="<?=$value['user_img'];?>" alt="user_logo" class="span1" /></a>
                                     <div class="comment-intro  span11" uid="<?=$value['comment_uid']?>">
                                         <p><a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>"><?= $value['user_name'];?></a>
                                             <?if($value['best_uid'] == $value['user_id'] ){?>
@@ -106,7 +106,7 @@
                                                 <? foreach ( $value['reply'] as $key => $value):{?>
                                                     <div class='comment-lists span11'>
                                                         <a href=''>
-                                                            <img src='<?=$value['user_img']?>' class='span1'>
+                                                            <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
                                                         <a href='' class='span2'><?=$value['user_name']?></a>
                                                         <div class='span11 pull-right'><?=$value['reply_content'];?></div>

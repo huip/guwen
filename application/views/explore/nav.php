@@ -21,7 +21,7 @@
               </li>
       <li class="user-center" uid="<?=$user_id?>">
             <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
-            <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
+            <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user_logo" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
             </a>
            <ul class=" pull-right user-menu">
                 <a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
