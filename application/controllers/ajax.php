@@ -540,13 +540,12 @@ class Ajax extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 			$comment_uid = $_POST['comment_uid'];
-			$score = $_POST['score'];
 			$msgid = $_POST['msgid'];
 			$cid = $_POST['cid'];
 			$data = array(
 
 				'user_id' => $comment_uid,
-				'user_score' => $score,
+				'user_score' => $this->ajax_model->get_message_score($msgid),
 				'msgid'         => $msgid,
 				'comment_id' => $cid
 			);
