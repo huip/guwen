@@ -24,7 +24,7 @@ class Index_model extends CI_Model
                 }
                 $numpage = ceil($count/$pagesize);
                 $sql = "SELECT us.user_img,us.user_name,us.user_id,ms.msgid,ms.post_time,ms.ques_title,'$numpage' AS num,
-                            IF(is_best = 0,'为解决','已解决') AS is_best,
+                            IF(is_best = 0,'未解决','已解决') AS is_best,
                             ms.ques_socore,ms.browser,
                             (SELECT count(*) FROM guwen_comment WHERE comment_quesid = ms.msgid) AS anwser,(SELECT tag_name FROM guwen_tag WHERE id = ms.ques_cate ) AS ques_cate
                             FROM guwen_message AS ms, guwen_user AS us WHERE ms.user_id = us.user_id ORDER BY msgid DESC LIMIT $offset,$pagesize";
