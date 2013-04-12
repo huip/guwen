@@ -9,7 +9,7 @@ class Index_model extends CI_Model
 
     public function get_topic_list($pages)
     {
-        $pagesize = 20;
+        $pagesize = 10;
         $sqls = "SELECT COUNT(id) AS num FROM guwen_tag";
         $querys = $this->db->query($sqls);
         $re = $querys->result_array();

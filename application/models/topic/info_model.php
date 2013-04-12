@@ -10,7 +10,7 @@ class Info_model extends CI_Model
     public function get_mess_info($id,$pages)
     {
 
-            $pagesize = 20;
+            $pagesize = 15;
             $sqls = "SELECT COUNT(msgid) AS num FROM guwen_message WHERE ques_cate= ?";
             $querys = $this->db->query($sqls,array($id));
             $re = $querys->result_array();

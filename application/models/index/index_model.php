@@ -9,7 +9,7 @@ class Index_model extends CI_Model
             public function get_message_list($pages)
             {   
               
-                $pagesize = 20;
+                $pagesize = 15;
                 $sqls = "SELECT COUNT(msgid) AS num FROM guwen_message";
                 $querys = $this->db->query($sqls);
                 $re = $querys->result_array();
