@@ -8,7 +8,7 @@
           <?php foreach ($list_info as $value): {?>
             <div class="ques-list span12">
             	<div class="feed-list span11">
-            		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>" ><img src="<?=$value['user_img'];?>" class="user-img span1" /></a>
+            		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>" ><img src="<?=$value['user_img'];?>" alt="user_logo" class="user-img span1" /></a>
             		<div class="feed-content span11">
             			<p class="feed-content-name"><span><a class="user-name-title" href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" ><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p>
             			<p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>"   class="title-a"><?=$value['ques_title'];?></a></p>
