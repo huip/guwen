@@ -9,7 +9,7 @@
               <?foreach ($topic_list as $key => $value):{?>
               <div class="ques-list span12">
               <div class="feed-list span11">
-                  <a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><img src="<?=$value['tag_img'];?>"s class="user-img span1" /></a>
+                  <a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><img src="<?=$value['tag_img'];?>" alt="user_logo" class="user-img span1" /></a>
                   <div class="feed-content span11">
                     <p class="feed-content-name"><span><a href="<?=base_url();?>index.php/topic/info/<?=$value['id']?>"><?=$value['tag_name']?></a></span></p>
                     <?foreach ($value['ques'] as $key => $values): {?>
@@ -60,7 +60,7 @@
                   <?foreach ($hot_cate as $key => $value): {?>
                       <div class="hot-cate-list">
                           <p>
-                              <span class="pull-left"><a href="<?=base_url()?>index.php/topic/info/<?=$value['id']?>"><img height="40" width="40" src="<?=$value['tag_img']?>" /></a></span>
+                              <span class="pull-left"><a href="<?=base_url()?>index.php/topic/info/<?=$value['id']?>"><img height="40" width="40"  alt= "user_logo" src="<?=$value['tag_img']?>" /></a></span>
                               <p>
                                   <a href="<?=base_url()?>index.php/topic/info/<?=$value['id']?>"  class="hot-ques-title"><?=$value['tag_name']?></a>
                                   <p class="hot-ques-num">共<?=$value['num']?>个问题</p>
@@ -74,7 +74,7 @@
                   <?foreach ($hot_person as $key => $value): {?>
                       <div class="hot-cate-list">
                           <p>
-                              <span class="pull-left"><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><img height="40" width="40" src="<?=$value['user_img']?>" /></a></span>
+                              <span class="pull-left"><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>"><img height="40" width="40" alt="user_logo" src="<?=$value['user_img']?>" /></a></span>
                               <p>
                                   <a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" class="hot-ques-title"><?=$value['user_name']?></a>
                                   <p class="hot-ques-num"><?=$value['rank']?></p>

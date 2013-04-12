@@ -27,7 +27,7 @@
               <div class="usercnt-list span4 pull-right">
                    <?foreach ($person_info as $value) :{?>
                    <pre>
-                        <img src='<?=$value['user_img']?>' />
+                        <img src='<?=$value['user_img']?>'  alt="user_logo"/>
                         <p uid="<?=$value['user_id']?>" class="person-info-bar"><?=$value['user_name']?></p>
                         <p>积分：<?=$value['user_score']?></p>
                         <p>等级:<?=$value['rank']?></p>
