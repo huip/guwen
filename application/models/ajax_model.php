@@ -375,10 +375,13 @@ class Ajax_model extends CI_Model
 
 	public function set_best_answer($data)
 	{
+		$current_score = 0;
+		$uid = $data['user_id'];
 		$mes_best = array(
 
 			'is_best' => '1'
 		);
+
 		$bestlog = array(
 
 			'id' => '',
@@ -387,8 +390,14 @@ class Ajax_model extends CI_Model
 			'time'       => get_local_time(),
 			'comment_id' => $data['comment_id']
 		);
+		$sql = "SELECT user_score FROM guwen_user WHERE user_id = ?";
+		$query = $this->db->query($sql,array($uid));
+		$res = $query->result_array();
+		foreach ($res as $value) {
+			$current_score = $value['user_score'] + $data['ques_score'];
+		}
 		$this->db->where('user_id',$data['user_id']);
-		$this->db->update('guwen_user',$this->add_score($data['ques_score']));
+		$this->db->update('guwen_user',array('user_score'=>$current_score));
 		$this->db->where('msgid',$data['msgid']);
 		$this->db->update('guwen_message',$mes_best);
 		$this->db->insert('guwen_bestanwserlog',$bestlog);
