@@ -21,7 +21,7 @@ class Index_model extends CI_Model
         $res = $query->result_array();
         foreach ($res as $key => $value) {
                     
-                    $sql = "SELECT msgid,ques_title,post_time,  (SELECT count(*) FROM guwen_comment 
+                    $sql = "SELECT msgid,ques_title,post_time,   (SELECT count(*) FROM guwen_comment 
                                 WHERE comment_quesid = msgid) AS anwser
                                 FROM guwen_message WHERE ques_cate = '$value[id]' ORDER BY msgid DESC LIMIT 3";
                     $query =  $this->db->query($sql);

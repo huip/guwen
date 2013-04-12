@@ -16,7 +16,7 @@
                           <!-- <div class='index-content-list'><?=$value['ques_content']?></div> -->
         			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>
                                 &nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp
-                                <span>分类:<?=$value['ques_cate']?></span><span class="pull-right">
+                                <span>状态:<?=$value['is_best']?></span><span class="pull-right">
                                 <a class="reply-color" href="<?=base_url().'index.php/question/index/'.$value['msgid'];?>" >回答(<span><?=$value['anwser']?></span>)</a></span>
                             </p>
         		</div>
