@@ -558,7 +558,7 @@ function show_more(url,current_page,page){
             switch(page){
                 case "index":
                     for(var i = 0; i < $result.length; i++) {
-                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p><a href=' "+get_root_path()+"/question/index/"+$result[i].msgid+" '  class='title-a'>"+$result[i].ques_title+"</a></p><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href=' "+get_root_path()+"/question/index/"+$result[i].msgid+"' class='reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
+                      $new_ques =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p><a href=' "+get_root_path()+"/question/index/"+$result[i].msgid+" '  class='title-a'>"+$result[i].ques_title+"</a><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href=' "+get_root_path()+"/question/index/"+$result[i].msgid+"' class='reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
                       $(".index-ques-list").append($new_ques);
                       $(".show-more").attr("current-page",pages);
                     }
@@ -578,7 +578,7 @@ function show_more(url,current_page,page){
 
                 case "explore":
                      for(var i = 0; i < $result.length; i++) {
-                          $new_message =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p class='feed-content-name'><span><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'>"+$result[i].user_name+"</a></span><p class='sns-time-list pull-right'>"+$result[i].post_time+"</p></p><p><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a></p><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"' class='get-index-anwser reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
+                          $new_message =$("<div class='ques-list span'><div class='feed-list span11'><a href='"+get_root_path()+"/person/question/"+$result[i].user_id+"'><img src='"+$result[i].user_img+"' class='user-img span1' /></a><div class='feed-content span11'><p><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"' class='title-a'>"+$result[i].ques_title+"</a><span class='sns-time-list pull-right'>"+$result[i].post_time+"</span></p><p class='sns-bar reply-color'><span>悬赏:</span>&nbsp&nbsp"+$result[i].ques_socore+"<span>浏览:</span>&nbsp&nbsp"+$result[i].browser+"<span>分类:"+$result[i].ques_cate+"</span><span class='pull-right'><a href='"+get_root_path()+"/question/index/"+$result[i].msgid+"' class='get-index-anwser reply-color'>回答(<span>"+$result[i].anwser+"</span>)</a></span></p></div>");
                           $(".index-ques-list").append($new_message);
                           $(".show-more").attr("current-page",pages);
                      }
@@ -1197,7 +1197,8 @@ email.keyup(function() {
       function(result){
         $result = $.parseJSON(result);
       if($result.status == "1"){
-         // save_user_pass(useremail,userpassword);
+         
+         save_user_pass(useremail,userpassword);
          
         window.location.href = call_back_url();
 
@@ -1442,7 +1443,6 @@ function get_root_path() {
 
 function save_user_pass(username,password) {
         
-        $.cookie("save_pass", "true", { expires: 7 }); // 存储一个带7天期限的 cookie
         $.cookie("username", username, { expires: 7 }); // 存储一个带7天期限的 cookie
         $.cookie("password", password, { expires: 7 }); // 存储一个带7天期限的 cookie
 }
