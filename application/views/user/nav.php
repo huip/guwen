@@ -20,9 +20,9 @@
                 <a href="<?=base_url();?>index.php/message">消息</a>
             </li>
     <li class="user-center" uid="<?=$user_id?>">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="＃">
-                    <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
-                   </a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="<?=base_url();?>index.php/user/index">
+        <img class="user-img" height='20' width='20' src="<?=$user_img;?>" alt="user" /><span class="bubble"></span>&nbsp&nbsp<span><?=$user_name;?></span>
+       </a>
        <ul class=" pull-right user-menu">
         <a href="<?=base_url();?>index.php/user/index"><li><i class="icon-user"></i><span>个人主页</span></li></a>
         <a href="<?=base_url();?>index.php/inbox"><li><i class="icon-envelope"></i><span>私信</span><span class="bubble"></span></li></a>
