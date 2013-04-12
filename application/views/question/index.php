@@ -65,7 +65,7 @@
                                                         <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>'>
                                                             <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
-                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span2'><?=$value['user_name']?></a>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span3'><?=$value['user_name']?></a>
                                                         <p class='span11 pull-right'><?=$value['reply_content'];?></p>
                                                         <p class='span10  reply-time-list sns-time-list'><?=$value['time']?></p>
                                                     </div>
@@ -108,7 +108,7 @@
                                                         <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>'>
                                                             <img src='<?=$value['user_img']?>' alt="user_logo" class='span1'>
                                                         </a>
-                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span2'><?=$value['user_name']?></a>
+                                                        <a href='<?=base_url();?>index.php/person/question/<?=$value['user_id']?>' class='span3 '><?=$value['user_name']?></a>
                                                         <p class='span11 pull-right'><?=$value['reply_content'];?></p>
                                                         <p class='span10 reply-time-list sns-time-list'><?=$value['time']?></p>
                                                     </div>

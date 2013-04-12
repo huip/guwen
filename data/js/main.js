@@ -188,7 +188,7 @@ $(".reply-btn").click(function() {
 
           result = $.parseJSON(result);
 
-          $reply= $("<div class='comment-lists span11'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span2'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
+          $reply= $("<div class='comment-lists span11'><a href='"+get_root_path()+"/person/question/"+result.user_id+"'><img src='"+result.user_img+"' class='span1'></a><a href='"+get_root_path()+"/person/question/"+result.user_id+"' class='span3'>"+result.user_name+"</a><div class=' span11 pull-right'>"+$reply_content+"</div><p class='span10 reply-time-list pull-left sns-time-list'>"+result.time+"</p></div>");
           $reply_list.append($reply);
           $reply_num.html(parseInt($reply_num.html())+1);
           $(".reply-input").val(" ");
