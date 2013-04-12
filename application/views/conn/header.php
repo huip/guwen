@@ -7,7 +7,6 @@
 	<meta  name="description" content="故问是由中南民族大学比特工场开发，以提升大学生活品质为核心定位的学生问答知识社区" />
 	<link rel="stylesheet" href="<?php echo base_url();?>data/css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>data/css/conn.css" type="text/css" />
-	<link rel="stylesheet" href="<?php echo base_url();?>data/css/jquery.Jcrop.min.css" type="text/css" />
 </head>
 </head>
 <body>
