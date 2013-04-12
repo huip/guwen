@@ -1,7 +1,7 @@
 <div id="main" class="span12">
 <div class="container-fluid">
   <div class="row-fluid">
-    	<div class="span7">
+    	<div class="span10">
 		<div class="login">
 			<div class="form-horizontal login-form">
 				<div class="control-group">
@@ -27,11 +27,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="span5">
+<!-- 	<div class="span5">
 		<div class="ad-bar ">
 
 		</div>
-	</div>
+	</div> -->
 </div>
 </div>
 </div>
