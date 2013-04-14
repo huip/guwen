@@ -11,12 +11,13 @@ class Test extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model("conn_model");
 		$this->load->model("search/index_model");
-		//$this->load->library('session');
+		$this->load->library('session');
 	}
 
 	public function index()
 	{
 		print_r($_SESSION);
+		echo $this->session->userdata("user_id");
 	}
 }
 ?>
