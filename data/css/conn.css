@@ -222,6 +222,7 @@ body{
 }
 .comment-lists p {
 	margin:0 0 0 0px;
+	word-wrap:break-word; 
 }
 .reply-list .reply-lists {
 	min-height: 20px !important;
