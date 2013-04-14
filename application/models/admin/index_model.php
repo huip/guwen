@@ -38,4 +38,13 @@ class index_model extends CI_Model
 
               return $keywords_diff;
       }
+
+      public function get_login_info($offset)
+      {
+          $pagesize = 20;
+          $sql = "SELECT * FROM guwen_log ORDER BY login_time DESC LIMIT $offset,$pagesize";
+          $query = $this->db->query($sql);
+          $res = $query->result_array();
+          return $res;
+      }
 }

@@ -37,4 +37,18 @@ class Admin extends CI_Controller {
 			$res = $this->index_model->clear_keywords();
 		}
 	}
+
+	public function get_login_info($offset)
+	{
+		$data['user_role'] = $this->session->userdata("user_role");
+		if($data['user_role'] == "1")
+		{
+			
+			$this->load->view('conn/header');
+			$this->load->view("admin/nav");
+			$data['login_info'] = $this->index_model->get_login_info($offset);
+			$this->load->view("admin/logininfo",$data);
+
+		}	
+	}
 }
