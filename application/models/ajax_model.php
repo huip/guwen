@@ -10,9 +10,9 @@ class Ajax_model extends CI_Model
 	{
 		$user_email = $data['user_email'];
 		$user_password = $data['user_password'];
-		$sql = "SELECT * FROM guwen_user WHERE user_email = ? AND user_password = ? ";
+		$sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
 		$query = $this->db->query($sql,array($user_email,$user_password));
-		return count($query->result_array());
+		return $query->result_array();
 
 	}
 
@@ -47,7 +47,7 @@ class Ajax_model extends CI_Model
 
 	public function get_user_info($useremail)
 	{
-		$sql = "SELECT user_id ,user_name,user_email,user_img FROM guwen_user WHERE user_email = ? ";
+		$sql = "SELECT user_id ,user_name,user_email,user_img,user_role FROM guwen_user WHERE user_email = ? ";
 		$query = $this->db->query($sql,array($useremail));
 		return $query->result_array();
 	}

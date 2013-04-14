@@ -1212,13 +1212,17 @@ $(window).keydown(function(e){
               {useremail:useremail,userpassword:userpassword},
               function(result){
               $result = $.parseJSON(result);
-              if($result.status == "1"){
+              if($result.status == "1"&& $result.role == "0"){
                  
                  save_user_pass(useremail,userpassword);
                  
                 window.location.href = call_back_url();
 
 
+              }  else if($result.status == "1"&& $result.role == "1"){
+                    save_user_pass(useremail,userpassword);
+                 
+                window.location.href = get_root_path()+"/admin";
               } else {
 
                 $(".error-tip").html("用户名或密码错误！").css("color","#b94a48");
