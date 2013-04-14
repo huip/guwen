@@ -123,14 +123,15 @@ class Ajax extends CI_Controller {
 			);
 
 			$res = $this->ajax_model->user_login($data);
-			if($res == "0")
+			$is_register = count($res);
+			if($is_register == "0")
 			{
 				echo json_encode( array('status' =>0));
 			}
 			else
 			{
 
-				echo json_encode( array('status' =>1));
+				echo json_encode( array('status' =>1,'role' =>$res[0]['user_role']));
 				$data = $this->ajax_model->get_user_info($data['user_email']);
 
 				foreach ($data as $key => $value) {

@@ -14,16 +14,27 @@ class Admin extends CI_Controller {
 
 	public function index() 
 	{
-		$this->load->view('conn/header');
-		$this->load->view("admin/nav");
-		$data['user_info'] = $this->index_model->get_user_info();
-		$this->load->view("admin/index",$data);
+		$data['user_role'] = $this->session->userdata("user_role");
+		if($data['user_role'] == "1")
+		{
+			$this->load->view('conn/header');
+			$this->load->view("admin/nav");
+			$data['user_info'] = $this->index_model->get_user_info();
+			$this->load->view("admin/index",$data);
+		}
+		else
+		{
+			show_404();
+		}
 	}
 
 
 	public function clear_keywords()
 	{
-		$res = $this->index_model->clear_keywords();
-		var_dump($res);
+		$data['user_role'] = $this->session->userdata("user_role");
+		if($data['user_role'] == "1")
+		{
+			$res = $this->index_model->clear_keywords();
+		}
 	}
 }
