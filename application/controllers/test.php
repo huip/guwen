@@ -4,6 +4,8 @@ class Test extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		session_name("stuzonesession");
 		session_start();
 		date_default_timezone_set('PRC');
 		$this->load->helper('url');
