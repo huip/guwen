@@ -49,11 +49,10 @@ class Conn_model extends CI_Model
 			(SELECT rank FROM guwen_rank
 			 WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) AS rank
 			FROM guwen_user AS us
-			
 			ORDER BY
-				us.user_score
+				(SELECT count(id) FROM guwen_comment WHERE comment_uid = us.user_id )
 			 DESC  LIMIT 10";
-			 
+
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;
