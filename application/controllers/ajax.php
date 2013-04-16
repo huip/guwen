@@ -502,7 +502,7 @@ class Ajax extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
 
-			$targ_w = $targ_h = 40;
+			$targ_w = $targ_h = 100;
 			$jpeg_quality = 90;
 			$src = $_POST['imgpath'];
 			$endsrc = "data/uploadimg/thumbnail/".$this->get_uid().".jpg";
