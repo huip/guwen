@@ -24,6 +24,7 @@ class Conn_model extends CI_Model
 		WHERE ms.user_id = us.user_id ORDER BY 
 		(anwser*0.5+ms.browser*0.3 +0.2/(NOW()-ms.post_time) )/((NOW()-ms.post_time)/1000 +anwser + ms.browser)
 		DESC LIMIT 5";
+		$this->db->cache_on();
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;
@@ -36,6 +37,7 @@ class Conn_model extends CI_Model
 			FROM guwen_tag AS tg,guwen_message  AS ms 
 			ORDER BY num DESC , 
 			ms.post_time DESC LIMIT 5 ";
+		$this->db->cache_on();
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;
@@ -46,13 +48,12 @@ class Conn_model extends CI_Model
 		$sql = "SELECT  us.user_id,us.user_name,us.user_img ,
 			(SELECT rank FROM guwen_rank
 			 WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) AS rank
-			FROM guwen_user AS us, guwen_comment AS cmt ,guwen_bestanwserlog AS blg,guwen_comment_reply 
-			AS rpl,guwen_message AS  ms WHERE us.user_id = cmt.comment_uid 
-			AND cmt.comment_uid = blg.uid AND rpl.comment_id = cmt.id
-			GROUP BY cmt.comment_uid 
+			FROM guwen_user AS us
+			
 			ORDER BY
-			 (SUM(cmt.comment_favour)*0.3+SUM(rpl.id)*0.1+(us.user_score*0.1) +sum(blg.id)*0.5/sum(cmt.id))  
+				us.user_score
 			 DESC  LIMIT 10";
+			 
 		$query = $this->db->query($sql);
 		$res = $query->result_array();
 		return $res;
