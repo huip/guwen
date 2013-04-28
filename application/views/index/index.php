@@ -14,7 +14,7 @@
                                 <span>
                                   <a class="user-name-title" href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" ><?=$value['user_name'];?></a></span>
                                   <span class="sns-time-list pull-right"><?=$value['post_time'];?></span>
-                                  <a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>"   class="title-a"><?=$value['ques_title'];?></a>
+                                  <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>"   class="title-a"><?=$value['ques_title'];?></a></p>
                         </p>
             		    
 
