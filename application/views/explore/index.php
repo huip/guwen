@@ -11,8 +11,8 @@
         		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>" target="_blank"><img src="<?=$value['user_img'];?>" alt='user_logo' class="user-img span1" /></a>
         		
                     <div class="feed-content span11">
-        			<!-- <p class="feed-content-name"><span><a class="user-name-title" href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" target="_blank"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p> -->
-        			<p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a><span class="sns-time-list pull-right"><?=$value['post_time'];?></span></p>
+        			<p class="feed-content-name"><span><a class="user-name-title" href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" target="_blank"><?=$value['user_name'];?></a></span><span class="sns-time-list pull-right"><?=$value['post_time'];?></span><p> 
+        			<!-- <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>" class="title-a"><?=$value['ques_title'];?></a><span class="sns-time-list pull-right"><?=$value['post_time'];?></span></p> -->
                           <!-- <div class='index-content-list'><?=$value['ques_content']?></div> -->
         			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>
                                 &nbsp&nbsp<span>浏览:<?=$value['browser']?></span>&nbsp&nbsp
