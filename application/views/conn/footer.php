@@ -25,8 +25,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>data/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.Jcrop.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>data/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/js/main-min.js"></script>
+<!--script type="text/javascript" src="<?php echo base_url();?>data/js/main-min.js"></script-->
 
-<!--script type="text/javascript" src="<?php echo base_url();?>data/js/main.js"></script-->
+<script type="text/javascript" src="<?php echo base_url();?>data/js/main.js"></script>
 
 </html>

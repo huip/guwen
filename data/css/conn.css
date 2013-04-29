@@ -589,6 +589,31 @@ body{
 }
 
 
+.post-message-fixed {
+
+	position: fixed;
+	z-index: 20;
+	top:60px;
+	left:600px;
+	background: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	border:1px solid #ccc;
+}
+
+.other-color {
+
+	background: #ddd;
+
+}
+
+.my-color{
+
+	background: #fff;
+}
+
+
+
 /* jquery.Jcrop.min.css v0.9.12 (build:20130126) */
 .jcrop-holder{direction:ltr;text-align:left;}
 .jcrop-vline,.jcrop-hline{background:#FFF url(Jcrop.gif);font-size:0;position:absolute;}
