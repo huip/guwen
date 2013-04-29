@@ -93,5 +93,15 @@ class Index extends CI_Controller {
 		$this->load->view('conn/footer');
 	}
 
+	public function boring()
+	{
+
+		$this->load->view("conn/header");
+		$this->load->view("index/nav");
+		$this->load->view("index/boring");
+		$this->load->view("conn/footer");
+
+	}
+
 }
 ?>

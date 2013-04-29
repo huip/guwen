@@ -1329,6 +1329,50 @@ $(".cmt-reply").click(function(){
               reply.css("display","none");
         }
 });
+
+
+
+$(".post-message").click(function() {
+
+          var $message = $(".message").val();
+          var $news;
+          var url = get_root_path() + "/ajax/get_message"
+          if( $message != "" ) {
+
+            append_news($message,"my");
+            $(".message").val("");
+            $.post(url,
+            {message:$message},
+            function(result){
+
+                  result = $.parseJSON(result);
+                 
+                if( result.result == "100" ) {
+
+                      append_news(result.response,"other");
+
+                }
+
+            });
+             
+          } else {
+
+            alert("请输入消息！");
+
+          }
+
+});
+
+function append_news(message,role) {
+   var $list =  $(".index-ques-list");
+   if(role == "other") {
+        $news = $("<div class='well other-color'>"+message+"</div>");
+  } else {
+
+    $news = $("<div class='well my-color'>"+message+"</div>");
+  }
+  $list.prepend($news).show();
+}
 function alert_msg(msg,url,callback){
       $("#erro_tip").modal('toggle');
       $(".ero-msg-body").html(msg);

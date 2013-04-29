@@ -764,6 +764,19 @@ class Ajax extends CI_Controller {
 		}	
 	}
 
+	public function get_message()
+	{
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			$message = $_POST['message'];
+			$url = "http://sandbox.api.simsimi.com/request.p?key=67e4a4e5-35e1-4f5f-8139-4937f8377a7a&lc=ch&ft=1.0&text=".$message;
+			$result = file_get_contents($url);
+			echo $result;
+		}
+
+	}
+
 	
 	private function get_uid()
 	{
