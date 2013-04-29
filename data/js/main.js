@@ -1351,6 +1351,9 @@ $(".post-message").click(function() {
 
                       append_news(result.response,"other");
 
+                } else {
+
+                  append_news("系统找不到你想要的答案！","other")
                 }
 
             });
