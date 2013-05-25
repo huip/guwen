@@ -1353,7 +1353,7 @@ $(".post-message").click(function() {
 
                 } else {
 
-                  append_news("系统找不到你想要的答案！","other")
+                     append_news("系统找不到你想要的答案！","other")
                 }
 
             });
@@ -1504,7 +1504,7 @@ if ( user_id != undefined ) {
 
 // return current web app's full dir
 function get_root_path() {  
-  var root = location.protocol + '//' + location.host+'/index.php';
+  var root = location.protocol + '//' + location.host+'/guwen/index.php';
   return root;
 }
 

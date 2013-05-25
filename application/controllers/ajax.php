@@ -45,6 +45,11 @@ class Ajax extends CI_Controller {
 
 			);
 			
+			if( $data['user_email'] == "" || $data['user_name'] == "" || $data['user_password'] == "")
+			{
+
+				return false;
+			}
 			$res = $this->ajax_model->user_register($data); 
 			if($res)
 			{
@@ -126,12 +131,12 @@ class Ajax extends CI_Controller {
 			$is_register = count($res);
 			if($is_register == "0")
 			{
-				echo json_encode( array('status' =>0));
+				echo json_encode( array( 'status' =>0 ) );
 			}
 			else
 			{
 
-				echo json_encode( array('status' =>1,'role' =>$res[0]['user_role']));
+				echo json_encode( array('status' =>1,'role' =>$res[0]['user_role'] ) );
 				$data = $this->ajax_model->get_user_info($data['user_email']);
 
 				foreach ($data as $key => $value) {
