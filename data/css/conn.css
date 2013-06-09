@@ -8,6 +8,7 @@ body{
 
 .user-img {
 	float: left;
+	border-radius: 15px;
 }
 .ques-list{
 	
