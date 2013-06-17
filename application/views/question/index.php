@@ -31,11 +31,7 @@
         <p>
         <?php } endforeach;?>
       </div>
-      <div class="addcoment span11">
-        <h5>回答问题</h5>
-        <textarea class="comment-input"></textarea><br />
-        <input type="button" class="btn pull-right comment-btn btn-primary" value="发布" />
-      </div>
+      
       <div class="comment-list span10">
 
                         <?php 
@@ -123,6 +119,13 @@
                         </div>
                     <?} endforeach;}?>
       </div>
+
+      <div class="addcoment span11">
+        <h5>回答问题</h5>
+        <textarea class="comment-input"></textarea><br />
+        <input type="button" class="btn pull-right comment-btn btn-primary" value="发布" />
+      </div>
+      
       
       </div>
     <div class="span3 relative-ques-bar">
