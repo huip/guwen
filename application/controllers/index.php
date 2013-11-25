@@ -13,12 +13,10 @@ class Index extends CI_Controller {
 		$this->load->model("conn_model");
 
 	}
-
+  // index page 
 	public function index()
-	{
-		$data['user_id'] = $this->session->userdata("user_id");
-		$data['user_img'] = $this->session->userdata("user_img");
-		$data['user_name'] = $this->session->userdata("user_name");
+  {
+    $this->render_user_info();
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$data['hot_ques'] = $this->conn_model->get_hot_ques();
 		$data['hot_cate'] = $this->conn_model->get_hot_cate();
@@ -41,32 +39,30 @@ class Index extends CI_Controller {
 		$this->load->view('conn/footer');
 	}
 
-	/**user register
-	*author huip
+	/** user register
+	*@author huip
 	*return bool
-	*/
+   */
+  // register page
 	public function register()
-	{
-		$data['user_id'] = $this->session->userdata("user_id");
-		$data['user_img'] = $this->session->userdata("user_img");
-		$data['user_name'] = $this->session->userdata("user_name");
+  {
+    $data = $this->render_user_info();
 		$this->load->view('conn/header');
 		$this->load->view("index/nav",$data);
 		$this->load->view('index/register');
 		$this->load->view('conn/footer');
 	}
-
+  // login page
 	public function login()
-	{
-		$data['user_id'] = $this->session->userdata("user_id");
-		$data['user_img'] = $this->session->userdata("user_img");
-		$data['user_name'] = $this->session->userdata("user_name");
+  {
+    $data = $this->render_user_info();
 		$this->load->view('conn/header');
 		$this->load->view("index/nav",$data);
 		$this->load->view('index/login');
 		$this->load->view('conn/footer');
 	}
-
+  // get new message page walterflow
+  // to-do rewrite this model
 	public function get_new_pages()
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -81,27 +77,24 @@ class Index extends CI_Controller {
 		}
 
 	}
-
+  // help page
 	public function help()
-	{
-		$data['user_id'] = $this->session->userdata("user_id");
-		$data['user_img'] = $this->session->userdata("user_img");
-		$data['user_name'] = $this->session->userdata("user_name");
+  {
+    $data = $this->render_user_info();
 		$this->load->view('conn/header');
 		$this->load->view("index/nav",$data);
 		$this->load->view('index/help');
 		$this->load->view('conn/footer');
 	}
 
-	public function boring()
-	{
-
-		$this->load->view("conn/header");
-		$this->load->view("index/nav");
-		$this->load->view("index/boring");
-		$this->load->view("conn/footer");
-
-	}
+  // render user info from session
+  private function render_user_info()
+  {
+    $data['user_id'] = $this->session->userdata("user_id");
+    $data['user_img'] = $this->session->userdata("user_img");
+    $data['user_name'] = $this->session->userdata("user_name");
+    return $data;
+  }
 
 }
 ?>
