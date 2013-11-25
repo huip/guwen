@@ -1,0 +1,650 @@
+#main {
+	margin:50px 15% 0 15%;
+}
+
+body{
+	background: url("../img/bg.gif");
+}
+
+.user-img {
+	float: left;
+	border-radius: 20px;
+}
+.ques-list{
+	
+	margin:10px 0 0 0;
+}
+.feed-list{
+
+	margin:0;
+}
+.feed-content {
+	float: right;
+	background: #fff;
+	padding-left: 20px;
+	padding-top:10px;
+	padding-right: 20px;
+	border-radius: 5px;
+	border:1px solid #ddd;
+}
+
+.sns-bar span {
+	margin: 0 0 0 0px;
+}
+.sns-time-list {
+	margin:0;
+	color:gray;
+	font-family:Georgia,Tahoma,Helvetica,arial;
+}
+.sns-ques-bar {
+	margin:0 -51px 0 0;
+}
+
+.list_info {
+	padding: 10px;
+	background: #fff;
+	border-radius: 5px;
+	border:1px solid #ddd ;
+
+}
+.index-content-list {
+	word-wrap:break-word;
+	word-break:break-all;
+	text-overflow: ellipsis;
+	height: 60px;
+	overflow: hidden;
+
+}
+.display-anwser {
+	display: none;
+}
+.slide-up {
+	display: none;
+	margin:0 40px 0 0 ;
+}
+
+.comment-reply{
+	min-height: 0px;
+	width: 500px;
+}
+
+.reply-input{
+	width: 445px;
+	margin: 5px 0 0 -20px;
+}
+.reply-btn {
+	margin:5px 40px 0 0;
+}
+
+ .comment-reply #addreply {
+	margin:5px 0 0 20px !important;
+	display: none;
+}
+.help-block {
+	visibility:hidden;
+}
+
+/***********************js crop ***************/
+/* Apply these styles only when #preview-pane has
+   been placed within the Jcrop widget */
+.jcrop-holder #preview-pane {
+  display: block;
+  position: absolute;
+  z-index: 2000;
+  top: 0px;
+  right: -220px;
+  padding: 6px;
+  background-color: white;
+
+}
+
+/* The Javascript code will set the aspect ratio of the crop
+   area based on the size of the thumbnail preview,
+   specified here */
+#preview-pane .preview-container {
+  width: 200px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.right-bar{
+
+	margin:48px 0 0 0;
+	
+}
+
+.user-center .user-img {
+	height:25px;
+	width: 25px;
+}
+.message-menu{
+	z-index: 100;
+	position: absolute;
+	width:300px;
+	height: 300px;
+	border:1px solid gray;
+	margin:0px 0 0 -125px;
+	padding-left:10px;
+	padding-right:10px;
+
+}
+.icon-nav-bar {
+
+	width:320px;
+}
+.icon-nav-bar li {
+
+	height:20px;
+	width: 50px;
+	list-style: none;
+	float: left;
+}
+
+#footer{
+
+	height: 60px;
+	line-height: 20px;
+	text-align: center;
+	margin:0 0 0 17%;
+	padding-bottom: 30px;
+	
+}
+
+#footer hr {
+	color:#ddd !important;
+}
+.bit-link a,.guwen-help a{
+	color:#999!important;
+}
+.show-more {
+  height:30px;
+  margin:5px 0 0 40px !important;
+  text-align:center;
+}
+.to-top{
+	height: 30px;
+	line-height: 30px;
+	position:fixed;
+	left:80%;
+	top:80%;
+	display: none;
+}
+
+.title-a{
+	color:#259;
+	font-size: 16px;
+}
+.reply-color{
+	color: #999 !important;
+}
+
+/*********************question page *****************************/
+
+.relative-ques{
+
+	margin:10px 0 0 0;
+
+}
+.addcomment {
+	padding: 20px;
+}
+.comment-input {
+	width:540px;
+}
+.comment-btn {
+	margin:-5px 60px 0 0px;
+}
+.comment-list {
+
+	margin:10px 0 0 0;
+}
+.comment-list-info {
+	min-height: 30px;
+	margin:5px 0 0 0 !important;
+	padding:10px;
+	border-shadow:0 1px 0 #f2f4f5;
+	background: #fff;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom: 0px;
+	border-radius: 5px;
+	border:1px solid #ddd;
+}
+.comment-list-info img {
+	float: left;
+}
+
+.comment-lists {
+	min-height: 20px;
+	margin:5px 0 0 0 !important;
+	padding:10px;
+	border: 1px solid #ddd;
+	border-shadow:0 1px 0 #f2f4f5;
+	background: #fff;
+	border-radius: 5px;
+
+}
+.comment-lists p {
+	margin:0 0 0 0px;
+	word-wrap:break-word; 
+}
+.reply-list .reply-lists {
+	min-height: 20px !important;
+	margin:5px 0 0 0 !important;
+	padding-top:6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	border: 1px solid #ddd;
+	border-shadow:0 1px 0 #f2f4f5;
+	background: #fff;
+	border-radius: 5px;
+}
+.reply-list .reply-lists p{
+	margin:-5px !important;
+}
+.comment-intro {
+	min-height: 0;
+
+}
+
+.question_info{
+	font-size: 13px;
+}
+
+.reply-list .reply-lists .reply-time-list{
+	margin:-5px 0 0 40px!important;
+}
+
+/**************************person page *********************/
+
+.person-list{
+	border:1px solid #ddd;
+	margin:0 0 0 0!important;
+	padding:10px;
+	border-radius: 4px;
+	border-shadow:0 1px 0 #f2f4f5;
+}
+
+.person-show-more{
+	margin:6px 0 0 0!important;
+}
+.hot-cate-list img {
+	width:40px;
+	height: 40px;
+}
+.hot-cate-list .hot-ques-num {
+	margin:-10px 0 0 0;
+	color:#999;
+	text-indent: 5px;
+}
+.hot-cate-list .hot-ques-title {
+	padding-left:5px;
+}
+
+.hot-ques,.hot-cate,.hot-person,.tips {
+
+	border:1px solid #ddd;
+	background: #fff;
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin:5px 0 0 0;
+}
+/************************inbox page ***********************/
+
+.inbox-show-more{
+	margin:5px 0 0 0!important;
+}
+.inbox-time-list {
+	margin:0 0 0 -10px;
+}
+/**************************** create question *****************/
+.create-cate {
+	margin:0 205px 0 0;
+	display: none;
+}
+.create-cate input {
+	width: 88px;
+}
+.create-cate span {
+	margin:-10px 0 0 5px;
+}
+.ques-error-tip {
+
+	margin:-28px 0 0 18px;
+	height: 30px;
+}
+
+.search-btn-poi {
+	margin:-10px 0 0 5px;
+}
+
+.nav-poi {
+	margin: 0 0 0 15px ! important;
+}
+.user-center {
+	margin:0 0 0 100px !important;
+}
+.user-menu {
+	width:90px;
+	height: 120px;
+	border:1px solid #ccc;
+	background:#ffffff;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	z-index: 20;
+	list-style: none;
+	margin:0;
+	border-radius:4px;
+	display: none;
+}
+.user-menu li {
+	padding:  5px;
+}
+.user-menu li span{
+	margin:0 0 0 5px;
+	color: #333;
+}
+.user-menu a:hover{
+	text-decoration: none;
+}
+.user-menu li:hover {
+	padding:  5px;
+	background: #0088cc;
+}
+
+.create-question-modal {
+	display: none;
+}
+
+.question-content {
+	width: 515px;
+	height: 60px;
+}
+.question-title {
+	width: 515px;
+}
+.question-socore{
+	width:40px;
+	height: 15px !important;
+	margin:5px 0 0 5px;
+}
+.question-anoy {
+	margin:-5px 0 0 0 !important;
+}
+.question-anoy-full {
+	margin:10px 0 0 0;
+}
+
+.question-cate {
+	list-style: none;
+	height:30px;
+	width:100px;
+	margin:0px;
+
+}
+.question-cate li {
+	float: left;
+	margin:0 0 0 5px;
+	width:60px;
+}
+.question-cate li input {
+	margin:-3px 0 0 0 !important;
+}
+
+/************ user center ************/
+.usercnt-list {
+	margin:0px 0 0 0px !important;
+}
+.usercnt-list pre{
+	background: #fff;
+}
+
+.bubble {
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 16px;
+	line-height: 16px;
+	border-radius: 16px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	visibility: hidden;
+}
+
+.message-bubble {
+
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 18px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	margin:5px 0 0 5px;
+	visibility: hidden;
+
+}
+.anwser-bubble,.reply-bubble,.favour-bubble,.best-bubble{
+
+	background: #c3412f;
+	color: #fff;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	-webkit-text-size-adjust: none;
+	padding: 0 5px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 18px;
+	text-indent: 0;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	z-index: 20;
+	visibility: hidden;
+
+}
+
+/********************* register  login *********************/
+
+.login {
+
+	margin:30px auto;
+	width:550px;
+	height: 150px;
+	padding-top:50px;
+	padding-bottom:50px;
+	border-radius: 5px;
+	border-shadow:0 1px 0 #f2f4f5;
+	border:1px solid #ddd;
+	background: #fff;
+}
+.register {
+	margin:30px auto;
+	width:550px;
+	height: 230px;
+	padding-top:50px;
+	padding-bottom:50px;
+	border-radius: 5px;
+	border-shadow:0 1px 0 #f2f4f5;
+	border:1px solid #ddd;
+	background: #fff;
+	
+}
+
+.ad-bar{
+	margin:50px 0 0 25px;
+	background: url("../img/guwen_ad.png") no-repeat;
+	width:400px;
+	height:242px;
+}
+
+.error-tip {
+	margin:-15px 0 0 0 !important;
+	line-height: 25px;
+	height:25px;
+}
+
+/*********************** user page *********************/
+
+.success-callback {
+
+	margin:-15px 0 0 0 !important;
+	line-height: 25px;
+	height:25px;
+}
+
+.acount-alter {
+	margin:10px 0 0 0;
+}
+
+/********************question ****************/
+.relative-ques-bar {
+	border:1px solid #ddd;
+	background: #fff;
+	margin:50px 0 0 0;
+	border-radius: 5px;
+}
+.relative-ques-list {
+
+	padding: 5px;
+}
+.is_best-answer {
+	color:#f9761e;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.best-answer {
+	margin:0 -51px 0 0;
+}
+
+/*************************** help *****************/
+.help-toggle {
+	cursor: pointer;
+}
+
+.collapse ol li {
+
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.ft15 {
+	font-size: 15px;
+}
+
+.message-show-more {
+
+	margin:5px 0 0 0 !important;
+}
+
+.help .well {
+
+	background: #fff;
+}
+
+.jc-demo-box {
+
+	color:red;
+}
+.cmt-reply {
+	margin:0 30px 0 0px;
+	cursor: pointer;
+	color:#5f9bcd;
+}
+.sns-favour {
+	cursor: pointer;
+	color: #5f9bcd;
+}
+
+.user-name-title {
+	color:#999;
+}
+.reply-list {
+	min-height: 0px !important;
+}
+
+/********************* search ***********/
+
+.search-list {
+	background: #fff;
+	padding:10px;
+	margin:5px 0 0 0;
+	border-radius: 5px;
+	border:1px solid #ddd;
+}
+
+
+.post-message-fixed {
+
+	position: fixed;
+	z-index: 20;
+	top:60px;
+	left:600px;
+	background: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	border:1px solid #ccc;
+}
+
+.other-color {
+
+	background: #ddd;
+
+}
+
+.my-color{
+
+	background: #fff;
+}
+
+
+
+/* jquery.Jcrop.min.css v0.9.12 (build:20130126) */
+.jcrop-holder{direction:ltr;text-align:left;}
+.jcrop-vline,.jcrop-hline{background:#FFF url(Jcrop.gif);font-size:0;position:absolute;}
+.jcrop-vline{height:100%;width:1px!important;}
+.jcrop-vline.right{right:0;}
+.jcrop-hline{height:1px!important;width:100%;}
+.jcrop-hline.bottom{bottom:0;}
+.jcrop-tracker{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;height:100%;width:100%;}
+.jcrop-handle{background-color:#333;border:1px #EEE solid;font-size:1px;height:7px;width:7px;}
+.jcrop-handle.ord-n{left:50%;margin-left:-4px;margin-top:-4px;top:0;}
+.jcrop-handle.ord-s{bottom:0;left:50%;margin-bottom:-4px;margin-left:-4px;}
+.jcrop-handle.ord-e{margin-right:-4px;margin-top:-4px;right:0;top:50%;}
+.jcrop-handle.ord-w{left:0;margin-left:-4px;margin-top:-4px;top:50%;}
+.jcrop-handle.ord-nw{left:0;margin-left:-4px;margin-top:-4px;top:0;}
+.jcrop-handle.ord-ne{margin-right:-4px;margin-top:-4px;right:0;top:0;}
+.jcrop-handle.ord-se{bottom:0;margin-bottom:-4px;margin-right:-4px;right:0;}
+.jcrop-handle.ord-sw{bottom:0;left:0;margin-bottom:-4px;margin-left:-4px;}
+.jcrop-dragbar.ord-n,.jcrop-dragbar.ord-s{height:7px;width:100%;}
+.jcrop-dragbar.ord-e,.jcrop-dragbar.ord-w{height:100%;width:7px;}
+.jcrop-dragbar.ord-n{margin-top:-4px;}
+.jcrop-dragbar.ord-s{bottom:0;margin-bottom:-4px;}
+.jcrop-dragbar.ord-e{margin-right:-4px;right:0;}
+.jcrop-dragbar.ord-w{margin-left:-4px;}
+.jcrop-light .jcrop-vline,.jcrop-light .jcrop-hline{background:#FFF;filter:alpha(opacity=70)!important;opacity:.70!important;}
+.jcrop-light .jcrop-handle{-moz-border-radius:3px;-webkit-border-radius:3px;background-color:#000;border-color:#FFF;border-radius:3px;}
+.jcrop-dark .jcrop-vline,.jcrop-dark .jcrop-hline{background:#000;filter:alpha(opacity=70)!important;opacity:.7!important;}
+.jcrop-dark .jcrop-handle{-moz-border-radius:3px;-webkit-border-radius:3px;background-color:#FFF;border-color:#000;border-radius:3px;}
+.solid-line .jcrop-vline,.solid-line .jcrop-hline{background:#FFF;}
+.jcrop-holder img,img.jcrop-preview{max-width:none;}
