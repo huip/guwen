@@ -2,11 +2,11 @@
 
 class Ajax extends CI_Controller {
 
-	public function __construct()
-	{
-		parent::__construct();
-		date_default_timezone_set('PRC');
-		$this->load->helper('url');
+  public function __construct()
+  {
+    parent::__construct();
+    date_default_timezone_set('PRC');
+    $this->load->helper('url');
 		$this->load->model('ajax_model');
 		$this->load->library('session');
 		$this->load->library('image_lib');
