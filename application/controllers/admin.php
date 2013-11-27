@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
    */
   public function index() 
   {
-    if(is_admin())
+    if($this->is_admin())
     {
       $this->load->view('conn/header');
       $this->load->view('admin/nav');
@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
    */
   public function clear_keywords()
   {
-    if(is_admin())
+    if($this->is_admin())
     {
       $res = $this->index_model->clear_keywords();
     }
@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
    */
   public function get_login_info($offset)
   {
-    if(is_admin())
+    if($this->is_admin())
     {
       $this->load->view('conn/header');
       $this->load->view('admin/nav');
