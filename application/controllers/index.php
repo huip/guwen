@@ -16,7 +16,7 @@ class Index extends CI_Controller {
   // index page 
 	public function index()
   {
-    $this->render_user_info();
+    $data = $this->render_user_info();
 		$data['tag_list']      = $this->conn_model->get_tag_list();
 		$data['hot_ques'] = $this->conn_model->get_hot_ques();
 		$data['hot_cate'] = $this->conn_model->get_hot_cate();
