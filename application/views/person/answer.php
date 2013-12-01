@@ -11,7 +11,7 @@
 		</ul>
 		<div class="person-list span8 pull-left">
                     <div class="person-info-list">
-                    <?php foreach ($person_answer as $key => $value):{?>
+                    <?php foreach ($person_anwser as $key => $value):{?>
                       <div class="comment-list-info">
                           <p><a href="<?=base_url();?>index.php/question/index/<?=$value['msgid'];?>" class="title-a"><?=$value['ques_title']?></a><p>
                           <p><?=$value['myanswer']?></p>
@@ -19,8 +19,8 @@
                       </div>
                     <?php } endforeach;?> 
                    </div>
-                     <? if(count($person_answer)>0) {
-                            if( $person_answer[0]['num'] > 1 ){?>
+                     <? if(count($person_anwser)>0) {
+                            if( $person_anwser[0]['num'] > 1 ){?>
                                 <div class="span12 btn person-show-more" page="other-answer" current-page="1">更多</div> 
                       <?}}?>                     
              </div>

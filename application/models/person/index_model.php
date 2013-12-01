@@ -57,7 +57,7 @@ class Index_model extends CI_Model
 		}
 	}
 
-	public function get_my_answer($uid,$pages)
+	public function get_my_anwser($uid,$pages)
 	{
 		$pagesize = 10;
 		$sqls = "SELECT COUNT(msgid) AS num FROM guwen_message WHERE user_id =  ?";
