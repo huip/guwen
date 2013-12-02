@@ -10,7 +10,7 @@ class User extends CI_Controller {
     $this->load->helper('url');
     $this->load->model('user/index_model');
     $this->load->library('session');
-    $this->load->mode('conn_model');
+    $this->load->model('conn_model');
   }
   
   /*
