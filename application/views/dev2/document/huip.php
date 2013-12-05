@@ -42,6 +42,8 @@
        <li>add document controller url :/document/index</li>
        <li>add api controller url :/api/index</li>
        <li>add backbone underscore jquery bootstrap frameword</li>
+       <li>add sea.js</li>
+       <li>add less and run.sh</li>
      </ul>
   </body>
 </html>
