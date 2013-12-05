@@ -37,10 +37,11 @@
   </head>
   <body>
     <h1>huip's document</h1>
-     <h2>document controller</h2>
       <p>2013-12-5</p>
      <ul>
-       <li> controller url :/document/index</li>
+       <li>add document controller url :/document/index</li>
+       <li>add api controller url :/api/index</li>
+       <li>add backbone underscore jquery bootstrap frameword</li>
      </ul>
   </body>
 </html>
