@@ -4,6 +4,7 @@
   </head>
   <body>
     <h2>guwen document</h2>
-    <a href="document/huip">huip</a>
+    <p><a href="document/huip">huip</a></p>
+    <p><a href="document/polande">polande</a></p>
   </body>
 </html>

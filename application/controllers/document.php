@@ -18,4 +18,9 @@ class Document extends CI_Controller {
   {
     $this->load->view('dev2/document/huip');
   }
+  public function polande($s)
+  {
+    echo $s;
+    $this->load->view('dev2/document/polande');
+  }
 }
