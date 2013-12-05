@@ -1,102 +1,26 @@
-<a name="go_to_top"></a>
-<div id="main" class="span12">
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span9">
-      <div class="index-ques-list span12">
-          <h5 class="modal-header"><i class="icon-list"></i>&nbsp&nbsp最新动态</h5>
-          <?php foreach ($list_info as $value): {?>
-            <div class="ques-list span12">
-            	<div class="feed-list span11">
-            		<a href="<?=base_url();?>index.php/person/question/<?=$value['user_id']?>" ><img src="<?=$value['user_img'];?>" alt="user_logo" class="user-img span1" /></a>
-            		<div class="feed-content span11">
-            			<p class="feed-content-name">
-                                <span>
-                                  <a class="user-name-title" href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" ><?=$value['user_name'];?></a></span>
-                                  <span class="sns-time-list pull-right"><?=$value['post_time'];?></span>
-                                  <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid'];?>"   class="title-a"><?=$value['ques_title'];?></a></p>
-                        </p>
-            		    
-
-    
-<!--                               <div class='index-content-list'><?=nl2br($value['ques_content'])?></div> -->
-            			<p class="sns-bar reply-color"><span>悬赏:<?=$value['ques_socore'];?></span>
-                            <span>浏览:<?=$value['browser']?></span>
-                            <span>状态:<span><?=$value['is_best']?></span></span></span>
-                            <span class="pull-right">
-                              <a  class="reply-color" href = "<?=base_url().'index.php/question/index/'.$value['msgid'];?>" qid ="<?=$value['msgid']?>" >回答(<span><?=$value['anwser']?></span>)</a>
-                            </span>
-                          </p>
-            		</div>
-            	</div>
-            	
-            </div>
-            <?php
-           }
-           endforeach
-             ;?>
-      </div>
-      <?
-        if(count($list_info) >0) {
-                if($list_info[0]['num'] > 1){?>
-                <div class="span11 btn show-more" page="index" current-page="1">更多</div>
-            <?}
-          }?>
-      </div>
-    <div class="span3">
-      	<div class="right-bar">
-              <div class="tips">
-                 <h5>故问公告</h5>
-                 <div>
-                   <p> 欢迎使用故问！</p>
-                   <p>现在是故问的公测时间，大家有什么意见反馈可以直接发故问反馈</p>
-                   <p>期待安卓版版本的发布</p>
-                 </div>
-              </div>
-              <div class="hot-ques">
-                <h5>热门问题</h5>
-                <?foreach ($hot_ques as $key => $value): {?>
-                  <div class="hot-ques-list">
-                      <p><a href="<?=base_url()?>index.php/question/index/<?=$value['msgid']?>" ><?=$value['ques_title']?></a></p>
-                      <p class="reply-color"><span>浏览:<?=$value['browser']?></span><span> 分类:<?=$value['ques_cate']?></span>
-                              <span>回答:<?=$value['anwser']?></span>
-                    </p>
-                  </div>
-                <?}endforeach?>
-              </div>
-              <div class="hot-cate">
-                <h5>热门分类</h5>
-                  <?foreach ($hot_cate as $key => $value): {?>
-                      <div class="hot-cate-list">
-                          <p>
-                              <span class="pull-left"><a href="<?=base_url()?>index.php/topic/info/<?=$value['id']?>" ><img height="40" width="40" src="<?=$value['tag_img']?>" alt="tag_logo" /></a></span>
-                              <p>
-                                  <a href="<?=base_url()?>index.php/topic/info/<?=$value['id']?>" class="hot-ques-title"><?=$value['tag_name']?></a>
-                                  <p class="hot-ques-num">共<?=$value['num']?>个问题</p>
-                              </p>
-                          </p>
-                      </div>
-                  <?}endforeach?>
-              </div>
-              <div class="hot-person">
-                  <h5>活跃用户</h5>
-                  <?foreach ($hot_person as $key => $value): {?>
-                      <div class="hot-cate-list">
-                          <p>
-                              <span class="pull-left"><a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" ><img height="40" width="40" src="<?=$value['user_img']?>" alt="user_logo" /></a></span>
-                              <p>
-                                  <a href="<?=base_url()?>index.php/person/question/<?=$value['user_id']?>" class="hot-ques-title" ><?=$value['user_name']?></a>
-                                  <p class="hot-ques-num"><?=$value['rank']?></p>
-                              </p>
-                          </p>
-                      </div>
-                  <?}endforeach?>
-              </div>
-        </div>
-    </div>
-  </div>
-</div>
-<div class="to-top">
-  <a href="#go_to_top"><span class="to-top btn"><i class="icon-arrow-up" ></i></span></a>
-</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>故问</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="学生地带，明知故问，中南民族大学，学生门户网站，学生资讯集团，比特工场，故问，学生工作通讯"/>
+<meta  name="description" content="故问是由中南民族大学比特工场开发，以提升大学生活品质为核心定位的学生问答知识社区" />
+<link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/style.css" type="text/css" />
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+  
+</body>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/underscore-min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/backbone-min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/main.js"></script>
+</html>
