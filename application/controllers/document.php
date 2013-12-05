@@ -22,4 +22,9 @@ class Document extends CI_Controller {
   {
     $this->load->view('dev2/document/polande');
   }
+   public function tibic()
+  {
+    
+    $this->load->view('dev2/document/tibic');
+  }
 }
