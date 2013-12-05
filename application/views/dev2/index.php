@@ -18,9 +18,30 @@
 <body>
   
 </body>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/underscore-min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/backbone-min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/main.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/sea-modules/seajs/seajs/2.1.1/sea.js"></script>
+<script>
+  // Set configuration
+  seajs.config({
+    base: "/guwen/data/javascript/sea-modules/",
+    alias: {
+      "jquery": "jquery/jquery/1.10.1/jquery.js"
+    }
+  });
+  // For development
+  if (location.href.indexOf("?dev") > 0) {
+    seajs.use("/guwen/data/javascripts/jquery-min");
+    seajs.use("/guwen/data/javascripts/underscore-min");
+    seajs.use("/guwen/data/javascripts/backbone-min");
+    seajs.use("/guwendata/javascripts/bootstrap-min");
+    seajs.use("/guwen/data/javascripts/main");
+  }
+  // For production
+  else {
+    seajs.use("/guwen/data/javascripts/jquery-min");
+    seajs.use("/guwen/data/javascripts/underscore-min");
+    seajs.use("/guwen/data/javascripts/backbone-min");
+    seajs.use("/guwen/data/javascripts/bootstrap-min");
+    seajs.use("/guwen/data/javascripts/main");
+  }
+</script>
 </html>
