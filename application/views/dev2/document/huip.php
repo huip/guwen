@@ -44,6 +44,7 @@
        <li>add backbone underscore jquery bootstrap frameword</li>
        <li>add sea.js</li>
        <li>add less and run.sh</li>
+       <li>remove less and add stylus</li>
      </ul>
   </body>
 </html>
