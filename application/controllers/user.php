@@ -20,7 +20,7 @@ class User extends CI_Controller {
    */
   public function index()
   {
-    $data = $this->render_info();
+    $data = $this->render_info('index');
     $this->load->view('user/nav',$data);
     $this->load->view('user/question',$data);
     $this->load->view('conn/footer');
@@ -130,7 +130,7 @@ class User extends CI_Controller {
    * @author huip
    * 2013 Nov
    */
-  private function render_info()
+  private function render_info($location)
   {
     $this->load->view('conn/header');
     $result = is_login();
@@ -146,6 +146,14 @@ class User extends CI_Controller {
     $data['acount_info'] = $this->index_model->get_my_acount(get_user_info('user_id'));
     $data['person_info'] = $this->index_model->get_person_info(get_user_info('user_id'));
     $data['tag_list']      = $this->conn_model->get_tag_list();
-    return $data;
+    $this->load->view('user/nav',$data);
+    switch($location)
+    {
+      case 'index':
+        $this->load->view('user/question',$data);
+        break;
+      case ''
+    }
+    $this->load->view('conn/footer');
   }
 }
