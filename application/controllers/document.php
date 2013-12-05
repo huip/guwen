@@ -11,11 +11,11 @@ class Document extends CI_Controller {
 
   public function index() 
   {
-    $this->load->view('document/index');
+    $this->load->view('dev2/document/index');
   }
 
   public function huip()
   {
-    $this->load->view('document/huip');
+    $this->load->view('dev2/document/huip');
   }
 }
