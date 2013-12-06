@@ -3,25 +3,17 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var IndexView, Router, app_router, _ref;
-  IndexView = require('./views/index');
-  Router = (function(_super) {
-    __extends(Router, _super);
+  var IndexView, _ref;
+  IndexView = (function(_super) {
+    __extends(IndexView, _super);
 
-    function Router() {
-      _ref = Router.__super__.constructor.apply(this, arguments);
+    function IndexView() {
+      _ref = IndexView.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    Router.prototype.routes = {
-      '/': 'index',
-      'index': 'index'
-    };
-
-    return Router;
+    return IndexView;
 
   })(Backbone.Router);
-  app_router = new Router();
-  app_router.on('route:index', function() {});
-  return Backbone.history.start();
+  return module.exports = IndexView;
 });

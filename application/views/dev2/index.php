@@ -16,7 +16,63 @@
 <![endif]-->
 </head>
 <body>
-  
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header collapse navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">故问</a>
+    </div>
+    <!-- navigation form start -->
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">搜索</button>
+      <button type="submit" class="btn btn-default">提问</button>
+    </form>
+    <!-- navigation start -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页</a></li>
+        <li><a href="#">分类</a></li>
+        <li><a href="#">发现</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">登录</a></li>
+        <li><a href="#">注册</a></li>
+      </ul>
+    </div><!-- end -->
+  </nav> 
+  <div id="content" class="col-md-12">
+    <div class="col-md-1">
+    </div>
+    <div class="left-content col-md-7">
+    </div>
+    <div class="right-content col-md-3">
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+  <div id="footer" class="navbar navbar-fixed-bottom">
+    <hr />
+    <div class="bit-link pull-left">
+      <a href="http://www.bitworkshop.net/" target = "_blank">比特工场</a>
+      <a href="http://www.stuzone.com/" target = "_blank">学生地带</a>
+      <a href="http://market.stuzone.com/" target = "_blank">学生市场</a>
+      <a href="http://upan.us/" target = "_blank">云优盘</a>
+    </div>
+    <div class="guwen-help pull-right">
+      <a href="<?=base_url()?>index.php/index/help" target = "_blank">故问指南</a>
+      <span>|</span>
+      <a href="<?=base_url()?>index.php/question/index/274" target = "_blank">意见反馈</a>
+      <span>|</span>
+      <span>&copy<a href="http://www.huip.org/" target = "_blank">huip</a></span>
+    </div>
+  </div>
 </body>
 <script type="text/javascript" src="<?php echo base_url();?>data/javascripts/lib/sea/sea.js"></script>
 <script>

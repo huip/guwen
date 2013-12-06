@@ -1,5 +1,5 @@
 echo "compile start"
-coffee -bc ./data/javascripts/*
+coffee -bc ./
 echo "coffee complie success"
 echo "less compile start"
 stylus ./data/stylesheets/*
