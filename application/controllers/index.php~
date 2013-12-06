@@ -22,18 +22,10 @@ class Index extends CI_Controller {
   public function login()
   {
     $data = $this->render_user_info();
-		$this->load->view('conn/header');
-		$this->load->view("index/nav",$data);
-		$this->load->view('index/login');
-		$this->load->view('conn/footer');
-  }
-	// render user info from session
-	private function render_user_info()
-  {
-    $data['user_id'] = $this->session->userdata("user_id");
-    $data['user_img'] = $this->session->userdata("user_img");
-    $data['user_name'] = $this->session->userdata("user_name");
-    return $data;
+	$this->load->view('conn/header');
+	$this->load->view("index/nav",$data);
+	$this->load->view('index/login');
+	$this->load->view('conn/footer');
   }
 
 }
