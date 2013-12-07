@@ -9,6 +9,7 @@ class Api extends CI_Controller {
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('widgets_model'); // load widgets model
+    $this->load->model('index_model'); // load index model
   }
 
   /*
@@ -36,4 +37,15 @@ class Api extends CI_Controller {
     echo json_encode($widgets);
   }
 
+  /*
+   * @author huip
+   * widgets api
+   * return hot tags,question,person
+   * Dec 2013-12-05
+   */
+  public function question($page)
+  {
+    $list = $this->index_model->get_question_list($page);
+    echo json_encode($list);
+  }
 }

@@ -3,23 +3,23 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, IndexModel, IndexView, _, _ref;
+  var $, Backbone, WidgetsModel, WidgetsView, _, _ref;
   $ = require('$');
   Backbone = require('backbone');
   _ = require('underscore');
-  IndexModel = require('../models/index');
-  IndexView = (function(_super) {
-    __extends(IndexView, _super);
+  WidgetsModel = require('../models/widgets');
+  WidgetsView = (function(_super) {
+    __extends(WidgetsView, _super);
 
-    function IndexView() {
-      _ref = IndexView.__super__.constructor.apply(this, arguments);
+    function WidgetsView() {
+      _ref = WidgetsView.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    IndexView.prototype.initialize = function() {
+    WidgetsView.prototype.initialize = function() {
       var indexModel, that;
       that = this;
-      indexModel = new IndexModel();
+      indexModel = new WidgetsModel();
       return indexModel.fetch({
         success: function(data) {
           return that.render(data.toJSON());
@@ -27,7 +27,7 @@ define(function(require, exports, module) {
       });
     };
 
-    IndexView.prototype.render = function(data) {
+    WidgetsView.prototype.render = function(data) {
       var template;
       template = _.template($('#widgets_template').html(), {
         data: data
@@ -35,8 +35,8 @@ define(function(require, exports, module) {
       return this.$el.html(template);
     };
 
-    return IndexView;
+    return WidgetsView;
 
   })(Backbone.View);
-  return module.exports = IndexView;
+  return module.exports = WidgetsView;
 });

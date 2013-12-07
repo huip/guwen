@@ -3,8 +3,8 @@ define (require,exports,module)->
   Backbone = require 'backbone'
   _ = require "underscore"
   
-  class IndexModel extends Backbone.Model
+  class WidgetsModel extends Backbone.Model
     initialize: ->
     urlRoot:"index.php/api/widgets"
 
-  module.exports = IndexModel
+  module.exports = WidgetsModel
