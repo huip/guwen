@@ -95,7 +95,10 @@
 </script>
 <script type="text/template" id="widgets_template">
   <div class="hot-ques">
-    test
+    <p>热门问题</p>
+    <%_.each(data.hot_ques,function(ques) {%>
+    <li><a href="<%=ques.msgid%>"><%=ques.ques_title%></a></li>
+    <%})%>
   </div>
 </script>
 </html>

@@ -3,10 +3,11 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, Router, app_router, _, _ref;
+  var $, Backbone, IndexView, Router, app_router, _, _ref;
   $ = require('$');
   Backbone = require('backbone');
   _ = require("underscore");
+  IndexView = require('./views/index');
   Router = (function(_super) {
     __extends(Router, _super);
 
@@ -25,7 +26,10 @@ define(function(require, exports, module) {
   })(Backbone.Router);
   app_router = new Router();
   app_router.on('route:index', function() {
-    return console.log('test');
+    var indexView;
+    return indexView = new IndexView({
+      el: $('.right-content')
+    });
   });
   return Backbone.history.start();
 });
