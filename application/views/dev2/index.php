@@ -97,7 +97,7 @@
   <div class="hot-ques">
     <p>热门问题</p>
     <%_.each(data.hot_ques,function(ques) {%>
-    <li><a href="<%=ques.msgid%>"><%=ques.ques_title%></a></li>
+    <li><a href="#q/<%=ques.msgid%>"><%=ques.ques_title%></a></li>
     <%})%>
   </div>
   <div class="hot-cate">
@@ -115,7 +115,16 @@
 </script>
 <script type="text/template" id="question_template">
     <%_.each(data,function(question) {%>
-      <li><a href="<%=question.msgid%>"><%=question.ques_title%></a></li>
+      <li><a href="#q/<%=question.msgid%>"><%=question.ques_title%></a></li>
+    <%})%>
+</script>
+<script type="text/template" id="qinfo_template">
+    <%_.each(data,function(info) {%>
+      <h2><%=info.ques_title%></h2>
+      <p><%=info.ques_content%></p>
+      <p><%=info.user_name%></p>
+      <p><%=info.ques_score%></p>
+      <p><%=info.post_time%></p>
     <%})%>
 </script>
 </html>
