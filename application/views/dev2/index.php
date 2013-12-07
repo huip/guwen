@@ -103,13 +103,13 @@
   <div class="hot-cate">
     <p>热门分类</p>
     <%_.each(data.hot_cate,function(cate) {%>
-    <li><img src="<%=cate.tag_img%>"><a href="<%=cate.id%>"><%=cate.tag_name%></a></li>
+    <li><img src="<%=cate.tag_img%>" class="img-responsive img-rounded"><a href="<%=cate.id%>"><%=cate.tag_name%></a></li>
     <%})%>
   </div>
   <div class="hot-person">
     <p>热门分类</p>
     <%_.each(data.hot_person,function(person) {%>
-    <li><img src="<%=person.user_img%>" alt="<%=person.user_name%>" /><a href="<%=person.user_id%>"><%=person.user_name%></a></li>
+    <li><img src="<%=person.user_img%>" alt="<%=person.user_name%>" class="img-rounded img-responsive" /><a href="<%=person.user_id%>"><%=person.user_name%></a></li>
     <%})%>
   </div>
 </script>

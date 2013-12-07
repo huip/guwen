@@ -37,7 +37,11 @@
   </head>
   <body>
     <h1>huip's document</h1>
-      <p>2013-12-5</p>
+     <p>2013-12-7</p>
+     <ul>
+       <li>完成了侧栏的组件</li>
+     </ul>
+     <p>2013-12-5</p>
      <ul>
        <li>add document controller url :/document/index</li>
        <li>add api controller url :/api/index</li>
