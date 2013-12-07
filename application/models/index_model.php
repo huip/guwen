@@ -108,5 +108,35 @@ class Index_model extends CI_Model
       $relative_ques[$key] = $res;
     }
     return $relative_ques;
+  }
+
+  /*
+   * @author huip
+   * get  question comment info
+   * Dec 2013-12-7
+   */
+  public function get_comments($ques_id)
+  {
+    $sql = "SELECT cmt.id,cmt.comment_content,cmt.comment_time,cmt.comment_quesid ,cmt.comment_uid,
+      cmt.comment_favour,us.user_img,us.user_name,us.user_id,
+      (SELECT count(id) FROM guwen_comment_reply WHERE comment_id = cmt.id) as reply_num,
+      (SELECT uid FROM guwen_bestanwserlog WHERE comment_id = cmt.id) AS best_uid 
+      FROM  guwen_comment AS cmt ,guwen_user AS us 
+      WHERE  us.user_id = cmt.comment_uid  AND cmt.comment_quesid = ? 
+      ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id DESC";
+    $query = $this->db->query($sql,array($ques_id));
+    $res = $query->result_array($query);
+    foreach ($res as $key => $value) 
+    {
+      $sql = "SELECT DISTINCT  reply.reply_content ,reply.time,us.user_name,us.user_img,us.user_id 
+      FROM guwen_comment_reply as reply ,guwen_user as us ,guwen_comment AS cmt
+      WHERE reply.comment_id  = ? AND reply.reply_uid = us.user_id 
+      AND cmt.comment_quesid = ? ";
+
+      $query = $this->db->query($sql,array($value['id'],$value['comment_quesid']));
+      $re = $query->result_array();
+      $res[$key]['reply'] = $re;
     }
+    return $res;
+  }
 }

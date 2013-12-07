@@ -57,10 +57,11 @@ class Api extends CI_Controller {
    */
   public function qinfo($qid)
   {
-    $info = $this->index_model->get_question_info($qid);
-    echo json_encode($info);
+    $data = [];
+    $data['info'] = $this->index_model->get_question_info($qid);
+    $data['comments'] = $this->index_model->get_comments($qid);
+    echo json_encode($data);
   }
-
   /*
    * @author huip
    * get relative question

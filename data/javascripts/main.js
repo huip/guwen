@@ -19,7 +19,7 @@ define(function(require, exports, module) {
     }
 
     Router.prototype.routes = {
-      '/': 'index',
+      '': 'index',
       'index': 'index',
       'index/:page': 'index',
       'q/:qid': 'question'

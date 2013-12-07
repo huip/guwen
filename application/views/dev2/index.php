@@ -119,12 +119,25 @@
     <%})%>
 </script>
 <script type="text/template" id="qinfo_template">
-    <%_.each(data,function(info) {%>
+    <%_.each(data.info,function(info) {%>
       <h2><%=info.ques_title%></h2>
       <p><%=info.ques_content%></p>
       <p><%=info.user_name%></p>
       <p><%=info.ques_score%></p>
       <p><%=info.post_time%></p>
+    <%})%>
+    <%_.each(data.comments,function(comment) {%>
+      <p><a href="#u/<%=comment.user_id%>"><%=comment.user_name%></a></p>
+      <p><%=comment.comment_content%></p>
+      <p><%=comment.comment_time%></p>
+      <%_.each(comment.reply,function(reply) {%>
+        <div style="text-indent:40px">
+          <p><a href="#u/<%=reply.user_id%>"><%=reply.user_name%></a></p>
+          <p><%=reply.reply_content%></p>
+          <p><%=reply.time%></p>
+        </div>
+      <%})%>
+      <hr />
     <%})%>
 </script>
 <script type="text/template" id="relative_template">

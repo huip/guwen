@@ -7,7 +7,7 @@ define (require,exports,module)->
   RelativeView = require './views/relative'
   class Router extends Backbone.Router
     routes:
-      '/' : 'index'
+      '' : 'index'
       'index' : 'index'
       'index/:page' : 'index'
       'q/:qid' : 'question'
