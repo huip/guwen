@@ -30,4 +30,22 @@ class Index_model extends CI_Model
     $result = $query->result_array();
     return $result;
   }
+
+  /*
+   * @author huip
+   * get index question info
+   * Dec 2013-12-7
+   */
+  public function get_question_info($qid)
+  {
+    $sql = " SELECT ms.msgid ,us.user_name,ms.ques_title,ms.ques_content,
+      ms.user_id,ms.ques_socore, ms.post_time,ms.is_best,
+      (SELECT tag_name FROM guwen_tag WHERE id = ms.ques_cate) AS 
+      ques_cate
+      FROM guwen_message AS ms, guwen_user AS us  
+      WHERE us.user_id = ms.user_id AND msgid = ?";
+    $query = $this->db->query($sql,array($qid));
+    $result = $query->result_array();
+    return $result;
+  }
  }

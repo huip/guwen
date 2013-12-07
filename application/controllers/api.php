@@ -24,7 +24,7 @@ class Api extends CI_Controller {
   }
   /*
    * @author huip
-   * widgets api
+   * widgets
    * return hot tags,question,person
    * Dec 2013-12-05
    */
@@ -40,12 +40,24 @@ class Api extends CI_Controller {
   /*
    * @author huip
    * widgets api
-   * return hot tags,question,person
+   * return question list
    * Dec 2013-12-05
    */
   public function question($page)
   {
     $list = $this->index_model->get_question_list($page);
     echo json_encode($list);
+  }
+
+  /*
+   * @author huip
+   * get question
+   * return question info
+   * Dec 2013-12-05
+   */
+  public function qinfo($qid)
+  {
+    $info = $this->index_model->get_question_info($qid);
+    echo json_encode($info);
   }
 }
