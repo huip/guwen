@@ -60,4 +60,17 @@ class Api extends CI_Controller {
     $info = $this->index_model->get_question_info($qid);
     echo json_encode($info);
   }
+
+  /*
+   * @author huip
+   * get relative question
+   * return relative question list
+   * Dec 2013-12-05
+   */
+
+  public function relative($qid)
+  {
+    $relative = $this->index_model->get_relative_question($qid);
+    echo json_encode($relative);
+  }
 }
