@@ -3,13 +3,14 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, QinfoView, QuestionView, RelativeView, Router, WidgetsView, app_router, _ref;
+  var $, Backbone, QinfoView, QuestionView, RelativeView, Router, UserInfoView, WidgetsView, app_router, _ref;
   $ = require('$');
   Backbone = require('backbone');
   WidgetsView = require('./views/widgets');
   QuestionView = require('./views/question');
   QinfoView = require('./views/qinfo');
   RelativeView = require('./views/relative');
+  UserInfoView = require('./views/uinfo');
   Router = (function(_super) {
     __extends(Router, _super);
 
@@ -22,7 +23,8 @@ define(function(require, exports, module) {
       '': 'index',
       'index': 'index',
       'index/:page': 'index',
-      'q/:qid': 'question'
+      'q/:qid': 'question',
+      'u/:uid': 'uinfo'
     };
 
     return Router;
@@ -52,6 +54,14 @@ define(function(require, exports, module) {
       el: $('.right-content'),
       id: qid
     });
+  });
+  app_router.on('route:uinfo', function(uid) {
+    var userInfoView;
+    userInfoView = new UserInfoView({
+      el: $('.right-content'),
+      id: uid
+    });
+    return $('right-content').hide();
   });
   return Backbone.history.start();
 });

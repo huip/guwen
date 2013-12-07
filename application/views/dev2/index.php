@@ -145,4 +145,12 @@
       <li><a href="#q/<%=info[0].msgid%>"><%=info[0].ques_title%></a></li>
     <%})%>
 </script>
+<script type="text/template" id="uinfo_template">
+  <p><%=data[0].user_name%></p>
+  <p><%=data[0].user_motto%></p>
+  <img src="<%=data[0].user_img%>" alt="<%=data[0].user_name%>" />
+  <p><%=data[0].user_score%></p>
+  <p><%=data[0].rank%></p>
+  <p><%=data[0].gap%></p>
+</script>
 </html>

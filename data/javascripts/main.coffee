@@ -5,12 +5,14 @@ define (require,exports,module)->
   QuestionView = require './views/question'
   QinfoView = require './views/qinfo'
   RelativeView = require './views/relative'
+  UserInfoView = require './views/uinfo'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
       'index' : 'index'
       'index/:page' : 'index'
       'q/:qid' : 'question'
+      'u/:uid' : 'uinfo'
   app_router = new Router()
   app_router.on 'route:index',(page)->
     page = 1 if not page?
@@ -19,5 +21,8 @@ define (require,exports,module)->
   app_router.on 'route:question',(qid)->
     qinfoView = new QinfoView el:$('.left-content'),id:qid
     relativeView = new RelativeView el:$('.right-content'),id:qid
+  app_router.on 'route:uinfo',(uid)->
+    userInfoView = new UserInfoView el:$('.right-content'),id:uid
+    $('.right-content').hide()
   Backbone.history.start()
 
