@@ -139,4 +139,20 @@ class Index_model extends CI_Model
     }
     return $res;
   }
+
+  /*
+   * @author huip
+   * get  user info
+   * Dec 2013-12-7
+   */
+  public function get_u_info($uid)
+  {
+    $sql = "SELECT us.user_name,us.user_motto,us.user_img,us.user_score,us.user_id,
+      (SELECT rank FROM guwen_rank WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) 
+      AS rank ,(SELECT (score - us.user_score) FROM guwen_rank WHERE score > us.user_score ORDER BY id ASC LIMIT 1)
+      AS gap FROM guwen_user AS us  WHERE us.user_id = ?";
+    $query = $this->db->query($sql,array($uid));
+    $res = $query->result_array();
+    return $res;
+  }
 }

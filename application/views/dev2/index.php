@@ -122,7 +122,7 @@
     <%_.each(data.info,function(info) {%>
       <h2><%=info.ques_title%></h2>
       <p><%=info.ques_content%></p>
-      <p><%=info.user_name%></p>
+      <p><a href="#u/<%=info.user_id%>"><%=info.user_name%></a></p>
       <p><%=info.ques_score%></p>
       <p><%=info.post_time%></p>
     <%})%>
