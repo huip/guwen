@@ -3,11 +3,11 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, Router, WidgetsView, app_router, _, _ref;
+  var $, Backbone, QuestionView, Router, WidgetsView, app_router, _ref;
   $ = require('$');
   Backbone = require('backbone');
-  _ = require("underscore");
   WidgetsView = require('./views/widgets');
+  QuestionView = require('./views/question');
   Router = (function(_super) {
     __extends(Router, _super);
 
@@ -18,16 +18,24 @@ define(function(require, exports, module) {
 
     Router.prototype.routes = {
       '/': 'index',
-      'index': 'index'
+      'index': 'index',
+      'index/:page': 'index'
     };
 
     return Router;
 
   })(Backbone.Router);
   app_router = new Router();
-  app_router.on('route:index', function() {
-    var indexView;
-    return indexView = new WidgetsView({
+  app_router.on('route:index', function(page) {
+    var questionView, widgetsView;
+    if (page == null) {
+      page = 1;
+    }
+    questionView = new QuestionView({
+      el: $('.left-content'),
+      id: page
+    });
+    return widgetsView = new WidgetsView({
       el: $('.right-content')
     });
   });

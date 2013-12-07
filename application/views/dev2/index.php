@@ -109,8 +109,13 @@
   <div class="hot-person">
     <p>热门分类</p>
     <%_.each(data.hot_person,function(person) {%>
-    <li><img src="<%=person.user_img%>" alt="<%=person.user_name%>" class="img-rounded img-responsive" /><a href="<%=person.user_id%>"><%=person.user_name%></a></li>
+      <li><img src="<%=person.user_img%>" alt="<%=person.user_name%>" class="img-rounded img-responsive" /><a href="<%=person.user_id%>"><%=person.user_name%></a></li>
     <%})%>
   </div>
+</script>
+<script type="text/template" id="question_template">
+    <%_.each(data,function(question) {%>
+      <li><a href="<%=question.msgid%>"><%=question.ques_title%></a></li>
+    <%})%>
 </script>
 </html>
