@@ -12,8 +12,18 @@ define(function(require, exports, module) {
       return _ref;
     }
 
+    IndexView.prototype.initialize = function() {
+      return this.render();
+    };
+
+    IndexView.prototype.render = function() {
+      var template;
+      template = _.template($('#widgets_template').html(), {});
+      return this.$el.html(template);
+    };
+
     return IndexView;
 
-  })(Backbone.Router);
+  })(Backbone.View);
   return module.exports = IndexView;
 });

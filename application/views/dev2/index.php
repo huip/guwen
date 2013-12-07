@@ -74,17 +74,28 @@
     </div>
   </div>
 </body>
-<script type="text/javascript" src="<?php echo base_url();?>data/javascripts/lib/sea/sea.js"></script>
+<script src="<?php echo base_url();?>data/javascripts/sea-modules/seajs/seajs/2.1.1/sea.js"></script>
 <script>
+  // Set configuration
+  seajs.config({
+    base: "<?php echo base_url();?>data/javascripts/sea-modules/",
+    alias: {
+      "$": "jquery/jquery/1.10.1/jquery.js",
+      "underscore": "gallery/underscore/1.4.4/underscore.js",
+      "backbone": "gallery/backbone/1.0.0/backbone.js"
+    }
+ });
+
   if (location.href.indexOf("?dev") > 0) {
    }
   // For production
   else {
-    seajs.use("<?php echo base_url();?>data/javascripts/lib/jquery/jquery.min");
-    seajs.use("<?php echo base_url();?>data/javascripts/lib/underscore/underscore.min");
-    seajs.use("<?php echo base_url();?>data/javascripts/lib/backbone/backbone.min");
-    seajs.use("<?php echo base_url();?>data/javascripts/lib/bootstrap/bootstrap.min");
     seajs.use("<?php echo base_url();?>data/javascripts/main");
   }
+</script>
+<script type="text/template" id="widgets_template">
+  <div class="hot-ques">
+    test
+  </div>
 </script>
 </html>
