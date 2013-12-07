@@ -127,4 +127,9 @@
       <p><%=info.post_time%></p>
     <%})%>
 </script>
+<script type="text/template" id="relative_template">
+    <%_.each(data,function(info) {%>
+      <li><a href="#q/<%=info[0].msgid%>"><%=info[0].ques_title%></a></li>
+    <%})%>
+</script>
 </html>

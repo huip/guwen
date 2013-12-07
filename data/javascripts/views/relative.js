@@ -3,42 +3,42 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, QinfoModel, QinfoView, _, _ref;
+  var $, Backbone, RelativeModel, RelativeView, _, _ref;
   $ = require('$');
   Backbone = require('backbone');
   _ = require('underscore');
-  QinfoModel = require('../models/qinfo');
-  QinfoView = (function(_super) {
-    __extends(QinfoView, _super);
+  RelativeModel = require('../models/relative');
+  RelativeView = (function(_super) {
+    __extends(RelativeView, _super);
 
-    function QinfoView() {
-      _ref = QinfoView.__super__.constructor.apply(this, arguments);
+    function RelativeView() {
+      _ref = RelativeView.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    QinfoView.prototype.initialize = function() {
-      var qinfoModel, that;
+    RelativeView.prototype.initialize = function() {
+      var relativeModel, that;
       that = this;
-      qinfoModel = new QinfoModel({
+      relativeModel = new RelativeModel({
         id: this.id
       });
-      return qinfoModel.fetch({
+      return relativeModel.fetch({
         success: function(data) {
           return that.render(data.toJSON());
         }
       });
     };
 
-    QinfoView.prototype.render = function(data) {
+    RelativeView.prototype.render = function(data) {
       var template;
-      template = _.template($('#qinfo_template').html(), {
+      template = _.template($('#relative_template').html(), {
         data: data
       });
       return this.$el.html(template);
     };
 
-    return QinfoView;
+    return RelativeView;
 
   })(Backbone.View);
-  return module.exports = QinfoView;
+  return module.exports = RelativeView;
 });

@@ -4,6 +4,7 @@ define (require,exports,module)->
   WidgetsView = require './views/widgets'
   QuestionView = require './views/question'
   QinfoView = require './views/qinfo'
+  RelativeView = require './views/relative'
   class Router extends Backbone.Router
     routes:
       '/' : 'index'
@@ -16,7 +17,7 @@ define (require,exports,module)->
     questionView = new QuestionView {el:$('.left-content'),id:page}
     widgetsView = new WidgetsView el:$ '.right-content'
   app_router.on 'route:question',(qid)->
-    qinfoView = new QinfoView {el:$('.left-content'),id:qid}
-    widgetsView = new WidgetsView el:$ '.right-content'
+    qinfoView = new QinfoView el:$('.left-content'),id:qid
+    relativeView = new RelativeView el:$('.right-content'),id:qid
   Backbone.history.start()
 

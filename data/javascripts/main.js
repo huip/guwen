@@ -3,12 +3,13 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, QinfoView, QuestionView, Router, WidgetsView, app_router, _ref;
+  var $, Backbone, QinfoView, QuestionView, RelativeView, Router, WidgetsView, app_router, _ref;
   $ = require('$');
   Backbone = require('backbone');
   WidgetsView = require('./views/widgets');
   QuestionView = require('./views/question');
   QinfoView = require('./views/qinfo');
+  RelativeView = require('./views/relative');
   Router = (function(_super) {
     __extends(Router, _super);
 
@@ -42,13 +43,14 @@ define(function(require, exports, module) {
     });
   });
   app_router.on('route:question', function(qid) {
-    var qinfoView, widgetsView;
+    var qinfoView, relativeView;
     qinfoView = new QinfoView({
       el: $('.left-content'),
       id: qid
     });
-    return widgetsView = new WidgetsView({
-      el: $('.right-content')
+    return relativeView = new RelativeView({
+      el: $('.right-content'),
+      id: qid
     });
   });
   return Backbone.history.start();
