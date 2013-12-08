@@ -57,11 +57,10 @@ define(function(require, exports, module) {
   });
   app_router.on('route:uinfo', function(uid) {
     var userInfoView;
-    userInfoView = new UserInfoView({
+    return userInfoView = new UserInfoView({
       el: $('.right-content'),
       id: uid
     });
-    return $('right-content').hide();
   });
   return Backbone.history.start();
 });

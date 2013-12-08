@@ -23,6 +23,5 @@ define (require,exports,module)->
     relativeView = new RelativeView el:$('.right-content'),id:qid
   app_router.on 'route:uinfo',(uid)->
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
-    $('.right-content').hide()
   Backbone.history.start()
 

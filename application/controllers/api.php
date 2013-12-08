@@ -85,4 +85,16 @@ class Api extends CI_Controller {
     $uinfo = $this->index_model->get_u_info($uid);
     echo json_encode($uinfo);
   }
+
+  /*
+   * @author huip
+   * get user question list by uid
+   * return relative question list
+   * Dec 2013-12-08
+   */
+  public function myquestion($uid,$page)
+  {
+    $myquestion = $this->index_model->get_my_question($uid,$page);
+    echo json_encode($myquestion);
+  }
 }
