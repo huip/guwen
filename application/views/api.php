@@ -9,5 +9,7 @@
    <li>得到用户的回答:<a href="api/myanswer/515bccf8c3749/1">/api/myanswer/uid/page</a></li>
    <li>用户登录接口:post url /api/login
       post data email password
+      error_code: 100 means username or password error
+      error_code: 200 means login success
   </li>
  </ul>
