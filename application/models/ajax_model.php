@@ -13,7 +13,6 @@ public function user_login($data)
   $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
   $query = $this->db->query($sql,array($user_email,$user_password));
   return $query->result_array();
-
 }
 
 public function get_index_anwser($ques_id)

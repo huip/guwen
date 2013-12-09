@@ -7,4 +7,7 @@
    <li>得到用户的信息:<a href="api/uinfo/515bccf8c3749">/api/uninfo/uid</a></li>
    <li>得到用户问题:<a href="api/myquestion/515bccf8c3749/1">/api/myquestion/uid/page</a></li>
    <li>得到用户的回答:<a href="api/myanswer/515bccf8c3749/1">/api/myanswer/uid/page</a></li>
+   <li>用户登录接口:post url /api/login
+      post data email password
+  </li>
  </ul>

@@ -102,11 +102,67 @@ class Api extends CI_Controller {
    * @author huip
    * get my answer by uid
    * return relative question list
-   * Dec 2013-12-08
+   * Dec 2013-12-09
    */
   public function myanswer($uid,$page)
   {
     $myanswer = $this->index_model->get_my_answer($uid,$page);
     echo json_encode($myanswer);
   }
+
+  /*
+   * @author huip
+   * user login
+   * Dec 2013-12-09
+   */
+  public function login()
+  {
+    $status = array();
+    if ($this->is_post_method())
+    {
+      $data = array(
+        'user_email' => $this->input->post('email'),
+        'user_password' => md5( $this->input->post('password').'guwen'),
+      );
+      $result = $this->index_model->user_login($data);
+      $is_register = count($result);
+      if($is_register == '0')
+      {
+        $status['error_code'] = '100';
+        echo json_encode( $status );
+      }
+      else
+      {
+        $status['error_code'] = '200';
+        echo json_encode( $status );
+        $data = $this->index_model->get_user_info($data['user_email']);
+        foreach ($data as $key => $value) {
+          $this->session->set_userdata($value);
+        }
+        $log_info = array(
+          'id' => '',
+          'user_name' => get_user_info('user_name'),
+          'login_time' => get_local_time(),
+          'login_ip' => get_remote_ip(),
+          'login_client' => get_user_info('user_agent'),
+        );
+        $this->index_model->user_login_log($log_info);
+        $this->index_model->login_score(get_user_info('user_id'));
+      }
+    }
+    else
+    {
+      show_404();
+    }
+  }
+
+  /*
+   * @author huip
+   * is post method
+   * Dec 2013-12-09
+   */
+    private function is_post_method()
+    {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') return TRUE;
+    }
 }

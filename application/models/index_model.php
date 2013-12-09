@@ -200,4 +200,17 @@ class Index_model extends CI_Model
     $result = $query->result_array();
     return $result;
   }
+  /*
+   * @author huip
+   * user login
+   * Dec 2013-12-09
+   */
+  public function user_login($data)
+  {
+    $user_email = $data['user_email'];
+    $user_password = $data['user_password'];
+    $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
+    $query = $this->db->query($sql,array($user_email,$user_password));
+    return $query->result_array();
+  }
 }
