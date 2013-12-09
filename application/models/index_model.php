@@ -176,4 +176,28 @@ class Index_model extends CI_Model
     $query = $this->db->query($sql,array($uid));
     return $query->result_array();
   }
+
+  /*
+   * @author huip
+   * get my anwser
+   * Dec 2013-12-20
+   */
+  public function get_my_answer($uid,$pages)
+  {
+    $pagesize = 10;
+    $sql = "SELECT COUNT(msgid) AS num FROM guwen_message WHERE user_id =  ?";
+    $query = $this->db->query($sql,array($uid));
+    $result = $query->result_array();
+    $offset = ($pages-1)*$pagesize;
+    $count = count($result) > 0?$result[0]['num']:1;
+    $numpage = ceil($count/$pagesize);
+    $sql = "SELECT DISTINCT ms.ques_title,ms.post_time,ms.browser,ms.msgid, '$numpage' AS num,
+      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = ms.msgid ) AS answer,
+      (SELECT comment_content FROM guwen_comment WHERE comment_quesid = ms.msgid 
+      AND comment_uid = '$uid'  LIMIT 1 ) AS myanswer FROM guwen_message AS ms ,guwen_comment AS cmt
+      WHERE cmt.comment_quesid = ms.msgid AND cmt.comment_uid = ? ORDER BY ms.msgid DESC LIMIT $offset,$pagesize" ;
+    $query = $this->db->query($sql,array($uid));
+    $result = $query->result_array();
+    return $result;
+  }
 }

@@ -97,4 +97,16 @@ class Api extends CI_Controller {
     $myquestion = $this->index_model->get_my_question($uid,$page);
     echo json_encode($myquestion);
   }
+
+  /*
+   * @author huip
+   * get my answer by uid
+   * return relative question list
+   * Dec 2013-12-08
+   */
+  public function myanswer($uid,$page)
+  {
+    $myanswer = $this->index_model->get_my_answer($uid,$page);
+    echo json_encode($myanswer);
+  }
 }
