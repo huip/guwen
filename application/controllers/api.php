@@ -130,6 +130,7 @@ class Api extends CI_Controller {
       {
         $status['error_code'] = '100';
         echo json_encode( $status );
+        return FALSE;
       }
       else
       {
