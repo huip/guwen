@@ -6,15 +6,6 @@ public function __construct()
   $this->load->database();
 }
 
-public function user_login($data)
-{
-  $user_email = $data['user_email'];
-  $user_password = $data['user_password'];
-  $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
-  $query = $this->db->query($sql,array($user_email,$user_password));
-  return $query->result_array();
-}
-
 public function get_index_anwser($ques_id)
 {
   $sql = "SELECT  cmt.comment_content,us.user_img,us.user_name,us.user_id FROM guwen_comment AS cmt ,guwen_user AS us WHERE cmt.comment_uid = us.user_id AND cmt.comment_quesid = ?";

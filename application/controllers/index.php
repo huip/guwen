@@ -17,6 +17,9 @@ class Index extends CI_Controller {
   public function index()
   {
     $this->load->view("dev2/index");
+    $this->load->view("dev2/templates/huip");
+    $this->load->view("dev2/templates/tibic");
+    $this->load->view("dev2/templates/aresyz");
   }
   // login page
   public function login()

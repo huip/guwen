@@ -37,6 +37,10 @@
   </head>
   <body>
     <h1>huip's document</h1>
+     <p>2013-12-10</p>
+     <ul>
+       <li>增加view templates</li>
+     </ul>
      <p>2013-12-7</p>
      <ul>
        <li>完成了侧栏的组件</li>

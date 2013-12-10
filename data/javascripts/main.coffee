@@ -6,6 +6,7 @@ define (require,exports,module)->
   QinfoView = require './views/qinfo'
   RelativeView = require './views/relative'
   UserInfoView = require './views/uinfo'
+  MyQuestionView = require './views/myquestion'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
