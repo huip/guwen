@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Index_model extends CI_Model
+class Api_model extends CI_Model
 {
   public function __construct()
   {
@@ -211,6 +211,25 @@ class Index_model extends CI_Model
     $user_password = $data['user_password'];
     $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
     $query = $this->db->query($sql,array($user_email,$user_password));
+    return $query->result_array();
+  }
+
+  /*
+   * @author huip
+   * check user if register
+   * Dec 2013-12-10
+   */
+  public function check_is_register($data)
+  {
+    if( $data['type'] = 'user_name' )
+    {
+      $sql = "SELECT id FROM guwen_user WHERE user_name = ? ";
+    }
+    else
+    {
+      $sql = "SELECT id FROM guwen_user WHERE user_email = ? ";
+    }
+    $query = $this->db->query($sql,array($data['value']));
     return $query->result_array();
   }
 }

@@ -9,7 +9,8 @@ class Api extends CI_Controller {
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('widgets_model'); // load widgets model
-    $this->load->model('index_model'); // load index model
+    $this->load->model('api_model'); // load index model
+    $status = [];
   }
 
   /*
@@ -45,7 +46,7 @@ class Api extends CI_Controller {
    */
   public function question($page)
   {
-    $list = $this->index_model->get_question_list($page);
+    $list = $this->api_model->get_question_list($page);
     echo json_encode($list);
   }
 
@@ -57,9 +58,10 @@ class Api extends CI_Controller {
    */
   public function qinfo($qid)
   {
-    $data = [];
-    $data['info'] = $this->index_model->get_question_info($qid);
-    $data['comments'] = $this->index_model->get_comments($qid);
+    $data = array(
+      'info' => $this->api_model->get_question_info($qid),
+      'comments' => $this->api_model->get_comments($qid)
+    );
     echo json_encode($data);
   }
   /*
@@ -70,7 +72,7 @@ class Api extends CI_Controller {
    */
   public function relative($qid)
   {
-    $relative = $this->index_model->get_relative_question($qid);
+    $relative = $this->api_model->get_relative_question($qid);
     echo json_encode($relative);
   }
 
@@ -82,7 +84,7 @@ class Api extends CI_Controller {
    */
   public function uinfo($uid)
   {
-    $uinfo = $this->index_model->get_u_info($uid);
+    $uinfo = $this->api_model->get_u_info($uid);
     echo json_encode($uinfo);
   }
 
@@ -94,7 +96,7 @@ class Api extends CI_Controller {
    */
   public function myquestion($uid,$page)
   {
-    $myquestion = $this->index_model->get_my_question($uid,$page);
+    $myquestion = $this->api_model->get_my_question($uid,$page);
     echo json_encode($myquestion);
   }
 
@@ -106,7 +108,7 @@ class Api extends CI_Controller {
    */
   public function myanswer($uid,$page)
   {
-    $myanswer = $this->index_model->get_my_answer($uid,$page);
+    $myanswer = $this->api_model->get_my_answer($uid,$page);
     echo json_encode($myanswer);
   }
 
@@ -117,14 +119,13 @@ class Api extends CI_Controller {
    */
   public function login()
   {
-    $status = array();
     if ($this->is_post_method())
     {
       $data = array(
         'user_email' => $this->input->post('email'),
         'user_password' => md5( $this->input->post('password').'guwen'),
       );
-      $result = $this->index_model->user_login($data);
+      $result = $this->api_model->user_login($data);
       $is_register = count($result);
       if($is_register == '0')
       {
@@ -136,7 +137,7 @@ class Api extends CI_Controller {
       {
         $status['error_code'] = '200';
         echo json_encode( $status );
-        $data = $this->index_model->get_user_info($data['user_email']);
+        $data = $this->api_model->get_user_info($data['user_email']);
         foreach ($data as $key => $value) {
           $this->session->set_userdata($value);
         }
@@ -147,8 +148,8 @@ class Api extends CI_Controller {
           'login_ip' => get_remote_ip(),
           'login_client' => get_user_info('user_agent'),
         );
-        $this->index_model->user_login_log($log_info);
-        $this->index_model->login_score(get_user_info('user_id'));
+        $this->api_model->user_login_log($log_info);
+        $this->api_model->login_score(get_user_info('user_id'));
       }
     }
     else
@@ -157,6 +158,28 @@ class Api extends CI_Controller {
     }
   }
 
+  /*
+   * @author huip
+   * check is register
+   * Dec 2013-12-10
+   */
+  public function checkregister()
+  {
+    if ( $this->is_post_method() )
+    {
+      $data = array(
+        'value' => $this->input->post('value'),
+        'type' => $this->input->post('type')
+      );
+      $result = $this->api_model->check_is_register($data);
+      $status['error_code'] = count($result) > 0?102:202;
+      echo json_encode($status);
+    }
+    else
+    {
+      show_404();
+    }
+  }
   /*
    * @author huip
    * is post method
