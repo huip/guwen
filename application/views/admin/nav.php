@@ -7,6 +7,9 @@
       <li class = "active">
       <a href="<?=base_url();?>index.php/admin/index">用户管理</a>
       </li>
+      <li>
+      <a href="<?=base_url();?>index.php/admin/get_login_info/0">登录记录</a>
+      </li>
       </ul>
     </div>
   </div>

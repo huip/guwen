@@ -19,11 +19,11 @@ class Admin extends CI_Controller {
   {
     if($this->is_admin())
     {
-      $this->load->view('conn/header');
-      $this->load->view('admin/nav');
+      // $this->load->view('conn/header');
+      // $this->load->view('admin/nav');
       
       $data['user_info'] = $this->index_model->get_user_info();
-      $this->load->view('admin/index',$data);
+      $this->load->view('dev2/admin/index',$data);
     }
     else
     {
