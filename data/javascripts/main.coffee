@@ -14,6 +14,7 @@ define (require,exports,module)->
       'index/:page' : 'index'
       'q/:qid' : 'question'
       'u/:uid' : 'uinfo'
+      'login' : 'login'
   app_router = new Router()
   app_router.on 'route:index',(page)->
     page = 1 if not page?
@@ -24,5 +25,7 @@ define (require,exports,module)->
     relativeView = new RelativeView el:$('.right-content'),id:qid
   app_router.on 'route:uinfo',(uid)->
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
+  app_router.on 'route:login',->
+    alert 'test'
   Backbone.history.start()
 
