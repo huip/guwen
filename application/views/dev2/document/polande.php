@@ -41,6 +41,11 @@
       <p>2013-12-5</p>
      <ul>
        <li> controller url :/document/index</li>
+    </ul>
+        <p>2013-12-10</p>
+     <ul>
+       <li>添加.gitignore文件</li>
+       <li> 管理页面替换为bootstrap3</li>
      </ul>
   </body>
 </html>
