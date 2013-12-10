@@ -44,7 +44,10 @@
             post:type{user_name,user_email}
             response {102 means already exist,202 means can register}
         }
-</li>
+       </li>
+       <li>
+          添加注册接口
+       </li>
      </ul>
      <p>2013-12-7</p>
      <ul>

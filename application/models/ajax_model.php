@@ -376,7 +376,6 @@ public function post_inbox($data)
   $data['to_id'] = $uid;
   $res = $this->db->insert("guwen_inbox",$data);
   return TRUE;
-
 }
 
 public function get_new_inbox($data)
