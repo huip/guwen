@@ -12,4 +12,8 @@
       error_code: 100 means username or password error
       error_code: 200 means login success
   </li>
+   <li>用户注册接口:post url /api/register
+      post data useremail userpassword username
+      error_code: 102 means user exist,300 means argumens missing or not valid 
+      error_code: 202 means regist success
  </ul>

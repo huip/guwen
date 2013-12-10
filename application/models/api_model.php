@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Index_model extends CI_Model
+class Api_model extends CI_Model
 {
   public function __construct()
   {
@@ -212,5 +212,114 @@ class Index_model extends CI_Model
     $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
     $query = $this->db->query($sql,array($user_email,$user_password));
     return $query->result_array();
+  }
+
+  /*
+   * @author huip
+   * check user if register
+   * Dec 2013-12-10
+   */
+  public function check_is_register($data)
+  {
+    if( $data['type'] == 'user_name' )
+    {
+      $sql = "SELECT id FROM guwen_user WHERE user_name = ? ";
+    }
+    else
+    {
+      $sql = "SELECT id FROM guwen_user WHERE user_email = ? ";
+    }
+    $query = $this->db->query($sql,array($data['value']));
+    return $query->result_array();
+  }
+  public function update_inbox_link($data)
+  {
+    $sql = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]'  ";
+    $query = $this->db->query($sql);
+    $re = $query->result_array();
+    $uid = $re[0]['user_id'];
+    $data['to_id'] = $uid;
+    $sql = "SELECT count(id) AS num FROM guwen_inbox_link WHERE  my_id = ? AND to_id = ?";
+    $query = $this->db->query($sql,array($data['my_id'],$data['to_id']));
+    $res = $query->result_array();
+    if( $res[0]['num'] > 0)
+    {
+      $this->db->where('my_id',$data['my_id']);
+      $up_time = array(
+        'time' => $data['time'],
+      );
+      $this->db->update('guwen_inbox_link',$up_time);
+    }
+    else
+    {
+      $this->db->insert("guwen_inbox_link",$data);
+    }
+  }
+
+  public function get_user_infos($user_name)
+  {
+    $sql = "SELECT user_name,user_id FROM guwen_user WHERE user_name LIKE '%$user_name%' "  ;
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res;
+  }
+  public function create_cate($data)
+  {
+    $this->db->insert("guwen_tag",$data);
+    $sql = "SELECT id, tag_name FROM guwen_tag";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res;
+  }
+
+  public function get_reg_inbox()
+  {
+    $sql = "SELECT reg_inbox FROM guwen_help WHERE id = 1";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res[0]['reg_inbox'];
+  }
+  public function user_register($data)
+  {
+    $this->db->insert('guwen_user',$data);
+    return TRUE;
+  }
+  public function user_login_log($data)
+  {
+    $this->db->insert('guwen_log',$data);
+  }
+  public function post_inbox($data)
+  {
+    $sql = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]'";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    $uid = $res[0]['user_id'];
+    $data['to_id'] = $uid;
+    $res = $this->db->insert("guwen_inbox",$data);
+    return TRUE;
+  }
+  public function get_user_info($useremail)
+  {
+    $sql = "SELECT user_id ,user_name,user_email,user_img,user_role FROM guwen_user WHERE user_email = ? ";
+    $query = $this->db->query($sql,array($useremail));
+    return $query->result_array();
+  }
+
+  public function login_score($data)
+  {
+    $this->db->where('user_id',$data);
+    $this->db->update('guwen_user',$this->add_score("2"));
+    return TRUE;
+  }
+
+  private function add_score($score)
+  {
+    $sql = "SELECT user_score FROM guwen_user WHERE user_id = ?";
+    $query = $this->db->query($sql,array(get_user_info("user_id")));
+    $res = $query->result_array();
+    foreach ($res as $value) {
+      $current_score = intval($value['user_score']);
+    }
+    return array("user_score" => $current_score + intval($score));
   }
 }
