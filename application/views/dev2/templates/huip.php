@@ -58,14 +58,31 @@
   <p><%=data[0].rank%></p>
   <p><%=data[0].gap%></p>
 </script>
-<script type="text/template" id="ucenter_template">
-  <div class="ucenter">
+<script type="text/template" id="myquestion_template">
+  <div class="myquestion">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#u/<%=data.uid%>">TA的提问</a></li>
-      <li><a href="#">TA的回答</a></li>
+      <li><a href="#u/a/<%=data.uid%>">TA的回答</a></li>
     </ul>
     <div class="ques-list">
       <%_.each(data.question,function(list) {%>
+          <li>
+            <a href="#/q/<%=list.msgid%>"><%=list.ques_title%></a>
+            <p><span><%=list.answer%>个答案</span><span>浏览：<%=list.browser%></span><span><%=list.post_time%></span></p>
+            <hr />
+          </li>
+      <% }) %>
+    </div>
+  </div>
+</script>
+<script type="text/template" id="myanswer_template">
+  <div class="myanswer">
+    <ul class="nav nav-tabs">
+      <li><a href="#u/<%=data.uid%>">TA的提问</a></li>
+      <li class="active"><a href="#u/a/<%=data.uid%>">TA的回答</a></li>
+    </ul>
+    <div class="ques-list">
+      <%_.each(data.answer,function(list) {%>
           <li>
             <a href="#/q/<%=list.msgid%>"><%=list.ques_title%></a>
             <p><span><%=list.answer%>个答案</span><span>浏览：<%=list.browser%></span><span><%=list.post_time%></span></p>

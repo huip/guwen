@@ -109,8 +109,9 @@ class Api extends CI_Controller {
    */
   public function myanswer($uid,$page)
   {
-    $myanswer = $this->api_model->get_my_answer($uid,$page);
-    echo json_encode($myanswer);
+    $data = [];
+    $data['answer'] = $this->api_model->get_my_answer($uid,$page);
+    echo json_encode($data);
   }
 
   /*
