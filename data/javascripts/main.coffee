@@ -1,6 +1,7 @@
 define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
+  LoginView = require './views/login'
   WidgetsView = require './views/widgets'
   QuestionView = require './views/question'
   QinfoView = require './views/qinfo'
@@ -18,7 +19,10 @@ define (require,exports,module)->
       'u/q/:uid/:page' : 'uinfo'
       'u/a/:uid' : 'uanswer'
       'u/a/:uid/:page' : 'uanswer'
+      'login' : 'login'
   app_router = new Router()
+  app_router.on 'route:login',->
+    loginView = new LoginView el: $('.left-content')
   app_router.on 'route:index',(page)->
     page = 1 if not page?
     questionView = new QuestionView {el:$('.left-content'),id:page}
