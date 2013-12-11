@@ -275,6 +275,12 @@ class Api extends CI_Controller {
       show_404();
     }
   }
+
+  public function topic($page)
+  {
+    $data['topic_list'] = $this->api_model->get_topic($page);
+    echo json_encode($data);
+  }
   /*
    * @author huip
    * is post method

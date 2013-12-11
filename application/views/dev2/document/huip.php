@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="utf-8">
     <title>document</title>
      <style type="text/css">
         body { font-size: 14px; font-family: "Open Sans", Helvetica, Arial, sans-serif; padding-bottom: 800px; padding: 10px  }
@@ -36,7 +37,16 @@
       </style>
   </head>
   <body>
-    <h1>huip's document</h1>
+    <h1>huip's document</h1> 
+     <p>2013-12-11</p>
+     <ul>
+       <li>增加获取top列表api</li>
+       </li>
+       <li>
+          添加注册接口
+       </li>
+     </ul>
+
      <p>2013-12-10</p>
      <ul>
        <li>增加view templates</li>
