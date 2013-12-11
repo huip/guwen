@@ -3,7 +3,7 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require, exports, module) {
-  var $, Backbone, QinfoView, QuestionView, RelativeView, Router, UserInfoView, WidgetsView, app_router, _ref;
+  var $, Backbone, MyQuestionView, QinfoView, QuestionView, RelativeView, Router, UserInfoView, WidgetsView, app_router, _ref;
   $ = require('$');
   Backbone = require('backbone');
   WidgetsView = require('./views/widgets');
@@ -11,6 +11,7 @@ define(function(require, exports, module) {
   QinfoView = require('./views/qinfo');
   RelativeView = require('./views/relative');
   UserInfoView = require('./views/uinfo');
+  MyQuestionView = require('./views/myquestion');
   Router = (function(_super) {
     __extends(Router, _super);
 
