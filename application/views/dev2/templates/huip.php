@@ -14,7 +14,7 @@
   <div class="hot-person">
     <p>热门分类</p>
     <%_.each(data.hot_person,function(person) {%>
-      <li><img src="<%=person.user_img%>" alt="<%=person.user_name%>" class="img-rounded img-responsive" /><a href="<%=person.user_id%>"><%=person.user_name%></a></li>
+      <li><a href="#u/q/<%=person.user_id%>"><img src="<%=person.user_img%>" alt="<%=person.user_name%>" class="img-rounded img-responsive" /><%=person.user_name%></a></li>
     <%})%>
   </div>
 </script>
@@ -27,17 +27,17 @@
     <%_.each(data.info,function(info) {%>
       <h2><%=info.ques_title%></h2>
       <p><%=info.ques_content%></p>
-      <p><a href="#u/<%=info.user_id%>"><%=info.user_name%></a></p>
+      <p><a href="#u/q/<%=info.user_id%>"><%=info.user_name%></a></p>
       <p><%=info.ques_score%></p>
       <p><%=info.post_time%></p>
     <%})%>
     <%_.each(data.comments,function(comment) {%>
-      <p><a href="#u/<%=comment.user_id%>"><%=comment.user_name%></a></p>
+      <p><a href="#u/q/<%=comment.user_id%>"><%=comment.user_name%></a></p>
       <p><%=comment.comment_content%></p>
       <p><%=comment.comment_time%></p>
       <%_.each(comment.reply,function(reply) {%>
         <div style="text-indent:40px">
-          <p><a href="#u/<%=reply.user_id%>"><%=reply.user_name%></a></p>
+          <p><a href="#u/q/<%=reply.user_id%>"><%=reply.user_name%></a></p>
           <p><%=reply.reply_content%></p>
           <p><%=reply.time%></p>
         </div>
@@ -61,7 +61,7 @@
 <script type="text/template" id="myquestion_template">
   <div class="myquestion">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#u/<%=data.uid%>">TA的提问</a></li>
+      <li class="active"><a href="#u/q/<%=data.uid%>">TA的提问</a></li>
       <li><a href="#u/a/<%=data.uid%>">TA的回答</a></li>
     </ul>
     <div class="ques-list">
@@ -78,7 +78,7 @@
 <script type="text/template" id="myanswer_template">
   <div class="myanswer">
     <ul class="nav nav-tabs">
-      <li><a href="#u/<%=data.uid%>">TA的提问</a></li>
+      <li><a href="#u/q/<%=data.uid%>">TA的提问</a></li>
       <li class="active"><a href="#u/a/<%=data.uid%>">TA的回答</a></li>
     </ul>
     <div class="ques-list">

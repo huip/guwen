@@ -14,7 +14,8 @@ define (require,exports,module)->
       'index' : 'index'
       'index/:page' : 'index'
       'q/:qid' : 'question'
-      'u/:uid' : 'uinfo'
+      'u/q/:uid' : 'uinfo'
+      'u/q/:uid/:page' : 'uinfo'
       'u/a/:uid' : 'uanswer'
       'u/a/:uid/:page' : 'uanswer'
   app_router = new Router()
@@ -37,7 +38,8 @@ define (require,exports,module)->
     args = 
       uid:uid
       page:page
+    console.log args
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
-    myquestion = new MyAnswerView el:$('.left-content'),id:args
+    myanswer = new MyAnswerView el:$('.left-content'),id:args
   Backbone.history.start()
 
