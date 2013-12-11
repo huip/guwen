@@ -6,11 +6,15 @@ define (require,exports,module)->
   class MyQuestionView extends Backbone.View
     initialize:()->
       that = @
-      myquestionModel = new MyQuestionModel id:@id
+      myquestionModel = new MyQuestionModel()
+      myquestionModel.set
+        uid: @id.uid
+        page: @id.page
       myquestionModel.fetch
         success: (data)->
+          console.log data.toJSON()
           that.render data.toJSON()
     render: (data)->
-      template = _.template $('#myquestion_template').html(),{data:data}
+      template = _.template $('#ucenter_template').html(),data:data
       @.$el.html template
   module.exports = MyQuestionView    
