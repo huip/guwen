@@ -7,13 +7,17 @@ define (require,exports,module)->
   RelativeView = require './views/relative'
   UserInfoView = require './views/uinfo'
   MyQuestionView = require './views/myquestion'
+  MyAnswerView = require './views/myanswer'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
       'index' : 'index'
       'index/:page' : 'index'
       'q/:qid' : 'question'
-      'u/:uid' : 'uinfo'
+      'u/q/:uid' : 'uinfo'
+      'u/q/:uid/:page' : 'uinfo'
+      'u/a/:uid' : 'uanswer'
+      'u/a/:uid/:page' : 'uanswer'
   app_router = new Router()
   app_router.on 'route:index',(page)->
     page = 1 if not page?
@@ -22,7 +26,20 @@ define (require,exports,module)->
   app_router.on 'route:question',(qid)->
     qinfoView = new QinfoView el:$('.left-content'),id:qid
     relativeView = new RelativeView el:$('.right-content'),id:qid
-  app_router.on 'route:uinfo',(uid)->
+  app_router.on 'route:uinfo',(uid,page)->
+    page = 1 if not page?
+    args = 
+      uid:uid
+      page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
+    myquestion = new MyQuestionView el:$('.left-content'),id:args
+  app_router.on 'route:uanswer',(uid,page)->
+    page = 1 if not page?
+    args = 
+      uid:uid
+      page:page
+    console.log args
+    userInfoView = new UserInfoView el:$('.right-content'),id:uid
+    myanswer = new MyAnswerView el:$('.left-content'),id:args
   Backbone.history.start()
 

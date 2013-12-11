@@ -1,0 +1,4 @@
+*.js
+*.css
+node_moduls
+.DS_Store
