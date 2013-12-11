@@ -292,7 +292,7 @@ public function profile_alter($data)
 {
   $alter_info = array(
     'user_name'   => $data['user_name'],
-    'user_motto'  => $data['profile']
+    'motto'  => $data['profile']
   );
   $this->db->where('user_id',$data['user_id']);
   $this->db->update('guwen_user',$alter_info);

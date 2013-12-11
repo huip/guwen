@@ -13,19 +13,19 @@ class Api_model extends CI_Model
   public function get_question_list($page)
   {   
     $pagesize = 10;
-    $sqls = "SELECT COUNT(msgid) AS num FROM guwen_message";
-    $query = $this->db->query($sqls);
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question";
+    $query = $this->db->query($sql);
     $result = $query->result_array();
     $offset = ($page-1)*$pagesize;
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
-    $sql = "SELECT us.user_img,us.user_name,us.user_id,ms.msgid,ms.post_time,ms.ques_title,'$numpage' AS num,
-                IF(is_best = 0,'未解决','已解决') AS is_best,
-                ms.ques_socore,ms.browser,
-                (SELECT count(*) FROM guwen_comment WHERE comment_quesid = ms.msgid) AS anwser,
-                (SELECT tag_name FROM guwen_tag WHERE id = ms.ques_cate ) AS ques_cate
-                FROM guwen_message AS ms, guwen_user AS us WHERE ms.user_id = us.user_id 
-                ORDER BY msgid DESC LIMIT $offset,$pagesize";
+    $sql = "SELECT us.gravatar,us.name,us.uid,q.qid,q.ctime,q.qtitle,'$numpage' AS num,
+                IF(status = 0,'未解决','已解决') AS status,
+                q.qscore,q.click,
+                (SELECT count(*) FROM guwen_comment WHERE comment_quesid = q.qid) AS anwser,
+                (SELECT tag_name FROM guwen_tag WHERE id = q.qcate ) AS qcate
+                FROM guwen_question AS q, guwen_user AS us WHERE q.uid = us.uid 
+                ORDER BY qid DESC LIMIT $offset,$pagesize";
     $query = $this->db->query($sql);
     $result = $query->result_array();
     return $result;
@@ -38,12 +38,12 @@ class Api_model extends CI_Model
    */
   public function get_question_info($qid)
   {
-    $sql = " SELECT ms.msgid ,us.user_name,ms.ques_title,ms.ques_content,
-      ms.user_id,ms.ques_socore, ms.post_time,ms.is_best,
-      (SELECT tag_name FROM guwen_tag WHERE id = ms.ques_cate) AS 
-      ques_cate
-      FROM guwen_message AS ms, guwen_user AS us  
-      WHERE us.user_id = ms.user_id AND msgid = ?";
+    $sql = " SELECT q.qid ,us.name,q.qtitle,q.qcontent,
+      q.uid,q.qscore, q.ctime,q.status,
+      (SELECT tag_name FROM guwen_tag WHERE id = q.qcate) AS 
+      qcate
+      FROM guwen_question AS q, guwen_user AS us  
+      WHERE us.uid = q.uid AND qid = ?";
     $query = $this->db->query($sql,array($qid));
     $result = $query->result_array();
     return $result;
@@ -61,19 +61,19 @@ class Api_model extends CI_Model
     $keyword = array();
     $relative_ques = array();
     $realativewords = array();
-    $sql = "SELECT keywords FROM guwen_keywords WHERE ques_id = ?";
+    $sql = "SELECT keywords FROM guwen_keywords WHERE qid = ?";
     $query = $this->db->query($sql,array($qid));
     $res = $query->result_array();
     foreach ($res as $key => $value) {
       $keywords = explode(',',$value['keywords']);
     }
-    $sql = "SELECT keywords ,ques_id,ques_cate FROM guwen_keywords WHERE ques_id !=?";
+    $sql = "SELECT keywords ,qid,qcate FROM guwen_keywords WHERE qid !=?";
     $query = $this->db->query($sql,array($qid));
     $re = $query->result_array();
     foreach ($re as $key => $value) {
       $keyword[$key]= explode(',',$value['keywords']);
-      $keyword[$key]['ques_id'] = $value['ques_id'];
-      $keyword[$key]['ques_cate'] = $value['ques_cate'];
+      $keyword[$key]['qid'] = $value['qid'];
+      $keyword[$key]['qcate'] = $value['qcate'];
     }
     foreach ($keyword as $key => $value) {
       $diff = array_diff($keywords,$value);
@@ -82,8 +82,8 @@ class Api_model extends CI_Model
         if( (1- count($diff)/count($keywords)) >= 0.3 )
         {
           $relative[$key]['score'] = (1-count($diff)/count($keywords));
-          $relative[$key]['ques_id'] = $value['ques_id'];
-          $relative[$key]['ques_cate'] = $value['ques_cate'];
+          $relative[$key]['qid'] = $value['qid'];
+          $relative[$key]['qcate'] = $value['qcate'];
         }
       }
     }
@@ -100,9 +100,9 @@ class Api_model extends CI_Model
       };
     }
     foreach ($realativewords as $key => $value) {
-      $sql = "SELECT ques_title,msgid,(SELECT tag_name FROM guwen_tag WHERE id = '$value[ques_cate]' ) AS ques_cate,
-      (SELECT COUNT(id) FROM guwen_comment WHERE comment_quesid = '$value[ques_id]') AS anwser 
-      FROM guwen_message  WHERE msgid = '$value[ques_id]'";
+      $sql = "SELECT qtitle,qid,(SELECT tag_name FROM guwen_tag WHERE id = '$value[qcate]' ) AS qcate,
+      (SELECT COUNT(id) FROM guwen_comment WHERE comment_quesid = '$value[qid]') AS anwser 
+      FROM guwen_question  WHERE qid = '$value[qid]'";
       $query = $this->db->query($sql);
       $res = $query->result_array();
       $relative_ques[$key] = $res;
@@ -115,22 +115,22 @@ class Api_model extends CI_Model
    * get  question comment info
    * Dec 2013-12-7
    */
-  public function get_comments($ques_id)
+  public function get_comments($qid)
   {
     $sql = "SELECT cmt.id,cmt.comment_content,cmt.comment_time,cmt.comment_quesid ,cmt.comment_uid,
-      cmt.comment_favour,us.user_img,us.user_name,us.user_id,
+      cmt.comment_favour,us.gravatar,us.name,us.uid,
       (SELECT count(id) FROM guwen_comment_reply WHERE comment_id = cmt.id) as reply_num,
       (SELECT uid FROM guwen_bestanwserlog WHERE comment_id = cmt.id) AS best_uid 
       FROM  guwen_comment AS cmt ,guwen_user AS us 
-      WHERE  us.user_id = cmt.comment_uid  AND cmt.comment_quesid = ? 
+      WHERE  us.uid = cmt.comment_uid  AND cmt.comment_quesid = ? 
       ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id DESC";
-    $query = $this->db->query($sql,array($ques_id));
+    $query = $this->db->query($sql,array($qid));
     $res = $query->result_array($query);
     foreach ($res as $key => $value) 
     {
-      $sql = "SELECT DISTINCT  reply.reply_content ,reply.time,us.user_name,us.user_img,us.user_id 
+      $sql = "SELECT DISTINCT  reply.reply_content ,reply.time,us.name,us.gravatar,us.uid 
       FROM guwen_comment_reply as reply ,guwen_user as us ,guwen_comment AS cmt
-      WHERE reply.comment_id  = ? AND reply.reply_uid = us.user_id 
+      WHERE reply.comment_id  = ? AND reply.reply_uid = us.uid 
       AND cmt.comment_quesid = ? ";
 
       $query = $this->db->query($sql,array($value['id'],$value['comment_quesid']));
@@ -147,10 +147,10 @@ class Api_model extends CI_Model
    */
   public function get_u_info($uid)
   {
-    $sql = "SELECT us.user_name,us.user_motto,us.user_img,us.user_score,us.user_id,
-      (SELECT rank FROM guwen_rank WHERE us.user_score >= score ORDER BY id DESC LIMIT 1) 
-      AS rank ,(SELECT (score - us.user_score) FROM guwen_rank WHERE score > us.user_score ORDER BY id ASC LIMIT 1)
-      AS gap FROM guwen_user AS us  WHERE us.user_id = ?";
+    $sql = "SELECT us.name,us.motto,us.gravatar,us.score,us.uid,
+      (SELECT rank FROM guwen_rank WHERE us.score >= score ORDER BY id DESC LIMIT 1) 
+      AS rank ,(SELECT (score - us.score) FROM guwen_rank WHERE score > us.score ORDER BY id ASC LIMIT 1)
+      AS gap FROM guwen_user AS us  WHERE us.uid = ?";
     $query = $this->db->query($sql,array($uid));
     $res = $query->result_array();
     return $res;
@@ -164,15 +164,15 @@ class Api_model extends CI_Model
   public function get_my_question($uid,$page)
   {
     $pagesize = 10;
-    $sql = "SELECT COUNT(msgid) AS num FROM guwen_message WHERE user_id =  ?";
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question WHERE uid =  ?";
     $query = $this->db->query($sql,array($uid));
     $result = $query->result_array();
     $offset = ($page-1)*$pagesize;
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
-    $sql = "SELECT DISTINCT ms.ques_title,ms.browser,ms.msgid,ms.post_time, '$numpage' AS num,
-      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = ms.msgid ) 
-      as answer FROM guwen_message AS ms  WHERE ms.user_id  = ? ORDER BY ms.msgid DESC LIMIT $offset,$pagesize";
+    $sql = "SELECT DISTINCT q.qtitle,q.click,q.qid,q.ctime, '$numpage' AS num,
+      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid ) 
+      as answer FROM guwen_question AS q  WHERE q.uid  = ? ORDER BY q.qid DESC LIMIT $offset,$pagesize";
     $query = $this->db->query($sql,array($uid));
     return $query->result_array();
   }
@@ -185,17 +185,17 @@ class Api_model extends CI_Model
   public function get_my_answer($uid,$pages)
   {
     $pagesize = 10;
-    $sql = "SELECT COUNT(msgid) AS num FROM guwen_message WHERE user_id =  ?";
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question WHERE uid =  ?";
     $query = $this->db->query($sql,array($uid));
     $result = $query->result_array();
     $offset = ($pages-1)*$pagesize;
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
-    $sql = "SELECT DISTINCT ms.ques_title,ms.post_time,ms.browser,ms.msgid, '$numpage' AS num,
-      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = ms.msgid ) AS answer,
-      (SELECT comment_content FROM guwen_comment WHERE comment_quesid = ms.msgid 
-      AND comment_uid = '$uid'  LIMIT 1 ) AS myanswer FROM guwen_message AS ms ,guwen_comment AS cmt
-      WHERE cmt.comment_quesid = ms.msgid AND cmt.comment_uid = ? ORDER BY ms.msgid DESC LIMIT $offset,$pagesize" ;
+    $sql = "SELECT DISTINCT q.qtitle,q.ctime,q.click,q.qid, '$numpage' AS num,
+      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid ) AS answer,
+      (SELECT comment_content FROM guwen_comment WHERE comment_quesid = q.qid 
+      AND comment_uid = '$uid'  LIMIT 1 ) AS myanswer FROM guwen_question AS q ,guwen_comment AS cmt
+      WHERE cmt.comment_quesid = q.qid AND cmt.comment_uid = ? ORDER BY q.qid DESC LIMIT $offset,$pagesize" ;
     $query = $this->db->query($sql,array($uid));
     $result = $query->result_array();
     return $result;
@@ -207,10 +207,10 @@ class Api_model extends CI_Model
    */
   public function user_login($data)
   {
-    $user_email = $data['user_email'];
-    $user_password = $data['user_password'];
-    $sql = "SELECT user_role FROM guwen_user WHERE user_email = ? AND user_password = ? ";
-    $query = $this->db->query($sql,array($user_email,$user_password));
+    $email = $data['email'];
+    $password = $data['password'];
+    $sql = "SELECT role FROM guwen_user WHERE email = ? AND password = ? ";
+    $query = $this->db->query($sql,array($email,$password));
     return $query->result_array();
   }
 
@@ -221,23 +221,23 @@ class Api_model extends CI_Model
    */
   public function check_is_register($data)
   {
-    if( $data['type'] == 'user_name' )
+    if( $data['type'] == 'name' )
     {
-      $sql = "SELECT id FROM guwen_user WHERE user_name = ? ";
+      $sql = "SELECT id FROM guwen_user WHERE name = ? ";
     }
     else
     {
-      $sql = "SELECT id FROM guwen_user WHERE user_email = ? ";
+      $sql = "SELECT id FROM guwen_user WHERE email = ? ";
     }
     $query = $this->db->query($sql,array($data['value']));
     return $query->result_array();
   }
   public function update_inbox_link($data)
   {
-    $sql = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]'  ";
+    $sql = "SELECT uid FROM guwen_user WHERE name = '$data[to_id]'  ";
     $query = $this->db->query($sql);
     $re = $query->result_array();
-    $uid = $re[0]['user_id'];
+    $uid = $re[0]['uid'];
     $data['to_id'] = $uid;
     $sql = "SELECT count(id) AS num FROM guwen_inbox_link WHERE  my_id = ? AND to_id = ?";
     $query = $this->db->query($sql,array($data['my_id'],$data['to_id']));
@@ -256,9 +256,9 @@ class Api_model extends CI_Model
     }
   }
 
-  public function get_user_infos($user_name)
+  public function get_user_infos($name)
   {
-    $sql = "SELECT user_name,user_id FROM guwen_user WHERE user_name LIKE '%$user_name%' "  ;
+    $sql = "SELECT name,uid FROM guwen_user WHERE name LIKE '%$name%' "  ;
     $query = $this->db->query($sql);
     $res = $query->result_array();
     return $res;
@@ -290,36 +290,36 @@ class Api_model extends CI_Model
   }
   public function post_inbox($data)
   {
-    $sql = "SELECT user_id FROM guwen_user WHERE user_name = '$data[to_id]'";
+    $sql = "SELECT uid FROM guwen_user WHERE name = '$data[to_id]'";
     $query = $this->db->query($sql);
     $res = $query->result_array();
-    $uid = $res[0]['user_id'];
+    $uid = $res[0]['uid'];
     $data['to_id'] = $uid;
     $res = $this->db->insert("guwen_inbox",$data);
     return TRUE;
   }
   public function get_user_info($useremail)
   {
-    $sql = "SELECT user_id ,user_name,user_email,user_img,user_role FROM guwen_user WHERE user_email = ? ";
+    $sql = "SELECT uid ,name,email,gravatar,role FROM guwen_user WHERE email = ? ";
     $query = $this->db->query($sql,array($useremail));
     return $query->result_array();
   }
 
   public function login_score($data)
   {
-    $this->db->where('user_id',$data);
+    $this->db->where('uid',$data);
     $this->db->update('guwen_user',$this->add_score("2"));
     return TRUE;
   }
 
   private function add_score($score)
   {
-    $sql = "SELECT user_score FROM guwen_user WHERE user_id = ?";
-    $query = $this->db->query($sql,array(get_user_info("user_id")));
+    $sql = "SELECT score FROM guwen_user WHERE uid = ?";
+    $query = $this->db->query($sql,array(get_user_info("uid")));
     $res = $query->result_array();
     foreach ($res as $value) {
-      $current_score = intval($value['user_score']);
+      $current_score = intval($value['score']);
     }
-    return array("user_score" => $current_score + intval($score));
+    return array("score" => $current_score + intval($score));
   }
 }
