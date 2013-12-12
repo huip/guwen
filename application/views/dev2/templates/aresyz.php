@@ -20,7 +20,7 @@
 						<div class="from-group col-md-2 col-md-offset-4">
 							<div class="controls">
 								<div class="error-tip"></div>
-								<button type="button" class="btn login-btn btn-primary">登录</button>
+								<button type="button" id="login-btn" class="btn login-btn btn-primary">登录</button>
 							</div>
 						</div>
 					</div>
