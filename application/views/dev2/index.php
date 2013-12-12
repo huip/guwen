@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">首页</a></li>
-        <li><a href="#">分类</a></li>
+        <li><a href="#topic">分类</a></li>
         <li><a href="#">发现</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

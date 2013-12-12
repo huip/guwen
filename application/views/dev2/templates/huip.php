@@ -24,7 +24,7 @@
     <%})%>
 </script>
 <script type="text/template" id="qinfo_template">
-    <%_.each(data.info,function(info) {%>
+    <%_.each(data,function(info) {%>
       <h2><%=info.qtitle%></h2>
       <p><%=info.qcontent%></p>
       <p><a href="#u/q/<%=info.uid%>"><%=info.name%></a></p>
@@ -90,5 +90,25 @@
           </li>
       <% }) %>
     </div>
+  </div>
+</script>
+<script type="text/template" id="topic_template">
+  <div class="topic">
+    <ul>
+      <%_.each(data.topics,function(topic) {%>
+        <li>
+            <a href="#topic/<%=topic.id%>"><%=topic.tag_name%></a>
+            <ul>
+              <%_.each(topic.qlist,function(q) {%>
+                <li>
+                  <a href="#q/<%=q.qid%>"><%=q.qtitle%></a>
+                  <p><%=q.ctime%></p>
+                  <p>回答:(<%=q.anwser%>)</p>
+                </li>
+              <%})%>
+            </ul>
+        </li> 
+      <%})%>
+   </ul>
   </div>
 </script>
