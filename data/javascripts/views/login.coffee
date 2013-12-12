@@ -4,9 +4,8 @@ define (require,exports,module)->
   _ = require 'underscore'
   class LoginView extends Backbone.View
   	events:
-    	'click button#login-btn' : 'login'
+    	'click .login-btn' : 'login'
     initialize: ->
-    	_.bindAll @,'login',
       that = @
       @render()
     render: ->
