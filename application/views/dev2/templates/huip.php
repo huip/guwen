@@ -46,7 +46,7 @@
     <%})%>
 </script>
 <script type="text/template" id="relative_template">
-    <%_.each(data,function(info) {%>
+    <%_.each(data.relative,function(info) {%>
       <li><a href="#q/<%=info[0].qid%>"><%=info[0].qtitle%></a></li>
     <%})%>
 </script>

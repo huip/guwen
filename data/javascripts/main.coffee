@@ -5,7 +5,7 @@ define (require,exports,module)->
   WidgetsView = require './views/widget/widgets'
   QuestionView = require './views/question/list'
   QinfoView = require './views/question/info'
-  #RelativeView = require './views/relative'
+  RelativeView = require './views/question/relative'
   #UserInfoView = require './views/uinfo'
   #MyQuestionView = require './views/myquestion'
   #MyAnswerView = require './views/myanswer'
@@ -15,7 +15,7 @@ define (require,exports,module)->
       '' : 'index'
       'index' : 'index'
       'index/:page' : 'index'
-      'q/:qid' : 'question'
+      'q/:id' : 'question'
       'u/q/:uid' : 'uinfo'
       'u/q/:uid/:page' : 'uinfo'
       'u/a/:uid' : 'uanswer'
@@ -35,9 +35,9 @@ define (require,exports,module)->
     page = 1 if not page?
     topicView = new TopicView {el:$('.left-content'),id:page}
     $('.navbar-nav li').eq(1).addClass('active').siblings().removeClass('active')
-  app_router.on 'route:question',(qid)->
-    qinfoView = new QinfoView el:$('.left-content'),id:qid
-    #relativeView = new RelativeView el:$('.right-content'),id:qid
+  app_router.on 'route:question',(id)->
+    qinfoView = new QinfoView el:$('.left-content'),id:id
+    relativeView = new RelativeView el:$('.right-content'),id:id
   app_router.on 'route:uinfo',(uid,page)->
     page = 1 if not page?
     args = 

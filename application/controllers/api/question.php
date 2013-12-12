@@ -28,4 +28,15 @@ class Question extends REST_Controller
     $info = $this->question_model->get_info($this->get('id'));
     $this->response($info);
   }
+
+  public function relative_get()
+  {
+    if(!$this->get('id'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['relative'] = $this->question_model->get_relative($this->get('id'));
+    $this->response($data);
+  }
+
 }
