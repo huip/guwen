@@ -6,18 +6,18 @@
 			<div class="login">
 					<div class="form-horizontal" role="form">
 						<div class="form-group">
-						    <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
-						    <div class="col-sm-10">
+						    <label for="inputEmail3" class="col-sm-4 control-label">邮箱</label>
+						    <div class="col-sm-5">
 						     	<input type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-						    <div class="col-sm-10">
+						    <label for="inputPassword3" class="col-sm-4 control-label">密码</label>
+						    <div class="col-sm-5">
 						        <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
 						    </div>
 						</div>
-						<div class="from-group">
+						<div class="from-group col-md-2 col-md-offset-4">
 							<div class="controls">
 								<div class="error-tip"></div>
 								<button type="button" class="btn login-btn btn-primary">登录</button>
