@@ -24,7 +24,7 @@
     <%})%>
 </script>
 <script type="text/template" id="qinfo_template">
-    <%_.each(data.info,function(info) {%>
+    <%_.each(data,function(info) {%>
       <h2><%=info.qtitle%></h2>
       <p><%=info.qcontent%></p>
       <p><a href="#u/q/<%=info.uid%>"><%=info.name%></a></p>

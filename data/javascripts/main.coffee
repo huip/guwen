@@ -2,14 +2,14 @@ define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
   LoginView = require './views/login'
-  WidgetsView = require './views/widgets'
-  QuestionView = require './views/question'
-  QinfoView = require './views/qinfo'
-  RelativeView = require './views/relative'
-  UserInfoView = require './views/uinfo'
-  MyQuestionView = require './views/myquestion'
-  MyAnswerView = require './views/myanswer'
-  TopicView = require './views/topic'
+  WidgetsView = require './views/widget/widgets'
+  QuestionView = require './views/question/list'
+  QinfoView = require './views/question/info'
+  #RelativeView = require './views/relative'
+  #UserInfoView = require './views/uinfo'
+  #MyQuestionView = require './views/myquestion'
+  #MyAnswerView = require './views/myanswer'
+  #TopicView = require './views/topic'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
@@ -38,7 +38,7 @@ define (require,exports,module)->
     $('.navbar-nav li').eq(1).addClass('active').siblings().removeClass('active')
   app_router.on 'route:question',(qid)->
     qinfoView = new QinfoView el:$('.left-content'),id:qid
-    relativeView = new RelativeView el:$('.right-content'),id:qid
+    #relativeView = new RelativeView el:$('.right-content'),id:qid
   app_router.on 'route:uinfo',(uid,page)->
     page = 1 if not page?
     args = 

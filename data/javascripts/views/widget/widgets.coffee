@@ -2,7 +2,7 @@ define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
   _ = require 'underscore'
-  WidgetsModel = require '../models/widgets'
+  WidgetsModel = require '../../models/widget/widgets'
   class WidgetsView extends Backbone.View
     initialize: ->
       that = @
