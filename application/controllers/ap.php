@@ -15,31 +15,6 @@ class Api extends CI_Controller {
 
   /*
    * @author huip
-   * api router page
-   * render api router
-   * Dec 2013-12-05
-   */
-  public function index()
-  {
-    $this->load->view("api");
-  }
-  /*
-   * @author huip
-   * widgets
-   * return hot tags,question,person
-   * Dec 2013-12-05
-   */
-  public function widgets()
-  {
-    $widgets = [];
-    $widgets['hot_cate'] = $this->widgets_model->get_hot_cate();
-    $widgets['hot_ques'] = $this->widgets_model->get_hot_ques();
-    $widgets['hot_person'] = $this->widgets_model->get_hot_person();
-    echo json_encode($widgets);
-  }
-
-  /*
-   * @author huip
    * widgets api
    * return question list
    * Dec 2013-12-05
