@@ -8,7 +8,7 @@
 <meta  name="description" content="故问是由中南民族大学比特工场开发，以提升大学生活品质为核心定位的学生问答知识社区" />
 <link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/lib/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/huip.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/areszy.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/aresyz.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo base_url();?>data/stylesheets/tibic.css" type="text/css" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
