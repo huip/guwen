@@ -96,8 +96,9 @@ class Api extends CI_Controller {
    */
   public function myquestion($uid,$page)
   {
-    $myquestion = $this->api_model->get_my_question($uid,$page);
-    echo json_encode($myquestion);
+    $data = [];
+    $data['question'] = $this->api_model->get_my_question($uid,$page);
+    echo json_encode($data);
   }
 
   /*
@@ -108,8 +109,9 @@ class Api extends CI_Controller {
    */
   public function myanswer($uid,$page)
   {
-    $myanswer = $this->api_model->get_my_answer($uid,$page);
-    echo json_encode($myanswer);
+    $data = [];
+    $data['answer'] = $this->api_model->get_my_answer($uid,$page);
+    echo json_encode($data);
   }
 
   /*
@@ -272,6 +274,12 @@ class Api extends CI_Controller {
     {
       show_404();
     }
+  }
+
+  public function topic($page)
+  {
+    $data['topic_list'] = $this->api_model->get_topic($page);
+    echo json_encode($data);
   }
   /*
    * @author huip

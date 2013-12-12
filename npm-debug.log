@@ -1,0 +1,319 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'express',
+1 verbose cli   '-g' ]
+2 info using npm@1.1.46
+3 info using node@v0.8.5
+4 verbose config file /home/tibic/.npmrc
+5 verbose config file /usr/local/etc/npmrc
+6 verbose config file /usr/local/lib/node_modules/npm/npmrc
+7 verbose read json /usr/local/lib/package.json
+8 verbose read json /usr/local/lib/package.json
+9 verbose cache add [ 'express', null ]
+10 silly cache add name=undefined spec="express" args=["express",null]
+11 verbose parsed url { pathname: 'express', path: 'express', href: 'express' }
+12 silly lockFile f3c62de4-express express
+13 verbose lock express /home/tibic/.npm/f3c62de4-express.lock
+14 silly lockFile f3c62de4-express express
+15 verbose addNamed [ 'express', '' ]
+16 verbose addNamed [ null, '' ]
+17 silly lockFile 64a534c1-express express@
+18 verbose lock express@ /home/tibic/.npm/64a534c1-express.lock
+19 silly addNameRange { name: 'express', range: '', hasData: false }
+20 verbose url raw express
+21 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+22 verbose url resolved https://registry.npmjs.org/express
+23 info retry registry request attempt 1 at 09:15:58
+24 http GET https://registry.npmjs.org/express
+25 http 200 https://registry.npmjs.org/express
+26 silly registry.get cb [ 200,
+26 silly registry.get   { vary: 'Accept',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R15B03)',
+26 silly registry.get     etag: '"2GA1FOODJCFUK0TF7OBXDH1S4"',
+26 silly registry.get     date: 'Thu, 12 Dec 2013 01:16:00 GMT',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'content-length': '477951' } ]
+27 silly addNameRange number 2 { name: 'express', range: '', hasData: true }
+28 silly addNameRange versions [ 'express',
+28 silly addNameRange   [ '0.14.0',
+28 silly addNameRange     '0.14.1',
+28 silly addNameRange     '1.0.0',
+28 silly addNameRange     '1.0.1',
+28 silly addNameRange     '1.0.2',
+28 silly addNameRange     '1.0.3',
+28 silly addNameRange     '1.0.4',
+28 silly addNameRange     '1.0.5',
+28 silly addNameRange     '1.0.6',
+28 silly addNameRange     '1.0.7',
+28 silly addNameRange     '1.0.8',
+28 silly addNameRange     '2.0.0',
+28 silly addNameRange     '2.1.0',
+28 silly addNameRange     '2.1.1',
+28 silly addNameRange     '2.2.0',
+28 silly addNameRange     '2.2.1',
+28 silly addNameRange     '2.2.2',
+28 silly addNameRange     '2.3.0',
+28 silly addNameRange     '2.3.1',
+28 silly addNameRange     '2.3.2',
+28 silly addNameRange     '2.3.3',
+28 silly addNameRange     '2.3.4',
+28 silly addNameRange     '2.3.5',
+28 silly addNameRange     '2.3.6',
+28 silly addNameRange     '2.3.7',
+28 silly addNameRange     '2.3.8',
+28 silly addNameRange     '2.3.9',
+28 silly addNameRange     '2.3.10',
+28 silly addNameRange     '2.3.11',
+28 silly addNameRange     '2.3.12',
+28 silly addNameRange     '2.4.0',
+28 silly addNameRange     '2.4.1',
+28 silly addNameRange     '2.4.2',
+28 silly addNameRange     '2.4.3',
+28 silly addNameRange     '2.4.4',
+28 silly addNameRange     '2.4.5',
+28 silly addNameRange     '2.4.6',
+28 silly addNameRange     '2.4.7',
+28 silly addNameRange     '2.5.0',
+28 silly addNameRange     '2.5.1',
+28 silly addNameRange     '2.5.2',
+28 silly addNameRange     '2.5.3',
+28 silly addNameRange     '2.5.4',
+28 silly addNameRange     '2.5.5',
+28 silly addNameRange     '2.5.6',
+28 silly addNameRange     '2.5.7',
+28 silly addNameRange     '2.5.8',
+28 silly addNameRange     '2.5.9',
+28 silly addNameRange     '2.5.10',
+28 silly addNameRange     '2.5.11',
+28 silly addNameRange     '3.0.0',
+28 silly addNameRange     '3.0.1',
+28 silly addNameRange     '3.0.2',
+28 silly addNameRange     '3.0.3',
+28 silly addNameRange     '3.0.4',
+28 silly addNameRange     '3.0.5',
+28 silly addNameRange     '3.0.6',
+28 silly addNameRange     '3.1.0',
+28 silly addNameRange     '3.1.1',
+28 silly addNameRange     '3.1.2',
+28 silly addNameRange     '3.2.0',
+28 silly addNameRange     '3.2.1',
+28 silly addNameRange     '3.2.2',
+28 silly addNameRange     '3.2.3',
+28 silly addNameRange     '3.2.4',
+28 silly addNameRange     '3.2.5',
+28 silly addNameRange     '3.2.6',
+28 silly addNameRange     '3.3.0',
+28 silly addNameRange     '3.3.1',
+28 silly addNameRange     '3.3.2',
+28 silly addNameRange     '3.3.3',
+28 silly addNameRange     '3.3.4',
+28 silly addNameRange     '3.3.5',
+28 silly addNameRange     '3.3.6',
+28 silly addNameRange     '1.0.0-beta',
+28 silly addNameRange     '1.0.0-beta2',
+28 silly addNameRange     '1.0.0-rc',
+28 silly addNameRange     '1.0.0-rc2',
+28 silly addNameRange     '1.0.0-rc3',
+28 silly addNameRange     '1.0.0-rc4',
+28 silly addNameRange     '2.0.0-beta',
+28 silly addNameRange     '2.0.0-beta2',
+28 silly addNameRange     '2.0.0-beta3',
+28 silly addNameRange     '2.0.0-rc',
+28 silly addNameRange     '2.0.0-rc2',
+28 silly addNameRange     '2.0.0-rc3',
+28 silly addNameRange     '3.0.0-alpha1',
+28 silly addNameRange     '3.0.0-alpha2',
+28 silly addNameRange     '3.0.0-alpha3',
+28 silly addNameRange     '3.0.0-alpha4',
+28 silly addNameRange     '3.0.0-alpha5',
+28 silly addNameRange     '3.0.0-beta1',
+28 silly addNameRange     '3.0.0-beta2',
+28 silly addNameRange     '3.0.0-beta3',
+28 silly addNameRange     '3.0.0-beta4',
+28 silly addNameRange     '3.0.0-beta6',
+28 silly addNameRange     '3.0.0-beta7',
+28 silly addNameRange     '3.0.0-rc1',
+28 silly addNameRange     '3.0.0-rc2',
+28 silly addNameRange     '3.0.0-rc3',
+28 silly addNameRange     '3.0.0-rc4',
+28 silly addNameRange     '3.0.0-rc5',
+28 silly addNameRange     '3.3.7',
+28 silly addNameRange     '3.3.8',
+28 silly addNameRange     '3.4.0',
+28 silly addNameRange     '3.4.1',
+28 silly addNameRange     '3.4.2',
+28 silly addNameRange     '3.4.3',
+28 silly addNameRange     '3.4.4',
+28 silly addNameRange     '3.4.5',
+28 silly addNameRange     '3.4.6',
+28 silly addNameRange     '3.4.7' ] ]
+29 verbose addNamed [ 'express', '3.4.7' ]
+30 verbose addNamed [ '3.4.7', '3.4.7' ]
+31 silly lockFile fb24baa2-express-3-4-7 express@3.4.7
+32 verbose lock express@3.4.7 /home/tibic/.npm/fb24baa2-express-3-4-7.lock
+33 silly lockFile aecefc7e-js-org-express-express-3-4-7-tgz https://registry.npmjs.org/express/-/express-3.4.7.tgz
+34 verbose lock https://registry.npmjs.org/express/-/express-3.4.7.tgz /home/tibic/.npm/aecefc7e-js-org-express-express-3-4-7-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/express/-/express-3.4.7.tgz',
+35 verbose addRemoteTarball   '3b939c47d2aa44dfecf77d50da2123c5bd313366' ]
+36 info retry fetch attempt 1 at 09:16:03
+37 verbose fetch to= /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/tmp.tgz
+38 http GET https://registry.npmjs.org/express/-/express-3.4.7.tgz
+39 http 200 https://registry.npmjs.org/express/-/express-3.4.7.tgz
+40 silly shasum updated bytes 36569
+41 info shasum 3b939c47d2aa44dfecf77d50da2123c5bd313366
+41 info shasum /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/tmp.tgz
+42 verbose tar unpack /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/tmp.tgz
+43 silly lockFile fade30bf-63094-0-9185854173265398-package /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package
+44 verbose lock /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package /home/tibic/.npm/fade30bf-63094-0-9185854173265398-package.lock
+45 silly gunzTarPerm modes [ '755', '644' ]
+46 silly gunzTarPerm extractEntry package.json
+47 silly gunzTarPerm extractEntry .npmignore
+48 silly gunzTarPerm extractEntry LICENSE
+49 silly gunzTarPerm extractEntry index.js
+50 silly gunzTarPerm extractEntry .travis.yml
+51 silly gunzTarPerm extractEntry bin/express
+52 silly gunzTarPerm extractEntry History.md
+53 silly gunzTarPerm extractEntry lib/application.js
+54 silly gunzTarPerm extractEntry lib/express.js
+55 silly gunzTarPerm extractEntry lib/middleware.js
+56 silly gunzTarPerm extractEntry lib/request.js
+57 silly gunzTarPerm extractEntry lib/response.js
+58 silly gunzTarPerm extractEntry lib/utils.js
+59 silly gunzTarPerm extractEntry lib/view.js
+60 silly gunzTarPerm extractEntry lib/router/index.js
+61 silly gunzTarPerm extractEntry lib/router/route.js
+62 silly gunzTarPerm extractEntry Makefile
+63 silly gunzTarPerm extractEntry Readme.md
+64 verbose read json /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package/package.json
+65 silly lockFile fade30bf-63094-0-9185854173265398-package /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package
+66 verbose from cache /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package/package.json
+67 verbose tar pack [ '/home/tibic/.npm/express/3.4.7/package.tgz',
+67 verbose tar pack   '/home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package' ]
+68 verbose tarball /home/tibic/.npm/express/3.4.7/package.tgz
+69 verbose folder /home/tibic/tmp/npm-6659/1386810963094-0.9185854173265398/package
+70 silly lockFile 1be605e9-ic-npm-express-3-4-7-package-tgz /home/tibic/.npm/express/3.4.7/package.tgz
+71 verbose lock /home/tibic/.npm/express/3.4.7/package.tgz /home/tibic/.npm/1be605e9-ic-npm-express-3-4-7-package-tgz.lock
+72 silly lockFile 1be605e9-ic-npm-express-3-4-7-package-tgz /home/tibic/.npm/express/3.4.7/package.tgz
+73 silly lockFile f9578ddc--tibic-npm-express-3-4-7-package /home/tibic/.npm/express/3.4.7/package
+74 verbose lock /home/tibic/.npm/express/3.4.7/package /home/tibic/.npm/f9578ddc--tibic-npm-express-3-4-7-package.lock
+75 silly lockFile f9578ddc--tibic-npm-express-3-4-7-package /home/tibic/.npm/express/3.4.7/package
+76 verbose tar unpack /home/tibic/.npm/express/3.4.7/package.tgz
+77 silly lockFile f9578ddc--tibic-npm-express-3-4-7-package /home/tibic/.npm/express/3.4.7/package
+78 verbose lock /home/tibic/.npm/express/3.4.7/package /home/tibic/.npm/f9578ddc--tibic-npm-express-3-4-7-package.lock
+79 silly gunzTarPerm modes [ '755', '644' ]
+80 silly gunzTarPerm extractEntry package.json
+81 silly gunzTarPerm extractEntry .npmignore
+82 silly gunzTarPerm extractEntry LICENSE
+83 silly gunzTarPerm extractEntry index.js
+84 silly gunzTarPerm extractEntry Makefile
+85 silly gunzTarPerm extractEntry lib/utils.js
+86 silly gunzTarPerm extractEntry lib/request.js
+87 silly gunzTarPerm extractEntry lib/application.js
+88 silly gunzTarPerm extractEntry lib/view.js
+89 silly gunzTarPerm extractEntry lib/middleware.js
+90 silly gunzTarPerm extractEntry lib/express.js
+91 silly gunzTarPerm extractEntry lib/response.js
+92 silly gunzTarPerm extractEntry lib/router/index.js
+93 silly gunzTarPerm extractEntry lib/router/route.js
+94 silly gunzTarPerm extractEntry History.md
+95 silly gunzTarPerm extractEntry Readme.md
+96 silly gunzTarPerm extractEntry .travis.yml
+97 silly gunzTarPerm extractEntry bin/express
+98 verbose read json /home/tibic/.npm/express/3.4.7/package/package.json
+99 silly lockFile f9578ddc--tibic-npm-express-3-4-7-package /home/tibic/.npm/express/3.4.7/package
+100 silly shasum updated bytes 36579
+101 info shasum 8ff7753d20422367478a6c865380067c399f4c3a
+101 info shasum /home/tibic/.npm/express/3.4.7/package.tgz
+102 verbose from cache /home/tibic/.npm/express/3.4.7/package/package.json
+103 verbose chmod /home/tibic/.npm/express/3.4.7/package.tgz 644
+104 verbose chown /home/tibic/.npm/express/3.4.7/package.tgz [ 1000, 1000 ]
+105 silly lockFile aecefc7e-js-org-express-express-3-4-7-tgz https://registry.npmjs.org/express/-/express-3.4.7.tgz
+106 silly lockFile fb24baa2-express-3-4-7 express@3.4.7
+107 silly lockFile 64a534c1-express express@
+108 silly resolved [ { name: 'express',
+108 silly resolved     description: 'Sinatra inspired web development framework',
+108 silly resolved     version: '3.4.7',
+108 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+108 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+108 silly resolved     dependencies:
+108 silly resolved      { connect: '2.12.0',
+108 silly resolved        commander: '1.3.2',
+108 silly resolved        'range-parser': '0.0.4',
+108 silly resolved        mkdirp: '0.3.5',
+108 silly resolved        cookie: '0.1.0',
+108 silly resolved        'buffer-crc32': '0.2.1',
+108 silly resolved        fresh: '0.2.0',
+108 silly resolved        methods: '0.1.0',
+108 silly resolved        send: '0.1.4',
+108 silly resolved        'cookie-signature': '1.0.1',
+108 silly resolved        'merge-descriptors': '0.0.1',
+108 silly resolved        debug: '>= 0.7.3 < 1' },
+108 silly resolved     devDependencies:
+108 silly resolved      { ejs: '~0.8.4',
+108 silly resolved        mocha: '~1.15.1',
+108 silly resolved        jade: '~0.30.0',
+108 silly resolved        hjs: '~0.0.6',
+108 silly resolved        stylus: '~0.40.0',
+108 silly resolved        should: '~2.1.1',
+108 silly resolved        'connect-redis': '~1.4.5',
+108 silly resolved        marked: '0.2.10',
+108 silly resolved        supertest: '~0.8.1' },
+108 silly resolved     keywords:
+108 silly resolved      [ 'express',
+108 silly resolved        'framework',
+108 silly resolved        'sinatra',
+108 silly resolved        'web',
+108 silly resolved        'rest',
+108 silly resolved        'restful',
+108 silly resolved        'router',
+108 silly resolved        'app',
+108 silly resolved        'api' ],
+108 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/express' },
+108 silly resolved     main: 'index',
+108 silly resolved     bin: { express: './bin/express' },
+108 silly resolved     scripts: { prepublish: 'npm prune', test: 'make test' },
+108 silly resolved     engines: { node: '>= 0.8.0' },
+108 silly resolved     readme: '[![express logo](http://f.cl.ly/items/0V2S1n0K1i3y1c122g04/Screen%20Shot%202012-04-11%20at%209.59.42%20AM.png)](http://expressjs.com/)\n\n  Fast, unopinionated, minimalist web framework for [node](http://nodejs.org).\n\n  [![Build Status](https://secure.travis-ci.org/visionmedia/express.png)](http://travis-ci.org/visionmedia/express) [![Gittip](http://img.shields.io/gittip/visionmedia.png)](https://www.gittip.com/visionmedia/)\n\n```js\nvar express = require(\'express\');\nvar app = express();\n\napp.get(\'/\', function(req, res){\n  res.send(\'Hello World\');\n});\n\napp.listen(3000);\n```\n\n## Installation\n\n    $ npm install -g express\n\n## Quick Start\n\n The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:\n\n Create the app:\n\n    $ npm install -g express\n    $ express /tmp/foo && cd /tmp/foo\n\n Install dependencies:\n\n    $ npm install\n\n Start the server:\n\n    $ node app\n\n## Features\n\n  * Built on [Connect](http://github.com/senchalabs/connect)\n  * Robust routing\n  * HTTP helpers (redirection, caching, etc)\n  * View system supporting 14+ template engines\n  * Content negotiation\n  * Focus on high performance\n  * Environment based configuration\n  * Executable for generating applications quickly\n  * High test coverage\n\n## Philosophy\n\n  The Express philosophy is to provide small, robust tooling for HTTP servers, making\n  it a great solution for single page applications, web sites, hybrids, or public\n  HTTP APIs.\n\n  Built on Connect, you can use _only_ what you need, and nothing more. Applications\n  can be as big or as small as you like, even a single file. Express does\n  not force you to use any specific ORM or template engine. With support for over\n  14 template engines via [Consolidate.js](http://github.com/visionmedia/consolidate.js),\n  you can quickly craft your perfect framework.\n\n## More Information\n\n  * [Website and Documentation](http://expressjs.com/) stored at [visionmedia/expressjs.com](https://github.com/visionmedia/expressjs.com)\n  * Join #express on freenode\n  * [Google Group](http://groups.google.com/group/express-js) for discussion\n  * Follow [tjholowaychuk](http://twitter.com/tjholowaychuk) on twitter for updates\n  * Visit the [Wiki](http://github.com/visionmedia/express/wiki)\n  * [Русскоязычная документация](http://jsman.ru/express/)\n  * Run express examples [online](https://runnable.com/express)\n\n## Viewing Examples\n\nClone the Express repo, then install the dev dependencies to install all the example / test suite dependencies:\n\n    $ git clone git://github.com/visionmedia/express.git --depth 1\n    $ cd express\n    $ npm install\n\nThen run whichever tests you want:\n\n    $ node examples/content-negotiation\n\nYou can also view live examples here:\n\n<a href="https://runnable.com/express" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>\n\n## Running Tests\n\nTo run the test suite, first invoke the following command within the repo, installing the development dependencies:\n\n    $ npm install\n\nThen run the tests:\n\n    $ make test\n\n## Contributors\n\n  https://github.com/visionmedia/express/graphs/contributors\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2009-2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+108 silly resolved     _id: 'express@3.4.7',
+108 silly resolved     dist: { shasum: '8ff7753d20422367478a6c865380067c399f4c3a' },
+108 silly resolved     _from: 'express' } ]
+109 info install express@3.4.7 into /usr/local/lib
+110 info installOne express@3.4.7
+111 verbose from cache /home/tibic/.npm/express/3.4.7/package/package.json
+112 info /usr/local/lib/node_modules/express unbuild
+113 verbose read json /usr/local/lib/node_modules/express/package.json
+114 verbose tar unpack /home/tibic/.npm/express/3.4.7/package.tgz
+115 silly lockFile 59b5b716-r-local-lib-node-modules-express /usr/local/lib/node_modules/express
+116 verbose lock /usr/local/lib/node_modules/express /home/tibic/.npm/59b5b716-r-local-lib-node-modules-express.lock
+117 silly gunzTarPerm modes [ '755', '644' ]
+118 error Error: EACCES, mkdir '/usr/local/lib/node_modules/express'
+118 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/express']
+118 error   errno: 3,
+118 error   code: 'EACCES',
+118 error   path: '/usr/local/lib/node_modules/express',
+118 error   fstream_type: 'Directory',
+118 error   fstream_path: '/usr/local/lib/node_modules/express',
+118 error   fstream_class: 'DirWriter',
+118 error   fstream_stack:
+118 error    [ 'DirWriter._create (/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23)',
+118 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:51:17',
+118 error      'Object.oncomplete (fs.js:297:15)' ] }
+119 error Please try running this command again as root/Administrator.
+120 error System Linux 3.11.0-12-generic
+121 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "express" "-g"
+122 error cwd /var/www/guwen
+123 error node -v v0.8.5
+124 error npm -v 1.1.46
+125 error path /usr/local/lib/node_modules/express
+126 error fstream_path /usr/local/lib/node_modules/express
+127 error fstream_type Directory
+128 error fstream_class DirWriter
+129 error code EACCES
+130 error errno 3
+131 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/express'
+132 error fstream_stack DirWriter._create (/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23)
+132 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:51:17
+132 error fstream_stack Object.oncomplete (fs.js:297:15)
+133 verbose exit [ 3, true ]
