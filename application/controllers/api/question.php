@@ -6,22 +6,26 @@ class Question extends REST_Controller
   {
     parent::__construct();
     date_default_timezone_set('PRC');
-    $this->load->model('api_model');
+    $this->load->model('api/question_model');
   }
 
-  /*
-   * @author huip
-   * api router page
-   * render api router
-   * dec 2013-12-05
-   */
   public function list_get()
   {
     if(!$this->get('page'))
     {
       $this->response(NULL, 400);
     }
-    $questions= $this->api_model->get_question_list($this->get('page'));
-    $this->response($questions);
+    $list= $this->question_model->get_list($this->get('page'));
+    $this->response($list);
   }
- }
+
+  public function info_get()
+  {
+    if(!$this->get('id'))
+    {
+      $this->response(NULL, 400);
+    }
+    $info = $this->question_model->get_info($this->get('id'));
+    $this->response($info);
+  }
+}

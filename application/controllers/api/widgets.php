@@ -8,7 +8,7 @@ class Widgets extends REST_Controller
     date_default_timezone_set('PRC');
     $this->load->helper('url');
     $this->load->library('session');
-    $this->load->model('widgets_model');
+    $this->load->model('api/widgets_model');
   }
 
   /*

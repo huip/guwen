@@ -2,7 +2,7 @@ define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
   _ = require 'underscore'
-  QinfoModel = require '../models/qinfo'
+  QinfoModel = require '../../models/question/info'
   class QinfoView extends Backbone.View
     initialize:()->
       that = @
