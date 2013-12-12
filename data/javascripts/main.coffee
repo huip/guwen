@@ -5,8 +5,8 @@ define (require,exports,module)->
   WidgetsView = require './views/widget/widgets'
   QuestionView = require './views/question/list'
   QinfoView = require './views/question/info'
-  #RelativeView = require './views/relative'
-  #UserInfoView = require './views/uinfo'
+  RelativeView = require './views/question/relative'
+  UserInfoView = require './views/user/info'
   #MyQuestionView = require './views/myquestion'
   #MyAnswerView = require './views/myanswer'
   #TopicView = require './views/topic'
@@ -15,11 +15,11 @@ define (require,exports,module)->
       '' : 'index'
       'index' : 'index'
       'index/:page' : 'index'
-      'q/:qid' : 'question'
-      'u/q/:uid' : 'uinfo'
-      'u/q/:uid/:page' : 'uinfo'
-      'u/a/:uid' : 'uanswer'
-      'u/a/:uid/:page' : 'uanswer'
+      'q/:id' : 'question'
+      'u/q/:id' : 'uinfo'
+      'u/q/:id/:page' : 'uinfo'
+      'u/a/:id' : 'uanswer'
+      'u/a/:id/:page' : 'uanswer'
       'login' : 'login'
       'topic' : 'topic'
       'topic/:page' : 'topic'
@@ -35,22 +35,22 @@ define (require,exports,module)->
     page = 1 if not page?
     topicView = new TopicView {el:$('.left-content'),id:page}
     $('.navbar-nav li').eq(1).addClass('active').siblings().removeClass('active')
-  app_router.on 'route:question',(qid)->
-    qinfoView = new QinfoView el:$('.left-content'),id:qid
-    #relativeView = new RelativeView el:$('.right-content'),id:qid
-  app_router.on 'route:uinfo',(uid,page)->
+  app_router.on 'route:question',(id)->
+    qinfoView = new QinfoView el:$('.left-content'),id:id
+    relativeView = new RelativeView el:$('.right-content'),id:id
+  app_router.on 'route:uinfo',(id,page)->
     page = 1 if not page?
     args = 
-      uid:uid
+      uid:id
       page:page
-    userInfoView = new UserInfoView el:$('.right-content'),id:uid
+    userInfoView = new UserInfoView el:$('.right-content'),id:id
     myquestion = new MyQuestionView el:$('.left-content'),id:args
-  app_router.on 'route:uanswer',(uid,page)->
+  app_router.on 'route:uanswer',(id,page)->
     page = 1 if not page?
     args = 
-      uid:uid
+      uid:id
       page:page
-    userInfoView = new UserInfoView el:$('.right-content'),id:uid
+    userInfoView = new UserInfoView el:$('.right-content'),id:id
     myanswer = new MyAnswerView el:$('.left-content'),id:args
   Backbone.history.start()
 

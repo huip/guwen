@@ -2,7 +2,7 @@ define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
   _ = require 'underscore'
-  UserInfoModel = require '../models/uinfo'
+  UserInfoModel = require '../../models/user/info'
   class UserInfoView extends Backbone.View
     initialize:()->
       that = @

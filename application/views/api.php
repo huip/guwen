@@ -8,10 +8,10 @@
        <li>获取侧边栏组件:<a href="api/widgets/">/api/widgets</a></li>
        <li>获取问题列表 page means current page (default = 1):<a href="api/question/list/page/1">/api/question/list/page/1</a></li>
        <li>获取问题的详情 id means question id:<a href="api/question/info/id/586">/api/question/info/id/586</a></li>
-       <li>获取相关问题 qid means question id:<a href="api/relative/614">/api/relative/qid</a></li>
-       <li>得到用户的信息:<a href="api/uinfo/515bccf8c3749">/api/uninfo/uid</a></li>
-       <li>得到用户问题:<a href="api/myquestion/515bccf8c3749/1">/api/myquestion/uid/page</a></li>
-       <li>得到用户的回答:<a href="api/myanswer/515bccf8c3749/1">/api/myanswer/uid/page</a></li>
+       <li>获取相关问题 qid means question id:<a href="api/question/relative/id/614">/api/question/relative/qid</a></li>
+       <li>得到用户的信息:<a href="api/user/info/id/515bccf8c3749">/api/user/info/id/</a></li>
+       <li>得到用户问题:<a href="api/user/question/id/515bccf8c3749/page/1">/api/user/question/id/page</a></li>
+       <li>得到用户的回答:<a href="api/user/answer/515bccf8c3749/1">/api/myanswer/uid/page</a></li>
        <li>用户登录接口:post url /api/login
           post data email password
           error_code: 100 means username or password error
