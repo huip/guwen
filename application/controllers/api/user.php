@@ -28,7 +28,20 @@ class User extends REST_Controller
     $data['question'] = $this->user_model->get_question($this->get('id'),$this->get('page'));
     $this->response($data);
   }
+  /*
+   * @author huip
+   * get my answer by uid
+   * return relative question list
+   * Dec 2013-12-09
+   */
+  public function answer_get()
+  {
+    if(!$this->get('id') && !$this->get('page'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['answer'] = $this->user_model->get_answer($this->get('id'),$this->get('page'));
+    echo json_encode($data);
+  }
 
-  
- 
 }

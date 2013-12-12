@@ -8,7 +8,7 @@ define (require,exports,module)->
   RelativeView = require './views/question/relative'
   UserInfoView = require './views/user/info'
   UserQuestionView = require './views/user/question'
-  #MyAnswerView = require './views/myanswer'
+  UserAnswerView = require './views/user/answer'
   #TopicView = require './views/topic'
   class Router extends Backbone.Router
     routes:
@@ -51,6 +51,6 @@ define (require,exports,module)->
       uid:id
       page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:id
-    myanswer = new MyAnswerView el:$('.left-content'),id:args
+    myanswer = new UserAnswerView el:$('.left-content'),id:args
   Backbone.history.start()
 
