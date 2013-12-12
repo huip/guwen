@@ -281,6 +281,17 @@ class Api extends CI_Controller {
     $data['topics'] = $this->api_model->get_topic($page);
     echo json_encode($data);
   }
+
+  /*
+   * @author huip
+   * get topic question
+   * Dec 2013-12-12
+   */
+  public function gettopicq($tid,$page)
+  {
+    $data['question'] = $this->api_model->get_topic_question($tid,$page);
+    echo json_encode($data);
+  }
   /*
    * @author huip
    * is post method

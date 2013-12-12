@@ -340,6 +340,29 @@ class Api_model extends CI_Model
     return $result;
   }
 
+  /*
+   * @author huip
+   * get topic list $page:pages
+   * Dec 2013-12-11
+   */
+  public function get_topic_question($id,$pages)
+  {
+    $pagesize = 15;
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question WHERE qcate= ?";
+    $query = $this->db->query($sql,array($id));
+    $result = $query->result_array();
+    $offset = ($pages-1)*$pagesize;
+    $count = count($result) > 0?$result[0]['num']:1;
+    $numpage = ceil($count/$pagesize);
+    $sql = "SELECT us.uid,us.name,us.gravatar, q.qid,q.qtitle,q.qscore,
+    q.click,q.ctime,'$numpage' AS num,(SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid) AS anwser,
+    (SELECT tag_name FROM guwen_tag WHERE id = q.qcate ) AS qcate
+    FROM guwen_user AS us ,guwen_question AS q WHERE us.uid = q.uid 
+    AND q.qcate = ?  ORDER BY q.qid DESC LIMIT $offset,$pagesize";
+    $query = $this->db->query($sql,array($id));
+    $result = $query->result_array();
+    return $result;
+  }
 
   private function add_score($score)
   {
