@@ -21,5 +21,25 @@ class User_model extends CI_Model
     $res = $query->result_array();
     return $res;
   }
+  /*
+   * @author huip
+   * get user question
+   * Dec 2013-12-8
+   */
+  public function get_question($uid,$page)
+  {
+    $pagesize = 10;
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question WHERE uid =  ?";
+    $query = $this->db->query($sql,array($uid));
+    $result = $query->result_array();
+    $offset = ($page-1)*$pagesize;
+    $count = count($result) > 0?$result[0]['num']:1;
+    $numpage = ceil($count/$pagesize);
+    $sql = "SELECT DISTINCT q.qtitle,q.click,q.qid,q.ctime, '$numpage' AS num,
+      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid ) 
+      as answer FROM guwen_question AS q  WHERE q.uid  = ? ORDER BY q.qid DESC LIMIT $offset,$pagesize";
+    $query = $this->db->query($sql,array($uid));
+    return $query->result_array();
+  }
 
 }

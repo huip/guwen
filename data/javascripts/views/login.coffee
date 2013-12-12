@@ -9,4 +9,8 @@ define (require,exports,module)->
     render: ->
       template = _.template $('#login_template').html(),{}
       @.$el.html template
+    events:
+      'click .login-btn' : 'login'
+    login: ->
+      alert 'test'
   module.exports = LoginView
