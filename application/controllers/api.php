@@ -278,7 +278,7 @@ class Api extends CI_Controller {
 
   public function topic($page)
   {
-    $data['topic_list'] = $this->api_model->get_topic($page);
+    $data['topics'] = $this->api_model->get_topic($page);
     echo json_encode($data);
   }
   /*

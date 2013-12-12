@@ -92,3 +92,23 @@
     </div>
   </div>
 </script>
+<script type="text/template" id="topic_template">
+  <div class="topic">
+    <ul>
+      <%_.each(data.topics,function(topic) {%>
+        <li>
+            <a href="#topic/<%=topic.id%>"><%=topic.tag_name%></a>
+            <ul>
+              <%_.each(topic.qlist,function(q) {%>
+                <li>
+                  <a href="#q/<%=q.qid%>"><%=q.qtitle%></a>
+                  <p><%=q.ctime%></p>
+                  <p>回答:(<%=q.anwser%>)</p>
+                </li>
+              <%})%>
+            </ul>
+        </li> 
+      <%})%>
+   </ul>
+  </div>
+</script>
