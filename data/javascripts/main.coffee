@@ -9,7 +9,8 @@ define (require,exports,module)->
   UserInfoView = require './views/user/info'
   UserQuestionView = require './views/user/question'
   UserAnswerView = require './views/user/answer'
-  #TopicView = require './views/topic'
+  TopicView = require './views/topic/list'
+  TopicQuestionView = require './views/topic/question'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
@@ -22,7 +23,9 @@ define (require,exports,module)->
       'u/a/:id/:page' : 'uanswer'
       'login' : 'login'
       'topic' : 'topic'
-      'topic/:page' : 'topic'
+      'topic/ls/:page' : 'topic'
+      'topic/q/:id' : 'topicq'
+      'topic/q/:id/:page' : 'topicq'
   app_router = new Router()
   app_router.on 'route:login',->
     loginView = new LoginView el: $('.left-content')
@@ -52,5 +55,12 @@ define (require,exports,module)->
       page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:id
     myanswer = new UserAnswerView el:$('.left-content'),id:args
+  app_router.on 'route:topicq',(id,page)->
+    page = 1 if not page?
+    args = 
+      uid:id
+      page:page
+    topicQuestionView = new TopicQuestionView el:$('.left-content'),id:args
+
   Backbone.history.start()
 

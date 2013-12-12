@@ -97,7 +97,7 @@
     <ul>
       <%_.each(data.topics,function(topic) {%>
         <li>
-            <a href="#topic/<%=topic.id%>"><%=topic.tag_name%></a>
+            <a href="#topic/q/<%=topic.id%>"><%=topic.tag_name%></a>
             <ul>
               <%_.each(topic.qlist,function(q) {%>
                 <li>
@@ -112,3 +112,9 @@
    </ul>
   </div>
 </script>
+<script type="text/template" id="topicquestion_template">
+    <%_.each(data.question,function(q) {%>
+      <li><a href="#q/<%=q.qid%>"><%=q.qtitle%></a></li>
+    <%})%>
+</script>
+

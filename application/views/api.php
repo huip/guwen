@@ -23,10 +23,10 @@
           error_code: 202 means regist success
        </li>
       <li>
-        获取分类api page means current page<a href="api/topic/1">/api/topic/:page/</a>
+        获取分类api page means current page<a href="api/topic/list/id/1">/api/topic/list/id/1</a>
       </li>
       <li>
-        获取分类下的问题api page means current page tid means tag id<a href="api/gettopicq/50/1">/api/gettopicq/:tid/:page/</a>
+        获取分类下的问题api page means current page tid means tag id<a href="api/topic/question/id/50/page/1">/api/topic/question/id/:id/page/:page</a>
       </li>
      </ul>
   </body>
