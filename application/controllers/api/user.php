@@ -25,8 +25,8 @@ class User extends REST_Controller
     {
       $this->response(NULL, 400);
     }
-    $info = $this->user_model->get_question($this->get('id'),$this->get('page'));
-    $this->response($info);
+    $data['question'] = $this->user_model->get_question($this->get('id'),$this->get('page'));
+    $this->response($data);
   }
 
   

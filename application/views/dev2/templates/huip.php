@@ -58,7 +58,7 @@
   <p><%=data[0].rank%></p>
   <p><%=data[0].gap%></p>
 </script>
-<script type="text/template" id="myquestion_template">
+<script type="text/template" id="userquestion_template">
   <div class="myquestion">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#u/q/<%=data.uid%>">TA的提问</a></li>
@@ -75,7 +75,7 @@
     </div>
   </div>
 </script>
-<script type="text/template" id="myanswer_template">
+<script type="text/template" id="useranswer_template">
   <div class="myanswer">
     <ul class="nav nav-tabs">
       <li><a href="#u/q/<%=data.uid%>">TA的提问</a></li>

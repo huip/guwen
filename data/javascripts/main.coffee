@@ -7,7 +7,7 @@ define (require,exports,module)->
   QinfoView = require './views/question/info'
   RelativeView = require './views/question/relative'
   UserInfoView = require './views/user/info'
-  #MyQuestionView = require './views/myquestion'
+  UserQuestionView = require './views/user/question'
   #MyAnswerView = require './views/myanswer'
   #TopicView = require './views/topic'
   class Router extends Backbone.Router
@@ -44,7 +44,7 @@ define (require,exports,module)->
       uid:id
       page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:id
-    myquestion = new MyQuestionView el:$('.left-content'),id:args
+    userquestion = new UserQuestionView el:$('.left-content'),id:args
   app_router.on 'route:uanswer',(id,page)->
     page = 1 if not page?
     args = 
