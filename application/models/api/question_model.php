@@ -22,7 +22,7 @@ class Question_model extends CI_Model
     $sql = "SELECT us.gravatar,us.name,us.uid,q.qid,q.ctime,q.qtitle,'$numpage' AS num,
                 IF(status = 0,'未解决','已解决') AS status,
                 q.qscore,q.click,
-                (SELECT count(*) FROM guwen_comment WHERE comment_quesid = q.qid) AS anwser,
+                (SELECT count(id) FROM guwen_answer WHERE qid = q.qid) AS anwser,
                 (SELECT tag_name FROM guwen_tag WHERE id = q.qcate ) AS qcate
                 FROM guwen_question AS q, guwen_user AS us WHERE q.uid = us.uid 
                 ORDER BY qid DESC LIMIT $offset,$pagesize";
@@ -101,11 +101,11 @@ class Question_model extends CI_Model
     }
     foreach ($realativewords as $key => $value) {
       $sql = "SELECT qtitle,qid,(SELECT tag_name FROM guwen_tag WHERE id = '$value[qcate]' ) AS qcate,
-      (SELECT COUNT(id) FROM guwen_comment WHERE comment_quesid = '$value[qid]') AS anwser 
+      (SELECT COUNT(id) FROM guwen_answer WHERE qid = '$value[qid]') AS anwser 
       FROM guwen_question  WHERE qid = '$value[qid]'";
       $query = $this->db->query($sql);
-      $res = $query->result_array();
-      $relative_ques[$key] = $res;
+      $result = $query->result_array();
+      $relative_ques[$key] = $result;
     }
     return $relative_ques;
   }
@@ -115,29 +115,28 @@ class Question_model extends CI_Model
    * get  question comment info
    * Dec 2013-12-7
    */
-  public function get_comments($qid)
+  public function get_answer($qid)
   {
-    $sql = "SELECT cmt.id,cmt.comment_content,cmt.comment_time,cmt.comment_quesid ,cmt.comment_uid,
-      cmt.comment_favour,us.gravatar,us.name,us.uid,
-      (SELECT count(id) FROM guwen_comment_reply WHERE comment_id = cmt.id) as reply_num,
-      (SELECT uid FROM guwen_bestanwserlog WHERE comment_id = cmt.id) AS best_uid 
-      FROM  guwen_comment AS cmt ,guwen_user AS us 
-      WHERE  us.uid = cmt.comment_uid  AND cmt.comment_quesid = ? 
-      ORDER BY (SELECT time FROM guwen_bestanwserlog WHERE comment_id = cmt.id) DESC, cmt.id DESC";
+    $sql = "SELECT ansr.id,ansr.content,ansr.ctime,ansr.qid ,ansr.uid,
+      ansr.favour,us.gravatar,us.name,us.uid,
+      (SELECT count(id) FROM guwen_answer_reply WHERE aid = ansr.id) as reply_num,
+      (SELECT uid FROM guwen_bestanwserlog WHERE aid = ansr.id) AS best_uid 
+      FROM  guwen_answer AS ansr ,guwen_user AS us 
+      WHERE  us.uid = ansr.uid  AND ansr.qid = ? 
+      ORDER BY (SELECT ctime FROM guwen_bestanwserlog WHERE aid = ansr.id) DESC, ansr.id DESC";
     $query = $this->db->query($sql,array($qid));
-    $res = $query->result_array($query);
-    foreach ($res as $key => $value) 
+    $result = $query->result_array($query);
+    foreach ($result as $key => $value) 
     {
-      $sql = "SELECT DISTINCT  reply.reply_content ,reply.time,us.name,us.gravatar,us.uid 
-      FROM guwen_comment_reply as reply ,guwen_user as us ,guwen_comment AS cmt
-      WHERE reply.comment_id  = ? AND reply.reply_uid = us.uid 
-      AND cmt.comment_quesid = ? ";
-
-      $query = $this->db->query($sql,array($value['id'],$value['comment_quesid']));
-      $re = $query->result_array();
-      $res[$key]['reply'] = $re;
+      $sql = "SELECT DISTINCT  reply.content ,reply.ctime,us.name,us.gravatar,us.uid 
+      FROM guwen_answer_reply as reply ,guwen_user as us ,guwen_answer AS ansr
+      WHERE reply.aid  = ? AND reply.uid = us.uid 
+      AND ansr.qid = ? ";
+      $query = $this->db->query($sql,array($value['id'],$value['qid']));
+      $result = $query->result_array();
+      $result[$key]['reply'] = $result;
     }
-    return $res;
+    return $result;
   }
 
   /*
@@ -155,7 +154,7 @@ class Question_model extends CI_Model
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
     $sql = "SELECT DISTINCT q.qtitle,q.click,q.qid,q.ctime, '$numpage' AS num,
-      (SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid ) 
+      (SELECT count(id) FROM guwen_answer WHERE qid = q.qid ) 
       as answer FROM guwen_question AS q  WHERE q.uid  = ? ORDER BY q.qid DESC LIMIT $offset,$pagesize";
     $query = $this->db->query($sql,array($uid));
     return $query->result_array();
@@ -171,7 +170,7 @@ class Question_model extends CI_Model
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
     $sql = "SELECT us.uid,us.name,us.gravatar, q.qid,q.qtitle,q.qscore,
-    q.click,q.ctime,'$numpage' AS num,(SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid) AS anwser,
+    q.click,q.ctime,'$numpage' AS num,(SELECT count(id) FROM guwen_answer WHERE qid = q.qid) AS anwser,
     (SELECT tag_name FROM guwen_tag WHERE id = q.qcate ) AS qcate
     FROM guwen_user AS us ,guwen_question AS q WHERE us.uid = q.uid 
     AND q.qcate = ?  ORDER BY q.qid DESC LIMIT $offset,$pagesize";

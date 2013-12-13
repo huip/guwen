@@ -15,9 +15,9 @@ class Widgets_model extends CI_Model
   {
     $sql = "SELECT 
       q.qid,q.ctime,q.qtitle,q.click, 
-      (SELECT count(*) FROM guwen_comment 
+      (SELECT count(id) FROM guwen_answer 
       WHERE 
-      comment_quesid = q.qid) AS anwser,
+      qid = q.qid) AS anwser,
       (SELECT tag_name FROM guwen_tag WHERE id = q.qcate )
       AS 
       qcate FROM guwen_question AS q, guwen_user AS us
@@ -67,7 +67,7 @@ class Widgets_model extends CI_Model
       rank
       FROM guwen_user AS us
       ORDER BY
-        (SELECT count(id) FROM guwen_comment WHERE comment_uid = us.uid )
+        (SELECT count(id) FROM guwen_answer WHERE uid = us.uid )
        DESC  LIMIT 10";
     $query = $this->db->query($sql);
     $res = $query->result_array();

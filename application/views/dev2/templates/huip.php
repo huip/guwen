@@ -24,23 +24,21 @@
     <%})%>
 </script>
 <script type="text/template" id="qinfo_template">
-    <%_.each(data,function(info) {%>
-      <h2><%=info.qtitle%></h2>
-      <p><%=info.qcontent%></p>
-      <p><a href="#u/q/<%=info.uid%>"><%=info.name%></a></p>
-      <p><%=info.score%></p>
-      <p><%=info.ctime%></p>
+    <%_.each(data.questions,function(question) {%>
+      <h2><%=question.qtitle%></h2>
+      <p><%=question.qcontent%></p>
+      <p><a href="#u/q/<%=question.uid%>"><%=question.name%></a></p>
+      <p><%=question.qscore%></p>
+      <p><%=question.ctime%></p>
     <%})%>
-    <%_.each(data.comments,function(comment) {%>
-      <p><a href="#u/q/<%=comment.uid%>"><%=comment.name%></a></p>
-      <p><%=comment.comment_content%></p>
-      <p><%=comment.comment_time%></p>
-      <%_.each(comment.reply,function(reply) {%>
+    <%_.each(data.answers,function(answer) {%>
+      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
+      <p><%=answer.content%></p>
+      <p><%=answer.ctime%></p>
+      <%_.each(answer.reply,function(reply) {%>
         <div style="text-indent:40px">
           <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
-          <p><%=reply.reply_content%></p>
-          <p><%=reply.time%></p>
-        </div>
+          <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
       <%})%>
       <hr />
     <%})%>

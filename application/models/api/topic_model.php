@@ -25,8 +25,8 @@ class Topic_model extends CI_Model
     $query = $this->db->query($sql);
     $result = $query->result_array();
     foreach ($result as $key => $value) {
-      $sql = "SELECT qid,qtitle,ctime,(SELECT count(*) FROM guwen_comment 
-                  WHERE comment_quesid = qid) AS anwser
+      $sql = "SELECT qid,qtitle,ctime,(SELECT count(id) FROM guwen_answer 
+                  WHERE qid = qid) AS anwser
                   FROM guwen_question WHERE qcate = '$value[id]' ORDER BY qid DESC LIMIT 3";
       $query =  $this->db->query($sql);
       $result[$key]['qlist'] = $query->result_array();
@@ -49,7 +49,7 @@ class Topic_model extends CI_Model
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
     $sql = "SELECT us.uid,us.name,us.gravatar, q.qid,q.qtitle,q.qscore,
-    q.click,q.ctime,'$numpage' AS num,(SELECT count(id) FROM guwen_comment WHERE comment_quesid = q.qid) AS anwser,
+    q.click,q.ctime,'$numpage' AS num,(SELECT count(id) FROM guwen_answer WHERE qid = q.qid) AS anwser,
     (SELECT tag_name FROM guwen_tag WHERE id = q.qcate ) AS qcate
     FROM guwen_user AS us ,guwen_question AS q WHERE us.uid = q.uid 
     AND q.qcate = ?  ORDER BY q.qid DESC LIMIT $offset,$pagesize";
