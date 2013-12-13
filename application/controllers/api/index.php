@@ -17,6 +17,6 @@ class Index extends REST_Controller
    */
   public function index_get()
   {
-    $this->load->view('api');
+    $this->load->view('dev2/api');
   }
  }

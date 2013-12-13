@@ -110,4 +110,86 @@ class User_model extends CI_Model
     return array("score" => $current_score + intval($score));
   }
 
+  /*
+   * @author huip
+   * check user if register
+   * Dec 2013-12-10
+   */
+  public function check_is_register($data)
+  {
+    if( $data['type'] == 'name' )
+    {
+      $sql = "SELECT id FROM guwen_user WHERE name = ? ";
+    }
+    else
+    {
+      $sql = "SELECT id FROM guwen_user WHERE email = ? ";
+    }
+    $query = $this->db->query($sql,array($data['value']));
+    return $query->result_array();
+  }
+  public function update_inbox_link($data)
+  {
+    $sql = "SELECT uid FROM guwen_user WHERE name = '$data[to_id]'  ";
+    $query = $this->db->query($sql);
+    $re = $query->result_array();
+    $uid = $re[0]['uid'];
+    $data['to_id'] = $uid;
+    $sql = "SELECT count(id) AS num FROM guwen_inbox_link WHERE  my_id = ? AND to_id = ?";
+    $query = $this->db->query($sql,array($data['my_id'],$data['to_id']));
+    $res = $query->result_array();
+    if( $res[0]['num'] > 0)
+    {
+      $this->db->where('my_id',$data['my_id']);
+      $up_time = array(
+        'time' => $data['time'],
+      );
+      $this->db->update('guwen_inbox_link',$up_time);
+    }
+    else
+    {
+      $this->db->insert("guwen_inbox_link",$data);
+    }
+  }
+
+  public function get_user_infos($name)
+  {
+    $sql = "SELECT name,uid FROM guwen_user WHERE name LIKE '%$name%' "  ;
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res;
+  }
+  public function create_cate($data)
+  {
+    $this->db->insert("guwen_tag",$data);
+    $sql = "SELECT id, tag_name FROM guwen_tag";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res;
+  }
+
+  public function get_reginbox()
+  {
+    $sql = "SELECT reg_inbox FROM guwen_help WHERE id = 1";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    return $res[0]['reg_inbox'];
+  }
+  public function register($data)
+  {
+    $this->db->insert('guwen_user',$data);
+    return TRUE;
+  }
+   public function post_inbox($data)
+  {
+    $sql = "SELECT uid FROM guwen_user WHERE name = '$data[to_id]'";
+    $query = $this->db->query($sql);
+    $res = $query->result_array();
+    $uid = $res[0]['uid'];
+    $data['to_id'] = $uid;
+    $res = $this->db->insert("guwen_inbox",$data);
+    return TRUE;
+  }
+
+
 }
