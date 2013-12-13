@@ -66,4 +66,48 @@ class User_model extends CI_Model
     return $result;
   }
 
+  /*
+   * @author huip
+   * user login
+   * Dec 2013-12-09
+   */
+  public function login($data)
+  {
+    $email = $data['email'];
+    $password = $data['password'];
+    $sql = "SELECT role FROM guwen_user WHERE email = ? AND password = ? ";
+    $query = $this->db->query($sql,array($email,$password));
+    return $query->result_array();
+  }
+
+  public function get_login($email)
+  {
+    $sql = "SELECT uid ,name,email,gravatar,role FROM guwen_user WHERE email = ? ";
+    $query = $this->db->query($sql,array($email));
+    return $query->result_array();
+  }
+  // set user login log
+  public function login_log($data)
+  {
+    $this->db->insert('guwen_log',$data);
+  }
+
+  public function login_score($data)
+  {
+    $this->db->where('uid',$data);
+    $this->db->update('guwen_user',$this->add_score("2"));
+    return TRUE;
+  }
+
+  private function add_score($score)
+  {
+    $sql = "SELECT score FROM guwen_user WHERE uid = ?";
+    $query = $this->db->query($sql,array(get_user_info("uid")));
+    $res = $query->result_array();
+    foreach ($res as $value) {
+      $current_score = intval($value['score']);
+    }
+    return array("score" => $current_score + intval($score));
+  }
+
 }
