@@ -46,6 +46,7 @@ class Question extends REST_Controller
     {
       $this->response(NULL, 400);
     }
+    $data['unanswerd'] = $this->question_model->get_unanswerd();
+    $this->response($data);
   }
-
 }

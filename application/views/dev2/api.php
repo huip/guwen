@@ -28,6 +28,10 @@
       <li>
         获取分类下的问题api page means current page tid means tag id<a href="api/topic/question/id/50/page/1">/api/topic/question/id/:id/page/:page</a>
       </li>
+      <li>
+        获取没回答的问题api page means current page <a href="api/question/unanswerd/page/1">/api/question/unanswerd/page/:page</a>
+      </li>
+     </ul>
      </ul>
   </body>
 </html>
