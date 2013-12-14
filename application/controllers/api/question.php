@@ -46,6 +46,17 @@ class Question extends REST_Controller
     {
       $this->response(NULL, 400);
     }
+    $data['unanswerd'] = $this->question_model->get_unanswerd();
+    $this->response($data);
   }
-
+  
+  public function hotest_get()
+  {
+    if(!$this->get('page'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['hostest'] = $this->question_model->get_hotest($this->get('page'),10);
+    $this->response($data);
+  }
 }

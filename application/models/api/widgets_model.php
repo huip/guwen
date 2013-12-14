@@ -8,31 +8,6 @@ class Widgets_model extends CI_Model
 
   /*
    * @author huip
-   * get hot question
-   * Dec 2013-12-05
-   */
-  public function get_hot_ques()
-  {
-    $sql = "SELECT 
-      q.qid,q.ctime,q.qtitle,q.click, 
-      (SELECT count(id) FROM guwen_answer 
-      WHERE 
-      qid = q.qid) AS anwser,
-      (SELECT tag_name FROM guwen_tag WHERE id = q.qcate )
-      AS 
-      qcate FROM guwen_question AS q, guwen_user AS us
-      WHERE q.uid = us.uid 
-      ORDER BY 
-      (anwser*0.5+q.click*0.3 +0.2/(NOW()-q.ctime) )/((NOW()-q.ctime)/1000 +anwser + q.click)
-      DESC LIMIT 5";
-    $this->db->cache_on();
-    $query = $this->db->query($sql);
-    $res = $query->result_array();
-    return $res;
-  }
-
-  /*
-   * @author huip
    * get hot categoreis
    * Dec 2013-12-05
    */
