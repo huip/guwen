@@ -192,4 +192,42 @@ class Question_model extends CI_Model
     $result = $query->result_array();
     return $result;
   }
+
+  /*
+   * @author huip
+   * get hot question
+   * Dec 2013-12-05
+   */
+  public function get_hotest($page,$pagesize)
+  {
+    $sql = "SELECT COUNT(qid) AS num FROM guwen_question";
+    $query = $this->db->query($sql);
+    $result = $query->result_array();
+    $offset = ($page-1)*$pagesize;
+    $count = count($result) > 0?$result[0]['num']:1;
+    $numpage = ceil($count/$pagesize);
+    if( $page < $numpage ) 
+    {
+       $sql = "SELECT 
+        q.qid,q.ctime,q.qtitle,q.click, 
+        (SELECT count(id) FROM guwen_answer 
+        WHERE 
+        qid = q.qid) AS anwser,
+        (SELECT tag_name FROM guwen_tag WHERE id = q.qcate )
+        AS 
+        qcate FROM guwen_question AS q, guwen_user AS us
+        WHERE q.uid = us.uid 
+        ORDER BY 
+        (anwser*0.5+q.click*0.3 +0.2/(NOW()-q.ctime) )/((NOW()-q.ctime)/1000 +anwser + q.click)
+        DESC LIMIT $offset, $pagesize ";
+      $this->db->cache_on();
+      $query = $this->db->query($sql);
+      $result = $query->result_array();
+      return $result;
+    }
+    else
+    {
+      return array('null');
+    }
+  }
 }

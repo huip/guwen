@@ -41,11 +41,11 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">首页</a></li>
         <li><a href="#topic">分类</a></li>
-        <li><a href="#">发现</a></li>
+        <li><a href="#unanswerd">未回答</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">登录</a></li>
-        <li><a href="#">注册</a></li>
+        <li><a href="#login">登录</a></li>
+        <li><a href="#register">注册</a></li>
       </ul>
     </div><!-- end -->
   </nav> 

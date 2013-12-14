@@ -31,6 +31,12 @@
       <li>
         获取没回答的问题api page means current page <a href="api/question/unanswerd/page/1">/api/question/unanswerd/page/:page</a>
       </li>
+      <li>
+        获取没回答的问题api page means current page <a href="api/question/unanswerd/page/1">/api/question/unanswerd/page/:page</a>
+      </li>
+      <li>
+        获取热门问题api page means current page <a href="api/question/hotest/page/1">/api/question/hotest/page/:page</a>
+      </li>
      </ul>
      </ul>
   </body>
