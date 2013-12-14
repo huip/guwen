@@ -110,9 +110,17 @@
    </ul>
   </div>
 </script>
-<script type="text/template" id="topicquestion_template">
+<script type="text/template" id="topiq_template">
     <%_.each(data.question,function(q) {%>
       <li><a href="#q/<%=q.qid%>"><%=q.qtitle%></a></li>
     <%})%>
 </script>
-
+<script type="text/template" id="unanswerd_template">
+    <%_.each(data.unanswerd,function(list) {%>
+      <li>
+        <a href="#/q/<%=list.qid%>"><%=list.qtitle%></a>
+        <p><span>浏览：<%=list.click%></span><span><%=list.ctime%></span></p>
+        <hr />
+      </li>
+    <%})%>
+</script>

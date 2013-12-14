@@ -14,6 +14,6 @@ define (require,exports,module)->
         success: (data)->
           that.render data.toJSON()
     render: (data)->
-      template = _.template $('#topicquestion_template').html(),data:data
+      template = _.template $('#topicq_template').html(),data:data
       @.$el.html template
   module.exports = TopicQuestionView    

@@ -42,6 +42,7 @@
         <li class="active"><a href="#">首页</a></li>
         <li><a href="#topic">分类</a></li>
         <li><a href="#unanswerd">未回答</a></li>
+        <li><a href="#hotest">热门</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#login">登录</a></li>
