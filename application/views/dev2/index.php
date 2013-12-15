@@ -22,9 +22,6 @@
     <div class="navbar-header collapse navbar-collapse">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">故问</a>
     </div>
@@ -44,10 +41,30 @@
         <li><a href="#unanswerd">未回答</a></li>
         <li><a href="#hotest">热门</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#login">登录</a></li>
-        <li><a href="#register">注册</a></li>
-      </ul>
+      <?php if( empty($uid) ){?>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#login">登录</a></li>
+          <li><a href="#register">注册</a></li>
+        </ul>
+      <?php } else { ?>
+        <div class="nav navbar-nav navbar-right">
+          <div class="btn-group">
+            <div class="dropdown-toggle btn" data-toggle="dropdown">
+              <img class="user-img" height='20' width='20' src="<?php echo $gravatar;?>" alt="user_logo" />
+              <span class="bubble"></span>&nbsp&nbsp
+              <span><?php echo $name;?></span>
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </div>
+            <ul class="dropdown-menu" role="menu">
+              <a href="#"><li><i class="glyphicon"></i><span>个人主页</span></li></a>
+              <a href="#"><li><i class="glyphicon"></i><span>私信</span><span class="bubble"></span></li></a>
+              <a href="#"><li><i class="glyphicon"></i><span>设置</span></li></a>
+              <a href="#"><li><i class="glyphicon glyphicon-off"></i><span>退出</span></li></a>
+            </ul>
+          </div>
+        </div>
+      <?php } ?>
     </div><!-- end -->
   </nav> 
   <div id="content" class="col-md-12">
@@ -69,9 +86,9 @@
       <a href="http://upan.us/" target = "_blank">云优盘</a>
     </div>
     <div class="guwen-help pull-right">
-      <a href="<?=base_url()?>index.php/index/help" target = "_blank">故问指南</a>
+      <a href="<?php echo base_url()?>index.php/index/help" target = "_blank">故问指南</a>
       <span>|</span>
-      <a href="<?=base_url()?>index.php/question/index/274" target = "_blank">意见反馈</a>
+      <a href="<?php echo base_url()?>index.php/question/index/274" target = "_blank">意见反馈</a>
       <span>|</span>
       <span>&copy<a href="http://www.huip.org/" target = "_blank">huip</a></span>
     </div>
@@ -85,7 +102,8 @@
     alias: {
       "$": "jquery/jquery/1.10.1/jquery.js",
       "underscore": "gallery/underscore/1.4.4/underscore.js",
-      "backbone": "gallery/backbone/1.0.0/backbone.js"
+      "backbone": "gallery/backbone/1.0.0/backbone.js",
+      "bootstrap": "bootstrap/bootstrap.js"
     }
  });
 

@@ -67,7 +67,6 @@ class User extends REST_Controller
     else
     {
       $status['error_code'] = '200';
-      $this->response($status);
       $data = $this->user_model->get_login($data['email']);
       foreach ($data as $key => $value) {
         $this->session->set_userdata($value);
@@ -81,6 +80,7 @@ class User extends REST_Controller
       );
       $this->user_model->login_log($log_info);
       $this->user_model->login_score(get_user_info('uid'));
+      $this->response($status);
     }
   }
 

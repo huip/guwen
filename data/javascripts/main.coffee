@@ -1,6 +1,7 @@
 define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
+  Bootstrap = require 'bootstrap'
   LoginView = require './views/login'
   WidgetsView = require './views/widget/widgets'
   QuestionView = require './views/question/list'

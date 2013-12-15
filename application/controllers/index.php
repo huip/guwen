@@ -16,8 +16,7 @@ class Index extends CI_Controller {
   public function index()
   {
     $data = $this->render_user_info();
-    var_dump($data);
-    $this->load->view("dev2/index");
+    $this->load->view("dev2/index",$data);
     $this->load->view("dev2/templates/huip");
     $this->load->view("dev2/templates/tibic");
     $this->load->view("dev2/templates/aresyz");
@@ -34,9 +33,9 @@ class Index extends CI_Controller {
   // render user info from session
   private function render_user_info()
   {
-      $data['user_id'] = $this->session->userdata("user_id");
-    $data['user_img'] = $this->session->userdata("user_img");
-    $data['user_name'] = $this->session->userdata("user_name");
+    $data['uid'] = $this->session->userdata("uid");
+    $data['gravatar'] = $this->session->userdata("gravatar");
+    $data['name'] = $this->session->userdata("name");
     return $data;
   }
 }
