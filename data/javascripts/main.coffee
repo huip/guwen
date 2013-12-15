@@ -20,25 +20,28 @@ define (require,exports,module)->
       'u/q/:uid/:page' : 'uinfo'
       'u/a/:uid' : 'uanswer'
       'u/a/:uid/:page' : 'uanswer'
->>>>>>> 3cb043a8245fe5b89efbf33665cb9b9b6a774f08
       'login' : 'login'
       'topic' : 'topic'
       'topic/:page' : 'topic'
   app_router = new Router()
   app_router.on 'route:login',->
     loginView = new LoginView el: $('.left-content')
+
   app_router.on 'route:index',(page)->
     page = 1 if not page?
     $('.navbar-nav li').eq(0).addClass('active').siblings().removeClass('active')
     questionView = new QuestionView {el:$('.left-content'),id:page}
     widgetsView = new WidgetsView el:$ '.right-content'
+
   app_router.on 'route:topic',(page)->
     page = 1 if not page?
     topicView = new TopicView {el:$('.left-content'),id:page}
     $('.navbar-nav li').eq(1).addClass('active').siblings().removeClass('active')
+
   app_router.on 'route:question',(qid)->
     qinfoView = new QinfoView el:$('.left-content'),id:qid
     #relativeView = new RelativeView el:$('.right-content'),id:qid
+
   app_router.on 'route:uinfo',(uid,page)->
     page = 1 if not page?
     args = 
@@ -46,17 +49,13 @@ define (require,exports,module)->
       page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
     myquestion = new MyQuestionView el:$('.left-content'),id:args
+
   app_router.on 'route:uanswer',(uid,page)->
     page = 1 if not page?
     args = 
       uid:uid
       page:page
     userInfoView = new UserInfoView el:$('.right-content'),id:uid
-<<<<<<< HEAD
-  app_router.on 'route:login',->
-    alert 'test'
-=======
     myanswer = new MyAnswerView el:$('.left-content'),id:args
->>>>>>> 3cb043a8245fe5b89efbf33665cb9b9b6a774f08
   Backbone.history.start()
 
