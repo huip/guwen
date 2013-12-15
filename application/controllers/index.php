@@ -15,6 +15,8 @@ class Index extends CI_Controller {
   // index page 
   public function index()
   {
+    $data = $this->render_user_info();
+    var_dump($data);
     $this->load->view("dev2/index");
     $this->load->view("dev2/templates/huip");
     //$this->load->view("dev2/templates/tibic");
