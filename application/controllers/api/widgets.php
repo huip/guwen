@@ -9,6 +9,7 @@ class Widgets extends REST_Controller
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('api/widgets_model');
+    $this->load->model('api/question_model');
   }
 
   /*
@@ -20,7 +21,7 @@ class Widgets extends REST_Controller
   function index_get()
   {
     $widgets['hot_cate'] = $this->widgets_model->get_hot_cate();
-    $widgets['hot_ques'] = $this->widgets_model->get_hot_ques();
+    $widgets['hot_ques'] = $this->question_model->get_hotest(1,5);
     $widgets['hot_person'] = $this->widgets_model->get_hot_person();
     $this->response($widgets);
   }

@@ -25,7 +25,38 @@ class Question extends REST_Controller
     {
       $this->response(NULL, 400);
     }
-    $info = $this->question_model->get_info($this->get('id'));
-    $this->response($info);
+    $data['questions'] = $this->question_model->get_info($this->get('id'));
+    $data['answers'] = $this->question_model->get_answer($this->get('id'));
+    $this->response($data);
+  }
+
+  public function relative_get()
+  {
+    if(!$this->get('id'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['relative'] = $this->question_model->get_relative($this->get('id'));
+    $this->response($data);
+  }
+
+  public function unanswerd_get()
+  {
+    if(!$this->get('page'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['unanswerd'] = $this->question_model->get_unanswerd();
+    $this->response($data);
+  }
+  
+  public function hotest_get()
+  {
+    if(!$this->get('page'))
+    {
+      $this->response(NULL, 400);
+    }
+    $data['hostest'] = $this->question_model->get_hotest($this->get('page'),10);
+    $this->response($data);
   }
 }

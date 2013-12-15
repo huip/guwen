@@ -2,11 +2,11 @@ define (require,exports,module)->
   $ = require '$'
   Backbone = require 'backbone'
   _ = require 'underscore'
-  MyAnswerModel = require '../models/myanswer'
-  class MyAnswerView extends Backbone.View
+  UserQuestionModel = require '../../models/user/question'
+  class UserQuestionView extends Backbone.View
     initialize:()->
       that = @
-      myquestionModel = new MyAnswerModel()
+      myquestionModel = new UserQuestionModel()
       myquestionModel.set
         uid: @id.uid
         page: @id.page
@@ -14,6 +14,6 @@ define (require,exports,module)->
         success: (data)->
           that.render data.toJSON()
     render: (data)->
-      template = _.template $('#myanswer_template').html(),data:data
+      template = _.template $('#userquestion_template').html(),data:data
       @.$el.html template
-  module.exports = MyAnswerView   
+  module.exports = UserQuestionView    
