@@ -65,7 +65,6 @@ define (require,exports,module)->
       reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
       email_flag = reg.test(array[0])
       pwd_flag = array[1].length>5
-      console.log pwd_flag
       if !email_flag
         msg = '邮箱填写有误!'
         array[2].html msg
