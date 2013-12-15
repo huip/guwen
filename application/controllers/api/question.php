@@ -56,7 +56,7 @@ class Question extends REST_Controller
     {
       $this->response(NULL, 400);
     }
-    $data['hostest'] = $this->question_model->get_hotest($this->get('page'),10);
+    $data['hotests'] = $this->question_model->get_hotest($this->get('page'),10);
     $this->response($data);
   }
 }

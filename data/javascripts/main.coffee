@@ -13,6 +13,7 @@ define (require,exports,module)->
   TopicView = require './views/topic/list'
   TopicQuestionView = require './views/topic/question'
   UnAnswerdView = require './views/question/unanswerd'
+  HotestView = require './views/question/hotest'
   class Router extends Backbone.Router
     routes:
       '' : 'index'
@@ -29,6 +30,7 @@ define (require,exports,module)->
       'topic/q/:id' : 'topicq'
       'topic/q/:id/:page' : 'topicq'
       'unanswerd' : 'unanswerd'
+      'hotest' : 'hotest'
   app_router = new Router()
   app_router.on 'route:login',->
     loginView = new LoginView el: $('.left-content')
@@ -68,5 +70,9 @@ define (require,exports,module)->
     page = 1 if not page?
     unanswerdView = new UnAnswerdView el: $('.left-content'),id:page
     $('.navbar-nav li').eq(2).addClass('active').siblings().removeClass('active')
+  app_router.on 'route:hotest',(page)->
+    page = 1 if not page?
+    hotestView = new HotestView el: $('.left-content'),id:page
+    $('.navbar-nav li').eq(3).addClass('active').siblings().removeClass('active')
   Backbone.history.start()
 
