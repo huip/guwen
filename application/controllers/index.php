@@ -30,6 +30,13 @@ class Index extends CI_Controller {
     $this->load->view('index/login');
     $this->load->view('conn/footer');
   }
+  // logout
+  public function logout()
+  {
+    $user_info = array('name' => '', 'email' => '','uid' => '');
+    $this->session->unset_userdata($user_info);
+    redirect('');
+  }
   // render user info from session
   private function render_user_info()
   {

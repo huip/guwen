@@ -60,7 +60,7 @@
               <a href="#"><li><i class="glyphicon"></i><span>个人主页</span></li></a>
               <a href="#"><li><i class="glyphicon"></i><span>私信</span><span class="bubble"></span></li></a>
               <a href="#"><li><i class="glyphicon"></i><span>设置</span></li></a>
-              <a href="#"><li><i class="glyphicon glyphicon-off"></i><span>退出</span></li></a>
+              <a href="<?php echo base_url();?>index.php/index/logout"><li><i class="glyphicon glyphicon-off"></i><span>退出</span></li></a>
             </ul>
           </div>
         </div>
