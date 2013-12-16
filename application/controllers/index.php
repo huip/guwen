@@ -19,7 +19,7 @@ class Index extends CI_Controller {
     var_dump($data);
     $this->load->view("dev2/index");
     $this->load->view("dev2/templates/huip");
-    //$this->load->view("dev2/templates/tibic");
+    $this->load->view("dev2/templates/tibic");
     $this->load->view("dev2/templates/aresyz");
   }
   // login page
