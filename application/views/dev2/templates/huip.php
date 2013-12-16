@@ -124,3 +124,12 @@
       </li>
     <%})%>
 </script>
+<script type="text/template" id="hotest_template">
+  <%_.each(data.hotests,function(hotest) {%>
+    <li>
+      <a href="#/q/<%=hotest.qid%>"><%=hotest.qtitle%></a>
+      <p><span>浏览：<%=hotest.click%></span><span><%=hotest.ctime%></span></p>
+      <hr />
+    </li>
+  <%})%>
+</script>
