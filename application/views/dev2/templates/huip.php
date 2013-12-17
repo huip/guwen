@@ -134,11 +134,12 @@
             <a class="topic_a" href="#topic/q/<%=topic.id%>"><%=topic.tag_name%></a>
             <ul class="col-md-12">
               <%_.each(topic.qlist,function(q) {%>
-                <li>
+                <li class="topic_li_li">
                   <a class="topic_a_a col-md-9" href="#q/<%=q.qid%>"><%=q.qtitle%></a>
                   <span class="pull-right"><%=q.ctime%></span>
                   <p class="topic_time">回答:(<%=q.anwser%>)</p>
                 </li>
+                <li class="clearSpan"></li> 
                 <hr>
               <%})%>
             </ul>
