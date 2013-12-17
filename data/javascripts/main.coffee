@@ -3,6 +3,7 @@ define (require,exports,module)->
   Backbone = require 'backbone'
   Bootstrap = require 'bootstrap'
   LoginView = require './views/login'
+  RegisterView = require './views/register'
   WidgetsView = require './views/widget/widgets'
   QuestionView = require './views/question/list'
   QinfoView = require './views/question/info'
@@ -25,6 +26,7 @@ define (require,exports,module)->
       'u/a/:id' : 'uanswer'
       'u/a/:id/:page' : 'uanswer'
       'login' : 'login'
+      'register' : 'register'
       'topic' : 'topic'
       'topic/ls/:page' : 'topic'
       'topic/q/:id' : 'topicq'
@@ -34,6 +36,8 @@ define (require,exports,module)->
   app_router = new Router()
   app_router.on 'route:login',->
     loginView = new LoginView el: $('.left-content')
+  app_router.on 'route:register',->
+    registerView = new RegisterView el: $('.left-content')
   app_router.on 'route:index',(page)->
     page = 1 if not page?
     $('.navbar-nav li').eq(0).addClass('active').siblings().removeClass('active')

@@ -4,7 +4,7 @@ define (require,exports,module)->
   _ = require 'underscore'
   UserInfoModel = require '../../models/user/info'
   class UserInfoView extends Backbone.View
-    initialize:()->
+    initialize:()-> 
       that = @
       qinfoModel = new UserInfoModel id:@id
       qinfoModel.fetch
