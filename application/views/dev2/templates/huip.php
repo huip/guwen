@@ -101,7 +101,7 @@
 
 
 
-<script type="text/template" id="question_template">  //首页
+<script type="text/template" id="question_template">  <!-- 首页 -->
     <%_.each(data,function(question) {%>
       <div class='col-md-10 col-md-offset-1' id='question_wrap'>
         <ul class="col-md-12">
@@ -126,19 +126,20 @@
 
 
 
-<script type="text/template" id="topic_template">       // 分类
-  <div class="topic">
+<script type="text/template" id="topic_template">       <!-- 分类 -->
+  <div class="topic col-md-9">
     <ul>
       <%_.each(data.topics,function(topic) {%>
-        <li>
-            <a href="#topic/q/<%=topic.id%>"><%=topic.tag_name%></a>
-            <ul>
+        <li class="topic_li">
+            <a class="topic_a" href="#topic/q/<%=topic.id%>"><%=topic.tag_name%></a>
+            <ul class="col-md-12">
               <%_.each(topic.qlist,function(q) {%>
                 <li>
-                  <a href="#q/<%=q.qid%>"><%=q.qtitle%></a>
-                  <p><%=q.ctime%></p>
-                  <p>回答:(<%=q.anwser%>)</p>
+                  <a class="topic_a_a col-md-9" href="#q/<%=q.qid%>"><%=q.qtitle%></a>
+                  <span class="pull-right"><%=q.ctime%></span>
+                  <p class="topic_time">回答:(<%=q.anwser%>)</p>
                 </li>
+                <hr>
               <%})%>
             </ul>
         </li> 
@@ -147,7 +148,7 @@
   </div>
 </script>
 
-<script type="text/template" id="unanswerd_template">   //未回答
+<script type="text/template" id="unanswerd_template">   <!-- 未回答 -->
     <%_.each(data.unanswerd,function(list) {%>
       <li>
         <a href="#/q/<%=list.qid%>"><%=list.qtitle%></a>
@@ -157,7 +158,7 @@
     <%})%>
 </script>
 
-<script type="text/template" id="hotest_template">      //热门
+<script type="text/template" id="hotest_template">      <!-- 热门 -->
   <%_.each(data.hotests,function(hotest) {%>
     <li>
       <a href="#/q/<%=hotest.qid%>"><%=hotest.qtitle%></a>
