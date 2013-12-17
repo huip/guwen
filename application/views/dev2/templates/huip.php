@@ -105,12 +105,12 @@
     <%_.each(data,function(question) {%>
       <div class='col-md-10 col-md-offset-1' id='question_wrap'>
         <ul class="col-md-12">
-          <li name="li_one">
+          <li class="li_one">
             <a href="#q/<%=question.qid%>" class="col-md-9"><%=question.qtitle%></a>
-            <span class="col-md-3">时间</span>
+            <span class="col-md-3"><%=question.ctime%></span>
           </li>
-          <li>
-            <span class="col-md-2">悬赏：</span><span class="col-md-2">浏览：</span><span class="col-md-8">回答：</span>
+          <li class="li_one">
+            <span class="col-md-2 span_reward">悬赏：<%=question.qscore%></span><span class="col-md-2 span_watch">浏览：<%=question.click%></span><span class="col-md-2 pull-right">回答：<%=question.anwser%></span>
           </li>
           <li class="clearSpan"></li> 
         </ul>
