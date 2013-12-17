@@ -18,11 +18,7 @@
     <%})%>
   </div>
 </script>
-<script type="text/template" id="question_template">
-    <%_.each(data,function(question) {%>
-      <li><a href="#q/<%=question.qid%>"><%=question.qtitle%></a></li>
-    <%})%>
-</script>
+
 <script type="text/template" id="qinfo_template">
     <%_.each(data.questions,function(question) {%>
       <h2><%=question.qtitle%></h2>
@@ -43,11 +39,13 @@
       <hr />
     <%})%>
 </script>
+
 <script type="text/template" id="relative_template">
     <%_.each(data.relative,function(info) {%>
       <li><a href="#q/<%=info[0].qid%>"><%=info[0].qtitle%></a></li>
     <%})%>
 </script>
+
 <script type="text/template" id="uinfo_template">
   <p><%=data[0].name%></p>
   <p><%=data[0].motto%></p>
@@ -56,6 +54,7 @@
   <p><%=data[0].rank%></p>
   <p><%=data[0].gap%></p>
 </script>
+
 <script type="text/template" id="userquestion_template">
   <div class="myquestion">
     <ul class="nav nav-tabs">
@@ -73,6 +72,7 @@
     </div>
   </div>
 </script>
+
 <script type="text/template" id="useranswer_template">
   <div class="myanswer">
     <ul class="nav nav-tabs">
@@ -90,7 +90,43 @@
     </div>
   </div>
 </script>
-<script type="text/template" id="topic_template">
+
+<script type="text/template" id="topiq_template">
+    <%_.each(data.question,function(q) {%>
+      <li><a href="#q/<%=q.qid%>"><%=q.qtitle%></a></li>
+    <%})%>
+</script>
+
+
+
+
+
+<script type="text/template" id="question_template">  //首页
+    <%_.each(data,function(question) {%>
+      <div class='col-md-10 col-md-offset-1' id='question_wrap'>
+        <ul class="col-md-12">
+          <li name="li_one">
+            <a href="#q/<%=question.qid%>" class="col-md-9"><%=question.qtitle%></a>
+            <span class="col-md-3">时间</span>
+          </li>
+          <li>
+            <span class="col-md-2">悬赏：</span><span class="col-md-2">浏览：</span><span class="col-md-8">回答：</span>
+          </li>
+          <li class="clearSpan"></li> 
+        </ul>
+      </div>
+    <%})%>
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/template" id="topic_template">       // 分类
   <div class="topic">
     <ul>
       <%_.each(data.topics,function(topic) {%>
@@ -110,12 +146,8 @@
    </ul>
   </div>
 </script>
-<script type="text/template" id="topiq_template">
-    <%_.each(data.question,function(q) {%>
-      <li><a href="#q/<%=q.qid%>"><%=q.qtitle%></a></li>
-    <%})%>
-</script>
-<script type="text/template" id="unanswerd_template">
+
+<script type="text/template" id="unanswerd_template">   //未回答
     <%_.each(data.unanswerd,function(list) {%>
       <li>
         <a href="#/q/<%=list.qid%>"><%=list.qtitle%></a>
@@ -124,7 +156,8 @@
       </li>
     <%})%>
 </script>
-<script type="text/template" id="hotest_template">
+
+<script type="text/template" id="hotest_template">      //热门
   <%_.each(data.hotests,function(hotest) {%>
     <li>
       <a href="#/q/<%=hotest.qid%>"><%=hotest.qtitle%></a>
