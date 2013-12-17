@@ -3,7 +3,6 @@ define (require,exports,module)->
   Backbone = require 'backbone'
   _ = require 'underscore'
   class LoginView extends Backbone.View
-    
     initialize: ->
       that = @
       @render()
@@ -18,18 +17,18 @@ define (require,exports,module)->
 
     email_check:(e)->
       array = [
-        $(e.currentTarget)
+        $(e.currentTarget).val()
         $(e.currentTarget).val().length
         $('span[name=email_status]')
       ]
       msg = ''
-      if array[1] is 0
+      if array[1]==0
         msg = '请填写邮箱!'
         array[2].html msg
-        email_flag = email_val_length > 0
+        email_flag = email_val_length>0
       else
         reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
-        email_flag = reg.test array[0]
+        email_flag = reg.test(array[0])
         if email_flag
           msg = '填写正确!'
         else    
@@ -42,18 +41,17 @@ define (require,exports,module)->
         $(e.currentTarget).val().length
         $('span[name=pwd_status]')
       ]
-      pwd_flag = array[1]
+      pwd_flag = array[1]>5
       msg = ''
-      if array[1] == 0
+      if array[1]==0
         msg = '请填写密码!'
       else
-        if array[1] > 0 and array[1]<6
+        if array[1]>0 & array[1]<6
           pwd_flag = false
           msg = '密码太短了!'
         else
           msg = ''
       array[2].html msg
-      pwd_flag
 
     login: -> 
       array = [
@@ -65,7 +63,7 @@ define (require,exports,module)->
       msg = ''
       reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
       email_flag = reg.test(array[0])
-      pwd_flag = array[1].length > 5
+      pwd_flag = array[1].length>5
       console.log pwd_flag
       if !email_flag
         msg = '邮箱填写有误!'

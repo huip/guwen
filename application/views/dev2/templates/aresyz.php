@@ -15,7 +15,7 @@
       <div class="form-group">
           <label for="inputPassword3" class="col-sm-4 control-label">密码</label>
           <div class="col-sm-5">
-              <input type="password" data-dismiss="alert" class="form-control" name="pwd" id="inputPassword3" placeholder="密码">
+              <input type="password" class="form-control" name="pwd" id="inputPassword3" placeholder="密码">
           </div>
         <span class="col-sm-3" name="pwd_status"></span>
       </div>
