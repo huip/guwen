@@ -19,27 +19,6 @@
   </div>
 </script>
 
-<script type="text/template" id="qinfo_template">
-    <%_.each(data.questions,function(question) {%>
-      <h2><%=question.qtitle%></h2>
-      <p><%=question.qcontent%></p>
-      <p><a href="#u/q/<%=question.uid%>"><%=question.name%></a></p>
-      <p><%=question.qscore%></p>
-      <p><%=question.ctime%></p>
-    <%})%>
-    <%_.each(data.answers,function(answer) {%>
-      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
-      <p><%=answer.content%></p>
-      <p><%=answer.ctime%></p>
-      <%_.each(answer.reply,function(reply) {%>
-        <div style="text-indent:40px">
-          <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
-          <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
-      <%})%>
-      <hr />
-    <%})%>
-</script>
-
 <script type="text/template" id="relative_template">
     <%_.each(data.relative,function(info) {%>
       <li><a href="#q/<%=info[0].qid%>"><%=info[0].qtitle%></a></li>
@@ -94,6 +73,33 @@
 <script type="text/template" id="topiq_template">
     <%_.each(data.question,function(q) {%>
       <li><a href="#q/<%=q.qid%>"><%=q.qtitle%></a></li>
+    <%})%>
+</script>
+
+<!-- 问题详情 -->
+<script type="text/template" id="qinfo_template">
+    <%_.each(data.questions,function(question) {%>
+      <ul class="qinfo_ul col-md-8 col-md-offset-3">
+        <li><h2><%=question.qtitle%></h2></li>
+        <li><p><%=question.qcontent%></p></li>
+        <li>
+          <span name="qinfo_span1">提问者：<a href="#u/q/<%=question.uid%>"><%=question.name%></a></span>
+          <span name="qinfo_span2">悬赏积分：<%=question.qscore%></span>
+          <span name="qinfo_span3">时间：<%=question.ctime%></span>
+          <span class="clearSpan"></span>
+        </li>
+      </ul>
+    <%})%>
+    <%_.each(data.answers,function(answer) {%>
+      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
+      <p><%=answer.content%></p>
+      <p><%=answer.ctime%></p>
+      <%_.each(answer.reply,function(reply) {%>
+        <div style="text-indent:40px">
+          <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
+          <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
+      <%})%>
+      <hr />
     <%})%>
 </script>
 

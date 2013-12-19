@@ -29,20 +29,21 @@
 	margin-top 1em
 	border 1px solid #eee
 	border-radius 5px
-
-.clearSpan
-	clear both
+	.clearSpan
+		clear both
+	.li_one
+		width 100%
+		float left
+		display block
+		margin-top 0.5em
+		position relative
 
 ul
 	list-style-type none
 	margin-bottom 0
 
-.li_one
-	width 100%
-	float left
-	display block
-	margin-top 0.5em
-	position relative
+.clearSpan
+	clear both
 
 .span_reward
 .span_watch
@@ -77,8 +78,28 @@ ul
 	text-align right
 	margin 0px	
 
-
-
+.qinfo_ul
+	border 1px solid #eee
+	border-radius 5px
+	@li
+		width 100%
+		display block
+		margin 0 0 10px 0
+		float left
+		@h2
+			margin-bottom 0
+		@p
+			margin-bottom 0
+		@span
+			padding-left 0
+		@span[name=qinfo_span1]
+			width 18%
+		@span[name=qinfo_span2]
+			width 18%
+			padding-left 10px
+		@span[name=qinfo_span3]
+			width 30%
+			float right
 
 
 
