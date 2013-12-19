@@ -19,27 +19,6 @@
   </div>
 </script>
 
-<script type="text/template" id="qinfo_template">
-    <%_.each(data.questions,function(question) {%>
-      <h2><%=question.qtitle%></h2>
-      <p><%=question.qcontent%></p>
-      <p><a href="#u/q/<%=question.uid%>"><%=question.name%></a></p>
-      <p><%=question.qscore%></p>
-      <p><%=question.ctime%></p>
-    <%})%>
-    <%_.each(data.answers,function(answer) {%>
-      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
-      <p><%=answer.content%></p>
-      <p><%=answer.ctime%></p>
-      <%_.each(answer.reply,function(reply) {%>
-        <div style="text-indent:40px">
-          <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
-          <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
-      <%})%>
-      <hr />
-    <%})%>
-</script>
-
 <script type="text/template" id="relative_template">
     <%_.each(data.relative,function(info) {%>
       <li><a href="#q/<%=info[0].qid%>"><%=info[0].qtitle%></a></li>
@@ -97,11 +76,35 @@
     <%})%>
 </script>
 
+<!-- 问题详情 -->
+<script type="text/template" id="qinfo_template">
+    <%_.each(data.questions,function(question) {%>
+      <ul class="qinfo_ul col-md-8 col-md-offset-3">
+        <li><h2><%=question.qtitle%></h2></li>
+        <li><p><%=question.qcontent%></p></li>
+        <li>
+          <span name="qinfo_span1">提问者：<a href="#u/q/<%=question.uid%>"><%=question.name%></a></span>
+          <span name="qinfo_span2">悬赏积分：<%=question.qscore%></span>
+          <span name="qinfo_span3">时间：<%=question.ctime%></span>
+          <span class="clearSpan"></span>
+        </li>
+      </ul>
+    <%})%>
+    <%_.each(data.answers,function(answer) {%>
+      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
+      <p><%=answer.content%></p>
+      <p><%=answer.ctime%></p>
+      <%_.each(answer.reply,function(reply) {%>
+        <div style="text-indent:40px">
+          <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
+          <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
+      <%})%>
+      <hr />
+    <%})%>
+</script>
 
-
-
-
-<script type="text/template" id="question_template">  <!-- 首页 -->
+<!-- 首页 -->
+<script type="text/template" id="question_template">  
     <%_.each(data,function(question) {%>
       <div class='col-md-10 col-md-offset-1' id='question_wrap'>
         <ul class="col-md-12">
@@ -118,16 +121,9 @@
     <%})%>
 </script>
 
-
-
-
-
-
-
-
-
-<script type="text/template" id="topic_template">       <!-- 分类 -->
-  <div class="topic col-md-9">
+<!-- 分类 -->
+<script type="text/template" id="topic_template">       
+  <div class="topic col-md-9 col-md-offset-2">
     <ul>
       <%_.each(data.topics,function(topic) {%>
         <li class="topic_li">
@@ -140,31 +136,47 @@
                   <p class="topic_time">回答:(<%=q.anwser%>)</p>
                 </li>
                 <li class="clearSpan"></li> 
-                <hr>
+                <hr />
               <%})%>
             </ul>
         </li> 
       <%})%>
-   </ul>
+    </ul>
   </div>
 </script>
 
-<script type="text/template" id="unanswerd_template">   <!-- 未回答 -->
+<!-- 未回答 -->
+<script type="text/template" id="unanswerd_template">  
     <%_.each(data.unanswerd,function(list) {%>
-      <li>
-        <a href="#/q/<%=list.qid%>"><%=list.qtitle%></a>
-        <p><span>浏览：<%=list.click%></span><span><%=list.ctime%></span></p>
-        <hr />
-      </li>
+      <div class='col-md-10 col-md-offset-1' id='unanswer_wrap'>
+        <ul class='col-md-12'>
+          <li class='li_one'>
+            <a href="#/q/<%=list.qid%>" class="col-md-9"><%=list.qtitle%></a>
+            <span class='col-md-3'><%=list.ctime%></span>
+          </li>
+          <li class='li_one'>
+            <span class='col-md-2 span_reward'>悬赏：</span><span class='col-md-2 span_watch'>浏览：<%=list.click%></span>
+          </li>
+          <li class="clearSpan"></li>
+        </ul>
+      </div>
     <%})%>
 </script>
 
-<script type="text/template" id="hotest_template">      <!-- 热门 -->
+<!-- 热门 -->
+<script type="text/template" id="hotest_template">
   <%_.each(data.hotests,function(hotest) {%>
-    <li>
-      <a href="#/q/<%=hotest.qid%>"><%=hotest.qtitle%></a>
-      <p><span>浏览：<%=hotest.click%></span><span><%=hotest.ctime%></span></p>
-      <hr />
-    </li>
+    <div class='col-md-10 col-md-offset-1' id='hotest_wrap'>
+      <ul class='col-md-12'>
+        <li class='li_one'>
+          <a href="#/q/<%=hotest.qid%>" class="col-md-9"><%=hotest.qtitle%></a>
+          <span class="col-md-3"><%=hotest.ctime%></span>
+        </li>
+        <li class='li_one'>
+          <span class='col-md-2 span_watch'>浏览：<%=hotest.click%></span>
+        </li>
+        <li class="clearSpan"></li>
+      </ul>
+    </div>
   <%})%>
 </script>
