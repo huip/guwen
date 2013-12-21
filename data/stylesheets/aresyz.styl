@@ -1,3 +1,4 @@
+border-style = 1px solid #eee
 #main
 	margin 50px 15% 0 15%
 
@@ -9,7 +10,7 @@
 	padding-bottom 3em
 	border-radius 0.5em
 	border-shadow 0 1px 0 #f2f4f5
-	border 1px solid #ddd
+	border border-style
 	background #fff
 
 #login-btn
@@ -27,7 +28,7 @@
 	min-height 2em
 	padding 0.2em
 	margin-top 1em
-	border 1px solid #eee
+	border border-style
 	border-radius 5px
 	.clearSpan
 		clear both
@@ -52,7 +53,7 @@ ul
 
 .topic_li
 	height auto
-	border 1px solid #eee
+	border border-style
 	border-radius 5px
 	padding 0.5em
 	margin-top 0.5em
@@ -79,7 +80,7 @@ ul
 	margin 0px	
 
 .qinfo_ul
-	border 1px solid #eee
+	border border-style
 	border-radius 5px
 	@li
 		width 100%
@@ -95,9 +96,10 @@ ul
 		@span[name=qinfo_span1]
 			width 18%
 		@span[name=qinfo_span2]
+		@span[name=qinfo_span3]
 			width 18%
 			padding-left 10px
-		@span[name=qinfo_span3]
+		@span[name=qinfo_span4]
 			width 30%
 			float right
 
