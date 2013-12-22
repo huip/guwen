@@ -85,21 +85,25 @@
         <li>
           <span name="qinfo_span1">提问者：<a href="#u/q/<%=question.uid%>"><%=question.name%></a></span>
           <span name="qinfo_span2">悬赏积分：<%=question.qscore%></span>
-          <span name="qinfo_span3">时间：<%=question.ctime%></span>
+          <span name="qinfo_span3">分类：<%=question.qcate%></span>
+          <span name="qinfo_span4">时间：<%=question.ctime%></span>
           <span class="clearSpan"></span>
         </li>
       </ul>
     <%})%>
     <%_.each(data.answers,function(answer) {%>
-      <p><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></p>
-      <p><%=answer.content%></p>
-      <p><%=answer.ctime%></p>
+      <ul class="qinfo_ul col-md-8 col-md-offset-3">
+        <li><a href="#u/q/<%=answer.uid%>"><%=answer.name%></a></li>
+        <li><%=answer.content%></li>
+        <li><%=answer.ctime%></li>
+      </ul>
+      
       <%_.each(answer.reply,function(reply) {%>
         <div style="text-indent:40px">
           <p><a href="#u/q/<%=reply.uid%>"><%=reply.name%></a></p>
           <p><%=reply.content%></p> <p><%=reply.ctime%></p> </div>
       <%})%>
-      <hr />
+  
     <%})%>
 </script>
 
