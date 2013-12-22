@@ -133,8 +133,8 @@ class Question_model extends CI_Model
       WHERE reply.aid  = ? AND reply.uid = us.uid 
       AND ansr.qid = ? ";
       $query = $this->db->query($sql,array($value['id'],$value['qid']));
-      $result = $query->result_array();
-      $result[$key]['reply'] = $result;
+      $reply = $query->result_array();
+      $result[$key]['reply'] = $reply;
     }
     return $result;
   }
