@@ -15,7 +15,7 @@ class Topic extends REST_Controller
     {
       $this->response(NULL, 400);
     }
-    $data['topics'] = $this->topic_model->get_list($this->get('id'));
+    $data = $this->topic_model->get_list($this->get('id'));
     $this->response($data);
   }
 

@@ -12,14 +12,14 @@ class Question_model extends CI_Model
    */
   public function get_list($page)
   {   
-    $pagesize = 10;
+    $pagesize = 20;
     $sql = "SELECT COUNT(qid) AS num FROM guwen_question";
     $query = $this->db->query($sql);
     $result = $query->result_array();
     $offset = ($page-1)*$pagesize;
     $count = count($result) > 0?$result[0]['num']:1;
     $numpage = ceil($count/$pagesize);
-    $sql = "SELECT us.gravatar,us.name,us.uid,q.qid,q.ctime,q.qtitle,'$numpage' AS num,
+    $sql = "SELECT us.gravatar,us.name,us.uid,q.qid,q.ctime,q.qtitle,
                 IF(status = 0,'未解决','已解决') AS status,
                 q.qscore,q.click,
                 (SELECT count(id) FROM guwen_answer WHERE qid = q.qid) AS anwser,
@@ -27,8 +27,10 @@ class Question_model extends CI_Model
                 FROM guwen_question AS q, guwen_user AS us WHERE q.uid = us.uid 
                 ORDER BY qid DESC LIMIT $offset,$pagesize";
     $query = $this->db->query($sql);
-    $result = $query->result_array();
-    return $result;
+    $data["result"] = $query->result_array();
+    // return num page
+    $data["num"] = $numpage;
+    return $data;
   }
 
   /*

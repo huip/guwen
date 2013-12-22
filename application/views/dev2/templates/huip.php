@@ -109,7 +109,7 @@
 
 <!-- 首页 -->
 <script type="text/template" id="question_template">  
-    <%_.each(data,function(question) {%>
+    <%_.each(data.result,function(question) {%>
       <div class='col-md-10 col-md-offset-1' id='question_wrap'>
         <ul class="col-md-12">
           <li class="li_one">
@@ -123,6 +123,17 @@
         </ul>
       </div>
     <%})%>
+    <ul class="pagination">
+      <% if(parseInt(data.id) > 1) {%>
+        <li><a href="#index/<%=parseInt(data.id) - 1%>">&laquo;</a></li>
+      <%}%>
+        <% for(var i = 1,l = data.num;i <= l; i++) {%>
+          <li><a href="#index/<%=i%>"><%=i%></a></li>
+        <% }%>
+        <% if( parseInt(data.id) < data.num  ) {%>
+          <li><a href="#index/<%=parseInt(data.id) + 1%>">&raquo;</a></li>
+        <% } %>
+    </ul>
 </script>
 
 <!-- 分类 -->
@@ -145,6 +156,17 @@
             </ul>
         </li> 
       <%})%>
+    </ul>
+    <ul class="pagination">
+      <% if(parseInt(data.id) > 1) {%>
+        <li><a href="#topic/ls/<%=parseInt(data.id) - 1%>">&laquo;</a></li>
+      <%}%>
+      <% for(var i = 1,l = data.num;i <= l; i++) {%>
+        <li><a href="#topic/ls/<%=i%>"><%=i%></a></li>
+      <% }%>
+      <% if( parseInt(data.id) < data.num  ) {%>
+        <li><a href="#topic/ls/<%=parseInt(data.id) + 1 %>">&raquo;</a></li>
+      <% } %>
     </ul>
   </div>
 </script>

@@ -20,7 +20,7 @@ class Topic_model extends CI_Model
     $offset = ($page-1)*$pagesize;
     $count = $result[0]['num'];
     $numpage = ceil($count/$pagesize);
-    $sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img,'$numpage' AS num FROM 
+    $sql = "SELECT DISTINCT tg.tag_name,tg.id,tg.tag_img FROM 
       guwen_tag AS tg,guwen_question  AS q  ORDER BY q.ctime DESC LIMIT $offset,$pagesize";
     $query = $this->db->query($sql);
     $result = $query->result_array();
@@ -31,7 +31,9 @@ class Topic_model extends CI_Model
       $query =  $this->db->query($sql);
       $result[$key]['qlist'] = $query->result_array();
     }
-    return $result;
+    $data["num"] = $numpage;
+    $data["topics"] = $result;
+    return $data;
   }
 
   /*
