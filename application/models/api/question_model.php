@@ -225,7 +225,10 @@ class Question_model extends CI_Model
       $this->db->cache_on();
       $query = $this->db->query($sql);
       $result = $query->result_array();
-      return $result;
+      $data["hotests"] = $result;
+      $data["num"] = $numpage;
+      return $data;
+      
     }
     else
     {
