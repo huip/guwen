@@ -5,17 +5,19 @@ class index_model extends CI_Model
   {
      $this->load->database();
   }
+
   /*
    * get user info
    */
+
   public function get_user_info()
   {
     $sql = "SELECT 
-            us.user_name,
-            us.user_email,
-            us.user_id,
-            us.reg_time,
-            us.user_score 
+            us.name,
+            us.email,
+            us.id,
+            us.ctime,
+            us.score 
             FROM guwen_user AS us";
     $query = $this->db->query($sql);
     $res = $query->result_array();
@@ -40,6 +42,7 @@ class index_model extends CI_Model
     }
     return $keywords_diff;
   }
+
   // get user login infomation
   public function get_login_info($offset)
   {
@@ -49,4 +52,17 @@ class index_model extends CI_Model
       $res = $query->result_array();
       return $res;
   }
+
+  /*
+   * insert tips
+   * author polande
+   * 2013-12-12
+   */
+
+  public function insert_tip($tips)
+  {
+      $sql = "INSERT  INTO guwen_tip (tip , ttime) VALUES ('$tips', now())";
+      $query = $this->db->query($sql);
+  }
+
 }

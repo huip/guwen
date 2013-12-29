@@ -27,7 +27,10 @@ class Admin extends CI_Controller {
     }
     else
     {
-      show_404();
+      //tempory 设置，不用登录进入后台。2013 12-12
+      $data['user_info'] = $this->index_model->get_user_info();
+      $this->load->view('dev2/admin/index',$data);
+      //show_404();
     }
   }
   /*
@@ -63,6 +66,20 @@ class Admin extends CI_Controller {
       show_404();
     }
   }
+  
+  /*
+   * insert tip from admin
+   * @author polande
+   * 2013 12
+   *
+   */
+  public function insert_tip()
+  {
+    //$data['tip'] = $this->input->post('inputTip'); 
+    $data['tip'] = $_POST['inputTip'];
+    $this->index_model->insert_tip($data['tip']);
+    redirect('/admin', 'refesh');
+  }
 
   /*
    *@author huip
@@ -74,4 +91,5 @@ class Admin extends CI_Controller {
     $user_role = $this->session->userdata('user_role');
     if($user_role == '1') return TRUE;
   }
+  
 }

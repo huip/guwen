@@ -9,12 +9,12 @@
 <nav class = "nav navbar-default" role = "navigation">
     <div class = "navbar-header">
         <button type = "button" class = "navbar-toggle" data-toggle = "collapse"data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">nav</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#">故问</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-exapmle-navbar-collapse-1">
         <ul class = "nav navbar-nav">
@@ -23,6 +23,14 @@
         </ul>
     </div>
 </nav>
+<div class = "main-content">
+    <div class = "main">
+        <form method = "post" action = "<?php echo base_url();?>index.php/admin/insert_tip">
+           <input type = "textarea" name = "inputTip" class = "inputTIp" > 
+           <input type = "submit" name = "subTip" class = "subTip">
+</form>
+    </div>
+</div>
 <script src="<?php echo base_url();?>data/javascripts/sea&#45;modules/seajs/seajs/2.1.1/sea.js"></script>
 <!-- <script>
 seajs.config({
@@ -35,4 +43,3 @@ seajs.use("<?php echo base_url();?>data/javascripts/admin/admin");
 </script> -->
 </body>
 </html>
-

@@ -10,6 +10,7 @@ class Widgets extends REST_Controller
     $this->load->library('session');
     $this->load->model('api/widgets_model');
     $this->load->model('api/question_model');
+    $this->load->model('api/tip_model');
   }
 
   /*
@@ -23,6 +24,7 @@ class Widgets extends REST_Controller
     $widgets['hot_cate'] = $this->widgets_model->get_hot_cate();
     $widgets['hot_ques'] = $this->question_model->get_hotest(1,5);
     $widgets['hot_person'] = $this->widgets_model->get_hot_person();
+    $widgets['tip'] = $this->tip_model->get_tip();
     $this->response($widgets);
   }
 }
